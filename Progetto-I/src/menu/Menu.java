@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ristorante;
-
-import java.util.ArrayList;
+package menu;
 
 /**
  *
  * @author federicovitro
  */
-public class Menu extends ArrayList<Object> {
+public class Menu {
     
 }
