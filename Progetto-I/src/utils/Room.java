@@ -18,13 +18,21 @@ public class Room {
     
     public Room(int numberOfTables){
         tables = new ArrayList<Table>();
-        addTables(numberOfTables);
+        initTables(numberOfTables);
     }
     
-    private void addTables(int numberOfTables){
+    //il metodo initTable() inizializza i tavoli alla creazione della Room
+    
+    private void initTables(int numberOfTables){ 
         for (int i = 0; i<numberOfTables; i++){
             tables.add(new Table(i));
         }
+    }
+    
+    //il metodo addTable() aggiunge alla room un tavolo
+    
+    public void addtables(){
+        tables.add(new Table(tables.size()));
     }
     
     public ArrayList<Table> getFreeTable(){
