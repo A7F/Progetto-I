@@ -9,19 +9,27 @@ import utils.Restaurant;
 import utils.Room;
 
 /**
- * test per verificare il funzionamento della classe Room
+ * test per verificare il funzionamento della classe Restaurant
  * @author federicovitro
  */
 public class Test01 {
     public static void main(String[] args) {
-//        Restaurant diablo = new Restaurant("Diablo", 5);
-        Room r1 = new Room(5);
+        Restaurant diablo = new Restaurant("Diablo", 5);
         
-        System.out.println(r1.getFreeTable());
+        diablo.printFreeTable();
         
-        r1.addtables();
+        diablo.setReserved(2);
+        diablo.setReserved(3);
         
-        System.out.println(r1.getFreeTable());
+        diablo.printFreeTable();
+        
+//        Room r1 = new Room(5);
+//        
+//        System.out.println(r1.getFreeTable());
+//        
+//        r1.addtables();
+        
+//        System.out.println(r1.getFreeTable());
         
     }
 }

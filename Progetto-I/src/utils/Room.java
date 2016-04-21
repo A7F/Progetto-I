@@ -44,4 +44,17 @@ public class Room {
         }
         return tableFree;
     }
+    
+    public void setReservedTable(int tableId){
+    
+        for (int i = 0; i < tables.size(); i++) {
+            
+            if(tables.get(i).getTableId() == tableId && tables.get(i).getIsTaken()== false){
+                            
+                tables.get(i).takeTable();
+                
+            }
+        }
+    }
+        
 }
