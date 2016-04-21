@@ -32,8 +32,30 @@ public class Restaurant {
     
     private void initRoom(int numberOfTables){
         room = new Room(numberOfTables);
+        
     }
     
+    public void printFreeTable(){
+    
+        ArrayList<Table> tableFree = new ArrayList<Table>();
+        tableFree = room.getFreeTable();
+        
+        for (Table tableFree1 : tableFree) {
+            
+            System.out.println(tableFree1);
+        }
+        
+    }
+    
+    public void addOrder(Order order){
+        //TODO da sistemare quando sarà implementato menuElement
+    }
+    
+    public void setReserved(int tableId){
+    
+        room.setReservedTable(tableId);
+    }
+        
     private void initGUI(){
         //TODO da fare quando penseremo all'interfaccia grafica.
     }

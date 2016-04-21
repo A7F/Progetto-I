@@ -48,9 +48,14 @@ public class Table {
         return totalCheck;
     }
 
+    public int getTableId() {
+        return tableId;
+    }
+    
+
     @Override
     public String toString() {
-        return "numero: "+tableId+" prenotato: "+isTaken+"\n";
+        return "tavolo: "+tableId+" prenotato: "+isTaken+"\n";
     }
     
     
