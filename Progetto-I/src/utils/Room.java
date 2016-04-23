@@ -45,6 +45,13 @@ public class Room {
         return tableFree;
     }
     
+
+    /**
+     * 
+     * @author fabiotagliani
+     * @param tableId 
+     */
+
     public void setReservedTable(int tableId){
     
         for (int i = 0; i < tables.size(); i++) {
