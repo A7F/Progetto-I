@@ -5,18 +5,28 @@
  */
 package menu;
 
-/**
- *
- * @author federicovitro
- */
+
 public class MenuElement {
     private String name;
     private double price;
     private Boolean available;
-    private MenuElementType typeElement;
+    private String typeElement;
     private String description;
+    
+    public MenuElement(String name, double price, String typeElement, String description){
+        this.name = name;
+        this.price = price;
+        this.typeElement = typeElement;
+        this.description = description;
+        available = true;
+        }
     
     public double getPrice(){
         return price;
     }
+    
+    public String toString(){
+        return name+" "+price+"\n";
+    }
+    
 }

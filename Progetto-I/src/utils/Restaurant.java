@@ -1,6 +1,7 @@
 package utils;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import menu.Menu;
 
@@ -19,14 +20,15 @@ public class Restaurant {
     private Room room;
     private Menu menu;
     
-    public Restaurant(String name, int numberOfTables){
+    public Restaurant(String name, int numberOfTables, String pathFile) throws IOException{
         this.name = name;
         initRoom(numberOfTables);
-        initMenu();
+        initMenu(pathFile);
         initGUI();
     }
     
-    private void initMenu(){
+    private void initMenu(String pathFile) throws IOException{
+        menu = new Menu(pathFile);
         
     }
     
