@@ -15,8 +15,12 @@ import utils.Room;
  * @author federicovitro
  */
 public class Test01 {
+
     public static void main(String[] args) throws IOException {
         Restaurant diablo = new Restaurant("Diablo", 5, "C:\\Users\\Javier\\Google Drive\\UNIVERSITA\'\\Fondamenti di informatica II\\ingegneria del software\\Progetto I\\menu.txt");
+
+   
+
         
         diablo.printFreeTable();
         
@@ -33,11 +37,12 @@ public class Test01 {
         
 //        System.out.println(r1.getFreeTable());
 
+
 //QUA FACCIO IL TEST DEL SOLO MENU
 //enu menu = new Menu("C:\\Users\\Javier\\Google Drive\\UNIVERSITA\'\\Fondamenti di informatica II\\ingegneria del software\\Progetto I\\menu.txt");
 //System.out.println(menu.toString());
 
 
-        
+
     }
 }
