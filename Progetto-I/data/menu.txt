@@ -1,0 +1,9 @@
+Pasta alla Carbonara	7	PRIMO	Spaghetti con carbonara, servita calda col ghiaccio e un pizzico di roccia saporita al ragno.
+Pasta col Sugo	5.5	PRIMO	Si può scegliere tra tortiglioni, penne e spaghetti, conditi con sugo di pomodoro fresco fatto in giornata.
+Risotto allo zafferano	6.5	PRIMO	Zafferano importato dalle remote regioni della Cambogia orientoccidentale. Il tutto condito con qualche pizzico di riso.
+Carne ai funghi	10	SECONDO	Funghi cotti a puntino nel forno, con accompagnamento di carni varie, tra le quali:piccione, rane e topi.
+Salsice	9	SECONDO	Salsice cotte sopra un piatto.
+Torta con le mele	2	DOLCE	farina, acqua, lievito, mele, zucchero.
+Banana	1	DOLCE	banana con banane.
+Caffe	1	BEVANDA	caffe con un po' di tazzina arrosto.
+Cola generica	2	BEVANDA	cola generica, perché coca cola non ci ha pagato per la pubblicità

@@ -31,9 +31,9 @@ public class Order {
         return menuElement;
     }
 
-    public String getNotes() {
+    public String getNotes(){
         return notes;
-    } 
+    }
     
     public double getPrice(){
         return menuElement.getPrice()*quantity;
