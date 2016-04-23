@@ -17,7 +17,7 @@ import utils.Room;
 public class Test01 {
 
     public static void main(String[] args) throws IOException {
-        Restaurant diablo = new Restaurant("Diablo", 5, "C:\\Users\\Javier\\Google Drive\\UNIVERSITA\'\\Fondamenti di informatica II\\ingegneria del software\\Progetto I\\menu.txt");
+        Restaurant diablo = new Restaurant("Diablo", 5, "./data/menu.txt");
 
    
 
