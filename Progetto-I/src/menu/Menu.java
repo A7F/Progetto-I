@@ -5,10 +5,36 @@
  */
 package menu;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  *
  * @author federicovitro
  */
 public class Menu {
+    private ArrayList<MenuElement> menu;
+    
+    public Menu(String pathMenu) throws IOException{
+        loadMenu(pathMenu);
+    }
+    /**
+     * @autor JS
+     * @param pathFile
+     * @throws IOException
+     * 
+     */    
+    private void loadMenu (String pathFile) throws IOException{
+        menu = LoadFileText.loadFile(pathFile);
+    }
+    
+    public String toString(){
+        String ret="";
+        for (int i=0; i<menu.size(); i++){
+            ret+=menu.get(i).toString();
+        }
+        return ret;
+    }
+    
     
 }
