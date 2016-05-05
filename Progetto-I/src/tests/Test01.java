@@ -19,15 +19,14 @@ public class Test01 {
     public static void main(String[] args) throws IOException {
         Restaurant diablo = new Restaurant("Diablo", 5, "./data/menu.txt");
 
-   
-
         
-        diablo.printFreeTable();
+        
+        System.out.println(diablo.getTables());
         
         diablo.setReserved(2);
         diablo.setReserved(3);
         
-        diablo.printFreeTable();
+        System.out.println(diablo.getFreeTable());
         
 //        Room r1 = new Room(5);
 //        

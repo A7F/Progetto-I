@@ -16,6 +16,7 @@ import menu.Menu;
  * @author federicovitro
  */
 public class Restaurant {
+    
     private String name;
     private Room room;
     private Menu menu;
@@ -36,20 +37,9 @@ public class Restaurant {
         room = new Room(numberOfTables);
         
     }
-    
-    public void printFreeTable(){
-    
-        ArrayList<Table> tableFree = new ArrayList<Table>();
-        tableFree = room.getFreeTable();
         
-        for (Table tableFree1 : tableFree) {
-            
-            System.out.println(tableFree1);
-        }
-        
-    }
-    
     public void addOrder(Order order){
+        
         //TODO da sistemare quando sarà implementato menuElement
     }
     
@@ -57,7 +47,28 @@ public class Restaurant {
     
         room.setReservedTable(tableId);
     }
+    
+    /**
+     * Restituisce i tavoli della sala
+     * @author fabiotagliani
+     */
+    public ArrayList<Table> getTables(){
+    
+        return room.getTables();
+      
+    }
         
+    /**
+    * Restituisce i tavoli non prenotati
+    * @author fabiotagliani
+    */
+    public ArrayList<Table> getFreeTable(){
+    
+        return room.getFreeTable();
+        
+    }
+    
+    
     private void initGUI(){
         //TODO da fare quando penseremo all'interfaccia grafica.
     }

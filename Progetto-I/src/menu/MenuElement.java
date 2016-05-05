@@ -26,7 +26,7 @@ public class MenuElement {
     }
     
     public String toString(){
-        return name+" "+price+"\n";
+        return name+" "+price + " " + description + " " + available;
     }
     
 }

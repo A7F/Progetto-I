@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author federicovitro
  */
 public class Menu {
+    
     private ArrayList<MenuElement> menu;
     
     public Menu(String pathMenu) throws IOException{
@@ -27,7 +28,15 @@ public class Menu {
     private void loadMenu (String pathFile) throws IOException{
         menu = LoadFileText.loadFile(pathFile);
     }
-    
+
+    /**
+     * 
+     * @autor FabioTagliani
+     */
+    public ArrayList<MenuElement> getMenu() {
+        return menu;
+    }
+        
     public String toString(){
         String ret="";
         for (int i=0; i<menu.size(); i++){
@@ -35,6 +44,4 @@ public class Menu {
         }
         return ret;
     }
-    
-    
 }

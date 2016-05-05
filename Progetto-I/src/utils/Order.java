@@ -14,6 +14,7 @@ import menu.MenuElement;
  * @author federicovitro
  */
 public class Order {
+    
     private int quantity;
     private MenuElement menuElement;
     private String notes;
@@ -38,4 +39,16 @@ public class Order {
     public double getPrice(){
         return menuElement.getPrice()*quantity;
     }
+
+    /**
+     * 
+     * @autor FabioTagliani
+     */
+    @Override
+    public String toString() {
+        
+        return "Ordine -> " + "Portata: " + menuElement + " Quantità: " + quantity + " note: " + notes + "\n";
+    }
+    
+    
 }
