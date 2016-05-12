@@ -58,7 +58,7 @@ public class Menu {
         
         for(int i=0;i<menu.size();i++){
             String temp = menu.get(i).getNameElement();
-            if(elementName.equals(temp.toLowerCase())){
+            if(elementName.contains(temp.toLowerCase())){
                 out.add(menu.get(i));
             }
         }
@@ -70,7 +70,7 @@ public class Menu {
      * Ritorna tutti gli elementi di menu che abbiano lo stesso tipo
      * In sostanza è un cerca.
      * @author Luca :]
-     * @param elementName
+     * @param type
      * @return out
      */
     public ArrayList<MenuElement> getElementByType(String type){
@@ -79,6 +79,25 @@ public class Menu {
         for(int i=0;i<menu.size();i++){
             String temp = menu.get(i).getTypeElement();
             if(type.equals(temp.toLowerCase())){
+                out.add(menu.get(i));
+            }
+        }
+        
+        return out;
+    }
+    
+    /**
+     * Ritorna tutti gli elementi di menu che abbiano lo stesso prezzo
+     * In sostanza è un cerca.
+     * @author Luca :]
+     * @param cash
+     * @return out
+     */
+    public ArrayList<MenuElement> getElementByPrice(double cash){
+        
+        for(int i=0;i<menu.size();i++){
+            double temp = menu.get(i).getPrizeElement();
+            if(cash == temp){
                 out.add(menu.get(i));
             }
         }
