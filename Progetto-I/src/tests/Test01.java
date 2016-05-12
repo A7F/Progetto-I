@@ -6,7 +6,7 @@
 package tests;
 
 import java.io.IOException;
-import menu.Menu;
+import menu.*;
 import utils.Restaurant;
 import utils.Room;
 
@@ -17,8 +17,9 @@ import utils.Room;
 public class Test01 {
 
     public static void main(String[] args) throws IOException {
-        Restaurant diablo = new Restaurant("Diablo", 5, "./data/menu.txt");
+        Restaurant diablo = new Restaurant("Diablo", 5,"./data/menu.txt");
 
+        Menu menu = new Menu("./data/menu.txt");
         
         
         System.out.println(diablo.getTables());
@@ -27,6 +28,11 @@ public class Test01 {
         diablo.setReserved(3);
         
         System.out.println(diablo.getFreeTable());
+        
+        System.out.println(menu.toString());
+        
+        System.out.println(diablo.getMenuByName("Banana"));
+        //System.out.println(diablo.getElementByType("primo"));
         
 //        Room r1 = new Room(5);
 //        

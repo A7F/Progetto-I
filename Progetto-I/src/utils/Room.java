@@ -82,6 +82,22 @@ public class Room {
     }
 
     /**
+     * Restituisce i tavoli prenotati 
+     * @author Luca :D
+     * @return tableTaken
+     */
+    public ArrayList<Table> getTakenTable(){
+        
+        ArrayList<Table> tableTaken = new ArrayList<Table>();
+        for (int i = 0; i < tables.size(); i++) {
+            if(tables.get(i).getIsTaken() == true){
+                tableTaken.add(tables.get(i));
+            }
+        }
+        return tableTaken;
+    }
+    
+    /**
      * @author fabiotagliani
      */   
     @Override

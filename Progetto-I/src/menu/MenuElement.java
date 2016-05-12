@@ -29,4 +29,22 @@ public class MenuElement {
         return name+" "+price + " " + description + " " + available;
     }
     
+    /**
+     * Ritorna il nome dell' elemento di menu (=nome del piatto)
+     * @author Luca :(
+     * @return String typeElement
+     */
+    public String getNameElement(){
+        return this.name;
+    }
+    
+    public String getTypeElement(){
+        return this.typeElement;
+    }
+    
+    public double getPrizeElement(){
+        return this.price;
+    }
+    
+    
 }

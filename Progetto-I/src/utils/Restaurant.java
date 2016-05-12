@@ -4,6 +4,7 @@ package utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import menu.Menu;
+import menu.MenuElement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -68,6 +69,17 @@ public class Restaurant {
         
     }
     
+    public ArrayList<MenuElement> getMenuByName(String elementName){
+        return menu.getElementByName(elementName);
+    }
+    
+    public ArrayList<MenuElement> getElementByType(String type){
+        return menu.getElementByType(type);
+    }
+    
+    public ArrayList<MenuElement> getElementByPrice(double cash){
+        return menu.getElementByPrice(cash);
+    }
     
     private void initGUI(){
         //TODO da fare quando penseremo all'interfaccia grafica.
