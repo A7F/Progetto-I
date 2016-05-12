@@ -21,10 +21,6 @@ public class MenuElement {
         available = true;
         }
     
-    public double getPrice(){
-        return price;
-    }
-    
     public String toString(){
         return name+" "+price + " " + description + " " + available;
     }
@@ -35,15 +31,15 @@ public class MenuElement {
      * @return String typeElement
      */
     public String getNameElement(){
-        return this.name;
+        return name;
     }
     
     public String getTypeElement(){
-        return this.typeElement;
+        return typeElement;
     }
     
     public double getPrizeElement(){
-        return this.price;
+        return price;
     }
     
     

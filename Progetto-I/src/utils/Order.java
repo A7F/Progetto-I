@@ -37,7 +37,7 @@ public class Order {
     }
     
     public double getPrice(){
-        return menuElement.getPrice()*quantity;
+        return menuElement.getPrizeElement()*quantity;
     }
 
     /**
