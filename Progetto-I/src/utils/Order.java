@@ -1,13 +1,6 @@
 package utils;
 
-
 import menu.MenuElement;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -17,13 +10,44 @@ public class Order {
     
     private int quantity;
     private MenuElement menuElement;
-    private String notes;
+    private String notes = "";
     
     public Order(int quantity, MenuElement menuElement){
         this.quantity = quantity;
         this.menuElement = menuElement;
     }
-
+    
+    /**
+     * Polimorfismo metodi costruttori: posso istanziare un ordine sia con che senza
+     * annotazioni aggiuntive
+     * @param quantity
+     * @param menuElement
+     * @param notes 
+     * @author Luca :D
+     */
+    public Order(int quantity, MenuElement menuElement,String notes){
+        this.quantity = quantity;
+        this.menuElement = menuElement;
+        this.notes = notes;
+    }
+    
+    /**
+     * i camerieri possono modificare le note relative all' elemento di ordinazione
+     * @param text 
+     * @author Luca :c
+     */
+    public void setNotes(String text){
+        this.notes = text;
+    }
+    
+    public void resetNotes(){
+        this.notes = "";
+    }
+    
+    public String getNotes(){
+        return notes;
+    }
+    
     public int getQuantity() {
         return quantity;
     }
@@ -32,14 +56,11 @@ public class Order {
         return menuElement;
     }
 
-    public String getNotes(){
-        return notes;
-    }
-    
     public double getPrice(){
         return menuElement.getPrizeElement()*quantity;
     }
-
+    
+    
     /**
      * 
      * @autor FabioTagliani
