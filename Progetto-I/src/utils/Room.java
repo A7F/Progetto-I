@@ -48,10 +48,12 @@ public class Room {
     
         for (int i = 0; i < tables.size(); i++) {
             
-            if(tables.get(i).getTableId() == tableId && tables.get(i).getIsTaken()== false){
-                            
-                tables.get(i).takeTable();
-                
+            if(tables.get(i).getTableId() == tableId){
+                if(!(tables.get(i).getIsTaken())){
+                    tables.get(i).takeTable();
+                }else{
+                    System.out.println("EEEH NO EH IL TAVOLO E' GIA' PRENOTATO ZIOOOOO");
+                }
             }
         }
     }
