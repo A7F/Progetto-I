@@ -21,11 +21,16 @@ public class Test01 {
         diablo.setReserved(2);
         diablo.setReserved(3);
         
-        System.out.println(diablo.getFreeTable());
+        System.out.println("------------------- TESTING PRO -----------------\n");
         
-        System.out.println(menu.toString());
+        diablo.setReserved(3);
         
-        System.out.println(diablo.getMenuByName("Banana"));
+        //System.out.println(diablo.getFreeTable());
+        
+        //System.out.println(menu.toString());
+        
+        //System.out.println(diablo.getMenuByName("Banana"));
+        
         //System.out.println(diablo.getElementByType("primo"));
         
 //        Room r1 = new Room(5);
