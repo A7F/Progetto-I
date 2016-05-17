@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Menu {
     
     private ArrayList<MenuElement> menu;
-    private ArrayList<MenuElement> out = new ArrayList<>();
     
     public Menu(String pathMenu) throws IOException{
         loadMenu(pathMenu);
@@ -52,6 +51,7 @@ public class Menu {
      */
     public ArrayList<MenuElement> getElementByName(String elementName){
         elementName=elementName.toLowerCase();
+        ArrayList<MenuElement> out = new ArrayList<>();
         
         for(int i=0;i<menu.size();i++){
             String temp = menu.get(i).getNameElement();
@@ -72,6 +72,7 @@ public class Menu {
      */
     public ArrayList<MenuElement> getElementByType(String type){
         type=type.toLowerCase();
+        ArrayList<MenuElement> out = new ArrayList<>();
         
         for(int i=0;i<menu.size();i++){
             String temp = menu.get(i).getTypeElement();
@@ -91,7 +92,7 @@ public class Menu {
      * @return out
      */
     public ArrayList<MenuElement> getElementByPrice(double cash){
-        
+        ArrayList<MenuElement> out = new ArrayList<>();
         for(int i=0;i<menu.size();i++){
             double temp = menu.get(i).getPrizeElement();
             if(cash == temp){
