@@ -32,10 +32,22 @@ public class Restaurant {
         room = new Room(numberOfTables);
         
     }
+    
+    /**
+     * Aggiunge un ordine al tavolo prescelto
+     * @param tableId
+     * @param order
+     * @author FabioTagliani
+     */
+    public void addOrder(int tableId, Order order){
         
-    public void addOrder(Order order){
+        room.addOrder(tableId, order); 
         
-        //TODO da sistemare quando sarà implementato menuElement
+    }
+    
+    public void removeOrder(int tableId, Order order){
+    
+        room.removeOrder(tableId, order);
     }
     
     public void setReserved(int tableId){
@@ -61,6 +73,11 @@ public class Restaurant {
     
         return room.getFreeTable();
         
+    }
+    
+    public ArrayList<MenuElement> getMenu(){
+    
+        return menu.getMenu();
     }
     
     public ArrayList<MenuElement> getMenuByName(String elementName){
