@@ -95,5 +95,4 @@ public class Restaurant {
     private void initGUI(){
         //TODO da fare quando penseremo all'interfaccia grafica.
     }
-    
 }

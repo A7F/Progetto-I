@@ -108,5 +108,19 @@ public class Room {
         }
         return ret;
     }
+
+    void addOrder(int tableID, Order order) { 
+        if(tables.get(tableID-1).getIsTaken() == false){
+            tables.get(tableID-1).takeTable();
+            
+            // DEBUG
+            System.err.println("Il tavolo non era prenotato. Verra prenotato.");
+        }
+        tables.get(tableID-1).addOrder(order);
+    }
+
+    void removeOrder(int tableID, Order order) {
+        tables.get(tableID-1).removeOrder(order);
+    }
     
 }

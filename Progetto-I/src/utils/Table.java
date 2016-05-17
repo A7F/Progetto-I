@@ -49,7 +49,15 @@ public class Table {
 
     @Override
     public String toString() {
-        return "tavolo: "+tableId+" prenotato: "+isTaken+"\n";
+        return "tavolo: "+(tableId+1)+" || prenotato: "+isTaken+ " || ordini: " + orders +"\n";
+    }
+
+    /**
+     * 
+     * @auth Fabio 
+     */
+    void removeOrder(Order order) {
+        orders.remove(order);
     }
     
     
