@@ -34,6 +34,10 @@ public class Test_Completo {
         diablo.setReserved(5);
         diablo.setReserved(6);
         diablo.setReserved(9);
+        
+        diablo.setReserved(4);
+        System.out.println("_______________________\n");
+        
         System.out.println(diablo.getFreeTable()+"\n");
         System.out.println("_______________________\n");
         System.out.println(diablo.getTakenTable()+"\n");
