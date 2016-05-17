@@ -25,21 +25,17 @@ public class Restaurant {
     
     private void initMenu(String pathFile) throws IOException{
         menu = new Menu(pathFile);
-        
     }
     
     private void initRoom(int numberOfTables){
-        room = new Room(numberOfTables);
-        
+        room = new Room(numberOfTables);  
     }
         
     public void addOrder(Order order){
-        
         //TODO da sistemare quando sarà implementato menuElement
     }
     
     public void setReserved(int tableId){
-    
         room.setReservedTable(tableId);
     }
     
