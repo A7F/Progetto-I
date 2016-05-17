@@ -48,6 +48,10 @@ public class Restaurant {
         return room.getTables();
       
     }
+    
+    public ArrayList<Table> getTakenTable(){
+        return room.getTakenTable();
+    }
         
     /**
     * Restituisce i tavoli non prenotati
