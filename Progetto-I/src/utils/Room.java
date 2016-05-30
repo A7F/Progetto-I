@@ -21,6 +21,7 @@ public class Room {
         initTables(numberOfTables);
     }
     
+    
     /**
      * inizializza i tavoli alla creazione della Room
      * @param numberOfTables 
@@ -30,6 +31,19 @@ public class Room {
         for (int i = 0; i<numberOfTables; i++){
             tables.add(new Table(i));
         }
+    }
+    
+    /**
+     * questo metodo ritorna tutti gli ordini di sala messi insieme!
+     * @author Luca
+     * @return roomOrders
+     */
+    public ArrayList<Order> getOrdersArray(){
+        ArrayList<Order> roomOrders = new ArrayList<Order>();
+        for(int i=0;i<tables.size();i++){
+            roomOrders.addAll(tables.get(i).getOrdersArray());
+        }
+        return roomOrders;
     }
     
     /**

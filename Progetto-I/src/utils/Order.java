@@ -11,6 +11,8 @@ public class Order {
     private int quantity;
     private MenuElement menuElement;
     private String notes = "";
+    private boolean is_read = false;
+    private boolean is_done = false;
     
     public Order(int quantity, MenuElement menuElement){
         this.quantity = quantity;
@@ -60,6 +62,53 @@ public class Order {
         return menuElement.getPrizeElement()*quantity;
     }
     
+    /**
+     * i seguenti metodi sono per la classe cuoco, il quale deve poter segnare
+     * come letto o eseguito l'elemento di ordinazione del tavolo.
+     * @author Luca
+     */
+    public void setDone(){
+        this.is_done = true;
+    }
+    
+    public void unsetDone(){
+        this.is_done = false;
+    }
+    
+    public void setRead(){
+        this.is_read = true;
+    }
+    
+    public void unsetRead(){
+        this.is_read = false;
+    }
+    
+    public void changeDone(){
+        if(this.is_done){
+            unsetDone();
+        }
+        setDone();
+    }
+    
+    public void changeRead(){
+        if(this.is_read){
+            unsetRead();
+        }
+        setRead();
+    }
+    
+    public boolean getOrderRead(){
+        return this.is_read;
+    }
+    
+    public boolean getOrderDone(){
+        return this.is_done;
+    }
+    
+    
+    public String getNameEl(){
+        return menuElement.getNameElement();
+    }
     
     /**
      * 

@@ -23,7 +23,7 @@ public class MenuElement {
     
     /**
      * Ritorna il nome dell' elemento di menu (=nome del piatto)
-     * @author Luca :(
+     * @author Luca
      * @return String typeElement
      */
     public String getNameElement(){
@@ -36,6 +36,10 @@ public class MenuElement {
     
     public double getPrizeElement(){
         return price;
+    }
+    
+    public String getDescription(){
+        return description;
     }
     
     

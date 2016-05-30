@@ -30,7 +30,10 @@ public class Restaurant {
     
     private void initRoom(int numberOfTables){
         room = new Room(numberOfTables);
-        
+    }
+    
+    public ArrayList<Order> getOrdersArray(){
+        return room.getOrdersArray();
     }
     
     /**
