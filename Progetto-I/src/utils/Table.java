@@ -18,6 +18,11 @@ public class Table {
         orders = new ArrayList<>();
     }
     
+    public ArrayList<Order> getOrdersArray(){
+        return this.orders;
+    }
+    
+    
     public Boolean getIsTaken(){
         return isTaken;
     }

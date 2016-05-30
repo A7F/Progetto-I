@@ -15,9 +15,11 @@ public class Cook {
     private ArrayList<Order> ordersDeleted;
     
     public Cook(String name,ArrayList<Order> orders){
-    this.cookName = name;
-    ordersCopy = orders;
-}
+        this.cookName = name;
+        ordersCopy = orders;
+        CookUI c1 = new CookUI(orders);
+    }
+    
     /**
      * Imposta come eseguito un ordine
      * @author Luca ^^
