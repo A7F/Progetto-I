@@ -11,7 +11,7 @@ import java.util.Map;
 import menu.MenuElement;
 
 /**
- * Gestisce la parte dello 
+ * Gestisce la stampa dello scontrino
  * @author Fabio
  */
 public class Ticket {
