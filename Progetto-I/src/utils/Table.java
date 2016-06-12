@@ -22,7 +22,6 @@ public class Table {
         return this.orders;
     }
     
-    
     public Boolean getIsTaken(){
         return isTaken;
     }
@@ -38,32 +37,30 @@ public class Table {
     public void addOrder(Order order){
         orders.add(order);
     }
-    
-    public double calcCheck(){
-        double totalCheck = 0.0;
-        for (int i = 0; i < orders.size(); i++) {
-            totalCheck += orders.get(i).getPrice();
-        }
-        return totalCheck;
-    }
-
-    public int getTableId() {
-        return tableId;
-    }
-    
-
-    @Override
-    public String toString() {
-        return "tavolo: "+(tableId+1)+" || prenotato: "+isTaken+ " || ordini: " + orders +"\n";
-    }
-
+   
     /**
-     * 
-     * @auth Fabio 
+     * @author FabioTagliani
      */
     void removeOrder(Order order) {
         orders.remove(order);
     }
     
-    
+    public int getTableId() {
+        return tableId;
+    }
+    /**
+     * @author FabioTagliani
+     */
+    public Ticket getTicket() {
+
+        Ticket ticket = new Ticket();
+        ticket.elaboraTicket(orders);
+
+        return ticket;
+    }
+        
+    @Override
+    public String toString() {
+        return "tavolo: "+(tableId+1)+" || prenotato: "+isTaken+ " || ordini: " + orders +"\n";
+    }
 }

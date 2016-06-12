@@ -58,6 +58,11 @@ public class Order {
         return menuElement;
     }
 
+    public void getTicket(){
+    
+        System.out.println(quantity + "|| " + menuElement.getNameElement() + "|| " + menuElement.getPrizeElement());
+    }
+    
     public double getPrice(){
         return menuElement.getPrizeElement()*quantity;
     }
@@ -70,7 +75,11 @@ public class Order {
     public void setDone(){
         this.is_done = true;
     }
-    
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+       
     public void unsetDone(){
         this.is_done = false;
     }

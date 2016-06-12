@@ -3,6 +3,7 @@ package utils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import menu.Menu;
 import menu.MenuElement;
 
@@ -43,9 +44,11 @@ public class Restaurant {
      * @author FabioTagliani
      */
     public void addOrder(int tableId, Order order){
-        
         room.addOrder(tableId, order); 
-        
+    }
+    
+    public void addTables(){
+       room.addtables();
     }
     
     public void removeOrder(int tableId, Order order){
@@ -55,7 +58,7 @@ public class Restaurant {
     
     public void setReserved(int tableId){
     
-        room.setReservedTable(tableId);
+        room.setReservedTable(tableId -1);
     }
     
     /**
@@ -67,19 +70,26 @@ public class Restaurant {
         return room.getTables();
       
     }
-        
+    /**
+     * Restituisce lo scontrino del tavolo 
+     * @param tableID
+     * @return Ticket
+     * @author FabioTagliani
+     */
+    public Ticket getTicket(int tableID){
+    
+       return room.getTicket(tableID);
+    }
+    
     /**
     * Restituisce i tavoli non prenotati
-    * @author fabiotagliani
+    * @author FabioTagliani
     */
     public ArrayList<Table> getFreeTable(){
-    
-        return room.getFreeTable();
-        
+       return room.getFreeTable();
     }
     
     public ArrayList<MenuElement> getMenu(){
-    
         return menu.getMenu();
     }
     
@@ -97,5 +107,10 @@ public class Restaurant {
     
     private void initGUI(){
         //TODO da fare quando penseremo all'interfaccia grafica.
+    }
+
+     public ArrayList<Table> getTakenTable(){
+        
+        return room.getTakenTable();
     }
 }

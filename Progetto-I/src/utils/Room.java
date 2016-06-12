@@ -1,6 +1,8 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import menu.MenuElement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -112,19 +114,6 @@ public class Room {
         return tableTaken;
     }
     
-    /**
-     * @author fabiotagliani
-     */   
-    @Override
-    public String toString() {
-        
-        String ret="";
-        for (int i=0; i<tables.size(); i++){
-            ret+=tables.get(i).toString();
-        }
-        return ret;
-    }
-
     void addOrder(int tableID, Order order) { 
         if(tables.get(tableID-1).getIsTaken() == false){
             tables.get(tableID-1).takeTable();
@@ -138,5 +127,23 @@ public class Room {
     void removeOrder(int tableID, Order order) {
         tables.get(tableID-1).removeOrder(order);
     }
+    /**
+     * @author FabioTagliani
+     */
+    public Ticket getTicket(int tableID){
+        return tables.get(tableID -1).getTicket();
+    }
     
+    /**
+     * @author FabioTagliani
+     */   
+    @Override
+    public String toString() {
+        
+        String ret="";
+        for (int i=0; i<tables.size(); i++){
+            ret+=tables.get(i).toString();
+        }
+        return ret;
+    }    
 }

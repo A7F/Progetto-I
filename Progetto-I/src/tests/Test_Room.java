@@ -26,7 +26,7 @@ public class Test_Room {
         System.out.println(diablo1.getTables());
         System.out.println("------------------------");
         
-        diablo1.addtables();
+        diablo1.addTables();
         System.out.println(diablo1.getTables());
         
         /**
@@ -38,11 +38,7 @@ public class Test_Room {
         diablo1.setReserved(10);
         diablo1.setReserved(11);
         System.out.println(diablo1.getTables());
-        
-        //TODO: ho riscontrato un problema. se si aggiunge un tavolo prima di
-        //eseguire le prenotazioni, il metodo non scala l'aray quindi prenotando
-        //il tavolo 3 viene effettuata la prenotazione al tavolo 4 ecc.
-        
+                
         diablo1.setReserved(3);
         
         /**
