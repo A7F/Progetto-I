@@ -49,7 +49,7 @@ public class DatabaseManager {
         try{
             statement.executeQuery(query);
         }catch(SQLException e){
-            System.err.println("Guarda non sono riuscito ad esegire la tua query");
+            System.err.println("Guarda non sono riuscito ad eseguire la tua query");
         }
     }
     
@@ -57,7 +57,7 @@ public class DatabaseManager {
         try{
             statement.executeUpdate(update);
         }catch(SQLException e){
-            System.err.println("Guarda non sono riuscito ad esegire il tuo update");
+            System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
         }
     }
 }
