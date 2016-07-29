@@ -2,6 +2,7 @@ package utils;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -43,6 +44,21 @@ public class CookUI implements ActionListener{
     }
 
     private void initUi() {
+        
+        initComponent();
+        
+        setButton();
+        
+        setJList();
+        
+        setJFrame();
+      
+    }
+    /**
+     * Inizializza i vari componenti
+     * @throws HeadlessException 
+     */
+    private void initComponent() throws HeadlessException {
         f1 = new JFrame("Cucina");
         jPanel1 = new JPanel();
         jButton2 = new JButton();
@@ -50,7 +66,12 @@ public class CookUI implements ActionListener{
         jScrollPane1 = new JScrollPane();
         jList1 = new JList(ordersToStrings(orders).toArray());
         jPanel1.setLayout(new java.awt.GridLayout());
-        
+    }
+
+    /**
+     * Crea i vari pulsanti
+     */
+    private void setButton() {
         //pulsantiera in alto
         jButton1.setText("FATTO");
         jButton1.setFont(new java.awt.Font("Dialog", 1, 20));
@@ -59,21 +80,6 @@ public class CookUI implements ActionListener{
         jPanel1.add(jButton1);
         jPanel1.add(jButton2);
         
-        //lista centrale
-        jList1.setCellRenderer(new MyListCellRender());
-        jList1.setFont(new java.awt.Font("Dialog", 1, 25));
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jList1);
-        
-        //JFrame, aggiungo elementi sopra e imposto le proprietà
-        f1.setLayout(new BorderLayout());
-        f1.add(jPanel1,BorderLayout.NORTH);
-        f1.add(jScrollPane1,BorderLayout.CENTER);
-        f1.setVisible(true);
-        f1.setSize(800, 500);
-        f1.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        //JButtons: aggancio gli action listeners
         jButton1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
@@ -86,9 +92,27 @@ public class CookUI implements ActionListener{
             public void actionPerformed(ActionEvent evt){
                 jButton2ActionPerformed(evt);
             }
-        });
+        });        
+    }
+        
+    private void setJList() {
+        //lista centrale
+        jList1.setCellRenderer(new MyListCellRender());
+        jList1.setFont(new java.awt.Font("Dialog", 1, 25));
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jList1);
     }
     
+    private void setJFrame() {
+        //JFrame, aggiungo elementi sopra e imposto le proprietà
+        f1.setLayout(new BorderLayout());
+        f1.add(jPanel1,BorderLayout.NORTH);
+        f1.add(jScrollPane1,BorderLayout.CENTER);
+        f1.setVisible(true);
+        f1.setSize(800, 500);
+        f1.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+  
     /**
      * a seguire, i due listener per i pulsanti.
      * @author Luca
@@ -101,6 +125,7 @@ public class CookUI implements ActionListener{
         int val = jList1.getSelectedIndex();
         jList1.setSelectedIndex(val);
         //jList1.setForeground(Color.RED);
+        
     }
     
     private void jButton2ActionPerformed(ActionEvent evt){
