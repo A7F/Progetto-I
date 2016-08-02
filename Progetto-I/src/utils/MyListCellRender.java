@@ -7,6 +7,7 @@ package utils;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
@@ -21,13 +22,20 @@ import javax.swing.ListCellRenderer;
  */
 public class MyListCellRender extends JLabel implements ListCellRenderer{
     
-    public MyListCellRender(){
+    ArrayList<Order> orders = new ArrayList<Order>();
+    
+    public MyListCellRender(ArrayList<Order> ord){
         setOpaque(true);
+        this.orders=ord;
     }
 
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus){
-        setText(value.toString());
+        if(orders.get(index).getOrderDone()){
+            System.out.println("SELEZIONATO: "+index+"\tSET: "+orders.get(index).toString());
+            setBackground(isSelected ? Color.red : Color.white);
+        }
+        
         setBackground(isSelected ? Color.red : Color.white);
         setForeground(isSelected ? Color.white : Color.black);
         return this;

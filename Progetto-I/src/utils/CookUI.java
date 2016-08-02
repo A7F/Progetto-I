@@ -28,9 +28,9 @@ public class CookUI implements ActionListener{
     private ArrayList<Order> orders;
     private JFrame f1;
     
-    public CookUI(ArrayList<Order> orders){
+    public CookUI(ArrayList<Order> orders,Cook cuoco){
         //ordersText = new ArrayList<String>();
-        this.orders = orders;
+        this.orders = cuoco.getOrdersCopy();
         //ordersToStrings(orders);
         initUi();
     }
@@ -83,7 +83,8 @@ public class CookUI implements ActionListener{
         jButton1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt){
-                jButton1ActionPerformed(evt);
+                int i=jList1.getSelectedIndex();
+                orders.get(i).setDone();
             }
         });
         
@@ -97,7 +98,7 @@ public class CookUI implements ActionListener{
         
     private void setJList() {
         //lista centrale
-        jList1.setCellRenderer(new MyListCellRender());
+        jList1.setCellRenderer(new MyListCellRender(orders));
         jList1.setFont(new java.awt.Font("Dialog", 1, 25));
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jList1);

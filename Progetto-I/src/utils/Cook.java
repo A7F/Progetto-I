@@ -17,7 +17,6 @@ public class Cook {
     public Cook(String name,ArrayList<Order> orders){
         this.cookName = name;
         ordersCopy = orders;
-        CookUI c1 = new CookUI(orders);
     }
     
     /**
@@ -40,4 +39,10 @@ public class Cook {
         ordersDeleted.remove(tmp);
         ordersCopy.set(1, tmp);
     }
+    
+    public ArrayList<Order> getOrdersCopy(){
+        return this.ordersCopy;
+    }
+    
+    
 }
