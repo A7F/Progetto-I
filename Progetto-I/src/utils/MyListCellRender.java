@@ -7,8 +7,6 @@ package utils;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.util.HashMap;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
@@ -23,6 +21,7 @@ public class MyListCellRender extends JLabel implements ListCellRenderer{
     
     public MyListCellRender(){
         setOpaque(true);
+        
     }
 
     @Override
