@@ -27,14 +27,6 @@ public class Test02 {
         
         System.out.println(diablo.getTables());
         
-<<<<<<< HEAD
-=======
-        //diablo.removeOrder(1, order);
-        
-        Cook cazzino = new Cook("Gigino",diablo.getOrdersArray());
-                
-        cazzino.setDone(order);
->>>>>>> 45c89c034c0500c69020787f8ffcdd3a39eb9429
         
         //System.out.println(diablo.getTables());
     }
