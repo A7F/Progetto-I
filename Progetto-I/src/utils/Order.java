@@ -25,7 +25,7 @@ public class Order {
      * @param quantity
      * @param menuElement
      * @param notes 
-     * @author Luca :D
+     * @author Luca
      */
     public Order(int quantity, MenuElement menuElement,String notes){
         this.quantity = quantity;
@@ -36,7 +36,7 @@ public class Order {
     /**
      * i camerieri possono modificare le note relative all' elemento di ordinazione
      * @param text 
-     * @author Luca :c
+     * @author Luca
      */
     public void setNotes(String text){
         this.notes = text;
@@ -72,46 +72,31 @@ public class Order {
      * come letto o eseguito l'elemento di ordinazione del tavolo.
      * @author Luca
      */
-    public void setDone(){
-        this.is_done = true;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-       
-    public void unsetDone(){
-        this.is_done = false;
+     public boolean getDone(){
+        return this.is_done;
     }
     
-    public void setRead(){
-        this.is_read = true;
-    }
-    
-    public void unsetRead(){
-        this.is_read = false;
-    }
-    
-    public void changeDone(){
-        if(this.is_done){
-            unsetDone();
-        }
-        setDone();
-    }
-    
-    public void changeRead(){
-        if(this.is_read){
-            unsetRead();
-        }
-        setRead();
-    }
-    
-    public boolean getOrderRead(){
+    public boolean getRead(){
         return this.is_read;
     }
     
-    public boolean getOrderDone(){
-        return this.is_done;
+    public void changeDone(){
+        if(is_done){
+            this.is_done = false;
+        }else{
+            this.is_done = true;
+            this.is_read = true;
+        }
+    }
+    
+    public void changeRead(){
+        if(is_read){
+            this.is_read = false;
+            this.is_done = false;
+        }else{
+            this.is_read = true;
+            this.is_done = false;
+        }
     }
     
     
@@ -120,14 +105,11 @@ public class Order {
     }
     
     /**
-     * 
-     * @autor FabioTagliani
+     * sistemato il toString: visualizza solo il nome dell' ordine
+     * @autor Luca
      */
     @Override
     public String toString() {
-        
-        return "Ordine -> " + "Portata: " + menuElement + " Quantità: " + quantity + " note: " + notes + "\n";
+        return menuElement.getNameElement();
     }
-    
-    
 }

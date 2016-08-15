@@ -3,7 +3,6 @@ package utils;
 import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!!
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -13,7 +12,7 @@ import java.sql.SQLException;
  */
 public class DatabaseManager {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String DATABASE_URL = "jdbc:mysql://localhost:3306/boh";
+    public static final String DATABASE_URL = "jdbc:mysql://localhost:3306";
     private Connection connection = null;
     public static Statement statement = null;
     
@@ -22,11 +21,18 @@ public class DatabaseManager {
             Class.forName(DRIVER).newInstance();
             try{
                 String cmd = "CREATE DATABASE IF NOT EXISTS RestaurantMenu";
-                connection=DriverManager.getConnection(DATABASE_URL, "username", "password");
+                connection=DriverManager.getConnection(DATABASE_URL, "root", "");
                 statement=(Statement) connection.createStatement();
                 statement.executeUpdate(cmd);
-                String table="CREATE TABLE Menu(ElementID int,Name varchar(200),Description varchar(1000),Price int,Tipo varchar(10))";
+                String db = "CREATE DATABASE Ristorante;";
+                statement.executeUpdate(db);
+                System.out.println(">> DATABASE CREATO");
+                String use = "USE Ristorante;";
+                statement.executeUpdate(use);
+                System.out.println(">> USO DATABASE Ristorante");
+                String table="CREATE TABLE Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
                 statement.executeUpdate(table);
+                System.out.println(">> TABELLA CREATA");
             }catch(SQLException e){
                 System.err.println("SQLException: " + e.getMessage());
                 System.err.println("SQLState: " + e.getSQLState());
@@ -41,7 +47,7 @@ public class DatabaseManager {
         try{
             connection.close();
         }catch(SQLException e){
-            System.err.println("Cannot release connection to database");
+            System.err.println("Non riesco a chiudere la connessione");
         }
     }
     
