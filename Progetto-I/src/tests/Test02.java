@@ -7,7 +7,6 @@ import java.io.IOException;
 import menu.Menu;
 import menu.MenuElement;
 import utils.Cook;
-import utils.CookUI;
 import utils.Order;
 import utils.Restaurant;
 
@@ -28,10 +27,6 @@ public class Test02 {
         
         System.out.println(diablo.getTables());
         
-        //diablo.removeOrder(1, order);
-        
-        Cook cazzino = new Cook("Gigino",diablo.getOrdersArray());
-        CookUI c1 = new CookUI(diablo.getOrdersArray(),cazzino);
         
         //System.out.println(diablo.getTables());
     }
