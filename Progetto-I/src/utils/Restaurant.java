@@ -37,6 +37,10 @@ public class Restaurant {
         return room.getOrdersArray();
     }
     
+    public String getRestaurantName(){
+        return this.name;
+    }
+    
     /**
      * Aggiunge un ordine al tavolo prescelto
      * @param tableId

@@ -4,6 +4,7 @@ import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  * questa classe si occupa di aprire la connessione al server remoto SQL e di
@@ -16,12 +17,19 @@ public class DatabaseManager {
     private Connection connection = null;
     public static Statement statement = null;
     
+    public DatabaseManager(){
+        try {
+            connection=DriverManager.getConnection(DATABASE_URL, "root", "");
+        } catch (SQLException ex) {
+            System.out.println("CONNESSIONE ANDATA MALE!");
+        }
+    }
+    
     public void initServer(){
         try{
             Class.forName(DRIVER).newInstance();
             try{
                 String cmd = "CREATE DATABASE IF NOT EXISTS RestaurantMenu";
-                connection=DriverManager.getConnection(DATABASE_URL, "root", "");
                 statement=(Statement) connection.createStatement();
                 statement.executeUpdate(cmd);
                 String db = "CREATE DATABASE Ristorante;";
@@ -32,7 +40,10 @@ public class DatabaseManager {
                 System.out.println(">> USO DATABASE Ristorante");
                 String table="CREATE TABLE Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
                 statement.executeUpdate(table);
-                System.out.println(">> TABELLA CREATA");
+                System.out.println(">> TABELLA MENU CREATA");
+                table="CREATE TABLE Impiegati(id_number int UNIQUE,Name VARCHAR(200),Username VARCHAR(20),Password VARCHAR(20));";
+                statement.executeUpdate(table);
+                System.out.println(">> TABELLA PERSONE CREATA");
             }catch(SQLException e){
                 System.err.println("SQLException: " + e.getMessage());
                 System.err.println("SQLState: " + e.getSQLState());
@@ -66,4 +77,9 @@ public class DatabaseManager {
             System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
         }
     }
+    
+    public Connection getConnection(){
+        return this.connection;
+    }
+    
 }
