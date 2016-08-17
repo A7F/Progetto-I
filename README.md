@@ -8,6 +8,7 @@ I casi d'uso si trovano nella sezione wiki.
 - [x] sistemare UI cuoco con ListCellRender "custom"
 - [x] implementare database
 - [ ] UI della cassa
+- [x] UI di login
 - [ ] UI del cameriere
 - [ ] gestire eccezioni
 - [ ] refactoring finale
