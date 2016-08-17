@@ -31,5 +31,5 @@ I casi d'uso si trovano nella sezione wiki.
 ##Usare il database (Win)
 per utilizzare il database su windows ho dovuto installare XAMPP in modo da avviare Apache sul pc stesso altrimenti netbeans continua a dare un errore di connessione (0 packet sent). Ho lasciato volontariamente bianca la password per il root user.
 
-Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bag della ide) pur importando nel progetto (click dx su libraries).
+Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug della IDE) pur importando nel progetto (click dx su libraries).
 
