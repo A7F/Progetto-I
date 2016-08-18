@@ -5,7 +5,7 @@ import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
- * questa classe avvia il login al programma
+ * questa classe avvia il login al programma: accesso con scelta fra tipi di impiegati
  * @author Luca
  */
 public class LoginUI {
@@ -21,7 +21,6 @@ public class LoginUI {
         JFrame frame = new JFrame("Ristorante "+name);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();    //serve per centrare allo schermo
-        
         
         MidPanel panel = new MidPanel();
         ButtonLayout buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel());

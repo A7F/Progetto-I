@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UIlogin;
 
 import java.awt.*;
@@ -46,6 +41,7 @@ class FormPanel extends JPanel{
     public String getPasswordInserted(){
         char[] p = passwordText.getPassword();
         String str2 = new String(p);
+        p=null; //questione di sicurezza: distruggo l'array di password
         return str2;
     }
     

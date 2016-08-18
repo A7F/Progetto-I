@@ -30,12 +30,11 @@ class ButtonLayout extends JPanel{
                 try {
                     System.out.println("SELECTED: "+refPanel.getSelectedButton());
                     boolean status = mgr.checkCredentials(refPanel2.getUsernameInserted(), refPanel2.getPasswordInserted(), refPanel.getSelectedButton());
-                    mgr.graphicsDispatcher(status, mgr.checkSelection(refPanel.getSelectedButton()));
+                    mgr.graphicsDispatcher(status, mgr.getSelectedKey(refPanel.getSelectedButton()));
                 } catch (SQLException ex) {
                     System.err.println("ECCEZIONE SQL");
                 }
             }
-            
         });
         
         JButton b2 = new JButton("Nuovo");
@@ -45,9 +44,28 @@ class ButtonLayout extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("CHECK SE MASTER");
+                int var = mgr.getSelectedKey(refPanel.getSelectedButton());
+                boolean flag = false;
+                
+                try {
+                    flag = mgr.checkCredentials(refPanel2.getUsernameInserted(), refPanel2.getPasswordInserted(), refPanel.getSelectedButton());
+                } catch (SQLException ex) {
+                    System.out.println("ERRORE QUERY");
+                }
+                
+                if(var==4){
+                    if(flag){
+                        System.out.println("FAI PARTIRE LA GRAFICA");
+                        NewUserWindow win = new NewUserWindow();    //credenziali confermate quindi lancia utility aggiunta user al database
+                    }else{
+                        JFrame frame = new JFrame();
+                        JOptionPane.showMessageDialog(frame,"Username o Password errata","Info",JOptionPane.ERROR_MESSAGE);
+                    }
+                }else{
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame,"Questa funzione è disponibile solo al principale","Info",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
-            
         });
         
         this.add(b1);

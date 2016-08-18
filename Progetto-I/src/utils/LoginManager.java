@@ -25,13 +25,19 @@ public class LoginManager {
     }
     
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
-        int val = checkSelection(selected);
+        int val = getSelectedKey(selected);
         
-        dbm.runUpdate("CREATE TABLE IF NOT EXISTS Impiegati(id_number int UNIQUE,name VARCHAR(200),username VARCHAR(20),password VARCHAR(20));");
-        PreparedStatement ps = dbm.getConnection().prepareStatement("SELECT name FROM reg WHERE username=? AND pass=?");
-        ps.setString(1, username);
-        ps.setString(2, password);
-        ResultSet rs = ps.executeQuery();
+        dbm.runUpdate("CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE);");
+        PreparedStatement ps;
+        ResultSet rs = null;
+        try {
+            ps = dbm.getConnection().prepareStatement("SELECT * FROM impiegati WHERE username=? AND pass=?");
+            ps.setString(1, username);
+            ps.setString(2, password);
+            rs = ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("ERRORE QUERY SQL LINEA 40");
+        }
         
         if(val==0){
             JFrame frame = new JFrame();
@@ -49,7 +55,7 @@ public class LoginManager {
         }
     }
     
-    public Integer checkSelection(String selected){
+    public Integer getSelectedKey(String selected){
         ArrayList<String> strings = new ArrayList<>();
         strings.add("CASSA");
         strings.add("CUOCO");
@@ -74,7 +80,7 @@ public class LoginManager {
     }
     
     public void insertValue(String username, String password, String selected) throws SQLException{
-        int val = checkSelection(selected);
+        int val = getSelectedKey(selected);
         
         if(checkCredentials(username,password,selected)){
             if(val==4){
