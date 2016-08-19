@@ -21,7 +21,6 @@ public class Restaurant {
         this.name = name;
         initRoom(numberOfTables);
         initMenu(pathFile);
-        initGUI();
     }
     
     private void initMenu(String pathFile) throws IOException{
@@ -109,12 +108,12 @@ public class Restaurant {
         return menu.getElementByPrice(cash);
     }
     
-    private void initGUI(){
-        //TODO da fare quando penseremo all'interfaccia grafica.
-    }
-
      public ArrayList<Table> getTakenTable(){
         
         return room.getTakenTable();
+    }
+
+    public void createTicket(int selectedTable) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
