@@ -13,12 +13,13 @@ import utils.LoginManager;
  */
 class ButtonLayout extends JPanel{
     
-    RadioPanel refPanel;
-    FormPanel refPanel2;
+    RadioPanel refRadioPanel;
+    FormPanel refFormPanel;
     LoginManager mgr = new LoginManager();
     
     protected ButtonLayout(RadioPanel pane,FormPanel pane2){
-        refPanel=pane;
+        refRadioPanel=pane;
+        refFormPanel=pane2;
         this.setLayout(new FlowLayout());
         JButton b1 = new JButton("Login");
         b1.setSize(150, 100);
@@ -28,11 +29,11 @@ class ButtonLayout extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    System.out.println("SELECTED: "+refPanel.getSelectedButton());
-                    boolean status = mgr.checkCredentials(refPanel2.getUsernameInserted(), refPanel2.getPasswordInserted(), refPanel.getSelectedButton());
-                    mgr.graphicsDispatcher(status, mgr.getSelectedKey(refPanel.getSelectedButton()));
+                    System.out.println("SELECTED: "+refRadioPanel.getSelectedButton());
+                    boolean status = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
+                    mgr.graphicsDispatcher(status, mgr.getSelectedKey(refRadioPanel.getSelectedButton()));
                 } catch (SQLException ex) {
-                    System.err.println("ECCEZIONE SQL");
+                    System.err.println("36: ECCEZIONE SQL NON RACCOLTA DALLA CLASSE IN CUI VIENE LANCIATA");
                 }
             }
         });
@@ -44,26 +45,24 @@ class ButtonLayout extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                int var = mgr.getSelectedKey(refPanel.getSelectedButton());
+                int var = mgr.getSelectedKey(refRadioPanel.getSelectedButton());
                 boolean flag = false;
                 
                 try {
-                    flag = mgr.checkCredentials(refPanel2.getUsernameInserted(), refPanel2.getPasswordInserted(), refPanel.getSelectedButton());
+                    flag = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
                 } catch (SQLException ex) {
-                    System.out.println("ERRORE QUERY");
+                    System.out.println("54: ECCEZIONE SQL NON RACCOLTA DALLA CLASSE IN CUI VIENE LANCIATA");
                 }
                 
                 if(var==4){
                     if(flag){
                         System.out.println("FAI PARTIRE LA GRAFICA");
                         NewUserWindow win = new NewUserWindow();    //credenziali confermate quindi lancia utility aggiunta user al database
-                    }else{
-                        JFrame frame = new JFrame();
-                        JOptionPane.showMessageDialog(frame,"Username o Password errata","Info",JOptionPane.ERROR_MESSAGE);
                     }
                 }else{
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame,"Questa funzione è disponibile solo al principale","Info",JOptionPane.INFORMATION_MESSAGE);
+                    refFormPanel.wipePassword();
                 }
             }
         });

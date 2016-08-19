@@ -25,11 +25,12 @@ public class LoginUI {
         MidPanel panel = new MidPanel();
         ButtonLayout buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel());
         
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(new BorderLayout());        
         frame.add(panel,BorderLayout.CENTER);
         frame.add(buttons,BorderLayout.SOUTH);
+        
         frame.setVisible(true);
-        frame.setSize(330,250);  
+        frame.setSize(380,250);  
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);

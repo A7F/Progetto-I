@@ -20,14 +20,15 @@ public class DatabaseManager {
     public DatabaseManager(){
         try {
             connection=DriverManager.getConnection(DATABASE_URL, "root", "");
-        } catch (SQLException ex) {
-            System.out.println("CONNESSIONE ANDATA MALE!");
+        } catch (SQLException e) {
+            System.err.println("SQLException: " + e.getMessage());
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("VendorError: " + e.getErrorCode());
         }
     }
     
     public void initServer(){
         try{
-            Class.forName(DRIVER).newInstance();
             try{
                 String cmd = "CREATE DATABASE IF NOT EXISTS RestaurantMenu";
                 statement=(Statement) connection.createStatement();
@@ -38,12 +39,12 @@ public class DatabaseManager {
                 String use = "USE Ristorante;";
                 statement.executeUpdate(use);
                 System.out.println(">> USO DATABASE Ristorante");
-                String table="CREATE TABLE Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
+                String table="CREATE TABLE IF NOT EXISTS Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA MENU CREATA");
-                table="CREATE TABLE Impiegati(id_number int UNIQUE,Name VARCHAR(200),Username VARCHAR(20),Password VARCHAR(20));";
+                table="CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10);";
                 statement.executeUpdate(table);
-                System.out.println(">> TABELLA PERSONE CREATA");
+                System.out.println(">> TABELLA IMPIEGATI CREATA");
             }catch(SQLException e){
                 System.err.println("SQLException: " + e.getMessage());
                 System.err.println("SQLState: " + e.getSQLState());

@@ -45,4 +45,11 @@ class FormPanel extends JPanel{
         return str2;
     }
     
+    public void wipeUsername(){
+        userText.setText("");
+    }
+    
+    public void wipePassword(){
+        passwordText.setText("");
+    }
 }

@@ -27,16 +27,19 @@ public class LoginManager {
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
         int val = getSelectedKey(selected);
         
-        dbm.runUpdate("CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE);");
         PreparedStatement ps;
         ResultSet rs = null;
         try {
-            ps = dbm.getConnection().prepareStatement("SELECT * FROM impiegati WHERE username=? AND pass=?");
+            ps = dbm.getConnection().prepareStatement("SELECT * FROM impiegati WHERE username=? AND password=? AND ruolo=?");
             ps.setString(1, username);
             ps.setString(2, password);
+            ps.setString(3, selected);
             rs = ps.executeQuery();
         } catch (SQLException ex) {
-            System.out.println("ERRORE QUERY SQL LINEA 40");
+            System.err.println("LA TABLE NON ESISTE");
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame,"Username o Password errate.","Login",JOptionPane.ERROR_MESSAGE);
+            return false;   //deve comunque fallire il login!
         }
         
         if(val==0){
@@ -86,9 +89,10 @@ public class LoginManager {
             if(val==4){
                 JFrame frame = new JFrame();
                 
-                PreparedStatement ps = dbm.getConnection().prepareStatement("INSERT INTO Impiegati(username,password) VALUES(?,?);");
+                PreparedStatement ps = dbm.getConnection().prepareStatement("INSERT INTO Impiegati(username,password,ruolo) VALUES(?,?,?);");
                 ps.setString(1, username);
                 ps.setString(2, password);
+                ps.setString(3, selected);
                 ps.executeUpdate();
                 
                 dbm.runUpdate("INSERT INTO Impiegati(username,password) VALUES("+username+","+password+";");
