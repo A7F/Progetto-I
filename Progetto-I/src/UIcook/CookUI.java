@@ -10,12 +10,12 @@ import utils.Order;
  * questa classe avvia la grafica del cuoco e ne imposta le proprietà
  * @author Luca
  */
-public class InitGraphics {
+public class CookUI {
     
     JList list;
     ArrayList<Order> elements;
     
-    public InitGraphics(ArrayList<Order> el){
+    public CookUI(ArrayList<Order> el){
         elements=el;
         initUi();
     }

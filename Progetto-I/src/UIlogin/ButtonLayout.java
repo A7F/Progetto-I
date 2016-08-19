@@ -15,11 +15,12 @@ class ButtonLayout extends JPanel{
     
     RadioPanel refRadioPanel;
     FormPanel refFormPanel;
-    LoginManager mgr = new LoginManager();
+    LoginManager mgr;
     
-    protected ButtonLayout(RadioPanel pane,FormPanel pane2){
+    protected ButtonLayout(RadioPanel pane,FormPanel pane2, LoginManager manager){
         refRadioPanel=pane;
         refFormPanel=pane2;
+        this.mgr = manager;
         this.setLayout(new FlowLayout());
         JButton b1 = new JButton("Login");
         b1.setSize(150, 100);

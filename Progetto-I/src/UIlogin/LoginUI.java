@@ -3,6 +3,8 @@ package UIlogin;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import utils.LoginManager;
+import utils.Restaurant;
 
 /**
  * questa classe avvia il login al programma: accesso con scelta fra tipi di impiegati
@@ -11,9 +13,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class LoginUI {
     
     String name = new String();
+    Restaurant restaurant;
+    LoginManager manager = new LoginManager(restaurant);
     
-    public LoginUI(String resName){
-        this.name = resName;
+    public LoginUI(Restaurant res){
+        this.restaurant = res;
+        this.name = res.getRestaurantName();
         initGraphics();
     }
     
@@ -23,7 +28,7 @@ public class LoginUI {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();    //serve per centrare allo schermo
         
         MidPanel panel = new MidPanel();
-        ButtonLayout buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel());
+        ButtonLayout buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel(),manager);
         
         frame.setLayout(new BorderLayout());        
         frame.add(panel,BorderLayout.CENTER);

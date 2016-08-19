@@ -1,5 +1,7 @@
 package utils;
 
+import UIcook.CookUI;
+import UIlogin.NewUserWindow;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +18,9 @@ public class LoginManager {
     
     Map<Integer,String> rel = new HashMap<>();
     DatabaseManager dbm = new DatabaseManager();
+    Restaurant restaurant;
     
-    public LoginManager(){
+    public LoginManager(Restaurant r){
         rel.put(1, "CASSA");
         rel.put(2, "CUOCO");
         rel.put(3, "CAMERIERE");
@@ -108,13 +111,13 @@ public class LoginManager {
                 System.out.println("qui parte la grafica della cucina");
                 break;
             case 2:
-                System.out.println("qui parte la grafica del cuoco");
+                CookUI ui = new CookUI(restaurant.getOrdersArray());
                 break;
             case 3:
                 System.out.println("qui parte la grafica del cameriere");
                 break;
             case 4:
-                System.out.println("qui parte la grafica del boss");
+                NewUserWindow win = new NewUserWindow();    //decidere la grafica del proprietario è una cosa in più...
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");

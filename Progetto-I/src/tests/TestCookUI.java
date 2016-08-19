@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tests;
 
-import UIcook.InitGraphics;
+import UIcook.CookUI;
 import java.io.IOException;
 import java.util.ArrayList;
 import menu.MenuElement;
@@ -28,6 +23,6 @@ public class TestCookUI {
         diablo.addOrder(1, order);
         diablo.addOrder(1, order2);
         
-        InitGraphics ui = new InitGraphics(diablo.getOrdersArray());
+        CookUI ui = new CookUI(diablo.getOrdersArray());
     }
 }

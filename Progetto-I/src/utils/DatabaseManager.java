@@ -4,7 +4,6 @@ import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Logger;
 
 /**
  * questa classe si occupa di aprire la connessione al server remoto SQL e di

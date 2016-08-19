@@ -1,6 +1,5 @@
 package menu;
 
-
 public class MenuElement {
     private String name;
     private double price;

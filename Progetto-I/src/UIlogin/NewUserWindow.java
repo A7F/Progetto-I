@@ -11,7 +11,7 @@ import utils.DatabaseManager;
  * questa classe è un pannello con cui il gestore può aggiungere nuovi impiegati al database
  * @author Luca
  */
-class NewUserWindow {
+public class NewUserWindow {
     FormPanel form = new FormPanel();
     JFrame frame = new JFrame("Nuovo Utente");
     JButton b1 = new JButton("Inserisci");
