@@ -14,10 +14,11 @@ public class LoginUI {
     
     String name = new String();
     Restaurant restaurant;
-    LoginManager manager = new LoginManager(restaurant);
+    LoginManager manager;
     
     public LoginUI(Restaurant res){
         this.restaurant = res;
+        this.manager = new LoginManager(restaurant);
         this.name = res.getRestaurantName();
         initGraphics();
     }

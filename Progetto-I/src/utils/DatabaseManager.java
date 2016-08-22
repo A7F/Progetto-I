@@ -29,10 +29,8 @@ public class DatabaseManager {
     public void initServer(){
         try{
             try{
-                String cmd = "CREATE DATABASE IF NOT EXISTS RestaurantMenu";
                 statement=(Statement) connection.createStatement();
-                statement.executeUpdate(cmd);
-                String db = "CREATE DATABASE Ristorante;";
+                String db = "CREATE DATABASE IF NOT EXISTS Ristorante;";
                 statement.executeUpdate(db);
                 System.out.println(">> DATABASE CREATO");
                 String use = "USE Ristorante;";
@@ -41,7 +39,7 @@ public class DatabaseManager {
                 String table="CREATE TABLE IF NOT EXISTS Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA MENU CREATA");
-                table="CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10);";
+                table="CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10));";
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA IMPIEGATI CREATA");
             }catch(SQLException e){
@@ -64,6 +62,7 @@ public class DatabaseManager {
     
     public void runQuery(String query){
         try{
+            statement=(Statement) connection.createStatement();
             statement.executeQuery(query);
         }catch(SQLException e){
             System.err.println("Guarda non sono riuscito ad eseguire la tua query");
@@ -72,6 +71,7 @@ public class DatabaseManager {
     
     public void runUpdate(String update){
         try{
+            statement=(Statement) connection.createStatement();
             statement.executeUpdate(update);
         }catch(SQLException e){
             System.err.println("Guarda non sono riuscito ad eseguire il tuo update");

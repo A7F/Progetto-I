@@ -32,7 +32,8 @@ class ButtonLayout extends JPanel{
                 try {
                     System.out.println("SELECTED: "+refRadioPanel.getSelectedButton());
                     boolean status = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
-                    mgr.graphicsDispatcher(status, mgr.getSelectedKey(refRadioPanel.getSelectedButton()));
+
+                    mgr.graphicsDispatcher(status, (int)mgr.getSelectedKey(refRadioPanel.getSelectedButton()));
                 } catch (SQLException ex) {
                     System.err.println("36: ECCEZIONE SQL NON RACCOLTA DALLA CLASSE IN CUI VIENE LANCIATA");
                 }
