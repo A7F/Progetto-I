@@ -23,7 +23,7 @@ public class CassaMainFrame extends JFrame{
 
         this.add(mainPanel);
         this.setTitle("Cassa");
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(800, 500);
         this.add(mainPanel);
         this.pack();

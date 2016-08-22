@@ -42,6 +42,6 @@ public class CookUI {
         frame.setSize(600, 400);
         frame.setResizable(false);
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 }

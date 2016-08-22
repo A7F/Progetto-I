@@ -15,6 +15,8 @@ public class LoginUI {
     String name = new String();
     Restaurant restaurant;
     LoginManager manager;
+    ButtonLayout buttons;
+    JFrame frame;
     
     public LoginUI(Restaurant res){
         this.restaurant = res;
@@ -24,12 +26,12 @@ public class LoginUI {
     }
     
     private void initGraphics(){
-        JFrame frame = new JFrame("Ristorante "+name);
+        frame = new JFrame("Ristorante "+name);
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();    //serve per centrare allo schermo
         
         MidPanel panel = new MidPanel();
-        ButtonLayout buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel(),manager);
+        buttons = new ButtonLayout(panel.getRadioPanel(),panel.getFormPanel(),manager);
         
         frame.setLayout(new BorderLayout());        
         frame.add(panel,BorderLayout.CENTER);
@@ -40,5 +42,12 @@ public class LoginUI {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
+        
+        checkFlagLogin();
+    }
+    
+    protected void checkFlagLogin(){
+        while(buttons.getFlag()==false){}
+        frame.dispose();
     }
 }

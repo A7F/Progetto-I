@@ -19,6 +19,7 @@ public class LoginManager {
     Map<Integer,String> rel = new HashMap<>();
     DatabaseManager dbm = new DatabaseManager();
     Restaurant restaurant;
+    JFrame frame = new JFrame();
     
     public LoginManager(Restaurant r){
         this.restaurant = r;
@@ -45,17 +46,14 @@ public class LoginManager {
             System.err.println("SQLException: " + ex.getMessage());
             System.err.println("SQLState: " + ex.getSQLState());
             System.err.println("VendorError: " + ex.getErrorCode());
-            JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,"Username o Password errate.","Login",JOptionPane.ERROR_MESSAGE);
             return false;   //deve comunque fallire il login!
         }
         
         if(val==0){
-            JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame,"Non è stato selezionato nulla.","Errore",JOptionPane.ERROR_MESSAGE);
             return false;
         }else{
-            JFrame frame = new JFrame();
             if(rs.next()){
                 JOptionPane.showMessageDialog(frame,"Login effettuato con successo.","Login",JOptionPane.INFORMATION_MESSAGE);
                 return true;
@@ -95,7 +93,6 @@ public class LoginManager {
         
         if(checkCredentials(username,password,selected)){
             if(val==4){
-                JFrame frame = new JFrame();
                 
                 PreparedStatement ps = dbm.getConnection().prepareStatement("INSERT INTO Impiegati(username,password,ruolo) VALUES(?,?,?);");
                 ps.setString(1, username);

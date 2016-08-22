@@ -16,6 +16,7 @@ class ButtonLayout extends JPanel{
     RadioPanel refRadioPanel;
     FormPanel refFormPanel;
     LoginManager mgr;
+    private boolean status = false;
     
     protected ButtonLayout(RadioPanel pane,FormPanel pane2, LoginManager manager){
         refRadioPanel=pane;
@@ -31,7 +32,7 @@ class ButtonLayout extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 try {
                     System.out.println("SELECTED: "+refRadioPanel.getSelectedButton());
-                    boolean status = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
+                    status = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
 
                     mgr.graphicsDispatcher(status, (int)mgr.getSelectedKey(refRadioPanel.getSelectedButton()));
                 } catch (SQLException ex) {
@@ -71,5 +72,9 @@ class ButtonLayout extends JPanel{
         
         this.add(b1);
         this.add(b2);
+    }
+    
+    protected boolean getFlag(){
+        return this.status;
     }
 }
