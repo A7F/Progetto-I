@@ -85,7 +85,7 @@ public class DatabaseManager {
     public void populateUserDatabase(){
         try{
             statement=(Statement) connection.createStatement();
-            String command="USE impiegati;";
+            String command="USE ristorante;";
             statement.executeUpdate(command);
             command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco1','passwordcuoco1','CUOCO');";
             statement.executeUpdate(command);

@@ -8,7 +8,7 @@ import javax.swing.*;
 import utils.LoginManager;
 
 /**
- *
+ * crea i due pulsanti Login e Nuovo, con relativo listener
  * @author Luca
  */
 class ButtonLayout extends JPanel{
