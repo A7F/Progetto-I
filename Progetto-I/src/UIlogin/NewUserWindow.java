@@ -4,14 +4,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import utils.DatabaseManager;
 
 /**
  * questa classe è un pannello con cui il gestore può aggiungere nuovi impiegati al database
+ * Design pattern: Singleton pattern
  * @author Luca
  */
 public class NewUserWindow {
+    
+    private static NewUserWindow instance = new NewUserWindow();
+    
     FormPanel form = new FormPanel();
     JFrame frame = new JFrame("Nuovo Utente");
     JButton b1 = new JButton("Inserisci");
@@ -19,7 +23,7 @@ public class NewUserWindow {
     JPanel p1 = new JPanel(new FlowLayout());
     DatabaseManager mgr = new DatabaseManager();
     
-    public NewUserWindow(){
+    private NewUserWindow(){
         initComponents();
     }
     
@@ -45,6 +49,10 @@ public class NewUserWindow {
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    }
+    
+    public static NewUserWindow getInstance(){
+        return instance;
     }
 }

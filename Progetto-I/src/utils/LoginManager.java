@@ -120,7 +120,7 @@ public class LoginManager {
                 System.out.println("qui parte la grafica del cameriere");
                 break;
             case 4:
-                NewUserWindow win = new NewUserWindow();    //decidere la grafica del proprietario è una cosa in più...
+                NewUserWindow win = NewUserWindow.getInstance();    //decidere la grafica del proprietario è una cosa in più. Questa è temporanea
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");

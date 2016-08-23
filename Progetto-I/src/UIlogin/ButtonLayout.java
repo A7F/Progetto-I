@@ -60,7 +60,7 @@ class ButtonLayout extends JPanel{
                 if(var==4){
                     if(flag){
                         System.out.println("FAI PARTIRE LA GRAFICA");
-                        NewUserWindow win = new NewUserWindow();    //credenziali confermate quindi lancia utility aggiunta user al database
+                        NewUserWindow win = NewUserWindow.getInstance();    //credenziali confermate quindi lancia utility aggiunta user al database
                     }
                 }else{
                     JFrame frame = new JFrame();
