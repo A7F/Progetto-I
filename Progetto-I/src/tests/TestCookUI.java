@@ -4,8 +4,8 @@ import UIcook.CookUI;
 import java.io.IOException;
 import java.util.ArrayList;
 import menu.MenuElement;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  *

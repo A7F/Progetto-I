@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import utils.LoginManager;
-import utils.Restaurant;
+import restaurant.Restaurant;
 
 /**
  * questa classe avvia il login al programma: accesso con scelta fra tipi di impiegati

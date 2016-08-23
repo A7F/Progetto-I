@@ -3,7 +3,7 @@ package UICassa;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
-import utils.Restaurant;
+import restaurant.Restaurant;
 
 /**
  *

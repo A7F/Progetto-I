@@ -1,5 +1,6 @@
 package utils;
 
+import restaurant.Restaurant;
 import UIcook.CookUI;
 import UIlogin.NewUserWindow;
 import java.sql.PreparedStatement;

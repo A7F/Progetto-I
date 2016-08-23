@@ -7,8 +7,8 @@ package tests;
 
 import java.io.IOException;
 import menu.MenuElement;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  * Verifica il funzionamento della classe Ticket

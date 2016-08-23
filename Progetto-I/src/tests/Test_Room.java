@@ -7,8 +7,8 @@ package tests;
 
 import java.io.IOException;
 import menu.Menu;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  * test specifico delle funzionalità della classe room

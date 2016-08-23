@@ -2,7 +2,7 @@ package tests;
 
 import java.io.IOException;
 import menu.*;
-import utils.Restaurant;
+import restaurant.Restaurant;
 
 /**
  * test per verificare il funzionamento della classe Restaurant

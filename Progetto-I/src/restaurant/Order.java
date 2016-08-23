@@ -1,4 +1,4 @@
-package utils;
+package restaurant;
 
 import menu.MenuElement;
 

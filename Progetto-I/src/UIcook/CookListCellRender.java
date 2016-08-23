@@ -2,7 +2,7 @@ package UIcook;
 
 import java.awt.*;
 import javax.swing.*;
-import utils.Order;
+import restaurant.Order;
 
 class CookListCellRender extends JLabel implements ListCellRenderer<Order>{
     

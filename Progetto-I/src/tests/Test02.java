@@ -6,9 +6,9 @@ package tests;
 import java.io.IOException;
 import menu.Menu;
 import menu.MenuElement;
-import utils.Cook;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Cook;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  * Test per il funzionamento di addOrder e removeOrder.

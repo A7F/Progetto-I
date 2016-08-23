@@ -9,8 +9,8 @@ import java.io.IOException;
 import menu.Menu;
 import menu.MenuElement;
 import static menu.MenuElementType.DOLCE;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  *

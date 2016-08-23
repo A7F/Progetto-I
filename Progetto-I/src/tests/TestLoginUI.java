@@ -3,8 +3,8 @@ package tests;
 import UIlogin.*;
 import java.io.IOException;
 import menu.MenuElement;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  * mi sembra evidente cosa faccia questa classe

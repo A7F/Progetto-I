@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import utils.Order;
+import restaurant.Order;
 
 class ButtonPanel extends JPanel{
     

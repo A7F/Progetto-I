@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import static javax.swing.JFrame.*;
-import utils.Order;
+import restaurant.Order;
 
 /**
  * questa classe avvia la grafica del cuoco e ne imposta le proprietà

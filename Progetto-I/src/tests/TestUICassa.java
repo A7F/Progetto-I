@@ -3,8 +3,8 @@ package tests;
 import UICassa.CassaMainFrame;
 import java.io.IOException;
 import menu.MenuElement;
-import utils.Order;
-import utils.Restaurant;
+import restaurant.Order;
+import restaurant.Restaurant;
 
 /**
  *

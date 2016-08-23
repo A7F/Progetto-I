@@ -7,7 +7,7 @@ package tests;
 
 import java.io.IOException;
 import menu.Menu;
-import utils.Restaurant;
+import restaurant.Restaurant;
 
 /**
  * test che verifica le funzionalità principali del progetto
