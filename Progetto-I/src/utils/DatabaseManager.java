@@ -87,13 +87,19 @@ public class DatabaseManager {
             statement=(Statement) connection.createStatement();
             String command="USE impiegati;";
             statement.executeUpdate(command);
-            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco1','passwordcuoco','CUOCO');";
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco1','passwordcuoco1','CUOCO');";
             statement.executeUpdate(command);
-            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cameriere1','passwordcameriere','CAMERIERE');";
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco2','passwordcuoco2','CUOCO');";
             statement.executeUpdate(command);
-            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cassa1','passwordcassa','CASSA');";
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cameriere1','passwordcameriere1','CAMERIERE');";
             statement.executeUpdate(command);
-            command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo','CAPO');";
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cameriere2','passwordcameriere2','CAMERIERE');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cassa1','passwordcassa1','CASSA');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cassa2','passwordcassa2','CASSA');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo1','CAPO');";
             statement.executeUpdate(command);
         }catch(SQLException e){
             System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
