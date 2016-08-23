@@ -82,4 +82,22 @@ public class DatabaseManager {
         return this.connection;
     }
     
+    public void populateUserDatabase(){
+        try{
+            statement=(Statement) connection.createStatement();
+            String command="USE impiegati;";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco1','passwordcuoco','CUOCO');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cameriere1','passwordcameriere','CAMERIERE');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('cassa1','passwordcassa','CASSA');";
+            statement.executeUpdate(command);
+            command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo','CAPO');";
+            statement.executeUpdate(command);
+        }catch(SQLException e){
+            System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
+        }
+    }
+    
 }
