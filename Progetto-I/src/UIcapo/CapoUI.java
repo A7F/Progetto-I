@@ -4,8 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.sql.SQLException;
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JTabbedPane;
 
 /**
@@ -28,16 +26,18 @@ public class CapoUI {
         
         try {
             panelEmp.add(employeesModel.getPanelModel());
+            panelEmp.add(new FunctionalPanel(employeesModel));
             panelMenu.add(menuModel.getPanelModel());
+            panelMenu.add(new FunctionalPanel(menuModel));
         } catch (SQLException ex) {
-            System.out.println("Qualcosa non va con SQL");
+            ex.toString();
         }
         
         tabbedPane.addTab("Impiegati", panelEmp);
         tabbedPane.addTab("Menu", panelMenu);
         
         frame.add(tabbedPane);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }

@@ -3,7 +3,7 @@ package restaurant;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Observable;
 import menu.Menu;
 import menu.MenuElement;
 
@@ -11,7 +11,7 @@ import menu.MenuElement;
  *
  * @author federicovitro
  */
-public class Restaurant {
+public class Restaurant extends Observable{
     
     private String name;
     private Room room;
@@ -34,10 +34,6 @@ public class Restaurant {
     
     public ArrayList<Order> getOrdersArray(){
         return room.getOrdersArray();
-    }
-    
-    public String getRestaurantName(){
-        return this.name;
     }
     
     /**
@@ -79,9 +75,15 @@ public class Restaurant {
      * @return Ticket
      * @author FabioTagliani
      */
-    public Ticket getTicket(int tableID){
+    public Ticket createTicket(int tableID){
     
-       return room.getTicket(tableID);
+       return room.createTicket(tableID);
+       
+    }
+    
+    public Ticket getTicket(int tableID ){
+    
+        return room.getTicket(tableID);
     }
     
     /**
@@ -113,7 +115,7 @@ public class Restaurant {
         return room.getTakenTable();
     }
 
-    public void createTicket(int selectedTable) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public String getRestaurantName() {
+        return this.name;
     }
 }

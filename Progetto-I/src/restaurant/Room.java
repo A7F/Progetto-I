@@ -1,14 +1,6 @@
 package restaurant;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import menu.MenuElement;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -77,6 +69,7 @@ public class Room {
     /**
      * Restituisce i tavoli della sala
      * @author fabiotagliani
+     * @return tables
      */
     public ArrayList<Table> getTables() {
         return tables;
@@ -129,13 +122,21 @@ public class Room {
     }
     /**
      * @author FabioTagliani
+     * @param tableID
+     * @return 
      */
-    public Ticket getTicket(int tableID){
-        return tables.get(tableID -1).getTicket();
+    public Ticket createTicket(int tableID){
+        return tables.get(tableID -1).createTicket();
     }
     
+    
+    public Ticket getTicket(int tableID){
+    
+        return tables.get(tableID - 1).getTicket();
+    }
     /**
      * @author FabioTagliani
+     * @return ret
      */   
     @Override
     public String toString() {

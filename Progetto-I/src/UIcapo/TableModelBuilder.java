@@ -5,19 +5,21 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.*;
 
 
 /**
- * Questa classe si occupa di creare una JTable che riflette la struttura del database
+ * Questa classe si occupa di creare una JTable che rifletta la struttura del database
  * @author Luca
  */
 
 public class TableModelBuilder {
     
     final String tab;
+    JTable table;
     
     public TableModelBuilder(String table){
         this.tab=table;
@@ -26,7 +28,7 @@ public class TableModelBuilder {
     private JPanel createAndShowGui() throws SQLException {
         final JPanel panel = new JPanel();
         final TableModel tableModel = buildTableModel(getData(this.tab));
-        final JTable table = new JTable(tableModel);
+        table = new JTable(tableModel);
         panel.add(new JScrollPane(table));
         
         return panel;
@@ -67,5 +69,17 @@ public class TableModelBuilder {
     
     public JPanel getPanelModel() throws SQLException{
         return this.createAndShowGui();
+    }
+    
+    public int getColumnsCount(){
+        return table.getColumnCount();
+    }
+    
+    public ArrayList<String> getColumnsName(){
+        ArrayList<String> names = new ArrayList<>();
+        for(int i=0;i<this.getColumnsCount();i++){
+            names.add(table.getColumnName(i));
+        }
+        return names;
     }
 }

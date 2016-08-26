@@ -1,5 +1,7 @@
 package utils;
 
+import UICassa.CassaMainFrame;
+import UIcapo.CapoUI;
 import restaurant.Restaurant;
 import UIcook.CookUI;
 import UIlogin.NewUserWindow;
@@ -112,15 +114,18 @@ public class LoginManager {
             switch(selected){
             case 1:
                 System.out.println("qui parte la grafica della cassa");
+                CassaMainFrame cassaFrame = new CassaMainFrame(restaurant);
                 break;
             case 2:
+                System.out.println("qui parte la grafica del cuoco");
                 CookUI ui = new CookUI(restaurant.getOrdersArray());
                 break;
             case 3:
                 System.out.println("qui parte la grafica del cameriere");
                 break;
             case 4:
-                NewUserWindow win = NewUserWindow.getInstance();    //decidere la grafica del proprietario è una cosa in più. Questa è temporanea
+                System.out.println("qui parte la grafica del capo");
+                CapoUI win = new CapoUI();
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");
