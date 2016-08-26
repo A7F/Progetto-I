@@ -36,10 +36,10 @@ public class DatabaseManager {
                 String use = "USE Ristorante;";
                 statement.executeUpdate(use);
                 System.out.println(">> USO DATABASE Ristorante");
-                String table="CREATE TABLE IF NOT EXISTS Menu(ElementID int UNIQUE,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
+                String table="CREATE TABLE IF NOT EXISTS Menu(ElementID int NOT NULL AUTO_INCREMENT,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10));";
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA MENU CREATA");
-                table="CREATE TABLE IF NOT EXISTS Impiegati(username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10),status BIT DEFAULT 0);";
+                table="CREATE TABLE IF NOT EXISTS Impiegati(ID int NOT NULL AUTO_INCREMENT,username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10),status BIT DEFAULT 0);";
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA IMPIEGATI CREATA");
             }catch(SQLException e){

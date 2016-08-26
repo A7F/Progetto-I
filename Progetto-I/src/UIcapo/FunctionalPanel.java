@@ -1,8 +1,11 @@
 package UIcapo;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import utils.DatabaseManager;
 
 /**
  * pannello per modificare le informazioni nel database visualizzato
@@ -16,6 +19,7 @@ public class FunctionalPanel extends JPanel{
     JPanel buttonPane = new JPanel(new FlowLayout());
     JPanel formPane;
     TableModelBuilder tablePane;
+    DatabaseManager mgr = new DatabaseManager();
     
     public FunctionalPanel(TableModelBuilder pane){
         this.setLayout(new BorderLayout());
@@ -33,6 +37,31 @@ public class FunctionalPanel extends JPanel{
     }
 
     private void addToButtonPane(){
+        
+        b1.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("EDIT");
+            }
+        });
+        
+        b2.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("UPDATE");
+            }
+        });
+        
+        b3.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("DELETE");
+            }
+        });
+        
         buttonPane.add(b1);
         buttonPane.add(b2);
         buttonPane.add(b3);
@@ -65,5 +94,19 @@ public class FunctionalPanel extends JPanel{
             textField=new JTextField();
         }
         return textField;        
+    }
+    
+    //questo metodo deve controllare che tutti i campi non siano vuoti prima di fare update
+    private boolean isTextAreaEmpty(){
+        boolean flag = false;
+        for(int i=1;i<rows;i++){
+            String text = getRelativeTextField(i).getText();
+            if(text.equals("")){
+            } else {
+                flag=true;
+            }
+            i++;    //così prende solo i dispari ovvero prende solo le jtextarea
+        }
+        return flag;
     }
 }

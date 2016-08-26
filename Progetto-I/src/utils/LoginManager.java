@@ -31,6 +31,7 @@ public class LoginManager {
         rel.put(3, "CAMERIERE");
         rel.put(4, "KING");
         //dbm.initServer();     //uncomment al primo avvio del programma: crea il database e le tabelle
+        //dbm.populateUserDatabase();   //uncomment per popolare le table
     }
     
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
