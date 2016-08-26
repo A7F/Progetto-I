@@ -1,5 +1,7 @@
 package UIcapo;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -15,6 +17,7 @@ public class CapoUI {
     final JTabbedPane tabbedPane = new JTabbedPane();
     final JPanel panelEmp = new JPanel();
     final JPanel panelMenu = new JPanel();
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     
     public CapoUI(){
         initGraphics();
@@ -39,6 +42,8 @@ public class CapoUI {
         frame.add(tabbedPane);
         frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         frame.pack();
+        frame.setResizable(false);
+        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setVisible(true);
     }
     
