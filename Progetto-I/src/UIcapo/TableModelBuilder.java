@@ -20,13 +20,13 @@ public class TableModelBuilder {
     
     final String tab;
     JTable table;
+    JPanel panel = new JPanel();
     
     public TableModelBuilder(String table){
         this.tab=table;
     }
 
     private JPanel createAndShowGui() throws SQLException {
-        final JPanel panel = new JPanel();
         final TableModel tableModel = buildTableModel(getData(this.tab));
         table = new JTable(tableModel);
         panel.add(new JScrollPane(table));
@@ -75,11 +75,32 @@ public class TableModelBuilder {
         return table.getColumnCount();
     }
     
+    public int getColumn(){
+        return table.getSelectedColumn();
+    }
+    
+    public int getRow(){
+        return table.getSelectedRow();
+    }
+    
+    public String getSelectedColumnName(){
+        return table.getColumnName(getColumn());
+    }
+    
     public ArrayList<String> getColumnsName(){
         ArrayList<String> names = new ArrayList<>();
         for(int i=0;i<this.getColumnsCount();i++){
             names.add(table.getColumnName(i));
         }
         return names;
+    }
+    
+    public Object getElementAt(){
+        return table.getComponentAt(table.getSelectedRow(), table.getSelectedColumn());
+    }
+    
+    public void reprintMe(){
+        table.repaint();
+        panel.repaint();
     }
 }

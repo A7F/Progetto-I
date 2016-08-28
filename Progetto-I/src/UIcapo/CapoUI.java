@@ -29,9 +29,9 @@ public class CapoUI {
         
         try {
             panelEmp.add(employeesModel.getPanelModel());
-            panelEmp.add(new FunctionalPanel(employeesModel));
+            panelEmp.add(new FunctionalPanel(employeesModel,"impiegati"));
             panelMenu.add(menuModel.getPanelModel());
-            panelMenu.add(new FunctionalPanel(menuModel));
+            panelMenu.add(new FunctionalPanel(menuModel,"menu"));
         } catch (SQLException ex) {
             ex.toString();
         }
@@ -46,5 +46,7 @@ public class CapoUI {
         frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setVisible(true);
     }
+    
+    
     
 }
