@@ -27,10 +27,12 @@ public class buttonLayout extends JPanel{
     String tablename;
     TableModelBuilder tablePane;
     DatabaseManager mgr;
+    CustomFrame refFrame;
     JFrame frame = new JFrame();
     
-    public buttonLayout(DatabaseManager mgr,HashMap<String,JTextField> map,String tablename,TableModelBuilder tablePane){
+    public buttonLayout(DatabaseManager mgr,HashMap<String,JTextField> map,String tablename,TableModelBuilder tablePane,CustomFrame frame){
         this.tablePane=tablePane;
+        this.refFrame=frame;
         this.mgr=mgr;
         con=mgr.getConnection();
         this.map=map;
@@ -42,18 +44,6 @@ public class buttonLayout extends JPanel{
         this.add(b3);
     }
     
-    public boolean areTextFieldEmpty(){
-        ArrayList<String> temp = tablePane.getColumnsName();
-        boolean flag=false;
-        for (String temp1 : temp) {
-            if (map.get(temp1).getText().equals("")) {
-                flag=true;
-                break;
-            }
-        }
-        return flag;
-    }
-
     private void addButtonListeners() {
         b1.addActionListener(new ActionListener(){
             @Override
@@ -66,34 +56,36 @@ public class buttonLayout extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!areTextFieldEmpty()){
-                    if(!areTextFieldEmpty()){
-                        PreparedStatement con;
-                        try {
-                            switch (tablename) {
-                                case "impiegati":
-                                    con = mgr.getConnection().prepareStatement("USE ristorante");
-                                    con.executeQuery();
-                                    con = mgr.getConnection().prepareStatement("INSERT INTO impiegati(username,password,ruolo) VALUES (?,?,?)");
-                                    con.setString(1, map.get("username").getText());
-                                    con.setString(2, map.get("password").getText());
-                                    con.setString(3, map.get("ruolo").getText());
-                                    con.executeUpdate();
-                                    break;
-                                case "menu":
-                                    con = mgr.getConnection().prepareStatement("USE ristorante");
-                                    con.executeQuery();
-                                    con = mgr.getConnection().prepareStatement("INSERT INTO menu(name,description,price,type) VALUES (?,?,?,?)");
-                                    con.setString(1, map.get("name").getText());
-                                    con.setString(2, map.get("description").getText());
-                                    con.setString(3, map.get("price").getText());
-                                    con.setString(4, map.get("type").getText());
-                                    con.executeUpdate();
-                                    break;
-                            }
-                        } catch (SQLException ex){
-                            Logger.getLogger(FunctionalPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    PreparedStatement con;
+                    try {
+                        switch (tablename) {
+                            case "impiegati":
+                                con = mgr.getConnection().prepareStatement("USE ristorante");
+                                con.executeQuery();
+                                con = mgr.getConnection().prepareStatement("INSERT INTO impiegati(username,password,ruolo) VALUES (?,?,?)");
+                                con.setString(1, map.get("username").getText());
+                                con.setString(2, map.get("password").getText());
+                                con.setString(3, map.get("ruolo").getText());
+                                con.executeUpdate();
+                                refFrame.repaint();
+                                break;
+                            case "menu":
+                                con = mgr.getConnection().prepareStatement("USE ristorante");
+                                con.executeQuery();
+                                con = mgr.getConnection().prepareStatement("INSERT INTO menu(name,description,price,type) VALUES (?,?,?,?)");
+                                con.setString(1, map.get("name").getText());
+                                con.setString(2, map.get("description").getText());
+                                con.setString(3, map.get("price").getText());
+                                con.setString(4, map.get("type").getText());
+                                con.executeUpdate();
+                                refFrame.repaint();
+                                break;
                         }
+                    } catch (SQLException ex){
+                        Logger.getLogger(FunctionalPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                }else{
+                    JOptionPane.showMessageDialog(frame,"Ci sono campi vuoti. Vanno riempiti tutti.","Errore",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -112,6 +104,7 @@ public class buttonLayout extends JPanel{
                             con = mgr.getConnection().prepareStatement("DELETE FROM impiegati WHERE id=?");
                             con.setInt(1, id);
                             con.executeUpdate();
+                            refFrame.repaint();
                         }else{
                             JOptionPane.showMessageDialog(frame,"ID inesistente","Errore",JOptionPane.ERROR_MESSAGE);
                         }
@@ -164,6 +157,19 @@ public class buttonLayout extends JPanel{
             }
         } catch (SQLException ex) {
             Logger.getLogger(buttonLayout.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return flag;
+    }
+    
+    //false=non ci sono textfield vuoti
+    public boolean areTextFieldEmpty(){
+        ArrayList<String> temp = tablePane.getColumnsName();
+        boolean flag=false;
+        for (String temp1 : temp) {
+            if (map.get(temp1).getText().equals("")) {
+                flag=true;
+                break;
+            }
         }
         return flag;
     }

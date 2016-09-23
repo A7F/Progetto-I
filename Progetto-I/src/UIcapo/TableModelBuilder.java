@@ -22,8 +22,8 @@ public class TableModelBuilder {
     JTable table;
     JPanel panel = new JPanel();
     
-    public TableModelBuilder(String table){
-        this.tab=table;
+    public TableModelBuilder(String tablename){
+        this.tab=tablename;
     }
 
     private JPanel createAndShowGui() throws SQLException {
@@ -99,8 +99,4 @@ public class TableModelBuilder {
         return table.getComponentAt(table.getSelectedRow(), table.getSelectedColumn());
     }
     
-    public void reprintMe(){
-        table.repaint();
-        panel.repaint();
-    }
 }

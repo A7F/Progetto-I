@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
 
 /**
@@ -13,40 +15,39 @@ import javax.swing.JTabbedPane;
  * @author Luca
  */
 public class CapoUI {
-    JFrame frame = new JFrame("Amministrazione");
+    CustomFrame frame=new CustomFrame("gestione");
     final JTabbedPane tabbedPane = new JTabbedPane();
     final JPanel panelEmp = new JPanel();
     final JPanel panelMenu = new JPanel();
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    FunctionalPanel p1;
+    FunctionalPanel p2;
+
     
     public CapoUI(){
         initGraphics();
     }
 
-    private void initGraphics() {
+    private void initGraphics(){
         TableModelBuilder employeesModel = new TableModelBuilder("Impiegati");
         TableModelBuilder menuModel = new TableModelBuilder("Menu");
         
+        
         try {
             panelEmp.add(employeesModel.getPanelModel());
-            panelEmp.add(new FunctionalPanel(employeesModel,"impiegati"));
             panelMenu.add(menuModel.getPanelModel());
-            panelMenu.add(new FunctionalPanel(menuModel,"menu"));
+            tabbedPane.addTab("Impiegati", panelEmp);
+            tabbedPane.addTab("Menu", panelMenu);
         } catch (SQLException ex) {
-            ex.toString();
+            Logger.getLogger(CapoUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        tabbedPane.addTab("Impiegati", panelEmp);
-        tabbedPane.addTab("Menu", panelMenu);
-        
+        p1=new FunctionalPanel(employeesModel,"impiegati");
+        p2=new FunctionalPanel(menuModel,"menu");
+        panelEmp.add(p1);
+        panelMenu.add(p2);
         frame.add(tabbedPane);
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setResizable(false);
-        frame.setLocation(dim.width/2-frame.getSize().width/2, dim.height/2-frame.getSize().height/2);
         frame.setVisible(true);
     }
-    
-    
     
 }

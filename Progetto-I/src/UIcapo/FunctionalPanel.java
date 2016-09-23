@@ -21,6 +21,7 @@ public class FunctionalPanel extends JPanel{
     TableModelBuilder tablePane;
     DatabaseManager mgr = new DatabaseManager();
     HashMap<String,JTextField> map = new HashMap<>();
+    CustomFrame frame;
     
     public FunctionalPanel(TableModelBuilder pane,String tablename){
         this.tablename=tablename;
@@ -31,8 +32,8 @@ public class FunctionalPanel extends JPanel{
         initMe();
     }
     
-    private void initMe() {
-        buttonPane=new buttonLayout(mgr,map,tablename,tablePane);
+    private void initMe(){
+        buttonPane=new buttonLayout(mgr,map,tablename,tablePane,frame);
         createLabels();
         this.add(formPane,BorderLayout.CENTER);
         this.add(buttonPane,BorderLayout.SOUTH);
@@ -57,4 +58,7 @@ public class FunctionalPanel extends JPanel{
         return labels;
     }
     
+    public void getRefFrame(CustomFrame frame){
+        this.frame=frame;
+    }
 }
