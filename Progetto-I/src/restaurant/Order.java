@@ -33,6 +33,11 @@ public class Order {
         this.notes = notes;
     }
     
+    public Order(MenuElement menuElement){
+        this.quantity = 1;
+        this.menuElement = menuElement;
+    }
+    
     /**
      * i camerieri possono modificare le note relative all' elemento di ordinazione
      * @param text 
