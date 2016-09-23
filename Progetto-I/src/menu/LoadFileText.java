@@ -41,7 +41,7 @@ public class LoadFileText {
     }
     
     /**
-     * questo metodo invece prende gli elementi dal file e li mette nel database remoto
+     * questo metodo prende gli elementi dal file e li mette nel database
      * @author Luca
      * @param pathFile
      * @throws java.io.FileNotFoundException

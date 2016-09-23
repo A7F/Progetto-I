@@ -29,5 +29,7 @@ public class TestUICameriere {
         diablo.addOrder(1, order2);
         
         CameriereMainFrame cmf = new CameriereMainFrame(diablo);
+        
+        
     }
 }

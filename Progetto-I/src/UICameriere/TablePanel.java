@@ -62,4 +62,8 @@ public class TablePanel extends JPanel{
         return selectedTable;
     }
     
+    public Restaurant getRestaurant(){
+        return this.restaurant;
+    }
+    
 }
