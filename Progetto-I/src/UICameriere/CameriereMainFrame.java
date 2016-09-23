@@ -29,6 +29,7 @@ public class CameriereMainFrame extends JFrame{
         this.menuPanel = new MenuPanel(restaurant);
         tablePanel = new TablePanel(restaurant.getTables().size());
         ordersPanel = new OrdersPanel(tablePanel, restaurant);
+        tablePanel.addObserver(ordersPanel);
         initComponent();
     }
 

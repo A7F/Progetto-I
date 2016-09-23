@@ -29,7 +29,6 @@ public class TablePanel extends Observable{
         tableButtons = new ArrayList<>();
         panel= new JPanel();
         initComponent();
-        
     }
     
     private void initComponent(){
@@ -44,7 +43,6 @@ public class TablePanel extends Observable{
                     
                     if(selectedTable != 0){
                         tableButtons.get(selectedTable - 1).setBackground(null);
-                        
                     }
                     
                     JButton button = (JButton)e.getSource();

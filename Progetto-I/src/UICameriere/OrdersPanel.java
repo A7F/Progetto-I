@@ -45,9 +45,8 @@ public class OrdersPanel extends JPanel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        
         System.out.println("--------------->>>  CIAO");
-        list.repaint();
+        this.repaint();
     }
     
     
