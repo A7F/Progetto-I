@@ -5,6 +5,7 @@
  */
 package UICameriere;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import restaurant.Restaurant;
 public class CameriereMainFrame extends JFrame{
     
     private Restaurant restaurant;
+    private OrdersPanel ordersPanel;
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     TablePanel tablePanel;
     MenuPanel menuPanel;
@@ -26,12 +28,16 @@ public class CameriereMainFrame extends JFrame{
         this.restaurant = restaurant;
         this.menuPanel = new MenuPanel(restaurant);
         tablePanel = new TablePanel(restaurant.getTables().size());
+        ordersPanel = new OrdersPanel(tablePanel, restaurant);
         initComponent();
     }
 
     private void initComponent() {
-        this.add(tablePanel);
-        this.add(menuPanel);
+        this.setLayout(new BorderLayout());
+        this.add(tablePanel.getPanel(), BorderLayout.NORTH);
+        this.add(menuPanel,BorderLayout.EAST);
+        this.add(ordersPanel, BorderLayout.WEST);
+        
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);

@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -16,16 +17,17 @@ import javax.swing.JPanel;
  *
  * @author Fabio
  */
-public class TablePanel extends JPanel{
+public class TablePanel extends Observable{
     
     private ArrayList<JButton> tableButtons;
     private int nTable;
     private int selectedTable;
-
+    private JPanel panel;
     
     public TablePanel(int nTables) {
         this.nTable = nTables;
         tableButtons = new ArrayList<>();
+        panel= new JPanel();
         initComponent();
         
     }
@@ -42,20 +44,30 @@ public class TablePanel extends JPanel{
                     
                     if(selectedTable != 0){
                         tableButtons.get(selectedTable - 1).setBackground(null);
+                        
                     }
                     
                     JButton button = (JButton)e.getSource();
                     selectedTable = Integer.parseInt(button.getText());
                     button.setBackground(Color.red);
+                    
+                    setChanged();
+                    notifyObservers();
+                    System.err.println("-------> " + selectedTable);
+                    
                 }
             });
 
             tableButtons.add(button);
-            this.add(button);
+            panel.add(button);
         }
     }
 
     public int getSelectedTable() {
         return selectedTable;
-    }   
+    }  
+
+    public JPanel getPanel() {
+        return panel;
+    }
 }
