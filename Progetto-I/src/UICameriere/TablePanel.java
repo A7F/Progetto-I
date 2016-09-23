@@ -5,14 +5,12 @@
  */
 package UICameriere;
 
-import UIcapo.buttonLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import restaurant.Restaurant;
 
 /**
  *
@@ -21,7 +19,6 @@ import restaurant.Restaurant;
 public class TablePanel extends JPanel{
     
     private ArrayList<JButton> tableButtons;
-    private Restaurant restaurant;
     private int nTable;
     private int selectedTable;
 
@@ -60,10 +57,5 @@ public class TablePanel extends JPanel{
 
     public int getSelectedTable() {
         return selectedTable;
-    }
-    
-    public Restaurant getRestaurant(){
-        return this.restaurant;
-    }
-    
+    }   
 }
