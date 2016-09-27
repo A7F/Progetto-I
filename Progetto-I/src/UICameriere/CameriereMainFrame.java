@@ -27,21 +27,22 @@ public class CameriereMainFrame extends JFrame{
     public CameriereMainFrame(Restaurant restaurant) {
         this.restaurant = restaurant;
         this.menuPanel = new MenuPanel(restaurant);
-        tablePanel = new TablePanel(restaurant.getTables().size());
+        tablePanel = new TablePanel(restaurant);
         ordersPanel = new OrdersPanel(tablePanel, restaurant);
-        tablePanel.addObserver(ordersPanel);
+       
         initComponent();
     }
 
     private void initComponent() {
         this.setLayout(new BorderLayout());
         this.add(tablePanel.getPanel(), BorderLayout.NORTH);
-        this.add(menuPanel,BorderLayout.EAST);
         this.add(ordersPanel, BorderLayout.WEST);
+        this.add(menuPanel,BorderLayout.EAST);
+        
         
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        //this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         this.pack();
         this.setVisible(true);
     }

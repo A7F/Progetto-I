@@ -33,7 +33,22 @@ public class Restaurant extends Observable{
     }
     
     public ArrayList<Order> getOrdersArray(){
+        
         return room.getOrdersArray();
+    }
+    
+    /**
+     * Restituisce l'ordinazione di un specifico tavolo
+     * @param tableId
+     * @return
+     * @author FabioTagliani
+     */
+    
+    public ArrayList<Order> getOrderTable(int tableId){
+    
+        setChanged();
+        notifyObservers(tableId -1);
+        return room.getOrdersTable(tableId - 1);
     }
     
     /**

@@ -28,6 +28,33 @@ public class Room {
     }
     
     /**
+     * Ritorna gli ordini del singolo tavolo
+     * @param tableId
+     * @return Order
+     * @author FabioTagliani
+     */
+    public ArrayList<Order> getOrdersTable(int tableId){
+    
+        ArrayList<Order> ordersTable = new ArrayList<Order>();
+        
+        for (int i = 0; i < tables.size(); i++) {
+            
+            if (tables.get(i).getTableId() == tableId){
+            
+                ordersTable.addAll(tables.get(i).getOrdersArray());
+            }
+        }
+//        for (Table t : tables) {
+//            
+//            if(t.getTableId() == tableId){
+//            
+//                ordersTable.addAll(t.getOrdersArray());
+//            }
+//        }
+        return ordersTable;
+    }
+    
+    /**
      * questo metodo ritorna tutti gli ordini di sala messi insieme!
      * @author Luca
      * @return roomOrders

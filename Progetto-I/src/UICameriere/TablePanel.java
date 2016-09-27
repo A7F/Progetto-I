@@ -12,20 +12,21 @@ import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import restaurant.Restaurant;
 
 /**
  *
  * @author Fabio
  */
-public class TablePanel extends Observable{
+public class TablePanel /*extends Observable*/{
     
     private ArrayList<JButton> tableButtons;
-    private int nTable;
+    private restaurant.Restaurant restaurant;
     private int selectedTable;
     private JPanel panel;
     
-    public TablePanel(int nTables) {
-        this.nTable = nTables;
+    public TablePanel(Restaurant restaurant) {
+        this.restaurant = restaurant;
         tableButtons = new ArrayList<>();
         panel= new JPanel();
         initComponent();
@@ -33,7 +34,7 @@ public class TablePanel extends Observable{
     
     private void initComponent(){
     
-        for (int i = 0; i < nTable; i++) {
+        for (int i = 0; i < restaurant.getTables().size(); i++) {
 
             JButton button = new JButton(String.valueOf(i + 1));
 
@@ -49,8 +50,8 @@ public class TablePanel extends Observable{
                     selectedTable = Integer.parseInt(button.getText());
                     button.setBackground(Color.red);
                     
-                    setChanged();
-                    notifyObservers();
+                    
+                    System.err.println(restaurant.getOrderTable(selectedTable).toString());
                     System.err.println("-------> " + selectedTable);
                     
                 }

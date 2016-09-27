@@ -11,6 +11,7 @@ import java.util.Observer;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import restaurant.Order;
 import restaurant.Restaurant;
 
@@ -18,12 +19,13 @@ import restaurant.Restaurant;
  *
  * @author Fabio
  */
-public class OrdersPanel extends JPanel implements Observer{
+public class OrdersPanel extends JTextArea implements Observer{
 
     private TablePanel tablePanel;
     private Restaurant restaurant;
     private ArrayList<Order> orders;
     private JList list;
+    int selectedIndex;
     
 
     public OrdersPanel(TablePanel tablePanel, Restaurant restaurant) {
@@ -34,19 +36,26 @@ public class OrdersPanel extends JPanel implements Observer{
 
     private void init(){
     
-        int selectedIndex= tablePanel.getSelectedTable();
-        orders = restaurant.getTables().get(selectedIndex).getOrdersArray();
         
-        list = new JList(orders.toArray());
-        JScrollPane pane = new JScrollPane(list);
+        selectedIndex= tablePanel.getSelectedTable();
+        orders = restaurant.getOrderTable(selectedIndex);
         
-        this.add(pane);
+        System.out.println("selectedIndex in  orders panel:  " + selectedIndex);
+        
+        
+        
+        this.setText(restaurant.getOrderTable(selectedIndex).toString());
+        restaurant.addObserver(this);
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("--------------->>>  CIAO");
-        this.repaint();
+       
+        selectedIndex= tablePanel.getSelectedTable();
+        System.out.println("selectadeIndexUPDATE : " + selectedIndex);
+        this.setText(restaurant.getTables().get(selectedIndex -1).getOrdersArray().toString());
+         
+        //this.setText(restaurant.getOrderTable(selectedIndex).toString());
     }
     
     
