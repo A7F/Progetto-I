@@ -9,30 +9,24 @@ I casi d'uso si trovano nella sezione wiki.
 - [x] implementare database
 - [x] UI della cassa
 - [x] UI di login
-- [ ] UI del cameriere
+- [x] UI del cameriere
 - [ ] gestire eccezioni
 - [ ] refactoring finale
 
 ##Cosa contiene l'ultimo commit?
-1. UI di cassa
-  * aggiunta la UI della cassa *(by Fabio)*
-2. UI di login
+
+1. UI di login
   * implementata gestione login utenti
   * implementata classe per controllare i dati immessi per il login
   * aggiunta gestione eccezioni (da finire)
   * unificate tutte le grafiche in modo da gestirle con un solo metodo
-3. Bugfix vari
-  * Creato package *ristorante* 
-  * Spostate le classi legate al ristorante nel relativo package (così è più organizzato)
-  * Sistemata classe di gestione login, ora funziona bene
-  * Implementato design pattern Singleton per la classe NewUserWindow
-
+2. UI cameriere
+  * aggiunta gestione degli ordini ai tavoli: possibilità di aggiunta e rimozione ordine
+  
 ###Problemi ultimo commit
-* Il database va popolato, per questo però ho fatto un metodo di utility
 * Vanno rivisti i try catch, le eccezioni sono gestite ma non benissimo (sarebbe carino usare dei popup)
-* Bisogna aggiungere alla classe Ristorante il metodo printTicket (in attesa da Fabio) senza cui la UI cassa non va
 * L'utility per il proprietario del ristorante che registra nuovi utenti nel database va testata
-* Andrebbe deciso bene cosa (che tipo di dato) mettere nella colonna *ruolo* della tabella *impiegati*: forse è meglio usare valori interi piuttosto che stringhe...
+* La UI del cameriere andrebbe resa più guardabile aggiungendo anche le info riguardo l'elemento menu selezionato
 
 ##Usare il database (Win)
 per utilizzare il database su windows ho dovuto installare XAMPP in modo da avviare Apache sul pc stesso altrimenti netbeans continua a dare un errore di connessione (0 packet sent). Ho lasciato volontariamente bianca la password per il root user.
