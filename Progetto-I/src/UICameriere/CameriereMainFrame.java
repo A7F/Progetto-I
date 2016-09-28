@@ -21,7 +21,7 @@ public class CameriereMainFrame extends JFrame{
     TablePanel tablePanel;
     MenuPanel menuPanel;
     
-    public CameriereMainFrame(Restaurant restaurant) {
+    public CameriereMainFrame(Restaurant restaurant){
         this.restaurant = restaurant;
         this.menuPanel = new MenuPanel(restaurant);
         tablePanel = new TablePanel(restaurant);
@@ -30,7 +30,7 @@ public class CameriereMainFrame extends JFrame{
         initComponent();
     }
 
-    private void initComponent() {
+    private void initComponent(){
         this.setLayout(new BorderLayout());
         JPanel formatPane = new JPanel();
         formatPane.setLayout(new FlowLayout());
@@ -38,7 +38,7 @@ public class CameriereMainFrame extends JFrame{
         formatPane.add(menuPanel);
         this.add(tablePanel.getPanel(), BorderLayout.NORTH);
         this.add(formatPane,BorderLayout.CENTER);
-        this.add(new LowPanel(restaurant),BorderLayout.SOUTH);
+        this.add(new LowPanel(restaurant,menuPanel,ordersPanel),BorderLayout.SOUTH);
         
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

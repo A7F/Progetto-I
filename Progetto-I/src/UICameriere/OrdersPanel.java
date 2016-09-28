@@ -60,4 +60,9 @@ public class OrdersPanel extends JPanel implements Observer{
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
         }
     }
+    
+    public void removeOrder(){
+        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(list.getSelectedIndex());
+        model.remove(list.getSelectedIndex());
+    }
 }
