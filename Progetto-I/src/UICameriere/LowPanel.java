@@ -1,11 +1,14 @@
 package UICameriere;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
@@ -37,11 +40,17 @@ public class LowPanel extends JPanel{
         create();
     }
     
-    public void create(){
+    private void create(){
         JButton addButton = new JButton("ADD");
         addButton.addActionListener(new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e){
                 int count = (int)spinner.getValue();
+                if(menuPanel.getSelectedIndex()==-1){
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame,"Nessun elemento menu selezionato!","Errore",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 for(int i=0;i<count;i++){
                     Order newOrder = new Order(1,menuPanel.getSelectedElement(),textNotes.getText());
                     ordersPanel.addOrder(newOrder);
@@ -51,7 +60,13 @@ public class LowPanel extends JPanel{
         
         JButton remButton = new JButton("REM");
         remButton.addActionListener(new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e){
+                if(ordersPanel.getSelectedIndex()==-1){
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame,"Nessun elemento ordine selezionato!","Errore",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 ordersPanel.removeOrder();
             }
         });
@@ -59,6 +74,7 @@ public class LowPanel extends JPanel{
         SpinnerModel spinnerModel = new SpinnerNumberModel(1,1,30,1);
         spinner = new JSpinner(spinnerModel);
         textNotes = new JTextField("Insert notes here...     ");
+        textNotes.setFont(new Font("Calibri",Font.PLAIN,15));
         textNotes.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){

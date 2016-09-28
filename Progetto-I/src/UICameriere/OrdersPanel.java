@@ -7,6 +7,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.TitledBorder;
 import restaurant.Order;
 import restaurant.Restaurant;
 
@@ -28,6 +30,7 @@ public class OrdersPanel extends JPanel implements Observer{
     public OrdersPanel(TablePanel tablePanel, Restaurant restaurant) {
         this.tablePanel = tablePanel;
         this.restaurant = restaurant;
+        this.setBorder(new TitledBorder("Ordini"));
         init();
     }
 
@@ -42,6 +45,7 @@ public class OrdersPanel extends JPanel implements Observer{
         }
         
         list=new JList(model);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pane = new JScrollPane(list);
         this.add(pane);
         restaurant.addObserver(this);
@@ -67,11 +71,16 @@ public class OrdersPanel extends JPanel implements Observer{
     }
     
     public void addOrder(Order ord){
+        
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);
         model.removeAllElements();
         
         for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
         }
+    }
+    
+    public int getSelectedIndex(){
+        return list.getSelectedIndex();
     }
 }

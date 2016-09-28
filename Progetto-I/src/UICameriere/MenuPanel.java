@@ -2,6 +2,7 @@ package UICameriere;
 
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import restaurant.Restaurant;
 
 /**
@@ -18,6 +19,7 @@ public class MenuPanel extends JPanel{
         
     public MenuPanel(Restaurant res){
         this.restaurant=res;
+        this.setBorder(new TitledBorder("Menu"));
         init();
     }
     
@@ -35,5 +37,9 @@ public class MenuPanel extends JPanel{
     
     protected menu.MenuElement getSelectedElement(){
         return el.get(list.getSelectedIndex());
+    }
+    
+    public int getSelectedIndex(){
+        return list.getSelectedIndex();
     }
 }
