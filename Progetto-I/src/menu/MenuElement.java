@@ -13,7 +13,7 @@ public class MenuElement {
         this.typeElement = typeElement;
         this.description = description;
         available = true;
-        }
+    }
     
     @Override
     public String toString(){

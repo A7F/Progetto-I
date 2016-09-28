@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UICameriere;
 
 import java.util.ArrayList;
@@ -17,6 +12,7 @@ public class MenuPanel extends JPanel{
     
     private Restaurant restaurant;
     private ArrayList<menu.MenuElement> el;
+    private ArrayList<String> elementName = new ArrayList<>();
     private JList list;
     private JScrollPane pane;
         
@@ -27,12 +23,17 @@ public class MenuPanel extends JPanel{
     
     private void init(){
         el=restaurant.getMenu();
-        list=new JList(el.toArray());
+        
+        for(int i=0;i<el.size();i++){
+            elementName.add(el.get(i).getNameElement());
+        }
+        
+        list=new JList(elementName.toArray());
         pane=new JScrollPane(list);
         this.add(pane);
     }
     
-    protected MenuElement getSelectedElement(){
-        return (MenuElement)list.getSelectedValue();
+    protected menu.MenuElement getSelectedElement(){
+        return el.get(list.getSelectedIndex());
     }
 }

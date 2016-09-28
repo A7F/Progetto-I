@@ -11,6 +11,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
@@ -22,9 +23,11 @@ public class LowPanel extends JPanel{
     Restaurant restaurant;
     JPanel elementsPanel=new JPanel();
     JPanel editElementsPanel=new JPanel();
+    JPanel infoElementMenu=new JPanel();
     JSpinner spinner;
     MenuPanel menuPanel;
     OrdersPanel ordersPanel;
+    JTextField textNotes;
     
     public LowPanel(Restaurant res,MenuPanel menu, OrdersPanel orders){
         this.restaurant=res;
@@ -38,7 +41,11 @@ public class LowPanel extends JPanel{
         JButton addButton = new JButton("ADD");
         addButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
+                int count = (int)spinner.getValue();
+                for(int i=0;i<count;i++){
+                    Order newOrder = new Order(1,menuPanel.getSelectedElement(),textNotes.getText());
+                    ordersPanel.addOrder(newOrder);
+                }
             }
         });
         
@@ -51,7 +58,7 @@ public class LowPanel extends JPanel{
         
         SpinnerModel spinnerModel = new SpinnerNumberModel(1,1,30,1);
         spinner = new JSpinner(spinnerModel);
-        final JTextField textNotes = new JTextField("Insert notes here...     ");
+        textNotes = new JTextField("Insert notes here...     ");
         textNotes.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
