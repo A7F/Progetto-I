@@ -2,8 +2,10 @@ package UICameriere;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import restaurant.Restaurant;
 
@@ -30,10 +32,13 @@ public class CameriereMainFrame extends JFrame{
 
     private void initComponent() {
         this.setLayout(new BorderLayout());
+        JPanel formatPane = new JPanel();
+        formatPane.setLayout(new FlowLayout());
+        formatPane.add(ordersPanel);
+        formatPane.add(menuPanel);
         this.add(tablePanel.getPanel(), BorderLayout.NORTH);
-        this.add(ordersPanel, BorderLayout.WEST);
-        this.add(menuPanel,BorderLayout.EAST);
-        
+        this.add(formatPane,BorderLayout.CENTER);
+        this.add(new LowPanel(restaurant),BorderLayout.SOUTH);
         
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

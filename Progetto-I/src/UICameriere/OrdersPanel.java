@@ -54,7 +54,6 @@ public class OrdersPanel extends JPanel implements Observer{
      */
     public void update(Observable o, Object arg) {
         selectedIndex= tablePanel.getSelectedTable();
-        System.out.println("selectedIndexUPDATE : " + selectedIndex);
         model.removeAllElements();
         
         for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
