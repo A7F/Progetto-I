@@ -1,5 +1,6 @@
 package utils;
 
+import UICameriere.CameriereMainFrame;
 import UICassa.CassaMainFrame;
 import UIcapo.CapoUI;
 import restaurant.Restaurant;
@@ -123,6 +124,7 @@ public class LoginManager {
                 break;
             case 3:
                 System.out.println("qui parte la grafica del cameriere");
+                CameriereMainFrame cmf = new CameriereMainFrame(restaurant);
                 break;
             case 4:
                 System.out.println("qui parte la grafica del capo");
