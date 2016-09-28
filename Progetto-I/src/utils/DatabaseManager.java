@@ -4,6 +4,8 @@ import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * questa classe si occupa di aprire la connessione al server remoto SQL e di
@@ -15,6 +17,7 @@ public class DatabaseManager {
     public static final String DATABASE_URL = "jdbc:mysql://localhost:3306";
     private Connection connection = null;
     public static Statement statement = null;
+    JFrame frame = new JFrame();
     
     public DatabaseManager(){
         try {
@@ -56,7 +59,7 @@ public class DatabaseManager {
         try{
             connection.close();
         }catch(SQLException e){
-            System.err.println("Non riesco a chiudere la connessione");
+            JOptionPane.showMessageDialog(frame,"Non riesco a chiudere la connessione","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -65,7 +68,7 @@ public class DatabaseManager {
             statement=(Statement) connection.createStatement();
             statement.executeQuery(query);
         }catch(SQLException e){
-            System.err.println("Guarda non sono riuscito ad eseguire la tua query");
+            JOptionPane.showMessageDialog(frame,"Impossibile eseguire la tua query","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -74,7 +77,7 @@ public class DatabaseManager {
             statement=(Statement) connection.createStatement();
             statement.executeUpdate(update);
         }catch(SQLException e){
-            System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
+            JOptionPane.showMessageDialog(frame,"Impossibile eseguire il tuo update","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -102,7 +105,8 @@ public class DatabaseManager {
             command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo1','CAPO');";
             statement.executeUpdate(command);
         }catch(SQLException e){
-            System.err.println("Guarda non sono riuscito ad eseguire il tuo update");
+            
+            JOptionPane.showMessageDialog(frame,"Impossibile popolare il database","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }
     

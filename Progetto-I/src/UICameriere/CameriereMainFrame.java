@@ -10,7 +10,8 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import restaurant.Restaurant;
 
 /**
- *
+ * Frame che contiene l'elenco dei tavoli, le ordinazioni di uno specifico 
+ * tavolo e il menu del ristorante 
  * @author Fabio
  */
 public class CameriereMainFrame extends JFrame{

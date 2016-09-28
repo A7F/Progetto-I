@@ -10,7 +10,7 @@ import javax.swing.*;
 import restaurant.Restaurant;
 
 /**
- *
+ * Pannello contenente il menu del ristorante
  * @author Luca
  */
 public class MenuPanel extends JPanel{

@@ -11,7 +11,7 @@ import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- *
+ * Contiene l'elenco degli ordini relativi al tavolo selezionato
  * @author Fabio
  */
 public class OrdersPanel extends JPanel implements Observer{
