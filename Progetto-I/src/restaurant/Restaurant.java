@@ -47,8 +47,9 @@ public class Restaurant extends Observable{
     public ArrayList<Order> getOrderTable(int tableId){
     
         setChanged();
-        notifyObservers(tableId -1);
-        return room.getOrdersTable(tableId - 1);
+        //non serve che notifichi tableId-1
+        notifyObservers(tableId);
+        return room.getOrdersTable(tableId - 1);    //questo invece serve
     }
     
     /**

@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UICameriere;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import restaurant.Restaurant;
@@ -18,7 +12,7 @@ import restaurant.Restaurant;
  *
  * @author Fabio
  */
-public class TablePanel /*extends Observable*/{
+public class TablePanel{
     
     private ArrayList<JButton> tableButtons;
     private restaurant.Restaurant restaurant;
@@ -50,9 +44,9 @@ public class TablePanel /*extends Observable*/{
                     selectedTable = Integer.parseInt(button.getText());
                     button.setBackground(Color.red);
                     
-                    
-                    System.err.println(restaurant.getOrderTable(selectedTable).toString());
-                    System.err.println("-------> " + selectedTable);
+                    //è grazie a questo metodo se viene notificato tutto, chiama il notify in getOrderTable! 
+                    //(forse è meglio cambiarlo? Per adesso non ci disturba, fa da debug. Poi chiameremo il notify in modo più carino...)
+                    System.out.println("tavolo: "+selectedTable+"\tOrdini: "+restaurant.getOrderTable(selectedTable).toString());
                     
                 }
             });
@@ -62,7 +56,15 @@ public class TablePanel /*extends Observable*/{
         }
     }
 
+    /**
+     * Ottieni il tavolo selezionato dalla pulsantiera. Di default ritorna il tavolo 1.
+     * @author Luca
+     * @return selectedTable
+     */
     public int getSelectedTable() {
+        if(selectedTable==0){
+            selectedTable=1;
+        }
         return selectedTable;
     }  
 
