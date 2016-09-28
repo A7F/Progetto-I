@@ -43,7 +43,6 @@ public class Restaurant extends Observable{
      * @return
      * @author FabioTagliani
      */
-    
     public ArrayList<Order> getOrderTable(int tableId){
     
         setChanged();
