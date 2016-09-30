@@ -14,6 +14,7 @@ public class Menu {
     public Menu(String pathMenu) throws IOException{
         loadMenu(pathMenu);
     }
+    
     /**
      * @autor JS
      * @param pathFile
@@ -22,6 +23,7 @@ public class Menu {
      */    
     private void loadMenu (String pathFile) throws IOException{
         menu = LoadFileText.loadFile(pathFile);
+        LoadFileText.fillDatabase(pathFile);
     }
 
     /**
