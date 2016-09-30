@@ -45,6 +45,15 @@ public class DatabaseManager {
                 table=DatabaseStrings.createImpiegati;
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA IMPIEGATI CREATA");
+                table=DatabaseStrings.createTavoli;
+                statement.executeUpdate(table);
+                System.out.println(">> TABELLA TAVOLI CREATA");
+                table=DatabaseStrings.createPrenotazioni;
+                statement.executeUpdate(table);
+                System.out.println(">> TABELLA PRENOTAZIONI CREATA");
+                table=DatabaseStrings.alterPrenotazioni;
+                statement.executeUpdate(table);
+                System.out.println(">> TABELLA PRENOTAZIONI MODIFICATA");
             }catch(SQLException e){
                 System.err.println("SQLException: " + e.getMessage());
                 System.err.println("SQLState: " + e.getSQLState());
