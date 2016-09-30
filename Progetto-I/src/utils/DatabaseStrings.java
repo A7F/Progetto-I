@@ -13,4 +13,5 @@ public class DatabaseStrings{
     public static final String createTavoli = "CREATE TABLE IF NOT EXISTS Tavoli(NUMTAVOLO int NOT NULL, PRENOTATO BOOLEAN DEFAULT 0, PRENOTAZIONE int NOT NULL UNIQUE PRIMARY KEY);";
     public static final String createPrenotazioni = "CREATE TABLE IF NOT EXISTS Prenotazioni(PRENOTAZIONE int NOT NULL,NOME VARCHAR(20) DEFAULT NULL, ORE DATE DEFAULT NULL);";
     public static final String alterPrenotazioni = "ALTER TABLE Prenotazioni ADD FOREIGN KEY(PRENOTAZIONE) REFERENCES Tavoli(PRENOTAZIONE) ON DELETE CASCADE;";
+    public static final String getAllMenu = "SELECT * FROM menu;";
 }
