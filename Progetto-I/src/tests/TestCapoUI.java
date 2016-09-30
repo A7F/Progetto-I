@@ -8,6 +8,6 @@ import UIcapo.CapoUI;
  */
 public class TestCapoUI {
     public static void main(String[] args){
-        CapoUI c = new CapoUI();
+        CapoUI c = new CapoUI(0);
     }
 }

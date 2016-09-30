@@ -12,8 +12,10 @@ import utils.MenuBar;
 public class CassaMainFrame extends JFrame{
     
     private Restaurant restaurant;
+    int userId;
 
-    public CassaMainFrame(Restaurant restaurant) {
+    public CassaMainFrame(Restaurant restaurant,int userId) {
+        this.userId=userId;
         this.restaurant = restaurant;
         initComponent();
     }
@@ -22,7 +24,7 @@ public class CassaMainFrame extends JFrame{
         
         MainPanel mainPanel = new MainPanel(restaurant);
         
-        this.setJMenuBar(new MenuBar());
+        this.setJMenuBar(new MenuBar(this,userId));
         this.add(mainPanel);
         this.setTitle("Cassa");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

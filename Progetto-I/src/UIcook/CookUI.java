@@ -14,15 +14,17 @@ public class CookUI {
     
     JList list;
     ArrayList<Order> elements;
+    int userId;
     
-    public CookUI(ArrayList<Order> el){
+    public CookUI(ArrayList<Order> el,int userId){
+        this.userId=userId;
         elements=el;
         initUi();
     }
 
     private void initUi() {
         JFrame frame = new JFrame("Cucina");
-        frame.setJMenuBar(new utils.MenuBar());
+        frame.setJMenuBar(new utils.MenuBar(frame,userId));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
         list =new JList(elements.toArray());

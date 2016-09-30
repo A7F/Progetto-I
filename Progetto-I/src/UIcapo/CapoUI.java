@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTabbedPane;
+import utils.MenuBar;
 
 /**
  *
@@ -20,9 +21,10 @@ public class CapoUI {
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     FunctionalPanel p1;
     FunctionalPanel p2;
-
+    int userId;
     
-    public CapoUI(){
+    public CapoUI(int userId){
+        this.userId=userId;
         initGraphics();
     }
 
@@ -44,7 +46,9 @@ public class CapoUI {
         p2=new FunctionalPanel(menuModel,"menu");
         panelEmp.add(p1);
         panelMenu.add(p2);
+        
         frame.add(tabbedPane);
+        frame.setJMenuBar(new MenuBar(frame,userId));
         frame.setVisible(true);
     }
     

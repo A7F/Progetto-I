@@ -5,7 +5,6 @@ import UICassa.CassaMainFrame;
 import UIcapo.CapoUI;
 import restaurant.Restaurant;
 import UIcook.CookUI;
-import UIlogin.NewUserWindow;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +22,7 @@ public class LoginManager {
     Map<Integer,String> rel = new HashMap<>();
     DatabaseManager dbm = new DatabaseManager();
     Restaurant restaurant;
+    int userId = 0;
     JFrame frame = new JFrame();
     
     public LoginManager(Restaurant r){
@@ -31,8 +31,15 @@ public class LoginManager {
         rel.put(2, "CUOCO");
         rel.put(3, "CAMERIERE");
         rel.put(4, "KING");
-        //dbm.initServer();     //uncomment al primo avvio del programma: crea il database e le tabelle
-        //dbm.populateUserDatabase();   //uncomment per popolare le table
+    }
+
+    /**
+     * costruttore usato per la menubar: non serve il resto, basta solo l'userId.
+     * @param userId 
+     * @author Luca
+     */
+    LoginManager(int userId) {
+    this.userId=userId;
     }
     
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
@@ -61,6 +68,8 @@ public class LoginManager {
         }else{
             if(rs.next()){
                 JOptionPane.showMessageDialog(frame,"Login effettuato con successo.","Login",JOptionPane.INFORMATION_MESSAGE);
+                userId=rs.getInt("ID");
+                connectUser(userId);
                 return true;
             }else{
                 JOptionPane.showMessageDialog(frame,"Username o Password errate.","Login",JOptionPane.ERROR_MESSAGE);
@@ -116,23 +125,51 @@ public class LoginManager {
             switch(selected){
             case 1:
                 System.out.println("qui parte la grafica della cassa");
-                CassaMainFrame cassaFrame = new CassaMainFrame(restaurant);
+                CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 break;
             case 2:
                 System.out.println("qui parte la grafica del cuoco");
-                CookUI ui = new CookUI(restaurant.getOrdersArray());
+                CookUI ui = new CookUI(restaurant.getOrdersArray(),userId);
                 break;
             case 3:
                 System.out.println("qui parte la grafica del cameriere");
-                CameriereMainFrame cmf = new CameriereMainFrame(restaurant);
+                CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);
                 break;
             case 4:
                 System.out.println("qui parte la grafica del capo");
-                CapoUI win = new CapoUI();
+                CapoUI win = new CapoUI(userId);
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");
         }
+        }
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+    
+    public void disconnectUser(int userId){
+        try {
+            PreparedStatement ps = dbm.getConnection().prepareStatement("use ristorante;");
+            ps.executeQuery();
+            ps = dbm.getConnection().prepareStatement("UPDATE impiegati SET status=? WHERE id=?;");
+            ps.setBoolean(1, false);
+            ps.setInt(2, this.userId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(frame,"Logout fallito. Qualcosa è andato storto!","Logout",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void connectUser(int userId){
+        try {
+            PreparedStatement ps = dbm.getConnection().prepareStatement("UPDATE impiegati SET status=? WHERE id=?;");
+            ps.setBoolean(1, true);
+            ps.setInt(2, userId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(frame,"Login fallito. Qualcosa è andato storto!","Login",JOptionPane.ERROR_MESSAGE);
         }
     }
 }

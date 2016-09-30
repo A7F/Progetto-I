@@ -14,7 +14,6 @@ public class CustomFrame extends JFrame{
     
     public CustomFrame(String name){
         this.setName(name);
-        this.setJMenuBar(new MenuBar());
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         //this.setResizable(false);

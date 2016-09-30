@@ -22,8 +22,10 @@ public class CameriereMainFrame extends JFrame{
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
     TablePanel tablePanel;
     MenuPanel menuPanel;
+    int userId;
     
-    public CameriereMainFrame(Restaurant restaurant){
+    public CameriereMainFrame(Restaurant restaurant,int userId){
+        this.userId=userId;
         this.restaurant = restaurant;
         this.menuPanel = new MenuPanel(restaurant);
         tablePanel = new TablePanel(restaurant);
@@ -34,7 +36,7 @@ public class CameriereMainFrame extends JFrame{
 
     private void initComponent(){
         this.setLayout(new BorderLayout());
-        this.setJMenuBar(new MenuBar());
+        this.setJMenuBar(new MenuBar(this,userId));
         JPanel formatPane = new JPanel();
         formatPane.setLayout(new FlowLayout());
         formatPane.add(ordersPanel);

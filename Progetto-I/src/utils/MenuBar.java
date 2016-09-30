@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -14,8 +15,13 @@ import javax.swing.JMenuItem;
  */
 public class MenuBar extends JMenuBar{
     JMenu menu = new JMenu("File");
+    JFrame frameref;
+    int userId;
+    LoginManager mgr;
     
-    public MenuBar(){
+    public MenuBar(JFrame frame,int userId){
+        this.frameref=frame;
+        this.userId=userId;
         JMenuItem menuItem = new JMenuItem("Logout",new ImageIcon("data/icons/logout32x32.png"));
         menuItem.setMnemonic(KeyEvent.VK_L);
         menuItem.addActionListener(new LogoutActionListener());
@@ -23,10 +29,12 @@ public class MenuBar extends JMenuBar{
         this.add(menu);
     }
 
-    private static class LogoutActionListener implements ActionListener {
+    private class LogoutActionListener implements ActionListener{
         @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("gestisci qui il logout!");
+        public void actionPerformed(ActionEvent e){
+            mgr=new LoginManager(userId);
+            frameref.setVisible(false);
+            mgr.disconnectUser(userId);
         }
     }
 }

@@ -30,6 +30,6 @@ public class TestUICassa {
         diablo.addOrder(1, order2);
        
         System.out.println(diablo.getTables());
-        CassaMainFrame cassaFrame = new CassaMainFrame(diablo);
+        CassaMainFrame cassaFrame = new CassaMainFrame(diablo,0);
     }
 }
