@@ -52,9 +52,8 @@ public class LoginManager {
             ps = dbm.getConnection().prepareStatement("SELECT * FROM impiegati WHERE username=? AND password=?");
             ps.setString(1, username);
             ps.setString(2, password);
-            //ps.setString(3, selected);
             rs = ps.executeQuery();
-        } catch (SQLException ex) {
+        }catch (SQLException ex){
             System.err.println("SQLException: " + ex.getMessage());
             System.err.println("SQLState: " + ex.getSQLState());
             System.err.println("VendorError: " + ex.getErrorCode());
@@ -66,11 +65,16 @@ public class LoginManager {
             JOptionPane.showMessageDialog(frame,"Non è stato selezionato nulla.","Errore",JOptionPane.ERROR_MESSAGE);
             return false;
         }else{
+            
             if(rs.next()){
-                JOptionPane.showMessageDialog(frame,"Login effettuato con successo.","Login",JOptionPane.INFORMATION_MESSAGE);
-                userId=rs.getInt("ID");
-                connectUser(userId);
-                return true;
+                if(rs.getString("ruolo").equals(selected)){
+                    JOptionPane.showMessageDialog(frame,"Login effettuato con successo.","Login",JOptionPane.INFORMATION_MESSAGE);
+                    userId=rs.getInt("ID");
+                    connectUser(userId);
+                    return true;
+                }
+                JOptionPane.showMessageDialog(frame,"Username o password errate.","Login",JOptionPane.INFORMATION_MESSAGE);
+                return false;
             }else{
                 JOptionPane.showMessageDialog(frame,"Username o Password errate.","Login",JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -124,19 +128,15 @@ public class LoginManager {
         if(status){
             switch(selected){
             case 1:
-                System.out.println("qui parte la grafica della cassa");
                 CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 break;
             case 2:
-                System.out.println("qui parte la grafica del cuoco");
                 CookUI ui = new CookUI(restaurant.getOrdersArray(),userId);
                 break;
             case 3:
-                System.out.println("qui parte la grafica del cameriere");
                 CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);
                 break;
             case 4:
-                System.out.println("qui parte la grafica del capo");
                 CapoUI win = new CapoUI(userId);
                 break;
             default:
