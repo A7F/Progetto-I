@@ -20,6 +20,19 @@ public class Table {
         ticket = new Ticket();
     }
     
+    /**
+     * Rimuove tutti gli ordini di un tavolo
+     * @author Fabio Tagliani
+     */
+    public void removeAllOrder(){
+        ArrayList<Order> ordersToBeRemoved = new ArrayList<>();
+        
+        for (Order order : orders) {
+            ordersToBeRemoved.add(order);
+        }
+        orders.removeAll(ordersToBeRemoved);
+    }
+    
     public ArrayList<Order> getOrdersArray(){
         return this.orders;
     }
@@ -41,22 +54,22 @@ public class Table {
     }
    
     /**
+     * Rimuove il singolo elemento dell'ordine
      * @author FabioTagliani
      */
-    void removeOrder(Order order) {
+    public void removeOrder(Order order) {
         orders.remove(order);
     }
-    
+        
     public int getTableId() {
         return tableId;
     }
     /**
+     * Crea lo scontrino del tavolo selezionato
      * @author FabioTagliani
      */
     public Ticket createTicket() {
-
         ticket.elaboraTicket(orders);
-
         return ticket;
     }
 

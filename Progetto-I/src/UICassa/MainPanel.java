@@ -13,6 +13,7 @@ public class MainPanel extends JPanel{
     
     private Restaurant restaurant;
     private PanelTable panelTable;
+    private TableReservation tableReservation;
     private PrintTicket printTicket;
    
     public MainPanel(Restaurant restaurant) {
@@ -24,7 +25,7 @@ public class MainPanel extends JPanel{
     private void initComponent(){
     
         panelTable = new PanelTable(restaurant);
-        
+        tableReservation = new TableReservation(restaurant, panelTable);
         printTicket = new PrintTicket(restaurant, panelTable);
         
 //        this.setLayout(new BorderLayout()); 
@@ -42,6 +43,12 @@ public class MainPanel extends JPanel{
         
         c.gridx =0;
         c.gridy =1;
+        c.gridwidth = 1;
+        c.gridheight = 1;
+        this.add(tableReservation,c);
+        
+        c.gridx =0;
+        c.gridy =2;
         c.gridwidth = 1;
         c.gridheight = 1;
         this.add(printTicket,c);

@@ -88,6 +88,25 @@ public class Room {
     }
     
     /**
+     * Metodo per liberare il tavolo dalla prenotazione
+     * @param tableId
+     * @author FabioTagliani
+     */    
+    public void setFreeTable(int tableId){
+        
+        for (int i = 0; i < tables.size(); i++) {
+            if(tables.get(i).getTableId() == tableId && tables.get(i).getOrdersArray().isEmpty()){
+                if((tables.get(i).getIsTaken())){
+                    
+                    System.out.println("sono in free table");
+                    tables.get(i).setFreeTable();
+                }else{
+                    System.out.println("Il tavolo era già libero");
+                }
+            }
+        }
+    }
+    /**
      * Restituisce i tavoli della sala
      * @author fabiotagliani
      * @return tables
@@ -129,7 +148,7 @@ public class Room {
         return tableTaken;
     }
     
-    void addOrder(int tableID, Order order) { 
+    public void addOrder(int tableID, Order order) { 
         if(tables.get(tableID-1).getIsTaken() == false){
             tables.get(tableID-1).takeTable();
             
@@ -138,10 +157,28 @@ public class Room {
         }
         tables.get(tableID-1).addOrder(order);
     }
-
-    void removeOrder(int tableID, Order order) {
+    /**
+     * Rimuove il singolo ordine di un tavolo
+     * @param tableID
+     * @param order 
+     */
+    public void removeSingleOrder(int tableID, Order order) {
         tables.get(tableID-1).removeOrder(order);
     }
+    
+    /**
+     * Rimuove tutti gli ordini di un tavolo
+     * @param tableId
+     * @author Fabio Tagliani
+     */
+    public void removeAllOrder(int tableId){
+        for (int i = 0; i < tables.size(); i++) {
+            if(tables.get(i).getTableId() == tableId){
+                tables.get(i).removeAllOrder();
+            }
+        }
+    }
+    
     /**
      * @author FabioTagliani
      * @param tableID
@@ -151,11 +188,10 @@ public class Room {
         return tables.get(tableID -1).createTicket();
     }
     
-    
     public Ticket getTicket(int tableID){
-    
         return tables.get(tableID - 1).getTicket();
     }
+    
     /**
      * @author FabioTagliani
      * @return ret
