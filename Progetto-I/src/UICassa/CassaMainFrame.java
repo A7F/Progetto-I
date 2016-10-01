@@ -3,6 +3,7 @@ package UICassa;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import restaurant.Restaurant;
+import utils.MenuBar;
 
 /**
  * Finestra principale 
@@ -20,7 +21,8 @@ public class CassaMainFrame extends JFrame{
     private void initComponent(){
         
         MainPanel mainPanel = new MainPanel(restaurant);
-
+        
+        this.setJMenuBar(new MenuBar());
         this.add(mainPanel);
         this.setTitle("Cassa");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

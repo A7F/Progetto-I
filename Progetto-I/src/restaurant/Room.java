@@ -44,13 +44,7 @@ public class Room {
                 ordersTable.addAll(tables.get(i).getOrdersArray());
             }
         }
-//        for (Table t : tables) {
-//            
-//            if(t.getTableId() == tableId){
-//            
-//                ordersTable.addAll(t.getOrdersArray());
-//            }
-//        }
+        
         return ordersTable;
     }
     
@@ -139,7 +133,8 @@ public class Room {
 
     /**
      * Restituisce i tavoli prenotati 
-     * @author Luca :D
+     * @author Luca
+     * 
      * @return tableTaken
      */
     public ArrayList<Table> getTakenTable(){

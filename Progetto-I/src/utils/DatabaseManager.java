@@ -33,16 +33,16 @@ public class DatabaseManager {
         try{
             try{
                 statement=(Statement) connection.createStatement();
-                String db = "CREATE DATABASE IF NOT EXISTS Ristorante;";
+                String db = DatabaseStrings.createDatabase;
                 statement.executeUpdate(db);
                 System.out.println(">> DATABASE CREATO");
-                String use = "USE Ristorante;";
+                String use = DatabaseStrings.useDatabase;
                 statement.executeUpdate(use);
                 System.out.println(">> USO DATABASE Ristorante");
-                String table="CREATE TABLE IF NOT EXISTS Menu(ID int NOT NULL AUTO_INCREMENT,Name VARCHAR(200),Description VARCHAR(1000),Price FLOAT(4,2),Tipo VARCHAR(10), PRIMARY KEY(ID));";
+                String table=DatabaseStrings.createMenu;
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA MENU CREATA");
-                table="CREATE TABLE IF NOT EXISTS Impiegati(ID int NOT NULL AUTO_INCREMENT,username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10),status BIT DEFAULT 0,PRIMARY KEY(ID));";
+                table=DatabaseStrings.createImpiegati;
                 statement.executeUpdate(table);
                 System.out.println(">> TABELLA IMPIEGATI CREATA");
             }catch(SQLException e){
@@ -88,7 +88,7 @@ public class DatabaseManager {
     public void populateUserDatabase(){
         try{
             statement=(Statement) connection.createStatement();
-            String command="USE ristorante;";
+            String command=DatabaseStrings.useDatabase;
             statement.executeUpdate(command);
             command="INSERT INTO impiegati(username,password,ruolo) VALUES('cuoco1','passwordcuoco1','CUOCO');";
             statement.executeUpdate(command);
@@ -105,7 +105,6 @@ public class DatabaseManager {
             command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo1','CAPO');";
             statement.executeUpdate(command);
         }catch(SQLException e){
-            
             JOptionPane.showMessageDialog(frame,"Impossibile popolare il database","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }

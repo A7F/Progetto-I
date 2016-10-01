@@ -22,6 +22,7 @@ public class CookUI {
 
     private void initUi() {
         JFrame frame = new JFrame("Cucina");
+        frame.setJMenuBar(new utils.MenuBar());
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
         list =new JList(elements.toArray());

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import restaurant.Restaurant;
+import utils.MenuBar;
 
 /**
  * Frame che contiene l'elenco dei tavoli, le ordinazioni di uno specifico 
@@ -33,6 +34,7 @@ public class CameriereMainFrame extends JFrame{
 
     private void initComponent(){
         this.setLayout(new BorderLayout());
+        this.setJMenuBar(new MenuBar());
         JPanel formatPane = new JPanel();
         formatPane.setLayout(new FlowLayout());
         formatPane.add(ordersPanel);

@@ -3,6 +3,7 @@ package UIcapo;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.*;
+import utils.MenuBar;
 
 /**
  *
@@ -13,6 +14,7 @@ public class CustomFrame extends JFrame{
     
     public CustomFrame(String name){
         this.setName(name);
+        this.setJMenuBar(new MenuBar());
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         //this.setResizable(false);
