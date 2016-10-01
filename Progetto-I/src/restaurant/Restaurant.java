@@ -65,14 +65,30 @@ public class Restaurant extends Observable{
        room.addtables();
     }
     
-    public void removeOrder(int tableId, Order order){
+    /**
+     * Rimuove il singolo ordine di un tavolo
+     * @param tableId
+     * @param order 
+     */
+    public void removeSingleOrder(int tableId, Order order){
+        room.removeSingleOrder(tableId - 1, order);
+    }
     
-        room.removeOrder(tableId, order);
+    /**
+     * Rimuove tutti gli ordini di un tavolo
+     * @param tableId
+     * @author Fabio Tagliani
+     */
+    public void removeAllOrder(int tableId){
+        room.removeAllOrder(tableId - 1);
     }
     
     public void setReserved(int tableId){
-    
         room.setReservedTable(tableId -1);
+    }
+    
+    public void setFreeTable(int tableID){
+        room.setFreeTable(tableID - 1);
     }
     
     /**
@@ -80,7 +96,6 @@ public class Restaurant extends Observable{
      * @author fabiotagliani
      */
     public ArrayList<Table> getTables(){
-    
         return room.getTables();
       
     }
@@ -91,13 +106,10 @@ public class Restaurant extends Observable{
      * @author FabioTagliani
      */
     public Ticket createTicket(int tableID){
-    
-       return room.createTicket(tableID);
-       
+       return room.createTicket(tableID);  
     }
     
     public Ticket getTicket(int tableID ){
-    
         return room.getTicket(tableID);
     }
     

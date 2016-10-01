@@ -32,7 +32,7 @@ public class PrintTicket extends JPanel{
     
         areaStampa= new JTextArea();
         JScrollPane jsp = new JScrollPane(areaStampa);
-        jsp.setPreferredSize(new Dimension(300, 200));
+        jsp.setPreferredSize(new Dimension(500, 200));
         
         button = new JButton("Stampa scontrino");
         button.addActionListener(new ActionListener() {
@@ -41,7 +41,13 @@ public class PrintTicket extends JPanel{
                               
                 int nTable = panelTable.getTableNumber();
                 if(nTable !=0){
-                     areaStampa.setText(restaurant.getTicket(nTable).toString());     
+                     areaStampa.setText(restaurant.getTicket(nTable).toString());
+                     areaStampa.setEditable(false);
+                     restaurant.removeAllOrder(nTable);
+                     //DEBUG
+//                     System.err.println("---> remove all order: " + restaurant.getTables());
+                     restaurant.setFreeTable(nTable);
+                     System.err.println("---> set free table: " + restaurant.getFreeTable());
                 }else{
                     areaStampa.setText("ATTENZIONE DEVI PRIMA SELEZIONARE UN TAVOLO");
                 }
