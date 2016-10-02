@@ -152,7 +152,6 @@ public class Restaurant extends Observable{
     }
     
      public ArrayList<Table> getTakenTable(){
-        
         return room.getTakenTable();
     }
 
