@@ -51,6 +51,7 @@ public class Restaurant extends Observable{
         return room.getOrdersTable(tableId - 1);    //questo invece serve
     }
     
+    
     /**
      * Aggiunge un ordine al tavolo prescelto
      * @param tableId
@@ -58,8 +59,9 @@ public class Restaurant extends Observable{
      * @author FabioTagliani
      */
     public void addOrder(int tableId, Order order){
-        room.addOrder(tableId, order); 
+        room.addOrder(tableId, order);
     }
+    
     
     public void addTables(){
        room.addtables();

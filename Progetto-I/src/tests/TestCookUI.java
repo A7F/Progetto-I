@@ -22,6 +22,6 @@ public class TestCookUI {
         diablo.addOrder(1, order);
         diablo.addOrder(1, order2);
         
-        CookUI ui = new CookUI(diablo.getOrdersArray(),0);
+        CookUI ui = new CookUI(diablo,0);
     }
 }

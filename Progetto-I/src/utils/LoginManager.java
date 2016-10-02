@@ -131,7 +131,7 @@ public class LoginManager {
                 CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 break;
             case 2:
-                CookUI ui = new CookUI(restaurant.getOrdersArray(),userId);
+                CookUI ui = new CookUI(restaurant,userId);
                 break;
             case 3:
                 CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);

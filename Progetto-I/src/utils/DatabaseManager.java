@@ -34,25 +34,19 @@ public class DatabaseManager {
             statement=(Statement) connection.createStatement();
             String db = DatabaseStrings.createDatabase;
             statement.executeUpdate(db);
-            System.out.println(">> DATABASE CREATO");
             String use = DatabaseStrings.useDatabase;
             statement.executeUpdate(use);
-            System.out.println(">> USO DATABASE Ristorante");
             String table=DatabaseStrings.createMenu;
             statement.executeUpdate(table);
-            System.out.println(">> TABELLA MENU CREATA");
             table=DatabaseStrings.createImpiegati;
             statement.executeUpdate(table);
-            System.out.println(">> TABELLA IMPIEGATI CREATA");
             table=DatabaseStrings.createTavoli;
             statement.executeUpdate(table);
-            System.out.println(">> TABELLA TAVOLI CREATA");
             table=DatabaseStrings.createPrenotazioni;
             statement.executeUpdate(table);
-            System.out.println(">> TABELLA PRENOTAZIONI CREATA");
             table=DatabaseStrings.alterPrenotazioni;
             statement.executeUpdate(table);
-            System.out.println(">> TABELLA PRENOTAZIONI MODIFICATA");
+            System.out.println(">> Database e tabelle generate con successo");
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
             System.err.println("SQLState: " + e.getSQLState());
