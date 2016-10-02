@@ -55,6 +55,7 @@ public class LowPanel extends JPanel{
                     Order newOrder = new Order(1,menuPanel.getSelectedElement(),textNotes.getText());
                     ordersPanel.addOrder(newOrder);
                 }
+                restaurant.notifyCook(restaurant.getOrdersArray());
             }
         });
         
@@ -68,6 +69,7 @@ public class LowPanel extends JPanel{
                     return;
                 }
                 ordersPanel.removeOrder();
+                restaurant.notifyCook(restaurant.getOrdersArray());
             }
         });
         

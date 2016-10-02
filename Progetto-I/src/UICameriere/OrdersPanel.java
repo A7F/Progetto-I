@@ -38,7 +38,7 @@ public class OrdersPanel extends JPanel implements Observer{
         selectedIndex= tablePanel.getSelectedTable();
         orders = restaurant.getOrderTable(selectedIndex);
         
-        System.out.println("selectedIndex in  orders panel:  " + selectedIndex);
+        System.out.println("selectedIndex in orders panel:  " + selectedIndex);
         
         for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));

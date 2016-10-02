@@ -20,10 +20,12 @@ public class CookUI implements Observer{
     int userId;
     DefaultListModel model=new DefaultListModel();
     JFrame frame = new JFrame("Cucina");
+    Restaurant restaurant;
     
     public CookUI(Restaurant r,int userId){
         this.userId=userId;
-        r.addObserver(this);
+        this.restaurant=r;
+        restaurant.addObserver(this);
         elements=r.getOrdersArray();
         initUi();
     }
@@ -59,11 +61,11 @@ public class CookUI implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("ciao sono il cuoco notificato");
+        elements=restaurant.getOrdersArray();
         model.removeAllElements();
         for(int i=0;i<elements.size();i++){
             model.addElement(elements.get(i));
         }
-        frame.repaint();
+        list.repaint();
     }
 }

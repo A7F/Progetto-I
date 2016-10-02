@@ -44,13 +44,16 @@ public class Restaurant extends Observable{
      * @author FabioTagliani
      */
     public ArrayList<Order> getOrderTable(int tableId){
-    
         setChanged();
         //non serve che notifichi tableId-1
         notifyObservers(tableId);
         return room.getOrdersTable(tableId - 1);    //questo invece serve
     }
     
+    public void notifyCook(ArrayList<Order> orders){
+        this.setChanged();
+        notifyObservers(this.getOrdersArray());
+    }
     
     /**
      * Aggiunge un ordine al tavolo prescelto
