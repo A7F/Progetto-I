@@ -56,7 +56,31 @@ public class TavoliManager {
     
     public void insertNextTavolo(){
         try {
-            PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.dropTavoli);
+            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Tavoli ORDER BY NUMTAVOLO DESC LIMIT 1;");
+            ResultSet rs = ps.executeQuery();
+            int max_id=0;
+            while(rs.next()){
+                max_id=rs.getInt("NUMTAVOLO");
+            }
+            ps = mgr.getConnection().prepareStatement("INSERT INTO Tavoli(NUMTAVOLO) VALUES(?);");
+            ps.setInt(1, max_id+1);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(TavoliManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteLastTavolo(){
+        try {
+            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Tavoli ORDER BY NUMTAVOLO DESC LIMIT 1;");
+            ResultSet rs = ps.executeQuery();
+            int max_id=0;
+            while(rs.next()){
+                max_id=rs.getInt("NUMTAVOLO");
+            }
+            ps = mgr.getConnection().prepareStatement("DELETE FROM Tavoli WHERE NUMTAVOLO=?;");
+            ps.setInt(1, max_id);
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(TavoliManager.class.getName()).log(Level.SEVERE, null, ex);
         }

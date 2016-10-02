@@ -15,6 +15,7 @@ public class CookUI {
     JList list;
     ArrayList<Order> elements;
     int userId;
+    DefaultListModel model=new DefaultListModel();
     
     public CookUI(ArrayList<Order> el,int userId){
         this.userId=userId;
@@ -27,7 +28,11 @@ public class CookUI {
         frame.setJMenuBar(new utils.MenuBar(frame,userId));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
-        list =new JList(elements.toArray());
+        for(int i=0;i<elements.size();i++){
+            model.addElement(elements.get(i));
+        }
+        
+        list =new JList(model);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setLayout(new FlowLayout());
         list.setCellRenderer(new CookListCellRender());
