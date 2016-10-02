@@ -15,13 +15,11 @@ I casi d'uso si trovano nella sezione wiki.
 
 ##Cosa contiene l'ultimo commit?
 
-1. UI di login
-  * implementata gestione login utenti
-  * implementata classe per controllare i dati immessi per il login
-  * aggiunta gestione eccezioni (da finire)
-  * unificate tutte le grafiche in modo da gestirle con un solo metodo
-2. UI cameriere
+1. UI cameriere
   * aggiunta gestione degli ordini ai tavoli: possibilità di aggiunta e rimozione ordine
+2. Sincronizzazione fra cameriere e cuoco
+3. Utility di gestione table Tavoli del database
+  * aggiunti metodi di utility in metodi della classe Ristorante: aggiungendo o togliendo un tavolo si aggiornerà automaticamente anche la tabella Tavoli
   
 ###Problemi ultimo commit
 * Vanno rivisti i try catch, le eccezioni sono gestite ma non benissimo (sarebbe carino usare dei popup)
@@ -39,24 +37,4 @@ Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug d
 Ovviamente, essendo il database locale, le modifiche non sono sincronizzate con la repository github quindi "ognuno ha il suo".
 
 ##Struttura database
-L'utility di creazione database crea 2 table: Impiegati e Menu.
-L'utility per popolare la tabella degli impiegati inserisce valori di test riportati qui sotto.
-###Impiegati
-Username | Password | Ruolo | Status
----------|----------|-------|---------
-cuoco1 | passwordcuoco1 | CUOCO | false
-cuoco2 | passwordcuoco2 | CUOCO | false
-cameriere1 | passwordcameriere1 | CAMERIERE | false
-cameriere2 | passwordcameriere2 | CAMERIERE | false
-cassa1 | passwordcassa1 | CASSA | false
-cassa2 | passwordcassa2 | CASSA | false
-principale1 | passwordcapo1 | CAPO | false
-
-*NB:* status è una variabile di tipo BIT usata come flag true/false ed indica se quell' utente ha effettuato il login (ed è ancora collegato) o meno.
-
-###Menu
-element_id | name | description | price | type
------------|------|-------------|-------|-------
- | | | |
-
-
+Rimando alla relativa [pagina wiki](https://github.com/claudio-unipv/Progetto-I/wiki/Database-SQL) per la descrizione della struttura del database
