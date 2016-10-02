@@ -50,6 +50,12 @@ public class Restaurant extends Observable{
         return room.getOrdersTable(tableId - 1);    //questo invece serve
     }
     
+    /**
+     * questo metodo si occupa di notificare il cuoco di cambiamenti negli
+     * ordini di sala (per gestire la grafica)
+     * @author Luca
+     * @param orders 
+     */
     public void notifyCook(ArrayList<Order> orders){
         this.setChanged();
         notifyObservers(this.getOrdersArray());
@@ -65,9 +71,12 @@ public class Restaurant extends Observable{
         room.addOrder(tableId, order);
     }
     
-    
+    /**
+     * Aggiunge un tavolo al ristorante aggiornando anche il database
+     * @author Luca
+     */
     public void addTables(){
-       room.addtables();
+       room.addNewTable();
     }
     
     /**

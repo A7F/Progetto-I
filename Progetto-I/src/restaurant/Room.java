@@ -1,6 +1,7 @@
 package restaurant;
 
 import java.util.ArrayList;
+import utils.TavoliManager;
 
 /**
  *
@@ -28,6 +29,29 @@ public class Room {
     }
     
     /**
+     * Aggiungi un nuovo tavolo con id incrementato automaticamente.
+     * Aggiorna anche la table Tavoli del database Ristorante.
+     * @author Luca
+     */
+    public void addNewTable(){
+        TavoliManager mgr = new TavoliManager();
+        mgr.insertNextTavolo();
+        int nextId = tables.size()+1;
+        tables.add(new Table(nextId));
+    }
+    
+    /**
+     * Rimuovi l'ultimo tavolo che è stato inserito.
+     * Aggiorna anche la table Tavoli del database Ristorante.
+     * @author Luca
+     */
+    public void removeLastTable(){
+        TavoliManager mgr = new TavoliManager();
+        mgr.deleteLastTavolo();
+        tables.remove(tables.size());
+    }
+    
+    /**
      * Ritorna gli ordini del singolo tavolo
      * @param tableId
      * @return Order
@@ -38,9 +62,7 @@ public class Room {
         ArrayList<Order> ordersTable = new ArrayList<Order>();
         
         for (int i = 0; i < tables.size(); i++) {
-            
             if (tables.get(i).getTableId() == tableId){
-            
                 ordersTable.addAll(tables.get(i).getOrdersArray());
             }
         }
@@ -59,13 +81,6 @@ public class Room {
             roomOrders.addAll(tables.get(i).getOrdersArray());
         }
         return roomOrders;
-    }
-    
-    /**
-     * aggiunge alla room un tavolo
-     */
-    public void addtables(){
-        tables.add(new Table(tables.size()));
     }
     
     /**
@@ -106,6 +121,7 @@ public class Room {
             }
         }
     }
+    
     /**
      * Restituisce i tavoli della sala
      * @author fabiotagliani
@@ -134,7 +150,6 @@ public class Room {
     /**
      * Restituisce i tavoli prenotati 
      * @author Luca
-     * 
      * @return tableTaken
      */
     public ArrayList<Table> getTakenTable(){
@@ -159,6 +174,7 @@ public class Room {
     }
     /**
      * Rimuove il singolo ordine di un tavolo
+     * @author Luca
      * @param tableID
      * @param order 
      */
@@ -190,6 +206,10 @@ public class Room {
     
     public Ticket getTicket(int tableID){
         return tables.get(tableID - 1).getTicket();
+    }
+    
+    public int getNumberofTables(){
+        return tables.size();
     }
     
     /**
