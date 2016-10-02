@@ -48,11 +48,12 @@ public class LoadFileText {
         FileReader fr = new FileReader(pathFile);
         BufferedReader br = new BufferedReader(fr);
         DatabaseManager mgr = new DatabaseManager();
+        mgr.initServer();
+        
         while(br.ready()){
             String line = br.readLine();
             String[] splittedLine = line.split("\t");
             Double price = new Double(splittedLine[1]);
-            mgr.initServer();
             
             try {
                 PreparedStatement ps = mgr.getConnection().prepareStatement("INSERT INTO Menu(Name,Description,Price,Tipo) VALUES(?,?,?,?);");
