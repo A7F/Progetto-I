@@ -3,6 +3,7 @@ package UICameriere;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +21,8 @@ public class CameriereMainFrame extends JFrame{
     private Restaurant restaurant;
     private OrdersPanel ordersPanel;
     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    FootBar footBar = new FootBar();
+    JPanel lowContainer = new JPanel(new GridLayout(2,1));
     TablePanel tablePanel;
     MenuPanel menuPanel;
     int userId;
@@ -29,7 +32,7 @@ public class CameriereMainFrame extends JFrame{
         this.restaurant = restaurant;
         this.menuPanel = new MenuPanel(restaurant);
         tablePanel = new TablePanel(restaurant);
-        ordersPanel = new OrdersPanel(tablePanel, restaurant);
+        ordersPanel = new OrdersPanel(tablePanel, restaurant,footBar);
        
         initComponent();
     }
@@ -43,7 +46,10 @@ public class CameriereMainFrame extends JFrame{
         formatPane.add(menuPanel);
         this.add(tablePanel.getPanel(), BorderLayout.NORTH);
         this.add(formatPane,BorderLayout.CENTER);
-        this.add(new LowPanel(restaurant,menuPanel,ordersPanel),BorderLayout.SOUTH);
+        lowContainer.add(new LowPanel(restaurant,menuPanel,ordersPanel));
+        lowContainer.add(footBar);
+        this.add(lowContainer,BorderLayout.SOUTH);
+        //this.add(new LowPanel(restaurant,menuPanel,ordersPanel),BorderLayout.SOUTH);
         
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

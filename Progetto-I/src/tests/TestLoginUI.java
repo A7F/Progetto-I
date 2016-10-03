@@ -11,7 +11,7 @@ import restaurant.Restaurant;
  * dovrebbe diventare il nuovo main che farà partire tutto il programma
  * @author Luca
  */
-public class TestLoginUI {
+public class TestLoginUI{
 
     /**
      * @param args the command line arguments
@@ -27,5 +27,4 @@ public class TestLoginUI {
         r.addOrder(1, order2);
         LoginUI login = new LoginUI(r);     //passo il ristorante appena creato in modo da poter usare getname e getordersarray
     }
-    
 }

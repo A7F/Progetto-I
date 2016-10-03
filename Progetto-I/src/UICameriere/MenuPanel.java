@@ -1,5 +1,6 @@
 package UICameriere;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -19,6 +20,7 @@ public class MenuPanel extends JPanel{
         
     public MenuPanel(Restaurant res){
         this.restaurant=res;
+        this.setPreferredSize(new Dimension(300,240));
         this.setBorder(new TitledBorder("Menu"));
         init();
     }
@@ -32,6 +34,7 @@ public class MenuPanel extends JPanel{
         
         list=new JList(elementName.toArray());
         pane=new JScrollPane(list);
+        pane.setPreferredSize(new Dimension(290,200));
         this.add(pane);
     }
     

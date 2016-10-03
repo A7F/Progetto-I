@@ -22,7 +22,11 @@ class ButtonPanel extends JPanel{
         b1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
-                ord.get(i).changeDone();
+                try{
+                    ord.get(i).changeDone();
+                }catch(IndexOutOfBoundsException ex){
+                    ex.toString();
+                }
                 System.out.println("KEY:\tDONE\tROW:"+i+"\tDONE:"+ord.get(i).getDone()+"\tREAD:"+ord.get(i).getRead());
                 list.repaint();
             }
