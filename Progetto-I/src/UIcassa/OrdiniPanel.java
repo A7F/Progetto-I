@@ -1,25 +1,21 @@
-package UICameriere;
+package UIcassa;
 
+import UICameriere.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- * Contiene l'elenco degli ordini relativi al tavolo selezionato
+ * Contiene l'elenco degli ordini relativi al tavolo selezionato. La lista è 
+ * popolata con Order.
  * @author Luca
  */
-public class OrdersPanel extends JPanel implements Observer{
+public class OrdiniPanel extends JPanel implements Observer{
 
     private TablePanel tablePanel;
     private Restaurant restaurant;
@@ -27,12 +23,9 @@ public class OrdersPanel extends JPanel implements Observer{
     JScrollPane pane;
     DefaultListModel model=new DefaultListModel();
     private JList list;
-    int selectedIndex;
-    FootBar footBar;
-    
+    int selectedIndex;    
 
-    public OrdersPanel(TablePanel tablePanel, Restaurant restaurant, FootBar fbar) {
-        this.footBar = fbar;
+    public OrdiniPanel(TablePanel tablePanel, Restaurant restaurant) {
         this.setPreferredSize(new Dimension(300,240));
         this.tablePanel = tablePanel;
         this.restaurant = restaurant;
@@ -44,29 +37,11 @@ public class OrdersPanel extends JPanel implements Observer{
         selectedIndex= tablePanel.getSelectedTable();
         orders = restaurant.getOrderTable(selectedIndex);
         
-        System.out.println("selectedIndex in orders panel:  " + selectedIndex);
-        
         for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
         }
         
         list=new JList(model);
-        list.addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int selection=list.getSelectedIndex();
-                if(list.isSelectionEmpty()){
-                    selection=0;
-                }
-                if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().isEmpty()){
-                    footBar.getReadLabel().setText("Nessun ordine");
-                    footBar.getDoneLabel().setText("Nessun ordine");
-                }else{
-                    footBar.getReadLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()));
-                    footBar.getDoneLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()));
-                }
-            }
-        });
         
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         pane = new JScrollPane(list);
@@ -94,6 +69,21 @@ public class OrdersPanel extends JPanel implements Observer{
         model.remove(list.getSelectedIndex());
     }
     
+    public void removeOrder(Order ord){
+        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(ord);
+        model.remove(list.getSelectedIndex());
+    }
+    
+    public void removeAllOrders(){
+        restaurant.getTables().get(selectedIndex-1).removeAllOrder();
+        model.removeAllElements();
+    }
+    
+    public void removeOrder(int index){
+        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(index);
+        model.remove(index);
+    }
+    
     public void addOrder(Order ord){
         
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);
@@ -106,5 +96,9 @@ public class OrdersPanel extends JPanel implements Observer{
     
     public int getSelectedIndex(){
         return list.getSelectedIndex();
+    }
+    
+    public DefaultListModel getModel(){
+        return this.model;
     }
 }

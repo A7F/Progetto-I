@@ -49,7 +49,6 @@ public class CameriereMainFrame extends JFrame{
         lowContainer.add(new LowPanel(restaurant,menuPanel,ordersPanel));
         lowContainer.add(footBar);
         this.add(lowContainer,BorderLayout.SOUTH);
-        //this.add(new LowPanel(restaurant,menuPanel,ordersPanel),BorderLayout.SOUTH);
         
         this.setTitle("Cameriere");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

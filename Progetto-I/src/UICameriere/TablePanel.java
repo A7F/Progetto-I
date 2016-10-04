@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import restaurant.Restaurant;
 
 /**
- *Pannello contenente uno lista di bottoni corrispondenti ai tavoli presenti 
- *nel ristorante
+ * Pannello contenente uno lista di bottoni corrispondenti ai tavoli presenti 
+ * nel ristorante
  * @author Fabio
  */
 public class TablePanel{

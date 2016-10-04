@@ -10,13 +10,11 @@ import restaurant.Restaurant;
  *
  * @author Fabio
  */
-public class TestUICassa {
+public class TestCassaLuca {
     
     public static void main(String[] args) throws IOException {
         
         Restaurant diablo = new Restaurant("Diablo", 5,"./data/menu.txt");
-
-        // System.out.println(diablo.getMenu());
         
         MenuElement me = new MenuElement("Pasta alla Carbonara", 7, "PRIMO", "Spaghetti con carbonara, servita calda col ghiaccio e un pizzico di roccia saporita al ragno.\n");
         MenuElement me2 = new MenuElement("Pasta col Sugo", 5.5, "PRIMO", "Si può scegliere tra tortiglioni, penne e spaghetti, conditi con sugo di pomodoro fresco fatto in giornata.\n");

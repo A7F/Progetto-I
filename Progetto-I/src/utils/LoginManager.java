@@ -1,10 +1,10 @@
 package utils;
 
 import UICameriere.CameriereMainFrame;
-import UICassa.CassaMainFrame;
 import UIcapo.CapoUI;
 import restaurant.Restaurant;
 import UIcook.CookUI;
+import UIcassa.CassaMainFrame;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -128,6 +128,7 @@ public class LoginManager {
         if(status){
             switch(selected){
             case 1:
+                //CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 break;
             case 2:
