@@ -30,6 +30,8 @@ public class CookUI implements Observer{
     JLabel ingredientiLabel = new JLabel("INGREDIENTI >> ");
     JLabel ingredientiText = new JLabel();
     JLabel noteText = new JLabel();
+    CookListCellRender myRender = new CookListCellRender();
+
     
     public CookUI(Restaurant r,int userId){
         this.userId=userId;
@@ -53,7 +55,7 @@ public class CookUI implements Observer{
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setLayout(new FlowLayout());
         
-        list.setCellRenderer(new CookListCellRender());
+        list.setCellRenderer(myRender);
         list.addListSelectionListener(new ListSelectionListener(){
             @Override
             public void valueChanged(ListSelectionEvent e){
@@ -87,13 +89,17 @@ public class CookUI implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
+        
         descriptionPanel.repaint();
         elements=restaurant.getOrdersArray();
         model.removeAllElements();
         for(int i=0;i<elements.size();i++){
             model.addElement(elements.get(i));
         }
+        myRender.repaint();
         list.repaint();
+        
+        System.out.println("dim lista:  " + model.getSize());
     }
 
     private void createLowerPanel() {

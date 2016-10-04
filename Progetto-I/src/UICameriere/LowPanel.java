@@ -68,7 +68,11 @@ public class LowPanel extends JPanel{
                     JOptionPane.showMessageDialog(frame,"Nessun elemento ordine selezionato!","Errore",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
-                ordersPanel.removeOrder();
+                if(!(restaurant.getOrdersArray().get(ordersPanel.getSelectedIndex()).getDone())){
+                    System.err.println("RIMUOVI ORDINE");
+                    ordersPanel.removeOrder();
+                }
+                
                 restaurant.notifyCook(restaurant.getOrdersArray());
             }
         });

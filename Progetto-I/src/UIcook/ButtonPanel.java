@@ -23,11 +23,12 @@ class ButtonPanel extends JPanel{
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
                 try{
-                    ord.get(i).changeDone();
+                    Order order = (Order)list.getModel().getElementAt(i);
+                    order.changeDone();
                 }catch(IndexOutOfBoundsException ex){
                     ex.toString();
                 }
-                System.out.println("KEY:\tDONE\tROW:"+i+"\tDONE:"+ord.get(i).getDone()+"\tREAD:"+ord.get(i).getRead());
+                //System.out.println("KEY:\tDONE\tROW:"+i+"\tDONE:"+ord.get(i).getDone()+"\tREAD:"+ord.get(i).getRead()+ "\t" + list.getModel().getSize());
                 list.repaint();
             }
         });
