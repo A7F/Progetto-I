@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- *
+ * finestra per aggiungere e, prossimamente, controllare le ordinazioni ricevute telefonicamente
  * @author Luca
  */
 public class PrenotazioneWindow extends JFrame{
@@ -32,6 +32,10 @@ public class PrenotazioneWindow extends JFrame{
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    /** 
+     * avvia la grafica
+     * @author Luca
+     */
     private void init() {
         myLayout.setVgap(3);
         myLayout.setHgap(4);
@@ -40,6 +44,10 @@ public class PrenotazioneWindow extends JFrame{
         addInGrid();
     }
 
+    /**
+     * popola la griglia che fisserà il layout, con i vari elementi
+     * @author Luca
+     */
     private void addInGrid() {
         nuovaPrenotazione.add(nameLabel);
         nuovaPrenotazione.add(fieldName);
@@ -68,6 +76,10 @@ public class PrenotazioneWindow extends JFrame{
         this.add(nuovaPrenotazione);
     }
 
+    /**
+     * metodo che imposta le priprietà di tutti gli spinner presenti nellafinestra
+     * @author Luca
+     */
     private void setSpinners() {
         GridLayout spinnersLayout = new GridLayout(1,2);
         spinnersLayout.setHgap(3);

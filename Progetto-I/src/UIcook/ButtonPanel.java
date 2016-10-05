@@ -9,6 +9,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import restaurant.Order;
 
+/**
+ * pannello di pulsanti "letto" e "fatto".
+ * @author Luca
+ */
 class ButtonPanel extends JPanel{
     
     ArrayList<Order> ord;
@@ -28,7 +32,6 @@ class ButtonPanel extends JPanel{
                 }catch(IndexOutOfBoundsException ex){
                     ex.toString();
                 }
-                //System.out.println("KEY:\tDONE\tROW:"+i+"\tDONE:"+ord.get(i).getDone()+"\tREAD:"+ord.get(i).getRead()+ "\t" + list.getModel().getSize());
                 list.repaint();
             }
         });

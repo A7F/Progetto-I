@@ -29,14 +29,29 @@ public class MenuElement {
         return name;
     }
     
+    /**
+     * metodo per ottenere il tipo di elemento (primo, secondo, dolce, bevanda)
+     * @author Luca
+     * @return  tipo dell' elemento
+     */
     public String getTypeElement(){
         return typeElement;
     }
     
+    /**
+     * metodo per ottenere il prezzo dell' elemento.
+     * @return  prezzo dell' elemento
+     * @author Luca
+     */
     public double getPrizeElement(){
         return price;
     }
     
+    /**
+     * metodo per ottenere la descrizione dell' elemento
+     * @author Luca
+     * @return   descrizione dell' elemento
+     */
     public String getDescription(){
         return description;
     }

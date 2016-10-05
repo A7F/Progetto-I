@@ -25,6 +25,10 @@ public class LoginUI {
         initGraphics();
     }
     
+    /**
+     * metodo per avviare la grafica di login
+     * @author Luca
+     */
     private void initGraphics(){
         frame = new JFrame("Ristorante "+name);
         
@@ -46,6 +50,10 @@ public class LoginUI {
         checkFlagLogin();
     }
     
+    /**
+     * metodo per chiudere la finestra di login quando l'accesso viene confermato con successo
+     * @author Luca
+     */
     protected void checkFlagLogin(){
         while(buttons.getFlag()==false){}
         frame.dispose();

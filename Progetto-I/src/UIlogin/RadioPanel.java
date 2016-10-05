@@ -5,7 +5,11 @@ import java.awt.*;
 import java.util.Enumeration;
 
 /**
- *
+ * questa classe è un pannello di radiobuttons fini alla gestione della login corretta per
+ * l'utente corretto: i radiobuttons, oltre a controllare che un utente non stia tentando di
+ * accedere con le credenziali (username, password) corrette alla interfaccia sbagliata, istanziano
+ * la grafica corretta passando il valore selezionato al LoginManager.
+ * @see LoginManager
  * @author Luca
  */
 class RadioPanel extends JPanel{
@@ -31,6 +35,11 @@ class RadioPanel extends JPanel{
         r1.setSelected(true);
     }
     
+    /**
+     * getter per ottenere il nome del radiobutton selezionato
+     * @return  etichetta del radiobutton scelto
+     * @author Luca
+     */
     public String getSelectedButton(){
         String name = null;
         

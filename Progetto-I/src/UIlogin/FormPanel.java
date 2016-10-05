@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- *
+ * pannello di form per il login che contiene i campi login e password
  * @author Luca
  */
 class FormPanel extends JPanel{
@@ -34,10 +34,21 @@ class FormPanel extends JPanel{
         this.add(wrapperPanel,BorderLayout.CENTER);
     }
     
+    /**
+     * metodo getter che ritorna il username digitato dall' utente
+     * @return  username dell' utente
+     * @author Luca
+     */
     public String getUsernameInserted(){
         return userText.getText();
     }
     
+    /**
+     * metodo getter della password inserita dall' utente. Per questioni di sicurezza
+     * viene distrutto l'array di char in input.
+     * @return  password inserita da utente
+     * @author Luca
+     */
     public String getPasswordInserted(){
         char[] p = passwordText.getPassword();
         String str2 = new String(p);
@@ -45,10 +56,18 @@ class FormPanel extends JPanel{
         return str2;
     }
     
+    /**
+     * questo metodo cancella il testo inserito come username
+     * @author Luca
+     */
     public void wipeUsername(){
         userText.setText("");
     }
     
+    /**
+     * questo metodo cancella la password inserita nella relativa textarea
+     * @author Luca
+     */
     public void wipePassword(){
         passwordText.setText("");
     }

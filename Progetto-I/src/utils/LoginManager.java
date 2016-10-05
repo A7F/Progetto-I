@@ -42,6 +42,15 @@ public class LoginManager {
     this.userId=userId;
     }
     
+    /**
+     * controlla le credenziali (username, password, valore selezionato) inserite da utente.
+     * @param username
+     * @param password
+     * @param selected
+     * @return boolean
+     * @throws SQLException 
+     * @author Luca
+     */
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
         int val = getSelectedKey(selected);
         
@@ -82,6 +91,12 @@ public class LoginManager {
         }
     }
     
+    /**
+     * Questo metodo ottiene il valore selezionato nel pannello radio button
+     * @param selected
+     * @return Integer
+     * @author Luca
+     */
     public Integer getSelectedKey(String selected){
         ArrayList<String> strings = new ArrayList<>();
         strings.add("CASSA");
@@ -106,6 +121,14 @@ public class LoginManager {
         return 0;
     }
     
+    /**
+     * questo metodo permette al capo di registrare facilmente un nuovo utente nel database
+     * @author Luca
+     * @param username
+     * @param password
+     * @param selected
+     * @throws SQLException 
+     */
     public void insertValue(String username, String password, String selected) throws SQLException{
         int val = getSelectedKey(selected);
         
@@ -118,12 +141,23 @@ public class LoginManager {
                 ps.setString(3, selected);
                 ps.executeUpdate();
                 
-                dbm.runUpdate("INSERT INTO Impiegati(username,password) VALUES("+username+","+password+";");
+                ps = dbm.getConnection().prepareStatement("INSERT INTO Impiegati(username,password) VALUES(?,?);");
+                ps.setString(1, username);
+                ps.setString(2, password);
+                ps.executeUpdate();
+                //dbm.runUpdate("INSERT INTO Impiegati(username,password) VALUES("+username+","+password+";");
                 JOptionPane.showMessageDialog(frame,"Inserito con successo utente "+username+".","Database",JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
     
+    /**
+     * questo metodo si occupa di istanziare la grafica corretta a seconda dell' utente che ha
+     * effettuato il login.
+     * @param status
+     * @param selected 
+     * @author Luca
+     */
     public void graphicsDispatcher(boolean status,int selected){
         if(status){
             switch(selected){
@@ -149,6 +183,11 @@ public class LoginManager {
         return userId;
     }
     
+    /**
+     * questo metodo disconnette l'utente con userId specificato.
+     * @author Luca
+     * @param userId 
+     */
     public void disconnectUser(int userId){
         try {
             PreparedStatement ps = dbm.getConnection().prepareStatement("use ristorante;");
@@ -162,6 +201,11 @@ public class LoginManager {
         }
     }
     
+    /**
+     * questo metodo connette l'utente con relativo userId.
+     * @author Luca
+     * @param userId 
+     */
     public void connectUser(int userId){
         try {
             PreparedStatement ps = dbm.getConnection().prepareStatement("UPDATE impiegati SET status=? WHERE id=?;");

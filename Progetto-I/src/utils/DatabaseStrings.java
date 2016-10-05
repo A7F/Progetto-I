@@ -1,8 +1,8 @@
-
 package utils;
 
 /**
- *
+ * La classe contiene tutte le stringhe query ed update che non richiedono parametri
+ * utilizzate nel programma.
  * @author Luca
  */
 public class DatabaseStrings{
@@ -16,4 +16,5 @@ public class DatabaseStrings{
     public static final String getAllMenu = "SELECT * FROM menu;";
     public static final String getAllTavoli = "SELECT * FROM Tavoli;";
     public static final String dropTavoli = "DROP TABLE IF EXISTS Tavoli;";
+    public static final String dropMenu = "DROP TABLE IF EXISTS Menu;";
 }

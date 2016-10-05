@@ -7,7 +7,8 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 /**
- *
+ * pannello inferiore nella grafica di cassa contenente pulsanti stampa e ordinazioni,
+ * jlabel del totale e area di output per la stampa dello scontrino
  * @author Luca
  */
 public class ServicePanel extends JPanel{
@@ -28,6 +29,10 @@ public class ServicePanel extends JPanel{
         init();
     }
 
+    /**
+     * metodo per inizializzare la grafica della cucina
+     * @author Luca
+     */
     private void init() {
         myLayout.setHgap(3);
         myLayout.setVgap(3);
@@ -67,6 +72,11 @@ public class ServicePanel extends JPanel{
         this.add(cassaPanel);
     }
     
+    /**
+     * metodo per modificare il testo della jLabel del totale
+     * @param text il nuovo testo che assumerà la JLabel
+     * @author Luca
+     */
     public void setJlabelText(String text){
         total.setText(text);
     }
