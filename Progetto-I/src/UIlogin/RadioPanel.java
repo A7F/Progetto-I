@@ -13,7 +13,7 @@ class RadioPanel extends JPanel{
     JRadioButton r1 = new JRadioButton("CASSA");
     JRadioButton r2 = new JRadioButton("CUOCO");
     JRadioButton r3 = new JRadioButton("CAMERIERE");
-    JRadioButton r4 = new JRadioButton("KING");
+    JRadioButton r4 = new JRadioButton("CAPO");
     ButtonGroup group = new ButtonGroup();
     
     

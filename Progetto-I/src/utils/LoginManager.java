@@ -30,7 +30,7 @@ public class LoginManager {
         rel.put(1, "CASSA");
         rel.put(2, "CUOCO");
         rel.put(3, "CAMERIERE");
-        rel.put(4, "KING");
+        rel.put(4, "CAPO");
     }
 
     /**
@@ -87,7 +87,7 @@ public class LoginManager {
         strings.add("CASSA");
         strings.add("CUOCO");
         strings.add("CAMERIERE");
-        strings.add("KING");
+        strings.add("CAPO");
         
         Set set = rel.entrySet();
         Iterator iterator = set.iterator();
@@ -128,7 +128,6 @@ public class LoginManager {
         if(status){
             switch(selected){
             case 1:
-                //CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 CassaMainFrame cassaFrame = new CassaMainFrame(restaurant,userId);
                 break;
             case 2:
