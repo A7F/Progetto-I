@@ -137,7 +137,8 @@ public class LoginManager {
                 CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);
                 break;
             case 4:
-                CapoUI win = new CapoUI(userId);
+                CapoUI win = new CapoUI(restaurant, userId);
+                //CapoUI win = new CapoUI(userId);
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");

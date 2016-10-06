@@ -1,0 +1,1 @@
+INDEX VERSION 1.127+D:\Università\Slides\Terzo anno\Informatica due\ProgettoRistorante\ProgettoI\Progetto-I\Progetto-I\.metadata\.plugins\org.eclipse.jdt.core
