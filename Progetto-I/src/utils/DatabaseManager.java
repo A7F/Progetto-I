@@ -67,7 +67,7 @@ public class DatabaseManager {
     /**
      * metodo di servizio per eseguire facilmente una query sul database del programma
      * @author Luca
-     * @param query 
+     * @param query query da eseguire sul database ristorante
      */
     public void runQuery(String query){
         try{
@@ -81,7 +81,7 @@ public class DatabaseManager {
     /**
      * metodo per eseguire un update sul database del programma
      * @author Luca
-     * @param update 
+     * @param update update da eseguire sul database ristorante
      */
     public void runUpdate(String update){
         try{

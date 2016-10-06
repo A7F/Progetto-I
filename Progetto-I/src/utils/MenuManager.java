@@ -21,6 +21,10 @@ public class MenuManager {
         init();
     }
 
+    /**
+     * metodo di inizializzazione table menu
+     * @author Luca
+     */
     private void init(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.useDatabase);
@@ -30,6 +34,11 @@ public class MenuManager {
         }
     }
     
+    /**
+     * metodo per ottenere tutti i tavoli da table menu del database ristorante
+     * @return arraylist di menuelement
+     * @author Luca
+     */
     public ArrayList<MenuElement> listFromMenuTable(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.getAllMenu);
@@ -44,6 +53,14 @@ public class MenuManager {
         return this.menuElements;
     }
     
+    /**
+     * metodo per inserire un nuovo menuelement nel database ristorante
+     * @param name nome del menuelement
+     * @param price prezzo del menuelement
+     * @param tipo tipo del menuelement
+     * @param description descrizione (ovvero gli ingredienti) del menuelement
+     * @author Luca
+     */
     public void addMenuElementToDatabase(String name,double price, String tipo, String description){
         MenuElement newElement = new MenuElement(name,price,tipo,description);
         try {
@@ -58,6 +75,12 @@ public class MenuManager {
         }
     }
     
+    /**
+     * metodo per cambiare prezzo al menuelement con id specificato
+     * @param id id del menuelement di cui cambiare prezzo
+     * @param newPrice nuovo prezzo da assegnare al menuelement con id specificato
+     * @author Luca
+     */
     public void changeElementPrice(int id,double newPrice){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("ALTER TABLE Menu SET Price=? WHERE id=?;");
@@ -69,6 +92,12 @@ public class MenuManager {
         }
     }
     
+    /**
+     * metodo per cambiare nome al menuelement con id specificato
+     * @param id id del menuelement di cui cambiare nome
+     * @author Luca
+     * @param newName nuovo nome da assegnare al menuelement
+     */
     public void changeElementName(int id,String newName){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("ALTER TABLE Menu SET Name=? WHERE id=?;");
@@ -80,6 +109,12 @@ public class MenuManager {
         }
     }
     
+    /**
+     * metodo per cambiare nome al menuelement con id specificato
+     * @param id id del menuelement di cui cambiare nome
+     * @param newDesc nuova descrizione da assegnare al menuelement con id specificato
+     * @author Luca
+     */
     public void changeElementDescription(int id,String newDesc){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("ALTER TABLE Menu SET Description=? WHERE id=?;");
@@ -91,6 +126,12 @@ public class MenuManager {
         }
     }
     
+    /**
+     * metodo per cambiare tipo di elemento tramite suo id
+     * @param id id del menuelement di cui cambiare nome
+     * @param newType nuovo tipo da assegnare al menuelement con id specificato
+     * @author Luca
+     */
     public void changeElementType(int id,String newType){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("ALTER TABLE Menu SET Tipo=? WHERE id=?;");
