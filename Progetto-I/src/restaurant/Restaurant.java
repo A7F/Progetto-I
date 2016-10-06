@@ -16,6 +16,7 @@ public class Restaurant extends Observable{
     private String name;
     private Room room;
     private Menu menu;
+    private int discount;
     
     public Restaurant(String name, int numberOfTables, String pathFile) throws IOException{
         this.name = name;
@@ -113,6 +114,25 @@ public class Restaurant extends Observable{
         return room.getTables();
       
     }
+
+    /**
+     * Ritorna l'eventuale sconto di giornata
+     * @return discount
+     * @author FbioTagliani
+     */
+    public int getDiscount() {
+        return discount;
+    }
+
+    /**
+     * Imposta l'eventuale sconto di giornata
+     * @param discount
+     * @author FabioTagliani
+     */
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+        
     /**
      * Restituisce lo scontrino del tavolo 
      * @param tableID
