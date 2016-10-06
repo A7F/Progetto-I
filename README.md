@@ -15,18 +15,22 @@ I casi d'uso si trovano nella sezione wiki.
 
 ##Cosa contiene l'ultimo commit?
 
-1. UI cameriere
-  * aggiunta gestione degli ordini ai tavoli: possibilità di aggiunta e rimozione ordine
-2. Sincronizzazione fra cameriere e cuoco
-3. Utility di gestione table Tavoli del database
-  * aggiunti metodi di utility in metodi della classe Ristorante: aggiungendo o togliendo un tavolo si aggiornerà automaticamente anche la tabella Tavoli
+1. UI cassa
+  * migliorata la grafica della cassa che ora rispecchia il caso d'uso
+2. Sincronizzazione fra cameriere, cuoco e cassa
+3. UI capo
+  * aggiunta la possibilità di applicare uno sconto sul totale
+4. Bugfix delle query e degli update sul database
+  * migliorata utility di creazione del database e di popolazione automatica delle table
+5. Iniziata stesura della javadoc
   
 ###Problemi ultimo commit
 * Vanno rivisti i try catch, le eccezioni sono gestite ma non benissimo (sarebbe carino usare dei popup)
 * L'utility per il proprietario del ristorante che registra nuovi utenti nel database va testata
-* La UI del cameriere andrebbe resa più guardabile aggiungendo anche le info riguardo l'elemento menu selezionato
+* Sistemare gestione dei tavoli in grafiche
+* Javadoc da terminare e da revisionare
 
-##Usare il database (Win)
+##Usare il database (Win+Mac)
 per utilizzare il database su windows ho dovuto installare XAMPP in modo da avviare Apache sul pc stesso altrimenti netbeans continua a dare un errore di connessione (0 packet sent). Ho lasciato volontariamente bianca la password per il root user.
 
 Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug della IDE) pur importando nel progetto. Per risolvere:
@@ -34,6 +38,7 @@ Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug d
 * add library
 * selezionare *MySQL JDBC Driver*
 
+La procedura è la stessa su Mac, siccome XAMPP è ugualmente disponibile.
 Ovviamente, essendo il database locale, le modifiche non sono sincronizzate con la repository github quindi "ognuno ha il suo".
 
 ##Struttura database
