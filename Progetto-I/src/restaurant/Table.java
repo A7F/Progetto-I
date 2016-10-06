@@ -11,13 +11,11 @@ public class Table {
     private int tableId;
     private Boolean isTaken;
     private ArrayList<Order> orders;
-    private  Ticket ticket ;
     
     public Table(int tableId){
         this.tableId = tableId;
         isTaken = false;
         orders = new ArrayList<>();
-        ticket = new Ticket();
     }
     
     /**
@@ -64,19 +62,7 @@ public class Table {
     public int getTableId() {
         return tableId;
     }
-    /**
-     * Crea lo scontrino del tavolo selezionato
-     * @author FabioTagliani
-     */
-    public Ticket createTicket() {
-        ticket.elaboraTicket(orders);
-        return ticket;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-    
+      
     @Override
     public String toString() {
         return "tavolo: "+(tableId+1)+" || prenotato: "+isTaken+ " || ordini: " + orders +"\n";

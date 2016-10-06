@@ -25,8 +25,7 @@ public class Restaurant extends Observable{
     }
     
     private void initMenu(String pathFile) throws IOException{
-        menu = new Menu(pathFile);
-        
+        menu = new Menu(pathFile);   
     }
     
     private void initRoom(int numberOfTables){
@@ -34,7 +33,6 @@ public class Restaurant extends Observable{
     }
     
     public ArrayList<Order> getOrdersArray(){
-        
         return room.getOrdersArray();
     }
     
@@ -118,7 +116,7 @@ public class Restaurant extends Observable{
     /**
      * Ritorna l'eventuale sconto di giornata
      * @return discount
-     * @author FbioTagliani
+     * @author FabioTagliani
      */
     public int getDiscount() {
         return discount;
@@ -132,21 +130,7 @@ public class Restaurant extends Observable{
     public void setDiscount(int discount) {
         this.discount = discount;
     }
-        
-    /**
-     * Restituisce lo scontrino del tavolo 
-     * @param tableID
-     * @return Ticket
-     * @author FabioTagliani
-     */
-    public Ticket createTicket(int tableID){
-       return room.createTicket(tableID);  
-    }
-    
-    public Ticket getTicket(int tableID ){
-        return room.getTicket(tableID);
-    }
-    
+            
     /**
     * Restituisce i tavoli non prenotati
     * @author FabioTagliani

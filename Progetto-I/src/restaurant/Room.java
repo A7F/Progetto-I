@@ -66,7 +66,6 @@ public class Room {
                 ordersTable.addAll(tables.get(i).getOrdersArray());
             }
         }
-        
         return ordersTable;
     }
     
@@ -194,20 +193,7 @@ public class Room {
             }
         }
     }
-    
-    /**
-     * @author FabioTagliani
-     * @param tableID
-     * @return 
-     */
-    public Ticket createTicket(int tableID){
-        return tables.get(tableID -1).createTicket();
-    }
-    
-    public Ticket getTicket(int tableID){
-        return tables.get(tableID - 1).getTicket();
-    }
-    
+       
     public int getNumberofTables(){
         return tables.size();
     }

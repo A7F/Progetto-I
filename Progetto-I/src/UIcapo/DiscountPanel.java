@@ -14,7 +14,6 @@ import javax.swing.SpinnerNumberModel;
 
 /**
  * Pannelo per inserire il valore dello sconto
- *
  * @author Fabio
  */
 public class DiscountPanel extends JPanel {
@@ -41,6 +40,11 @@ public class DiscountPanel extends JPanel {
         this.add(percentualeLabel);
     }
 
+    /**
+     * Ritorna il valore dello sconto inserito nella casella di testo 
+     * @return 
+     * @author Fabio
+     */
     public int getSpinnerDiscount() {
         return (Integer) spinnerDiscount.getValue();
     }
