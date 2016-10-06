@@ -7,8 +7,8 @@ import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- * mi sembra evidente cosa faccia questa classe
- * dovrebbe diventare il nuovo main che farà partire tutto il programma
+ * classe di test globale del funzionamento del programma.
+ * dovrebbe diventare il nuovo main che farà partire tutto il programma.
  * @author Luca
  */
 public class TestLoginUI{

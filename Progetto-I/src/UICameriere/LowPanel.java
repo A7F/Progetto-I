@@ -18,7 +18,8 @@ import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- *
+ * questa classe è il pannello inferiore della grafica del cameriere. Contiene campo per note, i due pulsanti
+ * ADD e REMOVE, lo spinner per aggiungere più ordini uguali.
  * @author Luca
  */
 public class LowPanel extends JPanel{
@@ -37,10 +38,14 @@ public class LowPanel extends JPanel{
         this.menuPanel=menu;
         this.ordersPanel=orders;
         this.setLayout(new FlowLayout());
-        create();
+        init();
     }
     
-    private void create(){
+    /**
+     * avvio della creazione del pannello basso della grafica cameriere
+     * @author Luca
+     */
+    private void init(){
         JButton addButton = new JButton("ADD");
         addButton.addActionListener(new ActionListener(){
             @Override
@@ -55,7 +60,7 @@ public class LowPanel extends JPanel{
                     Order newOrder = new Order(1,menuPanel.getSelectedElement(),textNotes.getText());
                     ordersPanel.addOrder(newOrder);
                 }
-                restaurant.notifyCook(restaurant.getOrdersArray());
+                restaurant.notifyCook();
             }
         });
         
@@ -73,7 +78,7 @@ public class LowPanel extends JPanel{
                     ordersPanel.removeOrder();
                 }
                 
-                restaurant.notifyCook(restaurant.getOrdersArray());
+                restaurant.notifyCook();
             }
         });
         

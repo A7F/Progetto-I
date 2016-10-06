@@ -54,10 +54,9 @@ public class Restaurant extends Observable{
     /**
      * questo metodo si occupa di notificare il cuoco di cambiamenti negli
      * ordini di sala (per gestire la grafica)
-     * @author Luca
-     * @param orders 
+     * @author Luca 
      */
-    public void notifyCook(ArrayList<Order> orders){
+    public void notifyCook(){
         this.setChanged();
         notifyObservers(this.getOrdersArray());
     }
@@ -82,8 +81,9 @@ public class Restaurant extends Observable{
     
     /**
      * Rimuove il singolo ordine di un tavolo
-     * @param tableId
-     * @param order 
+     * @param tableId id del tavolo su cui rimuovere l'ordine
+     * @param order ordine da rimuovere
+     * @author Luca
      */
     public void removeSingleOrder(int tableId, Order order){
         room.removeSingleOrder(tableId - 1, order);
@@ -91,7 +91,7 @@ public class Restaurant extends Observable{
     
     /**
      * Rimuove tutti gli ordini di un tavolo
-     * @param tableId
+     * @param tableId id del tavolo su cui rimuovere gli ordini
      * @author Fabio Tagliani
      */
     public void removeAllOrder(int tableId){
