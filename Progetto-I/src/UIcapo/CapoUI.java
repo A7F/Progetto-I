@@ -14,14 +14,14 @@ import utils.MenuBar;
  * @author Luca
  */
 public class CapoUI {
-    CustomFrame frame=new CustomFrame("gestione");
+    private CustomFrame frame=new CustomFrame("gestione");
     final JTabbedPane tabbedPane = new JTabbedPane();
     final JPanel panelEmp = new JPanel();
     final JPanel panelMenu = new JPanel();
-    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-    FunctionalPanel p1;
-    FunctionalPanel p2;
-    int userId;
+    private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    private FunctionalPanel p1;
+    private FunctionalPanel p2;
+    private int userId;
     
     public CapoUI(int userId){
         this.userId=userId;

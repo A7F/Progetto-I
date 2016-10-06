@@ -19,13 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class LoginManager {
     
-    Map<Integer,String> rel = new HashMap<>();
-    DatabaseManager dbm = new DatabaseManager();
-    Restaurant restaurant;
-    int userId = 0;
-    JFrame frame = new JFrame();
+    private Map<Integer,String> rel = new HashMap<>();
+    private DatabaseManager dbm = new DatabaseManager();
+    private Restaurant restaurant;
+    private int userId = 0;
+    private JFrame frame;
     
     public LoginManager(Restaurant r){
+        this.frame = new JFrame();
         this.restaurant = r;
         rel.put(1, "CASSA");
         rel.put(2, "CUOCO");
@@ -35,19 +36,20 @@ public class LoginManager {
 
     /**
      * costruttore usato per la menubar: non serve il resto, basta solo l'userId.
-     * @param userId 
+     * @param userId l'id utente che effettua login
      * @author Luca
      */
     LoginManager(int userId) {
+        this.frame = new JFrame();
     this.userId=userId;
     }
     
     /**
      * controlla le credenziali (username, password, valore selezionato) inserite da utente.
-     * @param username
-     * @param password
-     * @param selected
-     * @return boolean
+     * @param username  lo username inserito da utente
+     * @param password  la password inserita da utente
+     * @param selected  il valore selezionato del radiobutton
+     * @return boolean che conferma o meno l'avvenuta autenticazione
      * @throws SQLException 
      * @author Luca
      */
@@ -92,9 +94,10 @@ public class LoginManager {
     }
     
     /**
-     * Questo metodo ottiene il valore selezionato nel pannello radio button
-     * @param selected
-     * @return Integer
+     * Questo metodo ottiene il valore selezionato nel pannello radio button convertendolo in un intero.
+     * Utile per non operare continuamente con il testo del radiobutton selezionato, usando gli int è tutto più immediato.
+     * @param selected  valore selezionato nel pannello radiobutton
+     * @return Il valore selezionato convertito da stringa ad intero
      * @author Luca
      */
     public Integer getSelectedKey(String selected){
@@ -124,9 +127,9 @@ public class LoginManager {
     /**
      * questo metodo permette al capo di registrare facilmente un nuovo utente nel database
      * @author Luca
-     * @param username
-     * @param password
-     * @param selected
+     * @param username  username da registrare
+     * @param password  password da registrare
+     * @param selected  ruolo selezionato nel pannello radiobutton
      * @throws SQLException 
      */
     public void insertValue(String username, String password, String selected) throws SQLException{
@@ -154,8 +157,10 @@ public class LoginManager {
     /**
      * questo metodo si occupa di istanziare la grafica corretta a seconda dell' utente che ha
      * effettuato il login.
-     * @param status
-     * @param selected 
+     * @param status conferma di login avvenuta con successo
+     * @param selected  valore selezionato nel radiobutton e convertito ad intero
+     * @see getSelectedKey
+     * @see checkCredentials
      * @author Luca
      */
     public void graphicsDispatcher(boolean status,int selected){
@@ -186,7 +191,7 @@ public class LoginManager {
     /**
      * questo metodo disconnette l'utente con userId specificato.
      * @author Luca
-     * @param userId 
+     * @param userId id dell' utente connesso
      */
     public void disconnectUser(int userId){
         try {
@@ -204,7 +209,7 @@ public class LoginManager {
     /**
      * questo metodo connette l'utente con relativo userId.
      * @author Luca
-     * @param userId 
+     * @param userId id dell'utente da connettere
      */
     public void connectUser(int userId){
         try {
