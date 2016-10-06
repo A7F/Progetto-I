@@ -15,11 +15,6 @@ public class MenuElement {
         available = true;
     }
     
-    @Override
-    public String toString(){
-        return name+" "+price + " " + description + " " + available;
-    }
-    
     /**
      * Ritorna il nome dell' elemento di menu (=nome del piatto)
      * @author Luca
@@ -56,5 +51,8 @@ public class MenuElement {
         return description;
     }
     
-    
+    @Override
+    public String toString(){
+        return name+" "+price + " " + description + " " + available;
+    }
 }
