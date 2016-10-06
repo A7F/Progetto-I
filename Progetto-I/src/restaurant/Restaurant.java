@@ -9,7 +9,7 @@ import menu.MenuElement;
 
 /**
  *
- * @author federicovitro
+ * @author Federico Vitrò
  */
 public class Restaurant extends Observable{
     
@@ -17,6 +17,14 @@ public class Restaurant extends Observable{
     private Room room;
     private Menu menu;
     private int discount;
+    
+    /**
+     * @author Federico Vitrò
+     * @param name
+     * @param numberOfTables
+     * @param pathFile
+     * @throws IOException 
+     */
     
     public Restaurant(String name, int numberOfTables, String pathFile) throws IOException{
         this.name = name;
@@ -28,9 +36,21 @@ public class Restaurant extends Observable{
         menu = new Menu(pathFile);   
     }
     
+    /**
+     * inizializza la sala da pranzo
+     * @author Federico Vitrò
+     * @param numberOfTables 
+     */
+    
     private void initRoom(int numberOfTables){
         room = new Room(numberOfTables);
     }
+    
+    /**
+     * restituisce l'array di ordini 
+     * @author Federico Vitrò
+     * @return room.getOrdersArray()
+     */
     
     public ArrayList<Order> getOrdersArray(){
         return room.getOrdersArray();
@@ -96,9 +116,21 @@ public class Restaurant extends Observable{
         room.removeAllOrder(tableId - 1);
     }
     
+    /**
+     * dato l'id di un tavolo non prenotato lo prenota
+     * @author Federico Vitrò
+     * @param tableId 
+     */
+    
     public void setReserved(int tableId){
         room.setReservedTable(tableId -1);
     }
+    
+    /**
+     * dato l'id di un tavolo prenotato cancella la prenotazione
+     * @author Federico Vitrò
+     * @param tableID 
+     */
     
     public void setFreeTable(int tableID){
         room.setFreeTable(tableID - 1);
@@ -139,25 +171,64 @@ public class Restaurant extends Observable{
        return room.getFreeTable();
     }
     
+    /**
+     * ritorna il menu del ristorante
+     * @author Federico Vitrò
+     * @return menu.getMenu()
+     */
+    
     public ArrayList<MenuElement> getMenu(){
         return menu.getMenu();
     }
+    
+    /**
+     * dato il nome di un elemento il metodo restituisce gli elementi nel menu corrispondenti a quel nome
+     * @author Federico Vitrò
+     * @param elementName
+     * @return menu.getElementByName(elementName)
+     */
     
     public ArrayList<MenuElement> getMenuByName(String elementName){
         return menu.getElementByName(elementName);
     }
     
+    /**
+     * dato il tipo di un elemento restituisce gli elementi nel menu corrispondenti a quel tipo
+     * @author Federico Vitrò
+     * @param type
+     * @return menu.getElementByType(type)
+     */
+    
     public ArrayList<MenuElement> getElementByType(String type){
         return menu.getElementByType(type);
     }
+    
+    /**
+     * dato il prezzo di un elemento restituisce gli elementi nel menu corrispondenti a quel prezzo
+     * @author Federico Vitrò
+     * @param cash
+     * @return menu.getElementByPrice(cash)
+     */
     
     public ArrayList<MenuElement> getElementByPrice(double cash){
         return menu.getElementByPrice(cash);
     }
     
+    /**
+     * restituisce i tavoli prenotati
+     * @author Federico Vitrò
+     * @return room.getTakenTable()
+     */
+    
      public ArrayList<Table> getTakenTable(){
         return room.getTakenTable();
     }
+     
+     /**
+      * restituisce il nome del ristorante
+      * @author Federico Vitrò
+      * @return this.name
+      */
 
     public String getRestaurantName() {
         return this.name;

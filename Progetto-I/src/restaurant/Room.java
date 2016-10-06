@@ -10,15 +10,19 @@ import utils.TavoliManager;
 public class Room {
     
     private ArrayList<Table> tables;
-        
+    
+    /**
+     * @author Federico Vitrò
+     * @param numberOfTables 
+     */    
     public Room(int numberOfTables){
         tables = new ArrayList<Table>();
         initTables(numberOfTables);
     }
     
-    
     /**
      * inizializza i tavoli alla creazione della Room
+     * @author Federico Vitrò
      * @param numberOfTables 
      */
     private void initTables(int numberOfTables){ 
@@ -162,6 +166,12 @@ public class Room {
         return tableTaken;
     }
     
+    /**
+     * dato l'id di un tavolo e un ordinazione aggiunge quest'ultima al tavolo
+     * @author Federico Vitrò
+     * @param tableID
+     * @param order 
+     */
     public void addOrder(int tableID, Order order) { 
         if(tables.get(tableID-1).getIsTaken() == false){
             tables.get(tableID-1).takeTable();
@@ -193,6 +203,12 @@ public class Room {
             }
         }
     }
+    
+    /**
+     * restituisce il numero dei tavolo
+     * @author Federico Vitrò
+     * @return tables.size()
+     */
        
     public int getNumberofTables(){
         return tables.size();
