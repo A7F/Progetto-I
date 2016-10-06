@@ -27,6 +27,10 @@ public class NewUserWindow {
         initComponents();
     }
     
+    /**
+     * questo metodo inizializza la grafica
+     * @author Luca
+     */
     private void initComponents(){
         frame.setLayout(new BorderLayout());
         frame.add(form,BorderLayout.CENTER);
@@ -52,6 +56,11 @@ public class NewUserWindow {
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
+    /**
+     * metodo getter per istanziare la classe stessa come singleton
+     * @return  classe NewUserWindow
+     * @author Luca
+     */
     public static NewUserWindow getInstance(){
         return instance;
     }

@@ -89,11 +89,20 @@ public class OrdersPanel extends JPanel implements Observer{
         }
     }
     
+    /**
+     * il metodo rimuove l'ordine relativo all' indice selezionato
+     * @author Luca
+     */
     public void removeOrder(){
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(list.getSelectedIndex());
         model.remove(list.getSelectedIndex());
     }
     
+    /**
+     * il metodo rimuove l'ordine scelto dalla lista
+     * @author Luca
+     * @param ord l'ordine da aggiungere
+     */
     public void addOrder(Order ord){
         
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);

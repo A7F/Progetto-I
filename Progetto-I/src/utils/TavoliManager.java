@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * questa classe facilita l'accesso alla table Tavoli del database del ristorante.
  * @author Luca
  */
 public class TavoliManager {
@@ -19,6 +19,10 @@ public class TavoliManager {
         init();
     }
 
+    /**
+     * questo metodo inizializza il database impostandolo come in uso
+     * @author Luca
+     */
     private void init() {
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.useDatabase);
@@ -28,6 +32,11 @@ public class TavoliManager {
         }
     }
     
+    /**
+     * il metodo ritorna l'arraylist di tutti i tavoli prenotati presenti nel database
+     * @author Luca
+     * @return  ArrayList di tutti i tavoli prenotati
+     */
     public ArrayList<Integer> getTavoliPrenotati(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM tavoli WHERE PRENOTATO=?");
@@ -42,6 +51,11 @@ public class TavoliManager {
         return this.tavoliPrenotati;
     }
     
+    /**
+     * metodo di utility usato in ciclo for che inserisce il tavolo con relativo id nella table Tavoli del database
+     * @author Luca
+     * @param tableId   l'ID del tavolo da inserire
+     */
     public void populateTavoli(int tableId){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.dropTavoli);
@@ -54,6 +68,10 @@ public class TavoliManager {
         }
     }
     
+    /**
+     * metodo di utility per inserire un tavolo rispettando la progressione degli id dei tavoli.
+     * @author Luca
+     */
     public void insertNextTavolo(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Tavoli ORDER BY NUMTAVOLO DESC LIMIT 1;");
@@ -70,6 +88,10 @@ public class TavoliManager {
         }
     }
     
+    /**
+     * metodo per cancellare l'ultimo tavolo inserito, ovvero quello con numero più grande.
+     * @author Luca
+     */
     public void deleteLastTavolo(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Tavoli ORDER BY NUMTAVOLO DESC LIMIT 1;");

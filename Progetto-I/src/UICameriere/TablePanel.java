@@ -27,6 +27,10 @@ public class TablePanel{
         initComponent();
     }
     
+    /**
+     * metodo per avviare la grafica del cameriere
+     * @author Luca
+     */
     private void initComponent(){
     
         for (int i = 0; i < restaurant.getTables().size(); i++) {

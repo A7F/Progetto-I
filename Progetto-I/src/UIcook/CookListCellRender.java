@@ -4,6 +4,12 @@ import java.awt.*;
 import javax.swing.*;
 import restaurant.Order;
 
+/**
+ * cell render della lista del cuoco. Segna di rosso gli ordini fatti, segna di verde gli
+ * ordini solo letti.
+ * @see CookUI
+ * @author Luca
+ */
 class CookListCellRender extends JLabel implements ListCellRenderer<Order>{
     
     public CookListCellRender(){

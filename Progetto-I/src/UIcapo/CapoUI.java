@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JTabbedPane;
 import restaurant.Restaurant;
 import utils.MenuBar;
@@ -17,7 +16,7 @@ import utils.MenuBar;
  * @author Luca
  */
 public class CapoUI {
-    CustomFrame frame=new CustomFrame("gestione");
+    private CustomFrame frame=new CustomFrame("gestione");
     final JTabbedPane tabbedPane = new JTabbedPane();
     final JPanel panelEmp = new JPanel();
     final JPanel panelMenu = new JPanel();

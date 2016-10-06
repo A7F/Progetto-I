@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.DatabaseManager;
+import utils.DatabaseStrings;
 
 
 /**
@@ -49,6 +50,8 @@ public class LoadFileText {
         BufferedReader br = new BufferedReader(fr);
         DatabaseManager mgr = new DatabaseManager();
         mgr.initServer();
+        mgr.runUpdate(DatabaseStrings.dropMenu);
+        mgr.runUpdate(DatabaseStrings.createMenu);
         
         while(br.ready()){
             String line = br.readLine();

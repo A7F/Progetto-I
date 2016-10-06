@@ -8,7 +8,7 @@ import javax.swing.*;
 import utils.LoginManager;
 
 /**
- * crea i due pulsanti Login e Nuovo, con relativo listener
+ * questa classe crea i due pulsanti Login e Nuovo, con relativo listener
  * @author Luca
  */
 class ButtonLayout extends JPanel{
@@ -74,6 +74,11 @@ class ButtonLayout extends JPanel{
         this.add(b2);
     }
     
+    /**
+     * metodo get: ottiene lo status della login, se è true è avvenuta con successo.
+     * @return  stato di login: true se avvenuto con successo.
+     * @author Luca
+     */
     protected boolean getFlag(){
         return this.status;
     }

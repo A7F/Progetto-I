@@ -13,7 +13,7 @@ import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- *
+ * grafica della cassa
  * @author Luca
  */
 public class CassaMainFrame{
@@ -36,12 +36,20 @@ public class CassaMainFrame{
         setFrameProperties();
     }
 
+    /**
+     * questo metodo aggiunge a nord del borderlayout del frame principale
+     * @author Luca
+     */
     private void populateNorthPanel() {
         panelOrdersTable = new TablePanel(r);
         northPanel.add(panelOrdersTable.getPanel());
         northPanel.setPreferredSize(new Dimension(700,50));
     }
 
+    /**
+     * questo metodo aggiunge al centro del borderlayout del frame principale
+     * @author Luca
+     */
     private void populateCenterPanel() {
         final OrdiniPanel ordiniPanel = new OrdiniPanel(panelOrdersTable,r);
         final ScontrinoPanel scontrinoPanel = new ScontrinoPanel(panelOrdersTable,r);
@@ -130,10 +138,18 @@ public class CassaMainFrame{
         southPanel.setPreferredSize(new Dimension(700,160));
     }
 
+    /**
+     * questo metodo aggiunge a sud del borderlayout del frame principale
+     * @author Luca
+     */
     private void populateSouthPanel() {
         
     }
 
+    /**
+     * questo metodo imposta le proprietà del frame principale
+     * @author Luca
+     */
     private void setFrameProperties() {
         mainframe.setLayout(new BorderLayout());
         mainframe.add(northPanel,BorderLayout.NORTH);

@@ -41,6 +41,10 @@ public class CookUI implements Observer{
         initUi();
     }
 
+    /**
+     * metodo per avviare la grafica del cuoco
+     * @author Luca
+     */
     private void initUi(){
         frame.setJMenuBar(new utils.MenuBar(frame,userId));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -87,6 +91,14 @@ public class CookUI implements Observer{
         
     }
 
+    /**
+     * pattern observer: questa classe è observer di ristorante. Ogni volta che ristorante
+     * notifica cambamenti, viene chiamato questo metodo per aggiornare la lista delle cose da cucinare.
+     * @author Luca
+     * @see Restaurant
+     * @param o Observable
+     * @param arg Object
+     */
     @Override
     public void update(Observable o, Object arg) {
         
@@ -102,6 +114,10 @@ public class CookUI implements Observer{
         System.out.println("dim lista:  " + model.getSize());
     }
 
+    /**
+     * metodo per creare il pannello inferiore contenente descrizione ordine ed eventuali note
+     * @author Luca
+     */
     private void createLowerPanel() {
         descriptionPanel = new JPanel(new FlowLayout());
         ingredientsPanel = new JPanel(new FlowLayout());

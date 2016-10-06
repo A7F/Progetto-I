@@ -47,9 +47,9 @@ public class Menu {
     /**
      * Ritorna tutti gli elementi di menu che abbiano lo stesso nome passato al metodo
      * In sostanza è un cerca.
-     * @author Luca :]
-     * @param elementName
-     * @return out
+     * @author Luca
+     * @param elementName   il nome degli elementi da ottenere
+     * @return  ArrayList degli elementi con stesso nome
      */
     public ArrayList<MenuElement> getElementByName(String elementName){
         elementName=elementName.toLowerCase();
@@ -68,9 +68,9 @@ public class Menu {
     /**
      * Ritorna tutti gli elementi di menu che abbiano lo stesso tipo
      * In sostanza è un cerca.
-     * @author Luca :]
-     * @param type
-     * @return out
+     * @author Luca
+     * @param type  il tipo degli elementi da ottenere
+     * @return  ArrayList di elementi con lo stesso prezzo
      */
     public ArrayList<MenuElement> getElementByType(String type){
         type=type.toLowerCase();
@@ -89,9 +89,9 @@ public class Menu {
     /**
      * Ritorna tutti gli elementi di menu che abbiano lo stesso prezzo
      * In sostanza è un cerca.
-     * @author Luca :]
-     * @param cash
-     * @return out
+     * @author Luca
+     * @param cash  il prezzo dell' elemento che si vuole ottenere
+     * @return  ArrayList degli elementi con relativo prezzo
      */
     public ArrayList<MenuElement> getElementByPrice(double cash){
         ArrayList<MenuElement> out = new ArrayList<>();

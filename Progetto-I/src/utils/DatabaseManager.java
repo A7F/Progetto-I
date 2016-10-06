@@ -29,23 +29,21 @@ public class DatabaseManager {
         }
     }
     
+    /**
+     * Crea il database e tutte le table necessarie al funzionamento del programma.
+     * @author Luca
+     */
     public void initServer(){
         try {
             statement=(Statement) connection.createStatement();
-            String db = DatabaseStrings.createDatabase;
-            statement.executeUpdate(db);
-            String use = DatabaseStrings.useDatabase;
-            statement.executeUpdate(use);
-            String table=DatabaseStrings.createMenu;
-            statement.executeUpdate(table);
-            table=DatabaseStrings.createImpiegati;
-            statement.executeUpdate(table);
-            table=DatabaseStrings.createTavoli;
-            statement.executeUpdate(table);
-            table=DatabaseStrings.createPrenotazioni;
-            statement.executeUpdate(table);
-            table=DatabaseStrings.alterPrenotazioni;
-            statement.executeUpdate(table);
+            statement.executeUpdate(DatabaseStrings.createDatabase);
+            statement.executeUpdate(DatabaseStrings.useDatabase);
+            statement.executeUpdate(DatabaseStrings.dropMenu);
+            statement.executeUpdate(DatabaseStrings.createMenu);
+            statement.executeUpdate(DatabaseStrings.createImpiegati);
+            statement.executeUpdate(DatabaseStrings.createTavoli);
+            statement.executeUpdate(DatabaseStrings.createPrenotazioni);
+            statement.executeUpdate(DatabaseStrings.alterPrenotazioni);
             System.out.println(">> Database e tabelle generate con successo");
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
@@ -54,6 +52,10 @@ public class DatabaseManager {
         }
     }
     
+    /**
+     * metodo per la chiusura connessione al database
+     * @author Luca
+     */
     public void closeConnection(){
         try{
             connection.close();
@@ -62,6 +64,11 @@ public class DatabaseManager {
         }
     }
     
+    /**
+     * metodo di servizio per eseguire facilmente una query sul database del programma
+     * @author Luca
+     * @param query query da eseguire sul database ristorante
+     */
     public void runQuery(String query){
         try{
             statement=(Statement) connection.createStatement();
@@ -71,6 +78,11 @@ public class DatabaseManager {
         }
     }
     
+    /**
+     * metodo per eseguire un update sul database del programma
+     * @author Luca
+     * @param update update da eseguire sul database ristorante
+     */
     public void runUpdate(String update){
         try{
             statement=(Statement) connection.createStatement();
@@ -84,6 +96,11 @@ public class DatabaseManager {
         return this.connection;
     }
     
+    /**
+     * metodo di servizio per popolare automaticamente la table impiegati per eseguire test
+     * del programma.
+     * @author Luca
+     */
     public void populateUserDatabase(){
         try{
             statement=(Statement) connection.createStatement();
