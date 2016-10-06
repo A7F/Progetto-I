@@ -14,6 +14,12 @@ public class Order {
     private boolean is_read = false;
     private boolean is_done = false;
     
+    /**
+     * @author Federico Vitrò
+     * @param quantity
+     * @param menuElement 
+     */
+    
     public Order(int quantity, MenuElement menuElement){
         this.quantity = quantity;
         this.menuElement = menuElement;
@@ -32,6 +38,11 @@ public class Order {
         this.menuElement = menuElement;
         this.notes = notes;
     }
+    
+    /**
+     * @author Federico Vitrò
+     * @param menuElement 
+     */
     
     public Order(MenuElement menuElement){
         this.quantity = 1;
