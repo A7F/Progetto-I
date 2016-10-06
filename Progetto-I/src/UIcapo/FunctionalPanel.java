@@ -32,6 +32,10 @@ public class FunctionalPanel extends JPanel{
         initMe();
     }
     
+    /**
+     * metodo per disporre gli elementi grafici
+     * @author Luca
+     */
     private void initMe(){
         buttonPane=new buttonLayout(mgr,map,tablename,tablePane,frame);
         createLabels();
@@ -39,6 +43,11 @@ public class FunctionalPanel extends JPanel{
         this.add(buttonPane,BorderLayout.SOUTH);
     }
     
+    /**
+     * metodo per creare le colonne della tabella che mostrerà la table del database.
+     * @author Luca
+     * @return arraylist di labels con nomi delle colonne della table database
+     */
     private ArrayList<JLabel> createLabels(){
         ArrayList<JLabel> labels = new ArrayList<>();
                         

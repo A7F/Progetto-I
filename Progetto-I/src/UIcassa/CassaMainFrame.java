@@ -65,7 +65,9 @@ public class CassaMainFrame{
                 }else{
                     scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(ordiniPanel.getSelectedIndex()));
                     ordiniPanel.removeOrder();
-                    mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
+                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
                 }
             }
         });
@@ -80,7 +82,9 @@ public class CassaMainFrame{
                 }else{
                     ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(scontrinoPanel.getSelectedIndex()));
                     scontrinoPanel.removeElement();
-                    mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
+                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
                 }
             }
         });
@@ -97,7 +101,9 @@ public class CassaMainFrame{
                         scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(i));
                     }    
                     ordiniPanel.removeAllOrders();
-                    mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
+                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
                 }
             }
         });
@@ -114,7 +120,9 @@ public class CassaMainFrame{
                         ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(i));
                     }
                     scontrinoPanel.removeAllElement();
-                    mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
+                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
+                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
                 }
             }
         });

@@ -1,9 +1,11 @@
 package UIcapo;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
@@ -28,7 +30,9 @@ public class DiscountPanel extends JPanel {
 
         SpinnerModel spinnerDiscountModel = new SpinnerNumberModel(0, 0, 100, 5);
         spinnerDiscount = new JSpinner(spinnerDiscountModel);
-
+        ((DefaultEditor) spinnerDiscount.getEditor()).getTextField().setEditable(false);
+        spinnerDiscount.setFont(new Font("Arial",Font.BOLD,50));
+        
         this.setLayout(new FlowLayout());
         this.add(discountLabel);
         this.add(spinnerDiscount);
@@ -37,7 +41,7 @@ public class DiscountPanel extends JPanel {
 
     /**
      * Ritorna il valore dello sconto inserito nella casella di testo 
-     * @return 
+     * @return valore mostrato nello spinner
      * @author Fabio
      */
     public int getSpinnerDiscount() {

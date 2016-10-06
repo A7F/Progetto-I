@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UIcapo;
 
-import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import restaurant.Restaurant;
 
 /**
@@ -34,17 +28,23 @@ public class DiscountPage extends JPanel{
         discountPanel = new DiscountPanel();
         
         discountButton  = new JButton("APPLICA");
+        discountButton.setSize(new Dimension(100,100));
+        
         discountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 restaurant.setDiscount((Integer)discountPanel.getSpinnerDiscount());
-                // DEBUG 
-                //System.err.println("sconto in ristorante: " + restaurant.getDiscount());
             }
         });
         
-        this.setLayout(new BorderLayout());
-        this.add(discountPanel,BorderLayout.CENTER);
-        this.add(discountButton,BorderLayout.SOUTH);
+        GridLayout myLayout = new GridLayout(2,1);
+        myLayout.setHgap(20);
+        myLayout.setVgap(20);
+        
+        this.setLayout(myLayout);
+        this.setSize(new Dimension(200,200));
+        this.add(discountPanel);
+        this.add(discountButton);
+        
     }
 }

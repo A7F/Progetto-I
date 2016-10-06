@@ -91,6 +91,7 @@ public class ScontrinoPanel extends JPanel{
      */
     public String calculateCurrentTot(){
         double tot = 0;
+        int discount = restaurant.getDiscount();
         for(int i=0;i<model.size();i++){
             Order ord = (Order) model.getElementAt(i);
             double price = ord.getPrice();
@@ -100,8 +101,30 @@ public class ScontrinoPanel extends JPanel{
     }
     
     /**
+     * questo metodo calcola il totale considerando anche lo sconto del ristorante.
+     * Lo sconto viene applicato sul totale.
+     * @author Luca
+     * @return totale con sconto applicato
+     */
+    public String calculateTotWithDiscount(){
+        double tot = 0;
+        int discount = restaurant.getDiscount();
+        for(int i=0;i<model.size();i++){
+            Order ord = (Order) model.getElementAt(i);
+            double price = ord.getPrice();
+            tot = tot+price;
+        }
+        tot = tot-(tot*discount/100);
+        return String.valueOf(tot+" $");
+    }
+    
+    public String getRestaurantDiscount(){
+        return String.valueOf(restaurant.getDiscount());
+    }
+    
+    /**
      * metodo getter del modello implementato nella lista.
-     * @return model
+     * @return modello della JList
      * @author Luca
      */
     public DefaultListModel getModel(){

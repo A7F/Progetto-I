@@ -14,8 +14,8 @@ import javax.swing.table.*;
 /**
  * Questa classe si occupa di creare una JTable che rifletta la struttura del database
  * @author Luca
+ * @see FunctionalPanel
  */
-
 public class TableModelBuilder {
     
     final String tab;

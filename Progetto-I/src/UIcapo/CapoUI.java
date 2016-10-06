@@ -16,7 +16,7 @@ import utils.MenuBar;
  * @author Luca
  */
 public class CapoUI {
-    private CustomFrame frame=new CustomFrame("gestione");
+    private CustomFrame frame=new CustomFrame("Pannello di gestione");
     final JTabbedPane tabbedPane = new JTabbedPane();
     final JPanel panelEmp = new JPanel();
     final JPanel panelMenu = new JPanel();
@@ -39,6 +39,10 @@ public class CapoUI {
         initGraphics();
     }
 
+    /**
+     * inizializza gli elementi grafici da disporre all' interno del customFrame
+     * @author Luca
+     */
     private void initGraphics(){
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         

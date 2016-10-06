@@ -17,9 +17,12 @@ public class ServicePanel extends JPanel{
     GridLayout myLayout = new GridLayout(2,1);
     JPanel buttonsPanel;
     JPanel totPanel = new JPanel(new BorderLayout());   //così posso centrare la label nel quadrato
-    JLabel total = new JLabel("NA");
+    JLabel total = new JLabel("NA.");
+    JLabel discount = new JLabel("- 0%");
+    JLabel lastTotal = new JLabel("NA.");
     JPanel cassaPanel = new JPanel(new BorderLayout());
     JTextArea cassa = new JTextArea("In attesa di stampa...");
+    JPanel newTotPanel = new JPanel();
     
     public ServicePanel(ScontrinoPanel scontrinoPanel){
         this.scontrinoPanel = scontrinoPanel;
@@ -37,9 +40,19 @@ public class ServicePanel extends JPanel{
         myLayout.setHgap(3);
         myLayout.setVgap(3);
         buttonsPanel = new JPanel(myLayout);
+        
         totPanel.setBorder(new TitledBorder("TOT"));
-        total.setFont(new Font("Verdana",Font.ITALIC,27));
-        totPanel.add(total,BorderLayout.CENTER);
+        total.setFont(new Font("Verdana",Font.ITALIC,25));
+        
+        discount.setFont(new Font("Verdana",Font.ITALIC,25));
+        discount.setForeground(Color.RED);
+        
+        lastTotal.setFont(new Font("Verdana",Font.ITALIC,25));
+        lastTotal.setForeground(Color.MAGENTA);
+        
+        totPanel.add(total,BorderLayout.NORTH);
+        totPanel.add(discount,BorderLayout.CENTER);
+        totPanel.add(lastTotal,BorderLayout.SOUTH);
         cassa.setEditable(false);
         cassaPanel.setBorder(new TitledBorder("Output"));
         cassaPanel.add(cassa,BorderLayout.CENTER);
@@ -67,6 +80,7 @@ public class ServicePanel extends JPanel{
         buttonsPanel.add(prenotaButton);
         cassaPanel.setPreferredSize(new Dimension(200,70));
         
+        
         this.add(buttonsPanel);
         this.add(totPanel);
         this.add(cassaPanel);
@@ -75,9 +89,31 @@ public class ServicePanel extends JPanel{
     /**
      * metodo per modificare il testo della jLabel del totale
      * @param text il nuovo testo che assumerà la JLabel
+     * @see CassaMainFrame
      * @author Luca
      */
-    public void setJlabelText(String text){
+    public void setJlabelTotText(String text){
         total.setText(text);
     }
+    
+    /**
+     * metodo per modificare il testo della jLabel del totale con sconto
+     * @param text il testo che assumerà la JLabel
+     * @see CassaMainFrame
+     * @author Luca
+     */
+    public void setJlabelDiscountText(String text){
+        discount.setText(text);
+    }
+    
+    /**
+     * metodo per modificare il testo della jLabel dello sconto
+     * @param text il testo che assumerà la JLabel
+     * @see CassaMainFrame
+     * @author Luca
+     */
+    public void setJlabelTotDiscText(String text){
+        lastTotal.setText(text);
+    }
+    
 }

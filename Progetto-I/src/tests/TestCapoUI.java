@@ -3,7 +3,8 @@ package tests;
 import UIcapo.CapoUI;
 
 /**
- *
+ * classe di test per la grafica del capo
+ * @see CapoUI
  * @author Luca
  */
 public class TestCapoUI {
