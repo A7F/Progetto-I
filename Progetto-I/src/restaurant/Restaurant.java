@@ -13,7 +13,7 @@ import menu.MenuElement;
  */
 public class Restaurant extends Observable{
     
-    private String name;
+    private final String name;
     private Room room;
     private Menu menu;
     private int discount;

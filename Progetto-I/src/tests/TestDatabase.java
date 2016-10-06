@@ -9,7 +9,7 @@ import utils.DatabaseManager;
 public class TestDatabase {
     public static void main(String[] args){
         DatabaseManager dbm = new DatabaseManager();
-        //dbm.initServer();
+        dbm.initServer();
         dbm.populateUserDatabase();
     }
 }

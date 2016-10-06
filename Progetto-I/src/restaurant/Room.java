@@ -10,6 +10,7 @@ import utils.TavoliManager;
 public class Room {
     
     private ArrayList<Table> tables;
+    TavoliManager tavoliManager = new TavoliManager();
     
     /**
      * @author Federico Vitrò
@@ -17,6 +18,7 @@ public class Room {
      */    
     public Room(int numberOfTables){
         tables = new ArrayList<Table>();
+        //tavoliManager.dropTavoli();
         initTables(numberOfTables);
     }
     
@@ -29,6 +31,7 @@ public class Room {
         
         for (int i = 0; i<numberOfTables; i++){
             tables.add(new Table(i));
+            tavoliManager.populateTavoli(i+1);
         }
     }
     

@@ -36,6 +36,7 @@ public class DatabaseManager {
     public void initServer(){
         try {
             statement=(Statement) connection.createStatement();
+            statement.executeUpdate(DatabaseStrings.dropDatabase);
             statement.executeUpdate(DatabaseStrings.createDatabase);
             statement.executeUpdate(DatabaseStrings.useDatabase);
             statement.executeUpdate(DatabaseStrings.dropMenu);
@@ -121,6 +122,9 @@ public class DatabaseManager {
             command="INSERT INTO impiegati(username,password,ruolo) VALUES('principale1','passwordcapo1','CAPO');";
             statement.executeUpdate(command);
         }catch(SQLException e){
+            System.err.println("SQLException: " + e.getMessage());
+            System.err.println("SQLState: " + e.getSQLState());
+            System.err.println("VendorError: " + e.getErrorCode());
             JOptionPane.showMessageDialog(frame,"Impossibile popolare il database","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }

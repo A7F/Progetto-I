@@ -104,7 +104,7 @@ public class MenuManager {
             ps.setString(1, newName);
             ps.setInt(2, id);
             ps.executeUpdate();
-        } catch (SQLException ex) {
+        }catch(SQLException ex){
             Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
