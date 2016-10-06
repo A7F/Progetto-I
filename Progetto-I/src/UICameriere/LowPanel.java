@@ -60,6 +60,7 @@ public class LowPanel extends JPanel{
                     Order newOrder = new Order(1,menuPanel.getSelectedElement(),textNotes.getText());
                     ordersPanel.addOrder(newOrder);
                 }
+                ordersPanel.getTablePanel().repaint();
                 restaurant.notifyCook();
             }
         });
@@ -74,7 +75,7 @@ public class LowPanel extends JPanel{
                     return;
                 }
                 if(!(restaurant.getOrdersArray().get(ordersPanel.getSelectedIndex()).getDone())){
-                    System.err.println("RIMUOVI ORDINE");
+                    ordersPanel.getTablePanel().repaint();
                     ordersPanel.removeOrder();
                 }
                 
@@ -84,7 +85,7 @@ public class LowPanel extends JPanel{
         
         SpinnerModel spinnerModel = new SpinnerNumberModel(1,1,30,1);
         spinner = new JSpinner(spinnerModel);
-        textNotes = new JTextField("Insert notes here...     ");
+        textNotes = new JTextField("Ancora nessuna nota qui...     ");
         textNotes.setFont(new Font("Calibri",Font.PLAIN,15));
         textNotes.addMouseListener(new MouseAdapter(){
             @Override

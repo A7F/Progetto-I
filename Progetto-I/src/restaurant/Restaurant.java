@@ -91,6 +91,8 @@ public class Restaurant extends Observable{
      * @author FabioTagliani
      */
     public void addOrder(int tableId, Order order){
+        this.setChanged();
+        notifyObservers(this.getOrdersArray());
         room.addOrder(tableId, order);
     }
     
@@ -109,6 +111,8 @@ public class Restaurant extends Observable{
      * @author Luca
      */
     public void removeSingleOrder(int tableId, Order order){
+        this.setChanged();
+        notifyObservers(this.getOrdersArray());
         room.removeSingleOrder(tableId - 1, order);
     }
     
@@ -119,6 +123,8 @@ public class Restaurant extends Observable{
      */
     public void removeAllOrder(int tableId){
         room.removeAllOrder(tableId - 1);
+        this.setChanged();
+        notifyObservers(this.getOrdersArray());
     }
     
     /**
@@ -128,6 +134,8 @@ public class Restaurant extends Observable{
      */
     public void setReserved(int tableId){
         room.setReservedTable(tableId -1);
+        this.setChanged();
+        notifyObservers(this.getTables());
     }
     
     /**
@@ -138,6 +146,8 @@ public class Restaurant extends Observable{
      */
     public void setFreeTable(int tableID){
         room.setFreeTable(tableID - 1);
+        this.setChanged();
+        notifyObservers(this.getTables());
     }
     
     /**

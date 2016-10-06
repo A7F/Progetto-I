@@ -20,6 +20,7 @@ public class TestCameriereUI {
         MenuElement me2 = new MenuElement("Pasta alla Carbonara", 7, "PRIMO", "Altra descrizione.");
         Order order = new Order(1,me, "al dente");
         Order order2 = new Order(1,me, "al dente");
+        diablo.setReserved(3);
         diablo.addOrder(1, order);
         diablo.addOrder(1, order2);
         

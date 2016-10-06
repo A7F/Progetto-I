@@ -116,4 +116,8 @@ public class OrdersPanel extends JPanel implements Observer{
     public int getSelectedIndex(){
         return list.getSelectedIndex();
     }
+    
+    public JPanel getTablePanel(){
+        return this.tablePanel.getPanel();
+    }
 }
