@@ -58,11 +58,13 @@ public class TavoliManager {
      */
     public void populateTavoli(int tableId){
         try {
-            //PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.dropTavoli);
-            //ps.executeUpdate();
-            PreparedStatement ps = mgr.getConnection().prepareStatement("INSERT INTO Tavoli(NUMTAVOLO) VALUES(?);");
-            ps.setInt(1, tableId);
-            ps.executeUpdate();
+            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Tavoli;");
+            ResultSet rs =ps.executeQuery();
+            if(!rs.next()){
+                ps = mgr.getConnection().prepareStatement("INSERT INTO Tavoli(NUMTAVOLO) VALUES(?);");
+                ps.setInt(1, tableId);
+                ps.executeUpdate();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TavoliManager.class.getName()).log(Level.SEVERE, null, ex);
         }
