@@ -19,7 +19,7 @@ public class LoadFileText {
     
     /**
      * 
-     * @param String
+     * @param pathFile percorso del file contenente il menu
      * @return ArrayList of MenuElements
      * @throws FileNotFoundException
      * @throws IOException 
@@ -42,7 +42,7 @@ public class LoadFileText {
     /**
      * questo metodo prende gli elementi dal file e li mette nel database
      * @author Luca
-     * @param pathFile
+     * @param pathFile percorso del file contenente il menu
      * @throws java.io.FileNotFoundException
      */
     public static void fillDatabase(String pathFile) throws FileNotFoundException, IOException{

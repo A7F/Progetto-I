@@ -77,7 +77,7 @@ public class Room {
     }
     
     /**
-     * questo metodo ritorna tutti gli ordini di sala messi insieme!
+     * questo metodo ritorna tutti gli ordini di sala messi insieme
      * @author Luca
      * @return roomOrders
      */
@@ -118,8 +118,6 @@ public class Room {
         for (int i = 0; i < tables.size(); i++) {
             if(tables.get(i).getTableId() == tableId && tables.get(i).getOrdersArray().isEmpty()){
                 if((tables.get(i).getIsTaken())){
-                    
-                    System.out.println("sono in free table");
                     tables.get(i).setFreeTable();
                 }else{
                     System.out.println("Il tavolo era già libero");
@@ -210,9 +208,8 @@ public class Room {
     /**
      * restituisce il numero dei tavolo
      * @author Federico Vitrò
-     * @return tables.size()
+     * @return numero dei tavoli nel ristorante
      */
-       
     public int getNumberofTables(){
         return tables.size();
     }
@@ -223,7 +220,6 @@ public class Room {
      */   
     @Override
     public String toString() {
-        
         String ret="";
         for (int i=0; i<tables.size(); i++){
             ret+=tables.get(i).toString();

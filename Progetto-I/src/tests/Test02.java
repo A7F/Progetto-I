@@ -1,12 +1,7 @@
-/*
- * 
- */
 package tests;
 
 import java.io.IOException;
-import menu.Menu;
 import menu.MenuElement;
-import restaurant.Cook;
 import restaurant.Order;
 import restaurant.Restaurant;
 

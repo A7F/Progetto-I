@@ -18,7 +18,7 @@ public class MenuElement {
     /**
      * Ritorna il nome dell' elemento di menu (=nome del piatto)
      * @author Luca
-     * @return String typeElement
+     * @return nome del menuelement
      */
     public String getNameElement(){
         return name;

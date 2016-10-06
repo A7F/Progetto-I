@@ -10,7 +10,7 @@ import restaurant.Restaurant;
  *
  * @author Fabio
  */
-public class TestUICameriere {
+public class TestCameriereUI {
     
     public static void main(String[] args) throws IOException {
         
