@@ -32,7 +32,6 @@ public class CassaMainFrame{
         mainframe.setJMenuBar(new utils.MenuBar(mainframe,userId));
         populateNorthPanel();
         populateCenterPanel();
-        populateSouthPanel();
         setFrameProperties();
     }
 
@@ -47,7 +46,8 @@ public class CassaMainFrame{
     }
 
     /**
-     * questo metodo aggiunge al centro del borderlayout del frame principale
+     * questo metodo aggiunge al centro del borderlayout del frame principale una pulsantiera per aggiungere
+     * o rimuovere uno o più ordini allo scontrino
      * @author Luca
      */
     private void populateCenterPanel() {
@@ -95,8 +95,8 @@ public class CassaMainFrame{
                 }else{
                     for(int i=0;i<ordiniPanel.getModel().size();i++){
                         scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(i));
-                        ordiniPanel.removeOrder(i);
-                    }                    
+                    }    
+                    ordiniPanel.removeAllOrders();
                     mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
                 }
             }
@@ -112,8 +112,8 @@ public class CassaMainFrame{
                 }else{
                     for(int i=0;i<scontrinoPanel.getModel().size();i++){
                         ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(i));
-                        scontrinoPanel.removeElement(i);
                     }
+                    scontrinoPanel.removeAllElement();
                     mySouthPanel.setJlabelText(scontrinoPanel.calculateCurrentTot());
                 }
             }
@@ -136,14 +136,6 @@ public class CassaMainFrame{
         
         southPanel.add(mySouthPanel);
         southPanel.setPreferredSize(new Dimension(700,160));
-    }
-
-    /**
-     * questo metodo aggiunge a sud del borderlayout del frame principale
-     * @author Luca
-     */
-    private void populateSouthPanel() {
-        
     }
 
     /**

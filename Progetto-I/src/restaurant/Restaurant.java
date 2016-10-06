@@ -24,14 +24,32 @@ public class Restaurant extends Observable{
         initMenu(pathFile);
     }
     
+    /**
+     * metodo per inizializzare il menu
+     * @param pathFile percorso del file di testo del menu
+     * @throws IOException 
+     * @author Luca
+     */
     private void initMenu(String pathFile) throws IOException{
         menu = new Menu(pathFile);   
     }
     
+    /**
+     * metodo per inizializzare la stanza del ristorante
+     * @param numberOfTables numero dei tavoli nella sala
+     * @author Luca
+     */
     private void initRoom(int numberOfTables){
         room = new Room(numberOfTables);
     }
     
+    /**
+     * metodo getter per ottenere tutti gli ordini di tutti i tavoli del ristorante.
+     * Utilizzato per il cuoco.
+     * @see CookUI
+     * @return arraylist degli ordini
+     * @author Luca
+     */
     public ArrayList<Order> getOrdersArray(){
         return room.getOrdersArray();
     }
@@ -96,10 +114,21 @@ public class Restaurant extends Observable{
         room.removeAllOrder(tableId - 1);
     }
     
+    /**
+     * metodo che imposta come prenotato il tavolo che ha id specificato
+     * @param tableId id del tavolo da impostare come prenotato
+     * @author Luca
+     */
     public void setReserved(int tableId){
         room.setReservedTable(tableId -1);
     }
     
+    /**
+     * duale del metodo setReserved; imposta come libero il tavolo con id specificato
+     * @param tableID numero del tavolo da liberare
+     * @see setReserved
+     * @author Luca
+     */
     public void setFreeTable(int tableID){
         room.setFreeTable(tableID - 1);
     }
