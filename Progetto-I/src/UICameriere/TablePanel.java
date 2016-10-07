@@ -55,9 +55,7 @@ public class TablePanel implements Observer{
                     JButton button = (JButton)e.getSource();
                     selectedTable = Integer.parseInt(button.getText());
                     
-                    //è grazie a questo metodo se viene notificato tutto, chiama il notify in getOrderTable! 
-                    //(forse è meglio cambiarlo? Per adesso non ci disturba, fa da debug. Poi chiameremo il notify in modo più carino...)
-                    System.out.println("tavolo: "+selectedTable+"\tOrdini: "+restaurant.getOrderTable(selectedTable).toString());
+                    restaurant.notifyAllObservers();
                 }
             });
 
@@ -69,7 +67,7 @@ public class TablePanel implements Observer{
     /**
      * Ottieni il tavolo selezionato dalla pulsantiera. Di default ritorna il tavolo 1.
      * @author Luca
-     * @return selectedTable
+     * @return il numero del tavolo selezionato. 1 se non è selezionato nulla.
      */
     public int getSelectedTable() {
         if(selectedTable==0){

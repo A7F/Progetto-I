@@ -74,6 +74,16 @@ public class Restaurant extends Observable{
     }
     
     /**
+     * metodo di sincronizzazione con gli altri observers
+     * @author Luca
+     * @see TablePanel
+     */
+    public void notifyAllObservers(){
+        setChanged();
+        notifyObservers();
+    }
+    
+    /**
      * questo metodo si occupa di notificare il cuoco di cambiamenti negli
      * ordini di sala (per gestire la grafica)
      * @author Luca 

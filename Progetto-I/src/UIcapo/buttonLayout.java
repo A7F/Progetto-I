@@ -15,7 +15,7 @@ import javax.swing.*;
 import utils.DatabaseManager;
 
 /**
- *
+ * pulsantiera della grafica della gestione: questa classe istanzia i bottoni con i relativi listener
  * @author Luca
  */
 public class buttonLayout extends JPanel{
@@ -118,6 +118,14 @@ public class buttonLayout extends JPanel{
         });
     }
     
+    /**
+     * metodo per controllare se l'id utente passato è esistente
+     * @param con connessione al database
+     * @param nametable nome della tabella su cui controllare l'id
+     * @param id id di cui verificare l'esistenza
+     * @return true se esiste l'id
+     * @author Luca
+     */
     private boolean checkExistingId(Connection con,String nametable,int id){
         boolean flag=false;
         ResultSet rs = null;
@@ -146,7 +154,12 @@ public class buttonLayout extends JPanel{
         return isResultSetEmpty(rs);
     }
     
-    //false=resultset non vuoto
+    /**
+     * metodo per controllare se il ResultSet dal database è vuoto
+     * @param rs ResultSet da query sul database
+     * @return false se non è vuoto
+     * @author Luca
+     */
     private boolean isResultSetEmpty(ResultSet rs){
         boolean flag=false;
         try {
@@ -161,7 +174,11 @@ public class buttonLayout extends JPanel{
         return flag;
     }
     
-    //false=non ci sono textfield vuoti
+    /**
+     * metodo per controllare se ci siano textfield vuoti
+     * @author Luca
+     * @return false se ci sono textfield vuoti
+     */
     public boolean areTextFieldEmpty(){
         ArrayList<String> temp = tablePane.getColumnsName();
         boolean flag=false;

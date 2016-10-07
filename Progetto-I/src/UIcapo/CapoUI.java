@@ -12,8 +12,9 @@ import restaurant.Restaurant;
 import utils.MenuBar;
 
 /**
- *
+ * grafica principale del capo. Questa classe inizializza il pannello principale
  * @author Luca
+ * @see LoginManager
  */
 public class CapoUI {
     private CustomFrame frame=new CustomFrame("Pannello di gestione");

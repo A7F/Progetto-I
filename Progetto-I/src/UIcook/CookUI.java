@@ -110,8 +110,6 @@ public class CookUI implements Observer{
         }
         myRender.repaint();
         list.repaint();
-        
-        System.out.println("dim lista:  " + model.getSize());
     }
 
     /**

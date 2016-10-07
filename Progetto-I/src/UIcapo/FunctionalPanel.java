@@ -51,7 +51,7 @@ public class FunctionalPanel extends JPanel{
     private ArrayList<JLabel> createLabels(){
         ArrayList<JLabel> labels = new ArrayList<>();
                         
-        //ottieni i nomi delle colonne e facci delle JLabel
+        //ottieni i nomi delle colonne e fai delle JLabel
         for(int i=0;i<tablePane.getColumnsName().size();i++){
             JLabel label = new JLabel(tablePane.getColumnsName().get(i));
             labels.add(label);

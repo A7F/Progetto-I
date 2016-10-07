@@ -30,6 +30,10 @@ public class ScontrinoPanel extends JPanel{
         init();
     }
 
+    /**
+     * metodo per inizializzare la grafica del pannello dello scontrino
+     * @author Luca
+     */
     private void init(){
         
         list=new JList(model);
@@ -102,6 +106,11 @@ public class ScontrinoPanel extends JPanel{
         return restaurant.getTables().get(selectedIndex).getOrdersArray().isEmpty();
     }
     
+    /**
+     * metodo getter per ottenere il ristorante
+     * @return ristorante
+     * @author Luca
+     */
     public Restaurant getRestaurant(){
         return this.restaurant;
     }
@@ -110,6 +119,7 @@ public class ScontrinoPanel extends JPanel{
      * questo metodo calcola il totale di tutti gli elementi inseriti in scontrino
      * @return il totale già convertito in strings
      * @author Luca
+     * @see ServicePanel
      */
     public String calculateCurrentTot(){
         double tot = 0;
