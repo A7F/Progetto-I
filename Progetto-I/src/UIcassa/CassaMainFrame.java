@@ -36,8 +36,9 @@ public class CassaMainFrame{
     }
 
     /**
-     * questo metodo aggiunge a nord del borderlayout del frame principale
+     * questo metodo aggiunge a nord del borderlayout del frame principale la pulsantiera dei tavoli
      * @author Luca
+     * @see TablePanel
      */
     private void populateNorthPanel() {
         panelOrdersTable = new TablePanel(r);
@@ -77,10 +78,10 @@ public class CassaMainFrame{
         remOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                if(scontrinoPanel.getSelectedIndex()==-1){
+                if(scontrinoPanel.getSelectedListIndex()==-1){
                     System.err.println("NULLA SELEZIONATO!");
                 }else{
-                    ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(scontrinoPanel.getSelectedIndex()));
+                    ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(scontrinoPanel.getSelectedListIndex()));
                     scontrinoPanel.removeElement();
                     mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
                     mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());

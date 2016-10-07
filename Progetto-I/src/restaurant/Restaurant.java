@@ -25,7 +25,6 @@ public class Restaurant extends Observable{
      * @param pathFile percorso da cui caricare il file di testo contenente il menu
      * @throws IOException 
      */
-    
     public Restaurant(String name, int numberOfTables, String pathFile) throws IOException{
         this.name = name;
         initRoom(numberOfTables);

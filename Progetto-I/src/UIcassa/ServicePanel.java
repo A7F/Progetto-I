@@ -60,6 +60,9 @@ public class ServicePanel extends JPanel{
         JButton stampaButton = new JButton("STAMPA");
         stampaButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                if(scontrinoPanel.getIsEmptyTable()){
+                    scontrinoPanel.getRestaurant().setFreeTable(scontrinoPanel.getSelectedIndex()-1);
+                }
                 String total = scontrinoPanel.calculateCurrentTot();
                 String ticket = scontrinoPanel.getScontrinoElements();
                 cassa.setText(ticket+"\n"+total);

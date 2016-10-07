@@ -80,8 +80,30 @@ public class ScontrinoPanel extends JPanel{
      * @return indice selezionato
      * @author Luca
      */
-    public int getSelectedIndex(){
+    public int getSelectedListIndex(){
         return list.getSelectedIndex();
+    }
+    
+    /**
+     * metodo get per ottenere il numero del tasto tavolo selezionato
+     * @return numero del tavolo selezionato
+     * @author Luca
+     */
+    public int getSelectedIndex(){
+        return this.selectedIndex;
+    }
+    
+    /**
+     * metodo per controllare se il tavolo selezionato non possiede ordini
+     * @return false se contiene ordini
+     * @author Luca
+     */
+    public boolean getIsEmptyTable(){
+        return restaurant.getTables().get(selectedIndex).getOrdersArray().isEmpty();
+    }
+    
+    public Restaurant getRestaurant(){
+        return this.restaurant;
     }
     
     /**
@@ -118,6 +140,12 @@ public class ScontrinoPanel extends JPanel{
         return String.valueOf(tot+" $");
     }
     
+    /**
+     * metodo per ottenere lo sconto da applicare sul totale
+     * @see Restaurant
+     * @return lo sconto da applicare, convertito in stringa
+     * @author Luca
+     */
     public String getRestaurantDiscount(){
         return String.valueOf(restaurant.getDiscount());
     }
