@@ -7,10 +7,10 @@ import restaurant.Order;
 import restaurant.Restaurant;
 
 /**
- *
+ * classe di test della grafica del cuoco
  * @author Luca
  */
-public class TestCookUI {
+public class TestCookUI{
     public static void main(String[] args) throws IOException{
         
         Restaurant diablo = new Restaurant("Diablo", 5,"./data/menu.txt");

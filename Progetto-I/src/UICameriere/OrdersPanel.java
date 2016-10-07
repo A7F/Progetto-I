@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import restaurant.Order;
 import restaurant.Restaurant;
+import utils.Emoji;
 
 /**
  * Contiene l'elenco degli ordini relativi al tavolo selezionato
@@ -62,8 +63,18 @@ public class OrdersPanel extends JPanel implements Observer{
                     footBar.getReadLabel().setText("Nessun ordine");
                     footBar.getDoneLabel().setText("Nessun ordine");
                 }else{
-                    footBar.getReadLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()));
-                    footBar.getDoneLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()));
+                    if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()){
+                        footBar.getReadLabel().setText("SI");
+                    }else{
+                        footBar.getReadLabel().setText("NO");
+                    }
+                    if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()){
+                        footBar.getDoneLabel().setText("SI");
+                    }else{
+                        footBar.getDoneLabel().setText("NO");
+                    }
+                    //footBar.getReadLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()));
+                    //footBar.getDoneLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()));
                 }
             }
         });

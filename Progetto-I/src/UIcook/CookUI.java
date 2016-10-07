@@ -119,6 +119,10 @@ public class CookUI implements Observer{
     private void createLowerPanel() {
         descriptionPanel = new JPanel(new FlowLayout());
         ingredientsPanel = new JPanel(new FlowLayout());
+        noteLabel.setFont(new Font("Calibri",Font.ITALIC,21));
+        noteText.setFont(new Font("Calibri",Font.PLAIN,19));
+        ingredientiLabel.setFont(new Font("Calibri",Font.ITALIC,21));
+        ingredientiText.setFont(new Font("Calibri",Font.PLAIN,19));
         descriptionPanel.add(noteLabel);
         descriptionPanel.add(noteText);
         ingredientsPanel.add(ingredientiLabel);

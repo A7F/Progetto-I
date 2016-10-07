@@ -1,5 +1,6 @@
 package UIcook;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +23,8 @@ class ButtonPanel extends JPanel{
         ord=orders;
         list=referencedList;
         this.setLayout(new FlowLayout());
-        JButton b1 = new JButton("Done");
+        JButton b1 = new JButton("FATTO");
+        b1.setPreferredSize(new Dimension(90,50));
         b1.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
@@ -36,7 +38,8 @@ class ButtonPanel extends JPanel{
             }
         });
         
-        JButton b2 = new JButton("Read");
+        JButton b2 = new JButton("LETTO");
+        b2.setPreferredSize(new Dimension(90,50));
         b2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
