@@ -11,6 +11,7 @@ import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import restaurant.Order;
 import restaurant.Restaurant;
+import utils.MenuBar;
 
 /**
  * grafica della cassa
@@ -29,7 +30,9 @@ public class CassaMainFrame{
     public CassaMainFrame(Restaurant r, int userId){
         this.r=r;
         this.userId=userId;
-        mainframe.setJMenuBar(new utils.MenuBar(mainframe,userId));
+        MenuBar cassaMenuBar = new MenuBar(mainframe,userId);
+        cassaMenuBar.addTableEntry();
+        mainframe.setJMenuBar(cassaMenuBar);
         populateNorthPanel();
         populateCenterPanel();
         setFrameProperties();

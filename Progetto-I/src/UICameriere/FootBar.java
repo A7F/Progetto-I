@@ -43,10 +43,20 @@ public class FootBar extends JPanel{
         this.add(p2);
     }
     
+    /**
+     * getter per la jlabel "si/no" relativa ad un ordine letto
+     * @return JLabel letto
+     * @author Luca
+     */
     public JLabel getReadLabel(){
         return this.read;
     }
     
+    /**
+     * getter per la jlabel "si/no" relativa ad un ordine fatto
+     * @return JLabel fatto
+     * @author Luca
+     */
     public JLabel getDoneLabel(){
         return this.done;
     }

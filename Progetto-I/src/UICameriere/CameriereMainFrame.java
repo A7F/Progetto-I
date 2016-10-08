@@ -37,6 +37,10 @@ public class CameriereMainFrame extends JFrame{
         initComponent();
     }
 
+    /**
+     * avvia la grafica del cameriere disponendo i componenti nel frame
+     * @author Luca
+     */
     private void initComponent(){
         this.setLayout(new BorderLayout());
         this.setJMenuBar(new MenuBar(this,userId));
@@ -57,6 +61,12 @@ public class CameriereMainFrame extends JFrame{
         this.setVisible(true);
     }
     
+    /**
+     * metodo per ottenere il numero del tavolo selezionato. Non previene la corrispondenza con l'arraylist
+     * quindi se si dovrà accedere al relativo tavolo, si dovrà sottrarre 1.
+     * @author Luca
+     * @return numero del tavolo selezionato
+     */
     public int getSelectedTable(){
         return tablePanel.getSelectedTable();
     }

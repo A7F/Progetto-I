@@ -64,26 +64,49 @@ public class OrdiniPanel extends JPanel implements Observer{
         }
     }
     
+    /**
+     * metodo per rimuovere l'ordine selezionato dall' arraylist di ordini del tavolo selezionato
+     * @author Luca
+     */
     public void removeOrder(){
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(list.getSelectedIndex());
         model.remove(list.getSelectedIndex());
     }
     
+    /**
+     * metodo per rimuovere uno specifico ordine dall' arraylist di ordini del tavolo selezionato
+     * @param ord l'ordine da eliminare
+     * @author Luca
+     */
     public void removeOrder(Order ord){
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(ord);
         model.remove(list.getSelectedIndex());
     }
     
+    /**
+     * metodo per cancellare tutti gli ordini sul tavolo selezionato
+     * @author Luca
+     */
     public void removeAllOrders(){
         restaurant.getTables().get(selectedIndex-1).removeAllOrder();
         model.removeAllElements();
     }
     
+    /**
+     * metodo per rimuovere l'ordine di indice specificato sul tavolo selezionato
+     * @param index l'indice dell' ordine da eliminare
+     * @author Luca
+     */
     public void removeOrder(int index){
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(index);
         model.remove(index);
     }
     
+    /**
+     * aggiunge un ordine al tavolo selezionato
+     * @param ord l'ordine da aggiungere sul tavolo selezionato
+     * @author Luca
+     */
     public void addOrder(Order ord){
         
         restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);
@@ -94,10 +117,20 @@ public class OrdiniPanel extends JPanel implements Observer{
         }
     }
     
+    /**
+     * metodo per ottenere l'indice del valore selezionato nella lista ordini
+     * @return indice dell' ordine selezionato
+     * @author Luca
+     */
     public int getSelectedIndex(){
         return list.getSelectedIndex();
     }
     
+    /**
+     * metodo getter per ottenere il modello della lista ordini
+     * @return modello della lista ordini
+     * @author Luca
+     */
     public DefaultListModel getModel(){
         return this.model;
     }

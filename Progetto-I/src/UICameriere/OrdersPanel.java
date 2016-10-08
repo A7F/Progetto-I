@@ -14,7 +14,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import restaurant.Order;
 import restaurant.Restaurant;
-import utils.Emoji;
 
 /**
  * Contiene l'elenco degli ordini relativi al tavolo selezionato
@@ -124,6 +123,11 @@ public class OrdersPanel extends JPanel implements Observer{
         }
     }
     
+    /**
+     * metodo per ottenere l'indice dell' elemento selezionato nella lista ordini
+     * @return indice elemento di ordini
+     * @author Luca
+     */
     public int getSelectedIndex(){
         return list.getSelectedIndex();
     }

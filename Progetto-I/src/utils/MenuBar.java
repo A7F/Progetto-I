@@ -29,6 +29,11 @@ public class MenuBar extends JMenuBar{
         this.add(menu);
     }
 
+    /**
+     * classe privata di action listener custom che disconnette un utente dal database quando viene premuta
+     * l'opzione logout della barra menu
+     * @author Luca
+     */
     private class LogoutActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -36,5 +41,45 @@ public class MenuBar extends JMenuBar{
             frameref.setVisible(false);
             mgr.disconnectUser(userId);
         }
+    }
+    
+    /**
+     * classe privata action listener custom che aggiunge un nuovo tavolo sul ristorante e sul database
+     * @author Luca
+     */
+    private class AddTavoloActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("qui aggiunge un nuovo tavolo al ristorante così come al database");
+        }
+        
+    }
+    
+    /**
+     * classe privata action listener custom che rimuove un nuovo tavolo sul ristorante e sul database
+     * @author Luca
+     */
+    private class RemTavoloActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            System.out.println("qui rimuove un nuovo tavolo sul ristorante così come sul database");
+        }
+    }
+    
+    /**
+     * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
+     * menu che permette di gestire l'aggiunta o la rimozione di tavoli. Questo è permesso alla cassa.
+     * @see CassaMainFrame
+     * @author Luca
+     */
+    public void addTableEntry(){
+        JMenu menuTables = new JMenu("Tavoli");
+        JMenuItem tavoliAddItem = new JMenuItem("Aggiungi tavolo");
+        tavoliAddItem.addActionListener(new AddTavoloActionListener());
+        JMenuItem tavoliRemItem = new JMenuItem("Rimuovi tavolo");
+        tavoliRemItem.addActionListener(new RemTavoloActionListener());
+        menuTables.add(tavoliAddItem);
+        menuTables.add(tavoliRemItem);
+        this.add(menuTables);
     }
 }

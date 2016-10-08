@@ -25,6 +25,10 @@ public class MenuPanel extends JPanel{
         init();
     }
     
+    /**
+     * avvia la grafica del cameriere disponendo i componenti nel frame
+     * @author Luca
+     */
     private void init(){
         el=restaurant.getMenu();
         
@@ -38,10 +42,21 @@ public class MenuPanel extends JPanel{
         this.add(pane);
     }
     
+    /**
+     * metodo per ottenere il menuelement relativo all' elemento menu slezionato
+     * @return MenuElement
+     * @author Luca
+     * @see MenuElement
+     */
     protected menu.MenuElement getSelectedElement(){
         return el.get(list.getSelectedIndex());
     }
     
+    /**
+     * metodo per ottenere l'indice dell' elemento selezionato nella lista menu
+     * @return indice selezionato menu
+     * @author Luca
+     */
     public int getSelectedIndex(){
         return list.getSelectedIndex();
     }
