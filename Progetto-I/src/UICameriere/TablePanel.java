@@ -20,9 +20,11 @@ public class TablePanel implements Observer{
     private restaurant.Restaurant restaurant;
     private int selectedTable;
     private JPanel panel;
+    int numberOfTables;
     
     public TablePanel(Restaurant restaurant) {
         this.restaurant = restaurant;
+        this.numberOfTables = restaurant.getTables().size();
         tableButtons = new ArrayList<>();
         panel= new JPanel();
         initComponent();
@@ -35,7 +37,7 @@ public class TablePanel implements Observer{
     private void initComponent(){
         restaurant.addObserver(this);
     
-        for (int i = 0; i < restaurant.getTables().size(); i++) {
+        for (int i = 0; i < numberOfTables; i++) {
 
             JButton button = new JButton(String.valueOf(i + 1));
             if(restaurant.getTables().get(i).getIsTaken()){
@@ -47,23 +49,23 @@ public class TablePanel implements Observer{
             if(!restaurant.getTables().get(i).getOrdersArray().isEmpty()){
                 button.setBackground(Color.red);
             }
-
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    
-                    JButton button = (JButton)e.getSource();
-                    selectedTable = Integer.parseInt(button.getText());
-                    
-                    restaurant.notifyAllObservers();
-                }
-            });
+            
+            button.addActionListener(new myActionListener());
 
             tableButtons.add(button);
             panel.add(button);
         }
     }
 
+    private class myActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            JButton button = (JButton)e.getSource();
+            selectedTable = Integer.parseInt(button.getText());
+            restaurant.notifyAllObservers();
+        }
+    }
+    
     /**
      * Ottieni il tavolo selezionato dalla pulsantiera. Di default ritorna il tavolo 1.
      * @author Luca
@@ -100,7 +102,8 @@ public class TablePanel implements Observer{
      * @see Restaurant
      */
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg){
+        
         if(restaurant.getTables().get(selectedTable-1).getIsTaken()){
             tableButtons.get(selectedTable-1).setBackground(Color.YELLOW);
             }else{
@@ -109,7 +112,9 @@ public class TablePanel implements Observer{
         if(!restaurant.getTables().get(selectedTable-1).getOrdersArray().isEmpty()){
             tableButtons.get(selectedTable-1).setBackground(Color.red);
         }
+        
         tableButtons.get(selectedTable-1).repaint();
+        panel.repaint();
     }
    
 }

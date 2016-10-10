@@ -21,13 +21,14 @@ public class TableModelBuilder {
     final String tab;
     JTable table;
     JPanel panel = new JPanel();
+    TableModel tableModel;
     
     public TableModelBuilder(String tablename){
         this.tab=tablename;
     }
 
     private JPanel createAndShowGui() throws SQLException {
-        final TableModel tableModel = buildTableModel(getData(this.tab));
+        tableModel = buildTableModel(getData(this.tab));
         table = new JTable(tableModel);
         panel.add(new JScrollPane(table));
         
@@ -37,12 +38,13 @@ public class TableModelBuilder {
     private ResultSet getData(String table) throws SQLException {
         final String url = "jdbc:mysql://localhost:3306";
         final Connection connection = DriverManager.getConnection(url, "root", "");
-        final String sql = "SELECT * FROM "+tab;
-        final String selection = "USE Ristorante";
+        //final String sql = "SELECT * FROM ?;";
+        String selection = "USE ristorante";
         PreparedStatement preparedStatement = connection.prepareStatement(selection);
         preparedStatement.executeQuery();
-        PreparedStatement preparedStatement2 = connection.prepareStatement(sql);
-        return preparedStatement2.executeQuery();
+        preparedStatement = connection.prepareStatement("SELECT * FROM ?;");
+        preparedStatement.setString(1, table);
+        return preparedStatement.executeQuery();
     }
 
     protected static TableModel buildTableModel(final ResultSet resultSet) throws SQLException {
@@ -57,9 +59,9 @@ public class TableModelBuilder {
 
         // ottieni i dati della table
         Vector<Vector<Object>> dataVector = new Vector<>();
-        while (resultSet.next()) {
+        while (resultSet.next()){
             Vector<Object> rowVector = new Vector<>();
-            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
+            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++){
                 rowVector.add(resultSet.getObject(columnIndex));
             }
             dataVector.add(rowVector);

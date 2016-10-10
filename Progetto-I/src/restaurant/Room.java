@@ -55,7 +55,7 @@ public class Room {
     public void removeLastTable(){
         TavoliManager mgr = new TavoliManager();
         mgr.deleteLastTavolo();
-        tables.remove(tables.size());
+        tables.remove(tables.size()-1);
     }
     
     /**

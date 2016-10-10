@@ -31,7 +31,7 @@ public class CassaMainFrame{
         this.r=r;
         this.userId=userId;
         MenuBar cassaMenuBar = new MenuBar(mainframe,userId);
-        cassaMenuBar.addTableEntry();
+        cassaMenuBar.addTableEntry(r);
         mainframe.setJMenuBar(cassaMenuBar);
         populateNorthPanel();
         populateCenterPanel();

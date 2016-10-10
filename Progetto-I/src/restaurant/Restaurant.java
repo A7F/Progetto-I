@@ -111,6 +111,18 @@ public class Restaurant extends Observable{
      */
     public void addTables(){
        room.addNewTable();
+       this.setChanged();
+       notifyObservers();
+    }
+    
+    /**
+     * Rimuove un tavolo al ristorante aggiornando anche il database
+     * @author Luca
+     */
+    public void remTables(){
+       room.removeLastTable();
+       this.setChanged();
+       notifyObservers();
     }
     
     /**

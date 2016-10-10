@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import restaurant.Restaurant;
 
 /**
  * questa è la menubar in cui si può fare logout. Disponibile in tutte le finestre.
@@ -18,6 +19,7 @@ public class MenuBar extends JMenuBar{
     JFrame frameref;
     int userId;
     LoginManager mgr;
+    Restaurant restaurant;
     
     public MenuBar(JFrame frame,int userId){
         this.frameref=frame;
@@ -50,7 +52,7 @@ public class MenuBar extends JMenuBar{
     private class AddTavoloActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("qui aggiunge un nuovo tavolo al ristorante così come al database");
+            restaurant.addTables();
         }
         
     }
@@ -62,17 +64,19 @@ public class MenuBar extends JMenuBar{
     private class RemTavoloActionListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
-            System.out.println("qui rimuove un nuovo tavolo sul ristorante così come sul database");
+            restaurant.remTables();
         }
     }
     
     /**
      * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
      * menu che permette di gestire l'aggiunta o la rimozione di tavoli. Questo è permesso alla cassa.
+     * @param res ristorante
      * @see CassaMainFrame
      * @author Luca
      */
-    public void addTableEntry(){
+    public void addTableEntry(Restaurant res){
+        this.restaurant = res;
         JMenu menuTables = new JMenu("Tavoli");
         JMenuItem tavoliAddItem = new JMenuItem("Aggiungi tavolo");
         tavoliAddItem.addActionListener(new AddTavoloActionListener());

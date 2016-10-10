@@ -67,7 +67,7 @@ public class buttonLayout extends JPanel{
                                 con.setString(2, map.get("password").getText());
                                 con.setString(3, map.get("ruolo").getText());
                                 con.executeUpdate();
-                                refFrame.repaint();
+                                
                                 break;
                             case "menu":
                                 con = mgr.getConnection().prepareStatement("USE ristorante");
@@ -78,7 +78,6 @@ public class buttonLayout extends JPanel{
                                 con.setString(3, map.get("price").getText());
                                 con.setString(4, map.get("type").getText());
                                 con.executeUpdate();
-                                refFrame.repaint();
                                 break;
                         }
                     } catch (SQLException ex){
