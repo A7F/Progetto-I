@@ -112,8 +112,6 @@ public class TavoliManager {
     
     public void dropTavoli(){
         try {
-            //PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.dropTavoli);
-            //ps.executeUpdate();
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.createTavoli);
             ps.executeUpdate();
         } catch (SQLException ex) {
