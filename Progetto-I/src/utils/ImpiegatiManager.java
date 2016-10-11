@@ -1,11 +1,13 @@
 package utils;
 
+import com.sun.rowset.CachedRowSetImpl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.CachedRowSet;
 import restaurant.Impiegato;
 
 /**
@@ -41,7 +43,7 @@ public class ImpiegatiManager {
             while(rs.next()){
                 int id = rs.getInt("ID");
                 String username=rs.getString("username");
-                Ruoli ruolo=Ruoli.valueOf(rs.getString("ruolo"));
+                String ruolo=rs.getString("ruolo");
                 boolean status=rs.getBoolean("status");
                 String password=rs.getString("password");
                 Impiegato imp = new Impiegato(id,username,ruolo,status,password);
@@ -50,6 +52,28 @@ public class ImpiegatiManager {
         } catch (SQLException ex) {
             System.out.println("errore query su database");
         }
+    }
+    
+    /**
+     * metodo per ottenere il contenuto della table impiegati come resultset
+     * @see ImpiegatiFrame
+     * @author Luca
+     * @return resultset table impiegati
+     */
+    public CachedRowSet getImpiegatiResultSet(){
+        ResultSet rs = null;
+        CachedRowSet crs = null;
+        try {
+            PreparedStatement ps = manager.getConnection().prepareStatement("SELECT * FROM impiegati;");
+            rs = ps.executeQuery();
+            crs = new CachedRowSetImpl();
+            crs.setType(ResultSet.TYPE_SCROLL_INSENSITIVE);
+            crs.setConcurrency(ResultSet.CONCUR_UPDATABLE);
+            crs.populate(rs);
+        } catch (SQLException ex){
+            ex.toString();
+        }
+        return crs;
     }
     
     /**
