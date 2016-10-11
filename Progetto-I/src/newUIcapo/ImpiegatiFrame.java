@@ -1,8 +1,12 @@
 package newUIcapo;
 
+import com.sun.rowset.CachedRowSetImpl;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +25,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
     ImpiegatiTableModel myImpiegatiTableModel;
     ImpiegatiManager empManager = new ImpiegatiManager();
     JTable table;
+    Connection conn;
     
     JLabel label_EM_USERNAME,label_EM_ID,label_EM_PASSWORD,label_STATUS,label_RUOLO;
     JTextField textField_EM_USERNAME,textField_EM_ID,textField_EM_PASSWORD,textField_STATUS,textField_RUOLO;
@@ -29,6 +34,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
     public ImpiegatiFrame(){
         super("Prova");
         try {
+            conn = empManager.getConnection();
             CachedRowSet myCachedRowset = empManager.getImpiegatiResultSet();
             myImpiegatiTableModel = new ImpiegatiTableModel(myCachedRowset);
             myImpiegatiTableModel.addEventHandlersToRowSet(this);
@@ -241,7 +247,6 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("click add");
                 myImpiegatiTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
                                                 textField_EM_USERNAME.getText(),
                                                 textField_EM_PASSWORD.getText(),
@@ -257,12 +262,8 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
             public void actionPerformed(ActionEvent e) {
                 try {
                     myImpiegatiTableModel.impiegatiRowSet.acceptChanges();
+                    System.out.println("DATABASE AGGIORNATO");
                 } catch (SyncProviderException ex) {
-                    ex.toString();
-                }
-                try {
-                    createNewTableModel();
-                } catch (SQLException ex) {
                     ex.toString();
                 }
             }
@@ -280,5 +281,6 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
             }
         });
     }
+    
     
 }

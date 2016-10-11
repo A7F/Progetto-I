@@ -1,6 +1,7 @@
 package utils;
 
 import com.sun.rowset.CachedRowSetImpl;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ import restaurant.Impiegato;
 public class ImpiegatiManager {
     DatabaseManager manager = new DatabaseManager();
     ArrayList<Impiegato> impiegati = new ArrayList<>();
+    Connection connection = manager.getConnection();
     
     public ImpiegatiManager(){
         init();
@@ -64,11 +66,21 @@ public class ImpiegatiManager {
         ResultSet rs = null;
         CachedRowSet crs = null;
         try {
-            PreparedStatement ps = manager.getConnection().prepareStatement("SELECT * FROM impiegati;");
+            connection = manager.getConnection();
+            PreparedStatement ps = manager.getConnection().prepareStatement("USE ristorante;");
+            ps.executeQuery();
+            ps = manager.getConnection().prepareStatement("SELECT * FROM impiegati;");
             rs = ps.executeQuery();
             crs = new CachedRowSetImpl();
             crs.setType(ResultSet.TYPE_SCROLL_INSENSITIVE);
             crs.setConcurrency(ResultSet.CONCUR_UPDATABLE);
+            crs.setUsername("root");
+            crs.setPassword("");
+            crs.setUrl("jdbc:mysql://localhost:3306/ristorante");
+//            crs.setCommand("USE ristorante");
+//            crs.execute(connection);
+            crs.setCommand("SELECT * FROM impiegati");
+            crs.execute(connection);
             crs.populate(rs);
         } catch (SQLException ex){
             ex.toString();
@@ -136,5 +148,9 @@ public class ImpiegatiManager {
             }
         }
         return result;
+    }
+    
+    public Connection getConnection(){
+        return manager.getConnection();
     }
 }
