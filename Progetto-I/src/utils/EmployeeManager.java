@@ -15,12 +15,12 @@ import restaurant.Impiegato;
  * questa classe fa da utility per ottenere i dati degli impiegati ed operare sulla relativa table
  * @author Luca
  */
-public class ImpiegatiManager {
+public class EmployeeManager {
     DatabaseManager manager = new DatabaseManager();
     ArrayList<Impiegato> impiegati = new ArrayList<>();
     Connection connection = manager.getConnection();
     
-    public ImpiegatiManager(){
+    public EmployeeManager(){
         init();
     }
 
@@ -76,7 +76,7 @@ public class ImpiegatiManager {
             crs.setConcurrency(ResultSet.CONCUR_UPDATABLE);
             crs.setUsername("root");
             crs.setPassword("");
-            crs.setUrl("jdbc:mysql://localhost:3306/ristorante");
+            crs.setUrl("jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");//jdbc:mysql://localhost:3306/test?relaxAutoCommit=true
 //            crs.setCommand("USE ristorante");
 //            crs.execute(connection);
             crs.setCommand("SELECT * FROM impiegati");
@@ -111,6 +111,19 @@ public class ImpiegatiManager {
             pass=null;
             ps.setString(3, impiegato.getRuolo().toString());
             ps.executeQuery();
+        } catch (SQLException ex) {
+            System.out.println("errore update sul database, update table impiegati");
+        }
+    }
+    /**
+     * Rimuove un impiegato dalla table impiegato del databse
+     * @param id 
+     * @author FabioT
+     */
+    public void removeEmployee(int id){
+        try {
+            PreparedStatement ps = manager.getConnection().prepareStatement("DELETE FROM impiegati WHERE id = " + id + ";");
+            ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("errore update sul database, update table impiegati");
         }

@@ -36,7 +36,7 @@ public class TableModelBuilder {
     }
 
     private ResultSet getData(String table) throws SQLException {
-        final String url = "jdbc:mysql://localhost:3306";
+        final String url = "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true";
         final Connection connection = DriverManager.getConnection(url, "root", "");
         //final String sql = "SELECT * FROM ?;";
         String selection = "USE ristorante";

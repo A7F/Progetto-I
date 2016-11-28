@@ -1,7 +1,6 @@
 package utils;
 
 import UICameriere.CameriereMainFrame;
-import UIcapo.CapoUI;
 import restaurant.Restaurant;
 import UIcook.CookUI;
 import UIcassa.CassaMainFrame;
@@ -11,6 +10,7 @@ import java.sql.SQLException;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import newUIcapo.CapoUI;
 
 /**
  * questa classe si occupa di fornire i metodi per la gestione del login, inoltre
