@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class DatabaseManager {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
-    public static final String DATABASE_URL = "jdbc:mysql://localhost:3306";
+    public static final String DATABASE_URL = "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true";
     private Connection connection = null;
     public static Statement statement = null;
     JFrame frame = new JFrame();
