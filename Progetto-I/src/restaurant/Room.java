@@ -45,6 +45,7 @@ public class Room {
         mgr.insertNextTavolo();
         int nextId = tables.size()+1;
         tables.add(new Table(nextId));
+        System.out.println("Aggiunto nuovo tavolo con id: "+nextId);
     }
     
     /**
@@ -56,6 +57,7 @@ public class Room {
         TavoliManager mgr = new TavoliManager();
         mgr.deleteLastTavolo();
         tables.remove(tables.size()-1);
+        System.out.println("Rimosso ultimo tavolo");
     }
     
     /**

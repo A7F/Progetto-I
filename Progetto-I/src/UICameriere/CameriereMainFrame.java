@@ -43,7 +43,9 @@ public class CameriereMainFrame extends JFrame{
      */
     private void initComponent(){
         this.setLayout(new BorderLayout());
-        this.setJMenuBar(new MenuBar(this,userId));
+        MenuBar menuBar = new MenuBar(this,userId);
+        menuBar.addTableEntry(restaurant);
+        this.setJMenuBar(menuBar);
         JPanel formatPane = new JPanel();
         formatPane.setLayout(new FlowLayout());
         formatPane.add(ordersPanel);

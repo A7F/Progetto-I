@@ -261,7 +261,8 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges();
+                    conn = empManager.getConnection();
+                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges(conn);
                     System.out.println("DATABASE AGGIORNATO");
                 } catch (SyncProviderException ex) {
                     ex.toString();

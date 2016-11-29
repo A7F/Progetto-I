@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import restaurant.Restaurant;
@@ -16,17 +17,16 @@ import restaurant.Restaurant;
  */
 public class TablePanel implements Observer{
     
-    private ArrayList<JButton> tableButtons;
+    private ArrayList<JButton> tableButtons = new ArrayList<>();
+    private DefaultListModel<JButton> buttons = new DefaultListModel<>();
     private restaurant.Restaurant restaurant;
     private int selectedTable;
-    private JPanel panel;
+    private JPanel panel = new JPanel();
     int numberOfTables;
     
     public TablePanel(Restaurant restaurant) {
         this.restaurant = restaurant;
         this.numberOfTables = restaurant.getTables().size();
-        tableButtons = new ArrayList<>();
-        panel= new JPanel();
         initComponent();
     }
     
@@ -53,7 +53,11 @@ public class TablePanel implements Observer{
             button.addActionListener(new myActionListener());
 
             tableButtons.add(button);
+            buttons.addElement(button);
             panel.add(button);
+            //in panel aggiungo i jbutton, non viene costruito con l'arraylist, quindi l'update del tavolo lo faccio correttamente nell' arraylist
+            //ed è giusto che ci sia (per colorare a dovere i pulsanti ecc però devo aggiungere e rimuovere l'ultimo tavolo sempre facendo
+            //panel.add(button). Ovviamente Button dovrà avere l' ID corretto che è quello proveniente dal database.
         }
     }
 
@@ -88,6 +92,30 @@ public class TablePanel implements Observer{
     public JPanel getPanel(){
         return panel;
     }
+    
+    
+    /**
+     * metodo per gestire i pulsanti nel pannello: riconosce se è stato aggiunto o rimosso un tavolo
+     * modificando di conseguenza i pulsanti dei tavoli.
+     * @author Luca
+     */
+    public void reprintButtons(){
+        int newnumtables = restaurant.getTables().size();
+        int dim = tableButtons.size();
+        JButton newButton = new JButton(String.valueOf(dim+1));
+        newButton.addActionListener(new myActionListener());
+        newButton.setBackground(Color.GREEN);
+        
+        if(newnumtables>this.numberOfTables){
+            tableButtons.add(newButton);
+            panel.add(newButton);
+        }else if(newnumtables<this.numberOfTables){
+            JButton ref = tableButtons.get(dim-1);
+            panel.remove(ref);
+            tableButtons.remove(ref);
+        }
+        this.numberOfTables=newnumtables;
+    }
 
     /**
      * metodo di update dell' observer: ogni volta che si registra un cambiamento in ristorante,
@@ -103,7 +131,7 @@ public class TablePanel implements Observer{
      */
     @Override
     public void update(Observable o, Object arg){
-        
+        reprintButtons();
         if(restaurant.getTables().get(selectedTable-1).getIsTaken()){
             tableButtons.get(selectedTable-1).setBackground(Color.YELLOW);
             }else{
@@ -114,6 +142,7 @@ public class TablePanel implements Observer{
         }
         
         tableButtons.get(selectedTable-1).repaint();
+        panel.revalidate();
         panel.repaint();
     }
    
