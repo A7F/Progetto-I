@@ -4,6 +4,8 @@ import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -21,11 +23,14 @@ public class DatabaseManager {
     
     public DatabaseManager(){
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             connection=DriverManager.getConnection(DATABASE_URL, "root", "");
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
             System.err.println("SQLState: " + e.getSQLState());
             System.err.println("VendorError: " + e.getErrorCode());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -128,5 +133,4 @@ public class DatabaseManager {
             JOptionPane.showMessageDialog(frame,"Impossibile popolare il database","Errore",JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }

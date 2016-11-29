@@ -15,33 +15,33 @@ import javax.sql.RowSetListener;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.spi.SyncProviderException;
 import javax.swing.*;
-import utils.ImpiegatiManager;
+import utils.EmployeeManager;
 
 /**
  *
  * @author Luca
  */
-public class ImpiegatiFrame extends JFrame implements RowSetListener{
-    ImpiegatiTableModel myImpiegatiTableModel;
-    ImpiegatiManager empManager = new ImpiegatiManager();
+public class EmployeePanel extends JPanel implements RowSetListener{
+    EmployeeTableModel myImpiegatiTableModel;
+    EmployeeManager empManager;
     JTable table;
     Connection conn;
     
     JLabel label_EM_USERNAME,label_EM_ID,label_EM_PASSWORD,label_STATUS,label_RUOLO;
     JTextField textField_EM_USERNAME,textField_EM_ID,textField_EM_PASSWORD,textField_STATUS,textField_RUOLO;
-    JButton button_ADD_ROW,button_UPDATE_DATABASE,button_DISCARD_CHANGES;
+    JButton button_ADD_ROW, button_REMOVE_ROW,button_UPDATE_DATABASE,button_DISCARD_CHANGES;
 
-    public ImpiegatiFrame(){
-        super("Prova");
+    public EmployeePanel(){
+        this.empManager = new EmployeeManager();
         try {
-            conn = empManager.getConnection();
+        //    conn = empManager.getConnection();
             CachedRowSet myCachedRowset = empManager.getImpiegatiResultSet();
-            myImpiegatiTableModel = new ImpiegatiTableModel(myCachedRowset);
+            myImpiegatiTableModel = new EmployeeTableModel(myCachedRowset);
             myImpiegatiTableModel.addEventHandlersToRowSet(this);
             table = new JTable();
             table.setModel(myImpiegatiTableModel);
         } catch (SQLException ex) {
-            Logger.getLogger(ImpiegatiFrame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmployeePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         initGraphics();
     }
@@ -54,7 +54,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         CachedRowSet currentRowSet = this.myImpiegatiTableModel.impiegatiRowSet;
         try {
             currentRowSet.moveToCurrentRow();
-            myImpiegatiTableModel = new ImpiegatiTableModel(myImpiegatiTableModel.getImpiegatiRowSet());
+            myImpiegatiTableModel = new EmployeeTableModel(myImpiegatiTableModel.getImpiegatiRowSet());
             table.setModel(myImpiegatiTableModel);
         } catch (SQLException ex) {
             System.out.println("Qui non funziona qualcosa...");
@@ -70,7 +70,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
      * @author Luca
      */
     private void createNewTableModel() throws SQLException {
-        myImpiegatiTableModel = new ImpiegatiTableModel(empManager.getImpiegatiResultSet());
+        myImpiegatiTableModel = new EmployeeTableModel(empManager.getImpiegatiResultSet());
         myImpiegatiTableModel.addEventHandlersToRowSet(this);
         table.setModel(myImpiegatiTableModel);
     }
@@ -93,31 +93,30 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         textField_RUOLO = new JTextField(10);
 
         button_ADD_ROW = new JButton();
+        button_REMOVE_ROW = new JButton();
         button_UPDATE_DATABASE = new JButton();
         button_DISCARD_CHANGES = new JButton();
 
-        label_EM_USERNAME.setText("Username impiegato:");
         label_EM_ID.setText("ID:");
+        label_EM_USERNAME.setText("Username impiegato:");
         label_EM_PASSWORD.setText("Password:");
         label_STATUS.setText("Stato:");
         label_RUOLO.setText("Ruolo:");
 
-        textField_EM_USERNAME.setText("Inserisci uno username...");
         textField_EM_ID.setText("101");
+        textField_EM_USERNAME.setText("Inserisci uno username...");
         textField_EM_PASSWORD.setText("Inserisci una password...");
         textField_STATUS.setText("false");
         textField_RUOLO.setText("Specifica un ruolo...");
 
-        button_ADD_ROW.setText("Aggiungi riga");
-        button_UPDATE_DATABASE.setText("Invia cambiamenti");
+        button_ADD_ROW.setText("Aggiungi impiegato");
+        button_REMOVE_ROW.setText("Rimuovi impiegato");
+        button_UPDATE_DATABASE.setText("Invia cambiamenti al database");
         button_DISCARD_CHANGES.setText("Cancella cambiamenti");
         
-        Container contentPane = getContentPane();
-        contentPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-        contentPane.setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        this.setContentPane(contentPane);
-
+        
         c.fill = GridBagConstraints.BOTH;
         c.anchor = GridBagConstraints.CENTER;
         c.weightx = 0.5;
@@ -125,7 +124,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 0;
         c.gridwidth = 2;
-        contentPane.add(new JScrollPane(table), c);
+        this.add(new JScrollPane(table), c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -134,7 +133,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 1;
-        contentPane.add(label_EM_USERNAME, c);
+        this.add(label_EM_ID, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -143,7 +142,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 1;
         c.gridwidth = 1;
-        contentPane.add(textField_EM_USERNAME, c);
+        this.add(textField_EM_ID, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.25;
@@ -152,8 +151,8 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 2;
         c.gridwidth = 1;
-        contentPane.add(label_EM_ID, c);
-
+        this.add(label_EM_USERNAME, c);
+        
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
         c.weightx = 0.75;
@@ -161,7 +160,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 2;
         c.gridwidth = 1;
-        contentPane.add(textField_EM_ID, c);
+        this.add(textField_EM_USERNAME, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -170,7 +169,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 3;
         c.gridwidth = 1;
-        contentPane.add(label_EM_PASSWORD, c);
+        this.add(label_EM_PASSWORD, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -179,7 +178,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 3;
         c.gridwidth = 1;
-        contentPane.add(textField_EM_PASSWORD, c);
+        this.add(textField_EM_PASSWORD, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -188,7 +187,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 4;
         c.gridwidth = 1;
-        contentPane.add(label_STATUS, c);
+        this.add(label_STATUS, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -197,7 +196,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 4;
         c.gridwidth = 1;
-        contentPane.add(textField_STATUS, c);
+        this.add(textField_STATUS, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -206,7 +205,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 5;
         c.gridwidth = 1;
-        contentPane.add(label_RUOLO, c);
+        this.add(label_RUOLO, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -215,7 +214,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 5;
         c.gridwidth = 1;
-        contentPane.add(textField_RUOLO, c);
+        this.add(textField_RUOLO, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -224,7 +223,7 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 6;
         c.gridwidth = 1;
-        contentPane.add(button_ADD_ROW, c);
+        this.add(button_ADD_ROW, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -233,7 +232,8 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 1;
         c.gridy = 6;
         c.gridwidth = 1;
-        contentPane.add(button_UPDATE_DATABASE, c);
+        this.add(button_REMOVE_ROW, c);
+        
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -242,7 +242,16 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
         c.gridx = 0;
         c.gridy = 7;
         c.gridwidth = 1;
-        contentPane.add(button_DISCARD_CHANGES, c);
+        this.add(button_DISCARD_CHANGES, c);
+        
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.LINE_START;
+        c.weightx = 0.5;
+        c.weighty = 0;
+        c.gridx = 1;
+        c.gridy = 7;
+        c.gridwidth = 1;
+        this.add(button_UPDATE_DATABASE, c);
         
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
@@ -255,14 +264,19 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
             }
         });
         
+        button_REMOVE_ROW.addActionListener(new ActionListener() {       // funziona va bene ma non aggiorna runtime la tabella
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                empManager.removeEmployee(Integer.parseInt(textField_EM_ID.getText().trim()));
+            }
+        });
         
         //invia i cambiamenti e ridisegna la jtable
         button_UPDATE_DATABASE.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    conn = empManager.getConnection();
-                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges(conn);
+                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges(empManager.getConnection());
                     System.out.println("DATABASE AGGIORNATO");
                 } catch (SyncProviderException ex) {
                     ex.toString();
@@ -282,6 +296,4 @@ public class ImpiegatiFrame extends JFrame implements RowSetListener{
             }
         });
     }
-    
-    
 }

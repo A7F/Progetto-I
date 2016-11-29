@@ -7,7 +7,7 @@ public class MenuElement {
     private String typeElement;
     private String description;
     
-    public MenuElement(String name, double price, String typeElement, String description){
+    public MenuElement(String name, double price, String description, String typeElement ){
         this.name = name;
         this.price = price;
         this.typeElement = typeElement;

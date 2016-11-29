@@ -1,11 +1,14 @@
 package utils;
 
+import com.sun.rowset.CachedRowSetImpl;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.rowset.CachedRowSet;
 import menu.MenuElement;
 
 /**
@@ -16,6 +19,7 @@ import menu.MenuElement;
 public class MenuManager {
     DatabaseManager mgr = new DatabaseManager();
     ArrayList<MenuElement> menuElements = new ArrayList<>();
+    Connection connection = mgr.getConnection();
     
     public MenuManager(){
         init();
@@ -31,6 +35,74 @@ public class MenuManager {
             ps.executeQuery();
         } catch (SQLException ex) {
             Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    /**
+     * metodo per inizializzare l'arraylist di menu, prendendo i valori dal database table menu
+     * @author FabioT
+     */
+    public void getMenu(){
+        try {
+            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM menu;");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String name=rs.getString("Name");
+                String description=rs.getString("Description");
+                double price=rs.getDouble("Price");
+                String typeElement=rs.getString("Tipo");
+                
+                MenuElement me  = new MenuElement(name, price, typeElement, description);
+                menuElements.add(me);
+            }
+        } catch (SQLException ex) {
+            System.out.println("errore query su database");
+        }
+    }
+    
+    /**
+     * metodo per ottenere il contenuto della table impiegati come resultset
+     * @see ImpiegatiFrame
+     * @author Luca
+     * @return resultset table impiegati
+     */
+    public CachedRowSet getMenuResultSet(){
+        ResultSet rs = null;
+        CachedRowSet crs = null;
+        try {
+            connection = mgr.getConnection();
+            PreparedStatement ps = mgr.getConnection().prepareStatement("USE ristorante;");
+            ps.executeQuery();
+            ps = mgr.getConnection().prepareStatement("SELECT * FROM menu;");
+            rs = ps.executeQuery();
+            crs = new CachedRowSetImpl();
+            crs.setType(ResultSet.TYPE_SCROLL_INSENSITIVE);
+            crs.setConcurrency(ResultSet.CONCUR_UPDATABLE);
+            crs.setUsername("root");
+            crs.setPassword("");
+            crs.setUrl("jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");//jdbc:mysql://localhost:3306/test?relaxAutoCommit=true
+//            crs.setCommand("USE ristorante");
+//            crs.execute(connection);
+            crs.setCommand("SELECT * FROM menu");
+            crs.execute(connection);
+            crs.populate(rs);
+        } catch (SQLException ex){
+            ex.toString();
+        }
+        return crs;
+    }
+    
+    /**
+     * Rimuove un elementoMenu dalla table menu del databse
+     * @param id 
+     * @author FabioT
+     */
+    public void removeMenuElement(int id){
+        try {
+            PreparedStatement ps = mgr.getConnection().prepareStatement("DELETE FROM menu WHERE id = " + id + ";");
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("errore update sul database, update table menu");
         }
     }
     
@@ -142,5 +214,8 @@ public class MenuManager {
             Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public Connection getConnection() {
+        return connection;
+    }    
 }
