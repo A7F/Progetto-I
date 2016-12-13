@@ -1,5 +1,6 @@
 package UIcassa;
 
+import utils.TablePanel;
 import UICameriere.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class OrdiniPanel extends JPanel implements Observer{
         selectedIndex= tablePanel.getSelectedTable();
         model.removeAllElements();
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
+        for(int i=0; i<restaurant.getTables().get(selectedIndex-1).getOrdersArray().size();i++){
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
         }
     }

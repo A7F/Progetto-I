@@ -4,6 +4,7 @@ package restaurant;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
+import javax.swing.JOptionPane;
 import menu.Menu;
 import menu.MenuElement;
 
@@ -116,13 +117,25 @@ public class Restaurant extends Observable{
     }
     
     /**
-     * Rimuove un tavolo al ristorante aggiornando anche il database
+     * Rimuove un tavolo al ristorante aggiornando anche il database.
+     * Un tavolo può essere rimosso senza problemi solo se libero, altrimenti è richiesta conferma dell' azione.
      * @author Luca
      */
-    public void remTables(){
-       room.removeLastTable();
-       this.setChanged();
-       notifyObservers();
+    public void remTables() {
+        int input = 0;
+        
+        if(room.getTables().get(room.getTables().size()-1).getIsTaken()){
+            input = JOptionPane.showOptionDialog(null, "Sei sicuro? L'azione non può essere annullata!", "Conferma", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if (input == JOptionPane.OK_OPTION) {
+            room.removeLastTable();
+            this.setChanged();
+            notifyObservers();
+            }
+        }else{
+            room.removeLastTable();
+            this.setChanged();
+            notifyObservers();
+        }
     }
     
     /**

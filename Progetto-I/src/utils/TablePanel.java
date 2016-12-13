@@ -1,4 +1,4 @@
-package UICameriere;
+package utils;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

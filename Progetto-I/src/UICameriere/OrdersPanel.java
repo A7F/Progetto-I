@@ -1,5 +1,6 @@
 package UICameriere;
 
+import utils.TablePanel;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Observable;
