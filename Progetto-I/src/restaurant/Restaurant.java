@@ -1,6 +1,8 @@
 package restaurant;
 
 
+import UIcassa.PercentDiscount;
+import UIcassa.ProxyDiscount;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -17,7 +19,8 @@ public class Restaurant extends Observable{
     private final String name;
     private Room room;
     private Menu menu;
-    private int discount;
+    private ProxyDiscount contextDiscount = new ProxyDiscount(new PercentDiscount());
+   // private int discount;
     
     /**
      * @author Federico Vitrò
@@ -193,22 +196,13 @@ public class Restaurant extends Observable{
       
     }
 
-    /**
+     /**
      * Ritorna l'eventuale sconto di giornata
      * @return discount
      * @author FabioTagliani
      */
-    public int getDiscount() {
-        return discount;
-    }
-
-    /**
-     * Imposta l'eventuale sconto di giornata
-     * @param discount
-     * @author FabioTagliani
-     */
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public ProxyDiscount getDiscount() {
+        return contextDiscount;
     }
             
     /**

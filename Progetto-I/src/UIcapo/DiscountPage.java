@@ -33,7 +33,7 @@ public class DiscountPage extends JPanel{
         discountButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                restaurant.setDiscount((Integer)discountPanel.getSpinnerDiscount());
+                restaurant.getDiscount().setAttributes((Integer)discountPanel.getSpinnerDiscount(), 0);
             }
         });
         

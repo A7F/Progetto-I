@@ -46,7 +46,7 @@ public class CookUI implements Observer{
      * @author Luca
      */
     private void initUi(){
-        frame.setJMenuBar(new utils.MenuBar(frame,userId));
+        frame.setJMenuBar(new utils.MenuBar(frame,userId,restaurant));
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         
         for(int i=0;i<elements.size();i++){

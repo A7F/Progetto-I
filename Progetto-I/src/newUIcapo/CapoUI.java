@@ -8,7 +8,6 @@ package newUIcapo;
 import UIcapo.DiscountPage;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -47,7 +46,9 @@ public class CapoUI extends JFrame{
     }
     
     private void initGraphics() {
-
+        MenuBar capoMenuBar = new MenuBar(this,userId,restaurant);
+        capoMenuBar.addDiscountMenu();
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         panelEmp.add(employeePanel);
         tabbedPane.addTab("Impiegati", panelEmp);
@@ -55,14 +56,14 @@ public class CapoUI extends JFrame{
         panelMenu.add(menuPanel);
         tabbedPane.addTab("Menu", panelMenu);
         
-//        discountPage = new DiscountPage(restaurant);      //eventuali sconti
-//        tabbedPane.addTab("Sconti", panelSconti);
-//        panelSconti.setLayout(new BorderLayout());
-//        panelSconti.add(discountPage,BorderLayout.NORTH);
+        discountPage = new DiscountPage(restaurant);      //eventuali sconti
+        tabbedPane.addTab("Sconti", panelSconti);
+        panelSconti.setLayout(new BorderLayout());
+        panelSconti.add(discountPage,BorderLayout.NORTH);
         
         this.add(tabbedPane);
         this.setTitle("Pannello di gestione");
-        this.setJMenuBar(new MenuBar(this,userId));
+        this.setJMenuBar(capoMenuBar);
         this.setVisible(true);
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

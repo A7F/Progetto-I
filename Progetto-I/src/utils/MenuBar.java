@@ -1,5 +1,7 @@
 package utils;
 
+import UIcassa.CassaMainFrame;
+import UIcassa.DiscountMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,10 +22,12 @@ public class MenuBar extends JMenuBar{
     int userId;
     LoginManager mgr;
     Restaurant restaurant;
+    DiscountMenu discountMenu;
     
-    public MenuBar(JFrame frame,int userId){
+    public MenuBar(JFrame frame,int userId,Restaurant res){
         this.frameref=frame;
         this.userId=userId;
+        this.restaurant=res;
         JMenuItem menuItem = new JMenuItem("Logout",new ImageIcon("data/icons/logout32x32.png"));
         menuItem.setMnemonic(KeyEvent.VK_L);
         menuItem.addActionListener(new LogoutActionListener());
@@ -85,5 +89,14 @@ public class MenuBar extends JMenuBar{
         menuTables.add(tavoliAddItem);
         menuTables.add(tavoliRemItem);
         this.add(menuTables);
+    }
+    /**
+     * Imposta l'eventuale tipo di sconto alla cassa. Questa opzione viene visualizzata nella grafica del capo
+     * @see DiscountMenu
+     * @author Fabio
+     */
+    public void addDiscountMenu(){
+        discountMenu = new DiscountMenu(restaurant.getDiscount());    
+        this.add(discountMenu);
     }
 }

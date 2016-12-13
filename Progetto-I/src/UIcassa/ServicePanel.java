@@ -63,9 +63,11 @@ public class ServicePanel extends JPanel{
                 if(scontrinoPanel.getIsEmptyTable()){
                     scontrinoPanel.getRestaurant().setFreeTable(scontrinoPanel.getSelectedIndex()-1);
                 }
-                String total = scontrinoPanel.calculateCurrentTot();
+                String total = scontrinoPanel.calculateCurrentTotString();
+                String discount= scontrinoPanel.getRestaurantDiscount();
                 String ticket = scontrinoPanel.getScontrinoElements();
-                cassa.setText(ticket+"\n"+total);
+                String totalDiscounted = scontrinoPanel.calculateTotWithDiscount();
+               cassa.setText(ticket+"\n"+total + "\n" + discount + "\n" + totalDiscounted);
                 scontrinoPanel.removeAllElement();
             }
         });

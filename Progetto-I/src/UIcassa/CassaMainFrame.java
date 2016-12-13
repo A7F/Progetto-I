@@ -30,7 +30,7 @@ public class CassaMainFrame{
     public CassaMainFrame(Restaurant r, int userId){
         this.r=r;
         this.userId=userId;
-        MenuBar cassaMenuBar = new MenuBar(mainframe,userId);
+        MenuBar cassaMenuBar = new MenuBar(mainframe,userId,r);
         cassaMenuBar.addTableEntry(r);
         mainframe.setJMenuBar(cassaMenuBar);
         populateNorthPanel();
@@ -69,9 +69,7 @@ public class CassaMainFrame{
                 }else{
                     scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(ordiniPanel.getSelectedIndex()));
                     ordiniPanel.removeOrder();
-                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
-                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
-                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
+                    setPreviewTotal(scontrinoPanel, mySouthPanel);
                 }
             }
         });
@@ -86,9 +84,7 @@ public class CassaMainFrame{
                 }else{
                     ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(scontrinoPanel.getSelectedListIndex()));
                     scontrinoPanel.removeElement();
-                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
-                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
-                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
+                    setPreviewTotal(scontrinoPanel, mySouthPanel);
                 }
             }
         });
@@ -105,9 +101,7 @@ public class CassaMainFrame{
                         scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(i));
                     }    
                     ordiniPanel.removeAllOrders();
-                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
-                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
-                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
+                    setPreviewTotal(scontrinoPanel, mySouthPanel);
                 }
             }
         });
@@ -124,9 +118,7 @@ public class CassaMainFrame{
                         ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(i));
                     }
                     scontrinoPanel.removeAllElement();
-                    mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTot());
-                    mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
-                    mySouthPanel.setJlabelDiscountText("- "+scontrinoPanel.getRestaurantDiscount()+"%");
+                    setPreviewTotal(scontrinoPanel, mySouthPanel);
                 }
             }
         });
@@ -149,6 +141,14 @@ public class CassaMainFrame{
         southPanel.add(mySouthPanel);
         southPanel.setPreferredSize(new Dimension(700,160));
     }
+    
+    private void setPreviewTotal(ScontrinoPanel scontrinoPanel, ServicePanel mySouthPanel){
+    
+        mySouthPanel.setJlabelTotText(scontrinoPanel.calculateCurrentTotString());
+        mySouthPanel.setJlabelTotDiscText(scontrinoPanel.calculateTotWithDiscount());
+        mySouthPanel.setJlabelDiscountText(scontrinoPanel.getRestaurantDiscount());  
+    }
+    
 
     /**
      * questo metodo imposta le proprietà del frame principale

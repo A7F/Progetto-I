@@ -118,19 +118,29 @@ public class ScontrinoPanel extends JPanel{
     
     /**
      * questo metodo calcola il totale di tutti gli elementi inseriti in scontrino
-     * @return il totale già convertito in strings
+     * @return il totale
      * @author Luca
      * @see ServicePanel
      */
-    public String calculateCurrentTot(){
+    public double calculateCurrentTot(){
         double tot = 0;
-        int discount = restaurant.getDiscount();
+        
         for(int i=0;i<model.size();i++){
             Order ord = (Order) model.getElementAt(i);
             double price = ord.getPrice();
             tot = tot+price;
         }
-        return String.valueOf(tot+" $");
+        return tot;
+    }
+    
+    /**
+     * Contiene il totale dello scontrino convertito in stringa
+     * @return il totale dello scontrino conevrtito in stringa
+     * @author Fabio
+     */
+    public String calculateCurrentTotString(){
+        
+        return calculateCurrentTot() + " $";
     }
     
     /**
@@ -139,18 +149,13 @@ public class ScontrinoPanel extends JPanel{
      * @author Luca
      * @return totale con sconto applicato
      */
-    public String calculateTotWithDiscount(){
-        double tot = 0;
-        int discount = restaurant.getDiscount();
-        for(int i=0;i<model.size();i++){
-            Order ord = (Order) model.getElementAt(i);
-            double price = ord.getPrice();
-            tot = tot+price;
-        }
-        tot = tot-(tot*discount/100);
-        return String.valueOf(tot+" $");
+    public String calculateTotWithDiscount() {
+
+        double discountedTot = restaurant.getDiscount().getDiscountedPrice(this);
+        
+        return String.valueOf(discountedTot + " $");
     }
-    
+        
     /**
      * metodo per ottenere lo sconto da applicare sul totale
      * @see Restaurant
@@ -158,7 +163,7 @@ public class ScontrinoPanel extends JPanel{
      * @author Luca
      */
     public String getRestaurantDiscount(){
-        return String.valueOf(restaurant.getDiscount());
+       return restaurant.getDiscount().getAttributeString();
     }
     
     /**

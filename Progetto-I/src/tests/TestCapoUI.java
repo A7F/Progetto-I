@@ -34,7 +34,7 @@ public class TestCapoUI {
        
         System.out.println(diablo.getTables());
         
-        CapoUI capoUI = new CapoUI(0);
+        CapoUI capoUI = new CapoUI(diablo,0);
     
     }
     
