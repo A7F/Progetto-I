@@ -2,7 +2,6 @@ package UIcassa;
 
 import utils.TablePanel;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.*;
@@ -19,7 +18,6 @@ public class OrdiniPanel extends JPanel implements Observer{
 
     private TablePanel tablePanel;
     private Restaurant restaurant;
-    private ArrayList<Order> orders;
     JScrollPane pane;
     DefaultListModel model=new DefaultListModel();
     private JList list;
@@ -35,7 +33,6 @@ public class OrdiniPanel extends JPanel implements Observer{
 
     private void init(){
         selectedIndex= tablePanel.getSelectedTable();
-        orders = restaurant.getOrderTable(selectedIndex);
         
         for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
             model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
