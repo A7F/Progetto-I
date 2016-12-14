@@ -72,7 +72,6 @@ public class LoadFileText {
             }
         }
         mgr.closeConnection();
-        System.out.println(">> CONNESSIONE CHIUSA");
     }
     
 }
