@@ -26,6 +26,5 @@ public class TestCameriereUI {
         
         CameriereMainFrame cmf = new CameriereMainFrame(diablo,0);
         
-        
     }
 }

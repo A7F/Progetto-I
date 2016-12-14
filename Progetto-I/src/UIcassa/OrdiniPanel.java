@@ -1,7 +1,6 @@
 package UIcassa;
 
 import utils.TablePanel;
-import UICameriere.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -53,16 +52,30 @@ public class OrdiniPanel extends JPanel implements Observer{
 
     @Override
     /**
-     * Azioni da eseguire quando è segnalato che observable ha cambiato stato
+     * Azioni da eseguire quando observable cambia stato: 
+     * refresh dei bottoni facendo attenzione a quando si elimina il tavolo che è anche quello
+     * correntemente selezionato. Il try-catch gestisce possibili out of bounds: il tavolo che
+     * viene rimosso non può più essere quello correntemente selezionato dunque passa la selezione
+     * sul tavolo immediatamente precedente.
      * @author Luca
+     * @see TablePanel
      */
     public void update(Observable o, Object arg) {
-        selectedIndex= tablePanel.getSelectedTable();
+        
         model.removeAllElements();
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex-1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
-        }
+        try{
+            selectedIndex= tablePanel.getSelectedTable()-1;
+            for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+                model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
+            }
+        }catch(IndexOutOfBoundsException ex){
+            selectedIndex= restaurant.getTables().size()-1;
+            for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+                model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
+            }
+        }        
+        
     }
     
     /**

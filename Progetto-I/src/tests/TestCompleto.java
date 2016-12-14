@@ -11,7 +11,7 @@ import restaurant.Restaurant;
  * dovrebbe diventare il nuovo main che farà partire tutto il programma.
  * @author Luca
  */
-public class TestLoginUI{
+public class TestCompleto{
 
     /**
      * @param args the command line arguments

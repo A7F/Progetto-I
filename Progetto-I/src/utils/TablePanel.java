@@ -111,6 +111,7 @@ public class TablePanel implements Observer{
             panel.add(newButton);
         }else if(newnumtables<this.numberOfTables){
             JButton ref = tableButtons.get(dim-1);
+            selectedTable = newnumtables;
             panel.remove(ref);
             tableButtons.remove(ref);
         }
