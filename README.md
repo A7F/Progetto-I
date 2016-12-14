@@ -15,19 +15,20 @@ I casi d'uso si trovano nella sezione wiki.
 
 ##Cosa contiene l'ultimo commit?
 
-1. UI cassa
-  * migliorata la grafica della cassa che ora rispecchia il caso d'uso
-2. Sincronizzazione fra cameriere, cuoco e cassa
-3. UI capo
-  * aggiunta la possibilità di applicare uno sconto sul totale
-4. Bugfix delle query e degli update sul database
-  * migliorata utility di creazione del database e di popolazione automatica delle table
-5. Iniziata stesura della javadoc
+1. impostazioni del programma
+ - iniziata creazione delle impostazioni del programma: creato file json e relativa classe di gestione, implementata come Singleton.
+2. iniziata stesura javadoc
+ - javadoc inserita ma da perfezionare
+3. bugfix vari
+ - sistemato l'outOfBoundsException che avrebbe terminato inaspettatamente il programma al tentativo di eliminare l'ultimo tavolo, corrispondente a quello selezionato
+ - la rimozione di un tavolo occupato richiede una ulteriore conferma tramite popup di warning
+4. migliorata la grafica del gestore ristorante
+ - ora può aggiornare e rimuovere entrate nelle tabelle del database
+ - può applicare sconti
   
 ###Problemi ultimo commit
 * Vanno rivisti i try catch, le eccezioni sono gestite ma non benissimo (sarebbe carino usare dei popup)
-* L'utility per il proprietario del ristorante che registra nuovi utenti nel database va testata
-* Sistemare gestione dei tavoli in grafiche
+* Va terminata la gestione impostazioni del programma, da rendere disponibili al capo tramite menu (si deve inserire l'entrata nella JMenuBar)
 * Javadoc da terminare e da revisionare
 
 ##Usare il database (Win+Mac)
