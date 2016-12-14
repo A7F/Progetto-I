@@ -20,7 +20,6 @@ public class Restaurant extends Observable{
     private Room room;
     private Menu menu;
     private ProxyDiscount contextDiscount = new ProxyDiscount(new PercentDiscount());
-   // private int discount;
     
     /**
      * @author Federico Vitrò
@@ -190,6 +189,7 @@ public class Restaurant extends Observable{
     /**
      * Restituisce i tavoli della sala
      * @author fabiotagliani
+     * @return tavoli della sala
      */
     public ArrayList<Table> getTables(){
         return room.getTables();
@@ -208,6 +208,7 @@ public class Restaurant extends Observable{
     /**
     * Restituisce i tavoli non prenotati
     * @author FabioTagliani
+     * @return tutti i tavoli liberi della sala
     */
     public ArrayList<Table> getFreeTable(){
        return room.getFreeTable();
@@ -216,9 +217,8 @@ public class Restaurant extends Observable{
     /**
      * ritorna il menu del ristorante
      * @author Federico Vitrò
-     * @return menu.getMenu()
-     */
-    
+     * @return menu del ristorante
+     */    
     public ArrayList<MenuElement> getMenu(){
         return menu.getMenu();
     }
@@ -227,7 +227,7 @@ public class Restaurant extends Observable{
      * dato il nome di un elemento il metodo restituisce gli elementi nel menu corrispondenti a quel nome
      * @author Federico Vitrò
      * @param elementName
-     * @return menu.getElementByName(elementName)
+     * @return elementi menu (ovvero pietanze) con lo stesso nome
      */
     public ArrayList<MenuElement> getMenuByName(String elementName){
         return menu.getElementByName(elementName);
@@ -237,7 +237,7 @@ public class Restaurant extends Observable{
      * dato il tipo di un elemento restituisce gli elementi nel menu corrispondenti a quel tipo
      * @author Federico Vitrò
      * @param type
-     * @return menu.getElementByType(type)
+     * @return elementi menu (ovvero pietanze) con lo stesso tipo
      */
     public ArrayList<MenuElement> getElementByType(String type){
         return menu.getElementByType(type);
@@ -247,7 +247,7 @@ public class Restaurant extends Observable{
      * dato il prezzo di un elemento restituisce gli elementi nel menu corrispondenti a quel prezzo
      * @author Federico Vitrò
      * @param cash
-     * @return menu.getElementByPrice(cash)
+     * @return elementi menu (ovvero pietanze) con lo stesso prezzo
      */
     public ArrayList<MenuElement> getElementByPrice(double cash){
         return menu.getElementByPrice(cash);
@@ -256,7 +256,7 @@ public class Restaurant extends Observable{
     /**
      * restituisce i tavoli prenotati
      * @author Federico Vitrò
-     * @return room.getTakenTable()
+     * @return tutti i tavoli occupati
      */
      public ArrayList<Table> getTakenTable(){
         return room.getTakenTable();
@@ -265,7 +265,7 @@ public class Restaurant extends Observable{
      /**
       * restituisce il nome del ristorante
       * @author Federico Vitrò
-      * @return nome del ristorante
+      * @return name nome del ristorante
       */
     public String getRestaurantName() {
         return this.name;
