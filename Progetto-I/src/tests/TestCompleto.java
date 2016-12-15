@@ -5,6 +5,7 @@ import java.io.IOException;
 import menu.MenuElement;
 import restaurant.Order;
 import restaurant.Restaurant;
+import utils.AppConfig;
 
 /**
  * classe di test globale del funzionamento del programma.
@@ -18,7 +19,7 @@ public class TestCompleto{
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException{
-        Restaurant r = new Restaurant("Boh",4,"./data/menu.txt");
+        Restaurant r = new Restaurant(AppConfig.getInstance().getRestaurantName(),AppConfig.getInstance().getTableNumber(),AppConfig.getInstance().getMenuPath());
         MenuElement me = new MenuElement("Pasta alla Carbonara", 7, "PRIMO", "Descrizione.");
         MenuElement me2 = new MenuElement("Pasta alla Carbonara", 7, "PRIMO", "Altra descrizione.");
         Order order = new Order(1,me, "al dente");
