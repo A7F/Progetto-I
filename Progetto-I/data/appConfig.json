@@ -1,11 +1,1 @@
-{
-    "app_name": "ancora senza nome :(",
-    "table_number": 5,
-    "menu_path": "./data/menu.txt",
-    "def_dbuser": "root",
-    "project_name": "Progetto-I",
-    "def_dbpw": "",
-    "def_dburl": "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true",
-    "def_lang": "IT",
-    "restaurant_name": "diablo"
-}
+{"app_name":"ancora senza nome :(","table_number":3,"menu_path":"./data/menu.txt","def_dbuser":"root","project_name":"Progetto-I","def_dbpw":"","def_dburl":"jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true","def_lang":"IT","restaurant_name":"Diablo"}

@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import restaurant.Restaurant;
+import settingsUI.SettingsMainFrame;
 
 /**
  * questa è la menubar in cui si può fare logout. Disponibile in tutte le finestre.
@@ -73,6 +74,19 @@ public class MenuBar extends JMenuBar{
     }
     
     /**
+     * classe privata action listener custom che mostra il pannello impostazioni
+     * @see SettingsMainFrame
+     * @author Luca
+     */
+    private class AddSettingsActionListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            SettingsMainFrame smf = new SettingsMainFrame(AppConfig.getInstance());
+        }
+        
+    }
+    
+    /**
      * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
      * menu che permette di gestire l'aggiunta o la rimozione di tavoli. Questo è permesso alla cassa.
      * @param res ristorante
@@ -90,6 +104,20 @@ public class MenuBar extends JMenuBar{
         menuTables.add(tavoliRemItem);
         this.add(menuTables);
     }
+    
+    
+    /**
+     * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
+     * menu che permette di gestire le impostazioni del programma.
+     * @see CapoUI
+     * @author Luca
+     */
+    public void addSettingsEntry(){
+        JMenuItem settingsMenu = new JMenuItem("Impostazioni");
+        settingsMenu.addActionListener(new AddSettingsActionListener());
+        menu.add(settingsMenu);
+    }
+    
     /**
      * Imposta l'eventuale tipo di sconto alla cassa. Questa opzione viene visualizzata nella grafica del capo
      * @see DiscountMenu

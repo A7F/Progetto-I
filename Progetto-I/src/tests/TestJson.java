@@ -1,7 +1,8 @@
 package tests;
 
+import settingsUI.SettingsMainFrame;
 import utils.AppConfig;
-
+    
 /**
  *
  * @author Luca
@@ -9,10 +10,8 @@ import utils.AppConfig;
 public class TestJson {
 
     public static void main(String[] args) {
-        System.out.println(AppConfig.getInstance().getAppName());
-        AppConfig.getInstance().setAppName("ancora senza nome :(");
-        AppConfig.getInstance().commitChanges();
-        System.out.println(AppConfig.getInstance().getAppName());
+        
+        SettingsMainFrame smf = new SettingsMainFrame(AppConfig.getInstance());
     }
     
 }
