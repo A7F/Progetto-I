@@ -1,4 +1,4 @@
-package UIcapo;
+package newUIcapo;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
