@@ -1,3 +1,6 @@
+![build engine](https://img.shields.io/badge/build%20engine-ANT-blue.svg)
+![build status](https://img.shields.io/badge/build-passing-green.svg)
+![jdk release](https://img.shields.io/badge/JDK-v1.8-blue.svg)
 # Progetto-I
 Ordinazioni al ristorante
 
