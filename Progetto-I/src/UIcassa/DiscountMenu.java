@@ -12,7 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
- * Seleziona il tipo di sconto da effettuare
+ * Menu a tendina all'interno della menuBar all'interno della grafica del capo.
+ * Viene utilizzata per scegliere il tipo di sconto da effettuare.
  * @author Fabio
  */
 public class DiscountMenu extends JMenuBar{

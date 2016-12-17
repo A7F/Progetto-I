@@ -253,13 +253,20 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                myImpiegatiTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
-                                                textField_EM_USERNAME.getText(),
-                                                textField_EM_PASSWORD.getText(),
-                                                textField_RUOLO.getText(),
-                                                Boolean.parseBoolean(textField_STATUS.getText().trim()));
+
+                if (empManager.getImpiegatoById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
+                    myImpiegatiTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
+                            textField_EM_USERNAME.getText(),
+                            textField_EM_PASSWORD.getText(),
+                            textField_RUOLO.getText(),
+                            Boolean.parseBoolean(textField_STATUS.getText().trim()));
+                } else {
+
+                    JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
+        
         
         button_REMOVE_ROW.addActionListener(new ActionListener() {       // funziona va bene ma non aggiorna runtime la tabella
             @Override

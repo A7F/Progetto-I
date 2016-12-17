@@ -15,13 +15,14 @@ public interface IDiscountStrategy {
      * Calcola il prezzo totale scontato
      * @param scontrino
      * @see ScontrinoPanel
-     * @return 
+     * @return prezzo scontato 
      */
     public Double getDiscountedPrice(ScontrinoPanel scontrino);
     
     /**
-     * Imposta i parametri da utilizzare nel calcolo dello sconto
-     * @param attribute1
+     * Imposta i parametri presenti nella grafica degli sconti che ti servono per il calcolo dello sconto.
+     * Gli attributi potrebbero essere lo sconto o la soglia che devi raggiungere per avere lo sconto
+     * @param attribute1 
      * @param attribute2 
      */
     public void setAttributes(int attribute1,int attribute2);

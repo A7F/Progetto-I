@@ -1,6 +1,8 @@
 package restaurant;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import utils.TavoliManager;
 
 /**
@@ -11,6 +13,7 @@ public class Room {
     
     private ArrayList<Table> tables;
     TavoliManager tavoliManager = new TavoliManager();
+    private JFrame frame;
     
     /**
      * @author Federico Vitrò
@@ -53,11 +56,11 @@ public class Room {
      * Aggiorna anche la table Tavoli del database Ristorante.
      * @author Luca
      */
-    public void removeLastTable(){
+    public void removeLastTable() {
+
         TavoliManager mgr = new TavoliManager();
         mgr.deleteLastTavolo();
-        tables.remove(tables.size()-1);
-        System.out.println("Rimosso ultimo tavolo");
+        tables.remove(tables.size() - 1);
     }
     
     /**

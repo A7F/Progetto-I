@@ -6,8 +6,9 @@
 package UIcassa;
 
 /**
- * Gestisce l'accesso controllato agli oggetti che implementano 
- * la stessa interfaccia
+ * Gestisce l'accesso controllato agli oggetti che implementano l'interfaccia
+ * IdiscountStrategy
+ * @see IDiscountStrategy
  * @author Fabio
  */
 public class ProxyDiscount implements IDiscountStrategy{
