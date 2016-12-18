@@ -148,7 +148,6 @@ public class LoginManager {
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ps.executeUpdate();
-                //dbm.runUpdate("INSERT INTO Impiegati(username,password) VALUES("+username+","+password+";");
                 JOptionPane.showMessageDialog(frame,"Inserito con successo utente "+username+".","Database",JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -177,7 +176,6 @@ public class LoginManager {
                 break;
             case 4:
                 CapoUI win = new CapoUI(restaurant, userId);
-                //CapoUI win = new CapoUI(userId);
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");

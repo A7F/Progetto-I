@@ -80,9 +80,7 @@ public class MenuManager {
             crs.setConcurrency(ResultSet.CONCUR_UPDATABLE);
             crs.setUsername("root");
             crs.setPassword("");
-            crs.setUrl("jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");//jdbc:mysql://localhost:3306/test?relaxAutoCommit=true
-//            crs.setCommand("USE ristorante");
-//            crs.execute(connection);
+            crs.setUrl("jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");
             crs.setCommand("SELECT * FROM menu");
             crs.execute(connection);
             crs.populate(rs);

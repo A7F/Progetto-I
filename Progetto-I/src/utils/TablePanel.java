@@ -133,16 +133,17 @@ public class TablePanel implements Observer{
     @Override
     public void update(Observable o, Object arg){
         reprintButtons();
-        if(restaurant.getTables().get(selectedTable-1).getIsTaken()){
-            tableButtons.get(selectedTable-1).setBackground(Color.YELLOW);
+        int selectedIndex = selectedTable-1;
+        if(restaurant.getTables().get(selectedIndex).getIsTaken()){
+            tableButtons.get(selectedIndex).setBackground(Color.YELLOW);
             }else{
-                tableButtons.get(selectedTable-1).setBackground(Color.GREEN);
+                tableButtons.get(selectedIndex).setBackground(Color.GREEN);
             }
-        if(!restaurant.getTables().get(selectedTable-1).getOrdersArray().isEmpty()){
-            tableButtons.get(selectedTable-1).setBackground(Color.red);
+        if(!restaurant.getTables().get(selectedIndex).getOrdersArray().isEmpty()){
+            tableButtons.get(selectedIndex).setBackground(Color.red);
         }
         
-        tableButtons.get(selectedTable-1).repaint();
+        tableButtons.get(selectedIndex).repaint();
         panel.revalidate();
         panel.repaint();
     }
