@@ -87,6 +87,7 @@ public class Table {
     /**
      * Rimuove il singolo elemento dell'ordine
      * @author FabioTagliani
+     * @param order
      */
     public void removeOrder(Order order) {
         orders.remove(order);
@@ -104,6 +105,7 @@ public class Table {
     
     /**
      * @author Federico Vitrò
+     * @return tavolo, stato ed ordini
      */
       
     @Override

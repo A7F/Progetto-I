@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Gestione in cucina
- * ordersCopy è una copia dell' arraylist orders siccome non voglio che il cuoco elimini
- * elementi di ordine sul server. In sostanza funziona solo da promemoria
  * @author Luca
  */
 public class Cook {

@@ -13,7 +13,6 @@ public class Room {
     
     private ArrayList<Table> tables;
     TavoliManager tavoliManager = new TavoliManager();
-    private JFrame frame;
     
     /**
      * @author Federico Vitrò
@@ -21,7 +20,6 @@ public class Room {
      */    
     public Room(int numberOfTables){
         tables = new ArrayList<Table>();
-        //tavoliManager.dropTavoli();
         initTables(numberOfTables);
     }
     
@@ -97,7 +95,7 @@ public class Room {
     /**
      * Riserva il tavolo 
      * @author fabiotagliani
-     * @param tableId 
+     * @param tableId id del tavolo da riservare
      */
     public void setReservedTable(int tableId){
     
@@ -107,7 +105,7 @@ public class Room {
                 if(!(tables.get(i).getIsTaken())){
                     tables.get(i).takeTable();
                 }else{
-                    System.out.println("EEEH NO EH IL TAVOLO E' GIA' PRENOTATO ZIOOOOO");
+                    JOptionPane.showMessageDialog(new JFrame(), "Attenzione, il tavolo è già prenotato!","Attenzione",JOptionPane.WARNING_MESSAGE);
                 }
             }
         }
@@ -125,7 +123,7 @@ public class Room {
                 if((tables.get(i).getIsTaken())){
                     tables.get(i).setFreeTable();
                 }else{
-                    System.out.println("Il tavolo era già libero");
+                    JOptionPane.showMessageDialog(new JFrame(), "Il tavolo era già libero","Info",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         }
@@ -181,9 +179,6 @@ public class Room {
     public void addOrder(int tableID, Order order) { 
         if(tables.get(tableID-1).getIsTaken() == false){
             tables.get(tableID-1).takeTable();
-            
-            // DEBUG
-            System.err.println("Il tavolo non era prenotato. Verra prenotato.");
         }
         tables.get(tableID-1).addOrder(order);
     }
