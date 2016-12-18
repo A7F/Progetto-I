@@ -2,7 +2,7 @@ package tests;
 
 import java.io.IOException;
 import menu.MenuElement;
-import newUIcapo.CapoUI;
+import UIcapo.CapoUI;
 import restaurant.Order;
 import restaurant.Restaurant;
 

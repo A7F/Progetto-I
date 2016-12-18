@@ -1,4 +1,4 @@
-package newUIcapo;
+package UIcapo;
 
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

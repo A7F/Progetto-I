@@ -1,4 +1,4 @@
-package newUIcapo;
+package UIcapo;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
