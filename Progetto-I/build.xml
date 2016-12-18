@@ -7,7 +7,7 @@
         <property name="store.jar.name" value="ProgettoI"/>
         <property name="store.dir" value="store"/>
         <property name="store.jar" value="${store.dir}/${store.jar.name}.jar"/>
-        <echo message="Packaging ${application.title} into a single JAR at ${store.jar}, main clas set as ${main.class}"/>
+        <echo message="Packaging ${application.title} into a single JAR at ${store.jar}, main class set to ${main.class}"/>
         <delete dir="${store.dir}"/>
         <mkdir dir="${store.dir}"/>
         <jar destfile="${store.dir}/temp_final.jar" filesetmanifest="skip">
