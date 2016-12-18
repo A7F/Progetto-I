@@ -31,12 +31,11 @@ class ButtonLayout extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    System.out.println("SELECTED: "+refRadioPanel.getSelectedButton());
                     status = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
 
                     mgr.graphicsDispatcher(status, (int)mgr.getSelectedKey(refRadioPanel.getSelectedButton()));
                 } catch (SQLException ex) {
-                    System.err.println("36: ECCEZIONE SQL NON RACCOLTA DALLA CLASSE IN CUI VIENE LANCIATA");
+                    JOptionPane.showMessageDialog(new JFrame(),"Username, password o ruolo errato.","Errore",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -54,17 +53,15 @@ class ButtonLayout extends JPanel{
                 try {
                     flag = mgr.checkCredentials(refFormPanel.getUsernameInserted(), refFormPanel.getPasswordInserted(), refRadioPanel.getSelectedButton());
                 } catch (SQLException ex) {
-                    System.out.println("54: ECCEZIONE SQL NON RACCOLTA DALLA CLASSE IN CUI VIENE LANCIATA");
+                    JOptionPane.showMessageDialog(new JFrame(),"Username, password o ruolo errato.","Errore",JOptionPane.ERROR_MESSAGE);
                 }
                 
                 if(var==4){
                     if(flag){
-                        System.out.println("FAI PARTIRE LA GRAFICA");
                         NewUserWindow win = NewUserWindow.getInstance();    //credenziali confermate quindi lancia utility aggiunta user al database
                     }
                 }else{
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame,"Questa funzione è disponibile solo al principale","Info",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(),"Questa funzione è disponibile solo al principale","Info",JOptionPane.INFORMATION_MESSAGE);
                     refFormPanel.wipePassword();
                 }
             }

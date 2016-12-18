@@ -1,7 +1,6 @@
 package UIcassa;
 
 import utils.TablePanel;
-import UICameriere.*;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.*;

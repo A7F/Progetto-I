@@ -86,7 +86,8 @@ public class LowPanel extends JPanel{
         SpinnerModel spinnerModel = new SpinnerNumberModel(1,1,30,1);
         spinner = new JSpinner(spinnerModel);
         spinner.setFont(new Font("Calibri",Font.ITALIC,25));
-        textNotes = new JTextField("Ancora nessuna nota qui...     ");
+        textNotes = new JTextField("Ancora nessuna nota qui...");
+        textNotes.setColumns(20);
         textNotes.setFont(new Font("Calibri",Font.PLAIN,20));
         textNotes.addMouseListener(new MouseAdapter(){
             @Override

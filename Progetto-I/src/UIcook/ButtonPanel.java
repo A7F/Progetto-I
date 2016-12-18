@@ -44,7 +44,6 @@ class ButtonPanel extends JPanel{
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
                 ord.get(i).changeRead();
-                System.out.println("KEY:\tREAD\tROW:"+i+"\tDONE:"+ord.get(i).getDone()+"\tREAD:"+ord.get(i).getRead());
                 list.repaint();
             }
         });

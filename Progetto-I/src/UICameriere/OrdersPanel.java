@@ -71,8 +71,6 @@ public class OrdersPanel extends JPanel implements Observer{
                     }else{
                         footBar.getDoneLabel().setText("NO");
                     }
-                    //footBar.getReadLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()));
-                    //footBar.getDoneLabel().setText(String.valueOf(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()));
                 }
             }
         });
