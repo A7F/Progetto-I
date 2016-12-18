@@ -42,13 +42,11 @@ public class OrdersPanel extends JPanel implements Observer{
     }
 
     private void init(){
-        selectedIndex= tablePanel.getSelectedTable();
+        selectedIndex= tablePanel.getSelectedTable()-1;
         orders = restaurant.getOrderTable(selectedIndex);
         
-        System.out.println("selectedIndex in orders panel:  " + selectedIndex);
-        
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
+        for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+            model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
         }
         
         list=new JList(model);
@@ -59,16 +57,16 @@ public class OrdersPanel extends JPanel implements Observer{
                 if(list.isSelectionEmpty()){
                     selection=0;
                 }
-                if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().isEmpty()){
+                if(restaurant.getTables().get(selectedIndex).getOrdersArray().isEmpty()){
                     footBar.getReadLabel().setText("Nessun ordine");
                     footBar.getDoneLabel().setText("Nessun ordine");
                 }else{
-                    if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getRead()){
+                    if(restaurant.getTables().get(selectedIndex).getOrdersArray().get(selection).getRead()){
                         footBar.getReadLabel().setText("SI");
                     }else{
                         footBar.getReadLabel().setText("NO");
                     }
-                    if(restaurant.getTables().get(selectedIndex-1).getOrdersArray().get(selection).getDone()){
+                    if(restaurant.getTables().get(selectedIndex).getOrdersArray().get(selection).getDone()){
                         footBar.getDoneLabel().setText("SI");
                     }else{
                         footBar.getDoneLabel().setText("NO");
@@ -92,11 +90,11 @@ public class OrdersPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void update(Observable o, Object arg) {
-        selectedIndex= tablePanel.getSelectedTable();
+        selectedIndex= tablePanel.getSelectedTable()-1;
         model.removeAllElements();
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
+        for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+            model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
         }
     }
     
@@ -105,7 +103,7 @@ public class OrdersPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void removeOrder(){
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(list.getSelectedIndex());
+        restaurant.getTables().get(selectedIndex).getOrdersArray().remove(list.getSelectedIndex());
         model.remove(list.getSelectedIndex());
     }
     
@@ -116,11 +114,11 @@ public class OrdersPanel extends JPanel implements Observer{
      */
     public void addOrder(Order ord){
         
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);
+        restaurant.getTables().get(selectedIndex).getOrdersArray().add(ord);
         model.removeAllElements();
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
+        for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+            model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
         }
     }
     

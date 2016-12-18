@@ -32,10 +32,10 @@ public class OrdiniPanel extends JPanel implements Observer{
     }
 
     private void init(){
-        selectedIndex= tablePanel.getSelectedTable();
+        selectedIndex= tablePanel.getSelectedTable()-1;
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
+        for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+            model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
         }
         
         list=new JList(model);
@@ -80,7 +80,7 @@ public class OrdiniPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void removeOrder(){
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(list.getSelectedIndex());
+        restaurant.getTables().get(selectedIndex).getOrdersArray().remove(list.getSelectedIndex());
         model.remove(list.getSelectedIndex());
     }
     
@@ -90,7 +90,7 @@ public class OrdiniPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void removeOrder(Order ord){
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(ord);
+        restaurant.getTables().get(selectedIndex).getOrdersArray().remove(ord);
         model.remove(list.getSelectedIndex());
     }
     
@@ -99,7 +99,7 @@ public class OrdiniPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void removeAllOrders(){
-        restaurant.getTables().get(selectedIndex-1).removeAllOrder();
+        restaurant.getTables().get(selectedIndex).removeAllOrder();
         model.removeAllElements();
     }
     
@@ -109,7 +109,7 @@ public class OrdiniPanel extends JPanel implements Observer{
      * @author Luca
      */
     public void removeOrder(int index){
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().remove(index);
+        restaurant.getTables().get(selectedIndex).getOrdersArray().remove(index);
         model.remove(index);
     }
     
@@ -120,11 +120,11 @@ public class OrdiniPanel extends JPanel implements Observer{
      */
     public void addOrder(Order ord){
         
-        restaurant.getTables().get(selectedIndex-1).getOrdersArray().add(ord);
+        restaurant.getTables().get(selectedIndex).getOrdersArray().add(ord);
         model.removeAllElements();
         
-        for(int i=0; i<restaurant.getTables().get(selectedIndex -1).getOrdersArray().size();i++){
-            model.addElement(restaurant.getTables().get(selectedIndex -1).getOrdersArray().get(i));
+        for(int i=0; i<restaurant.getTables().get(selectedIndex).getOrdersArray().size();i++){
+            model.addElement(restaurant.getTables().get(selectedIndex).getOrdersArray().get(i));
         }
     }
     

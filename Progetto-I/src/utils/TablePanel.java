@@ -73,7 +73,7 @@ public class TablePanel implements Observer{
     /**
      * Ottieni il tavolo selezionato dalla pulsantiera. Di default ritorna il tavolo 1.
      * @author Luca
-     * @return il numero del tavolo selezionato. 1 se non è selezionato nulla.
+     * @return il numero del tavolo selezionato NON allineato come array. 1 se non è selezionato nulla.
      */
     public int getSelectedTable() {
         if(selectedTable==0){
