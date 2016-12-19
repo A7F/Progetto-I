@@ -1,9 +1,13 @@
 package utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import org.json.JSONObject;
 
 /**
@@ -14,19 +18,17 @@ import org.json.JSONObject;
 public class AppConfig {
 
     private static AppConfig instance;
-    private String myJson;
     JSONObject json;
+    private String configPath = "./data/appConfig.json";
     
-    private String projectName;
     private String appName;
     private int tableNumber;
     private String menuPath;
     private String restaurantName;
 
     private AppConfig(){
-        myJson = readFile();
-        json = new JSONObject(myJson);
-        projectName = json.getString("project_name");
+        json = new JSONObject(readFile());
+        configPath = json.getString("this_path");
         appName = json.getString("app_name");
         tableNumber = json.getInt("table_number");
         menuPath = json.getString("menu_path");
@@ -51,10 +53,10 @@ public class AppConfig {
      * @return file come String
      * @author Luca
      */
-    private static String readFile() {
+    private String readFile() {
         String result = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("./data/appConfig.json"));
+            BufferedReader br = new BufferedReader(new FileReader(configPath));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
@@ -63,7 +65,10 @@ public class AppConfig {
             }
             result = sb.toString();
         } catch (Exception e) {
-            e.toString();
+            JOptionPane.showMessageDialog(new JFrame(), "File di configurazione mancante: ne sarà generato uno nuovo.\nScegli dove salvare il file...", "Info", JOptionPane.INFORMATION_MESSAGE);
+            buildFile();
+            JOptionPane.showMessageDialog(new JFrame(), "Riavvio necessario", "Info", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
         }
         return result;
     }
@@ -74,34 +79,56 @@ public class AppConfig {
      */
     private void writeFile() {
         try {
-            FileWriter file = new FileWriter("./data/appConfig.json");
+            File fin = new File(configPath);
+            if (fin.createNewFile()){
+                System.out.println("file creato");
+            }
+            FileWriter file = new FileWriter(configPath);
             String jsonString = json.toString();
             file.write(jsonString);
             file.flush();
             System.out.println("Config file updated");
             file.close();
         } catch (IOException ex) {
-            System.out.println("Cannot update your config file");
-            ex.toString();
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(new JFrame(), "Errore di scrittura sul file.", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+    
     /**
+     * metodo per creare il file di configurazione qualora non esistesse
      * @author Luca
-     * @return nome del progetto
      */
-    public String getProjectName(){
-        return projectName;
+    private void buildFile(){
+        JFileChooser fc = new JFileChooser();
+        
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setDialogTitle("Dove salvare?");
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+        int result = 100;
+        File selectedpath;
+        
+        while(result != JFileChooser.APPROVE_OPTION){
+            result = fc.showOpenDialog(null);
+            selectedpath = fc.getSelectedFile();
+            configPath = selectedpath.getAbsolutePath();
+        }
+        
+        json = new JSONObject();
+        json.put("app_name", "non ho un nome");
+        json.put("table_number", 2);
+        json.put("menu_path", "./data/menu.txt");
+        json.put("this_path", configPath);
+        json.put("def_dbuser", "root");
+        json.put("def_dbpw", "");
+        json.put("def_dburl", "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");
+        json.put("def_lang", "IT");
+        json.put("restaurant_name", "Diablo");
+        
+        writeFile();
     }
 
-    /**
-     * @author Luca
-     * @param projectName nome del progetto
-     */
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-        json.put("project_name", projectName);
-    }
 
     /**
      * @author Luca
