@@ -1,4 +1,4 @@
-package tests;
+package main;
 
 import UIlogin.LoginUI;
 import java.io.IOException;
