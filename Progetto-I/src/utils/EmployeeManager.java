@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
-import restaurant.Impiegato;
+import restaurant.Employee;
 
 /**
  * questa classe fa da utility per ottenere i dati degli impiegati ed operare sulla relativa table
@@ -18,7 +18,7 @@ import restaurant.Impiegato;
  */
 public class EmployeeManager {
     DatabaseManager manager = new DatabaseManager();
-    ArrayList<Impiegato> impiegati = new ArrayList<>();
+    ArrayList<Employee> impiegati = new ArrayList<>();
     Connection connection = manager.getConnection();
     
     public EmployeeManager(){
@@ -32,14 +32,14 @@ public class EmployeeManager {
         } catch (SQLException ex) {
             Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        getImpiegati();
+        getEmployee();
     }
     
     /**
      * metodo per inizializzare l'arraylist di impiegati, prendendo i valori dal database table impiegati
      * @author Luca
      */
-    public void getImpiegati(){
+    public void getEmployee(){
         try {
             PreparedStatement ps = manager.getConnection().prepareStatement("SELECT * FROM impiegati;");
             ResultSet rs = ps.executeQuery();
@@ -49,7 +49,7 @@ public class EmployeeManager {
                 String ruolo=rs.getString("ruolo");
                 boolean status=rs.getBoolean("status");
                 String password=rs.getString("password");
-                Impiegato imp = new Impiegato(id,username,ruolo,status,password);
+                Employee imp = new Employee(id,username,ruolo,status,password);
                 impiegati.add(imp);
             }
         } catch (SQLException ex) {
@@ -63,7 +63,7 @@ public class EmployeeManager {
      * @author Luca
      * @return resultset table impiegati
      */
-    public CachedRowSet getImpiegatiResultSet(){
+    public CachedRowSet getEmployeeResultSet(){
         ResultSet rs = null;
         CachedRowSet crs = null;
         try {
@@ -95,7 +95,7 @@ public class EmployeeManager {
      */
     public void reloadImpiegati(){
         impiegati.removeAll(impiegati);
-        getImpiegati();
+        getEmployee();
     }
     
     /**
@@ -104,7 +104,7 @@ public class EmployeeManager {
      * @param impiegato l'oggetto impiegato da inserire
      * @param pass la password dell' impiegato da aggiungere
      */
-    public void addImpiegato(Impiegato impiegato,String pass){
+    public void addEmployee(Employee impiegato,String pass){
         try {
             PreparedStatement ps = manager.getConnection().prepareStatement("INSERT INTO impiegati(username,password,ruolo) VALUES(?,?,?);");
             ps.setString(1, impiegato.getUsername());
@@ -136,9 +136,9 @@ public class EmployeeManager {
      * @return oggetto Impiegato corrispondente all' id cercato
      * @author Luca
      */
-    public Impiegato getImpiegatoById(int id){
-        Impiegato result = null;
-        for (Impiegato impiegati1 : impiegati) {
+    public Employee getEmployeeById(int id){
+        Employee result = null;
+        for (Employee impiegati1 : impiegati) {
             if (impiegati1.getId() == id) {
                 result = impiegati1;
                 break;
@@ -153,9 +153,9 @@ public class EmployeeManager {
      * @return oggetto Impiegato corrispondente all' username cercato
      * @author Luca
      */
-    public Impiegato getImpiegatoByUsername(String user){
-        Impiegato result = null;
-        for (Impiegato impiegati1 : impiegati) {
+    public Employee getEmployeeByUsername(String user){
+        Employee result = null;
+        for (Employee impiegati1 : impiegati) {
             if (impiegati1.getUsername().equals(user)){
                 result = impiegati1;
                 break;

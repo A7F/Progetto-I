@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import menu.Menu;
 import menu.MenuElement;
+import restaurant.Employee;
 
 /**
  * questa classe facilita l'accesso (in lettura e scrittura) al database ristorante
@@ -215,6 +219,33 @@ public class MenuManager {
         }
     }
 
+    /**
+     * Verifica se esiste un menuELement con lo stesso id passato come parametro
+     * @param id
+     * @return flag di tipo booleano per verificare se presente o meno l'elemento all'interno del database
+     * @author Fabio
+     */
+    public boolean checkMenuElementById(int id){
+        PreparedStatement ps;
+        boolean check=false;
+        
+        try {
+            ps = mgr.getConnection().prepareStatement("SELECT * FROM menu WHERE ID = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                check= true;
+            }else{
+                check= false;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(new JFrame(), "Impossibile contattare il database", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        return check;
+    }
+    
     public Connection getConnection() {
         return connection;
     }    

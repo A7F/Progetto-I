@@ -1,6 +1,12 @@
-package newUIcapo;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package UIcapo;
 
-import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -11,103 +17,114 @@ import javax.sql.RowSetEvent;
 import javax.sql.RowSetListener;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.spi.SyncProviderException;
-import javax.swing.*;
-import utils.EmployeeManager;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import utils.MenuManager;
 
 /**
- *
- * @author Luca
+ * Pannello contenente il tabella del menu, i pulsanti di aggiunta rimozione e aggiornento database
+ * @author Fabio
  */
-public class EmployeePanel extends JPanel implements RowSetListener{
-    EmployeeTableModel myImpiegatiTableModel;
-    EmployeeManager empManager;
+public class MenuPanel extends JPanel implements RowSetListener {
+
+    private MenuTabelModel myMenuTabelModel;
+    MenuManager menuManager;
     JTable table;
     Connection conn;
     
-    JLabel label_EM_USERNAME,label_EM_ID,label_EM_PASSWORD,label_STATUS,label_RUOLO;
-    JTextField textField_EM_USERNAME,textField_EM_ID,textField_EM_PASSWORD,textField_STATUS,textField_RUOLO;
+    JLabel label_MENU_ID, label_MENU_NAME,label_MENU_DESCRIPTION,label_MENU_PRICE,label_MENU_TYPE;
+    JTextField textField_MENU_ID,textField_MENU_NAME,textFieldMENU_DESCRIPTION,textField_MENU_PRICE,textField_MENU_TYPE;
     JButton button_ADD_ROW, button_REMOVE_ROW,button_UPDATE_DATABASE,button_DISCARD_CHANGES;
 
-    public EmployeePanel(){
-        this.empManager = new EmployeeManager();
+    public MenuPanel() {
+         this.menuManager = new MenuManager();
         try {
         //    conn = empManager.getConnection();
-            CachedRowSet myCachedRowset = empManager.getImpiegatiResultSet();
-            myImpiegatiTableModel = new EmployeeTableModel(myCachedRowset);
-            myImpiegatiTableModel.addEventHandlersToRowSet(this);
+            CachedRowSet myCachedRowset = menuManager.getMenuResultSet();
+            myMenuTabelModel = new MenuTabelModel(myCachedRowset);
+            myMenuTabelModel.addEventHandlersToRowSet(this);
             table = new JTable();
-            table.setModel(myImpiegatiTableModel);
+            table.setModel(myMenuTabelModel);
         } catch (SQLException ex) {
             Logger.getLogger(EmployeePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         initGraphics();
     }
     
+    
     @Override
-    public void rowSetChanged(RowSetEvent event) {}
+    public void rowSetChanged(RowSetEvent event) {
+        
+    }
 
     @Override
     public void rowChanged(RowSetEvent event) {
-        CachedRowSet currentRowSet = this.myImpiegatiTableModel.impiegatiRowSet;
+         CachedRowSet currentRowSet = this.myMenuTabelModel.menuRowSet;
         try {
             currentRowSet.moveToCurrentRow();
-            myImpiegatiTableModel = new EmployeeTableModel(myImpiegatiTableModel.getImpiegatiRowSet());
-            table.setModel(myImpiegatiTableModel);
+            myMenuTabelModel = new MenuTabelModel(myMenuTabelModel.getMenuRowSet());
+            table.setModel(myMenuTabelModel);
         } catch (SQLException ex) {
             System.out.println("Qui non funziona qualcosa...");
         }
     }
 
     @Override
-    public void cursorMoved(RowSetEvent event) {}
+    public void cursorMoved(RowSetEvent event) {
+       
+    }
     
-    /**
+     /**
      * metodo usato per ricreare la JTable
      * @throws SQLException 
      * @author Luca
      */
     private void createNewTableModel() throws SQLException {
-        myImpiegatiTableModel = new EmployeeTableModel(empManager.getImpiegatiResultSet());
-        myImpiegatiTableModel.addEventHandlersToRowSet(this);
-        table.setModel(myImpiegatiTableModel);
+        myMenuTabelModel = new MenuTabelModel(menuManager.getMenuResultSet());
+        myMenuTabelModel.addEventHandlersToRowSet(this);
+        table.setModel(myMenuTabelModel);
     }
     
-    /**
-     * metodo per disporre la grafica ed i relativi elementi
-     * @author Luca
-     */
+    
     private void initGraphics(){
-        label_EM_USERNAME = new JLabel();
-        label_EM_ID = new JLabel();
-        label_EM_PASSWORD = new JLabel();
-        label_STATUS = new JLabel();
-        label_RUOLO = new JLabel();
+    
+        label_MENU_ID = new JLabel();
+        label_MENU_NAME = new JLabel();
+        label_MENU_DESCRIPTION = new JLabel();
+        label_MENU_PRICE = new JLabel();
+        label_MENU_TYPE = new JLabel();
 
-        textField_EM_USERNAME = new JTextField(10);
-        textField_EM_ID = new JTextField(10);
-        textField_EM_PASSWORD = new JTextField(10);
-        textField_STATUS = new JTextField(10);
-        textField_RUOLO = new JTextField(10);
+        textField_MENU_ID = new JTextField(10);
+        textField_MENU_NAME = new JTextField(10);
+        textFieldMENU_DESCRIPTION = new JTextField(10);
+        textField_MENU_PRICE = new JTextField(10);
+        textField_MENU_TYPE = new JTextField(10);
 
         button_ADD_ROW = new JButton();
         button_REMOVE_ROW = new JButton();
         button_UPDATE_DATABASE = new JButton();
         button_DISCARD_CHANGES = new JButton();
 
-        label_EM_ID.setText("ID:");
-        label_EM_USERNAME.setText("Username impiegato:");
-        label_EM_PASSWORD.setText("Password:");
-        label_STATUS.setText("Stato:");
-        label_RUOLO.setText("Ruolo:");
+        label_MENU_ID.setText("ID:");
+        label_MENU_NAME.setText("Nome elemento:");
+        label_MENU_DESCRIPTION.setText("Descrizione");
+        label_MENU_PRICE.setText("Prezzo:");
+        label_MENU_TYPE.setText("Tipo:");
 
-        textField_EM_ID.setText("101");
-        textField_EM_USERNAME.setText("Inserisci uno username...");
-        textField_EM_PASSWORD.setText("Inserisci una password...");
-        textField_STATUS.setText("false");
-        textField_RUOLO.setText("Specifica un ruolo...");
+        textField_MENU_ID.setText("101");
+        textField_MENU_NAME.setText("Inserisci un nome...");
+        textFieldMENU_DESCRIPTION.setText("Inserisci una descrizione...");
+        textField_MENU_PRICE.setText("Prezzo");
+        textField_MENU_TYPE.setText("Tipo");
 
-        button_ADD_ROW.setText("Aggiungi impiegato");
-        button_REMOVE_ROW.setText("Rimuovi impiegato");
+        button_ADD_ROW.setText("Aggiungi elemento");
+        button_REMOVE_ROW.setText("Rimuovi elemento");
         button_UPDATE_DATABASE.setText("Invia cambiamenti al database");
         button_DISCARD_CHANGES.setText("Cancella cambiamenti");
         
@@ -130,7 +147,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 1;
-        this.add(label_EM_ID, c);
+        this.add(label_MENU_ID, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -139,7 +156,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 1;
         c.gridy = 1;
         c.gridwidth = 1;
-        this.add(textField_EM_ID, c);
+        this.add(textField_MENU_ID, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.25;
@@ -148,7 +165,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 0;
         c.gridy = 2;
         c.gridwidth = 1;
-        this.add(label_EM_USERNAME, c);
+        this.add(label_MENU_NAME, c);
         
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -157,7 +174,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 1;
         c.gridy = 2;
         c.gridwidth = 1;
-        this.add(textField_EM_USERNAME, c);
+        this.add(textField_MENU_NAME, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -166,7 +183,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 0;
         c.gridy = 3;
         c.gridwidth = 1;
-        this.add(label_EM_PASSWORD, c);
+        this.add(label_MENU_DESCRIPTION, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -175,7 +192,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 1;
         c.gridy = 3;
         c.gridwidth = 1;
-        this.add(textField_EM_PASSWORD, c);
+        this.add(textFieldMENU_DESCRIPTION, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -184,7 +201,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 0;
         c.gridy = 4;
         c.gridwidth = 1;
-        this.add(label_STATUS, c);
+        this.add(label_MENU_PRICE, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -193,7 +210,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 1;
         c.gridy = 4;
         c.gridwidth = 1;
-        this.add(textField_STATUS, c);
+        this.add(textField_MENU_PRICE, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -202,7 +219,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 0;
         c.gridy = 5;
         c.gridwidth = 1;
-        this.add(label_RUOLO, c);
+        this.add(label_MENU_TYPE, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_END;
@@ -211,7 +228,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridx = 1;
         c.gridy = 5;
         c.gridwidth = 1;
-        this.add(textField_RUOLO, c);
+        this.add(textField_MENU_TYPE, c);
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
@@ -231,7 +248,6 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         c.gridwidth = 1;
         this.add(button_REMOVE_ROW, c);
         
-
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.LINE_START;
         c.weightx = 0.5;
@@ -253,25 +269,22 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (empManager.getImpiegatoById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
-                    myImpiegatiTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
-                            textField_EM_USERNAME.getText(),
-                            textField_EM_PASSWORD.getText(),
-                            textField_RUOLO.getText(),
-                            Boolean.parseBoolean(textField_STATUS.getText().trim()));
+                if (menuManager.checkMenuElementById(Integer.parseInt(textField_MENU_ID.getText().trim())) == false) {
+                myMenuTabelModel.insertRow(Integer.parseInt(textField_MENU_ID.getText().trim()),
+                                                textField_MENU_NAME.getText(),
+                                                textFieldMENU_DESCRIPTION.getText(),
+                                                Double.parseDouble(textField_MENU_PRICE.getText().trim()),
+                                                textField_MENU_TYPE.getText().trim());
                 } else {
-
                     JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
-        
-        
-        button_REMOVE_ROW.addActionListener(new ActionListener() {       // funziona va bene ma non aggiorna runtime la tabella
+          
+        button_REMOVE_ROW.addActionListener(new ActionListener() {                    
             @Override
             public void actionPerformed(ActionEvent e) {
-                empManager.removeEmployee(Integer.parseInt(textField_EM_ID.getText().trim()));
+                menuManager.removeMenuElement(Integer.parseInt(textField_MENU_ID.getText().trim()));
             }
         });
         
@@ -280,7 +293,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges(empManager.getConnection());
+                    myMenuTabelModel.menuRowSet.acceptChanges(menuManager.getConnection());
                     System.out.println("DATABASE AGGIORNATO");
                 } catch (SyncProviderException ex) {
                     ex.toString();
@@ -299,5 +312,5 @@ public class EmployeePanel extends JPanel implements RowSetListener{
                 }
             }
         });
-    }
+    }    
 }
