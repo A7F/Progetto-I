@@ -19,7 +19,7 @@ public class AppConfig {
 
     private static AppConfig instance;
     JSONObject json;
-    private String configPath = "./data/appConfig.json";
+    private String configPath = "./data/appConig.json";
     
     private String appName;
     private int tableNumber;
@@ -79,16 +79,21 @@ public class AppConfig {
      */
     private void writeFile() {
         try {
-            File fin = new File(configPath);
-            if (fin.createNewFile()){
-                System.out.println("file creato");
+            File fin = new File(configPath + "/appConfig.json");
+            if (!fin.exists()) {
+                FileWriter file = new FileWriter(configPath + "/appConfig.json");
+                file.write(json.toString());
+                file.flush();
+                file.close();
+            } else {
+                FileWriter file = new FileWriter(configPath);
+                String jsonString = json.toString();
+                file.write(jsonString);
+                file.flush();
+                System.out.println("Config file updated");
+                file.close();
             }
-            FileWriter file = new FileWriter(configPath);
-            String jsonString = json.toString();
-            file.write(jsonString);
-            file.flush();
-            System.out.println("Config file updated");
-            file.close();
+
         } catch (IOException ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(new JFrame(), "Errore di scrittura sul file.", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -117,7 +122,7 @@ public class AppConfig {
         
         json = new JSONObject();
         json.put("app_name", "non ho un nome");
-        json.put("table_number", 2);
+        json.put("table_number", 3);
         json.put("menu_path", "./data/menu.txt");
         json.put("this_path", configPath);
         json.put("def_dbuser", "root");
