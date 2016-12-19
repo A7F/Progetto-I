@@ -14,7 +14,7 @@ import restaurant.Restaurant;
  * test specifico delle funzionalità della classe room
  * @author federicovitro
  */
-public class Test_Room {
+public class TestRoom {
     public static void main(String[] args) throws IOException {
         Restaurant diablo1 = new Restaurant("diablo1", 10, "./data/menu.txt");
         Menu menu = new Menu("./data/menu.txt");

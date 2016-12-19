@@ -16,7 +16,7 @@ import restaurant.Restaurant;
  *
  * @author federicovitro
  */
-public class Test_Table {
+public class TestTable {
     public static void main(String[] args) throws IOException {
         Restaurant diablo2 = new Restaurant("Diablo2", 5, "./data/menu.txt");
         Menu menu = new Menu("./data/menu.txt");
