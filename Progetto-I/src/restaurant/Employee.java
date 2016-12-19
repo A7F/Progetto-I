@@ -1,5 +1,7 @@
 package restaurant;
 
+import utils.Ruoli;
+
 /**
  * classe che modellizza la figura dell' impiegato di ristorante, di qualunque tipologia esso sia
  * @author Luca

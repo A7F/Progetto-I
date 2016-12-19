@@ -19,7 +19,7 @@ import utils.EmployeeManager;
  * @author Luca
  */
 public class EmployeePanel extends JPanel implements RowSetListener{
-    EmployeeTableModel myImpiegatiTableModel;
+    EmployeeTableModel myEmployeeTableModel;
     EmployeeManager empManager;
     JTable table;
     Connection conn;
@@ -32,11 +32,11 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         this.empManager = new EmployeeManager();
         try {
         //    conn = empManager.getConnection();
-            CachedRowSet myCachedRowset = empManager.getImpiegatiResultSet();
-            myImpiegatiTableModel = new EmployeeTableModel(myCachedRowset);
-            myImpiegatiTableModel.addEventHandlersToRowSet(this);
+            CachedRowSet myCachedRowset = empManager.getEmployeeResultSet();
+            myEmployeeTableModel = new EmployeeTableModel(myCachedRowset);
+            myEmployeeTableModel.addEventHandlersToRowSet(this);
             table = new JTable();
-            table.setModel(myImpiegatiTableModel);
+            table.setModel(myEmployeeTableModel);
         } catch (SQLException ex) {
             Logger.getLogger(EmployeePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -48,11 +48,11 @@ public class EmployeePanel extends JPanel implements RowSetListener{
 
     @Override
     public void rowChanged(RowSetEvent event) {
-        CachedRowSet currentRowSet = this.myImpiegatiTableModel.impiegatiRowSet;
+        CachedRowSet currentRowSet = this.myEmployeeTableModel.employeeRowSet;
         try {
             currentRowSet.moveToCurrentRow();
-            myImpiegatiTableModel = new EmployeeTableModel(myImpiegatiTableModel.getImpiegatiRowSet());
-            table.setModel(myImpiegatiTableModel);
+            myEmployeeTableModel = new EmployeeTableModel(myEmployeeTableModel.getEmployeeRowSet());
+            table.setModel(myEmployeeTableModel);
         } catch (SQLException ex) {
             System.out.println("Qui non funziona qualcosa...");
         }
@@ -67,9 +67,9 @@ public class EmployeePanel extends JPanel implements RowSetListener{
      * @author Luca
      */
     private void createNewTableModel() throws SQLException {
-        myImpiegatiTableModel = new EmployeeTableModel(empManager.getImpiegatiResultSet());
-        myImpiegatiTableModel.addEventHandlersToRowSet(this);
-        table.setModel(myImpiegatiTableModel);
+        myEmployeeTableModel = new EmployeeTableModel(empManager.getEmployeeResultSet());
+        myEmployeeTableModel.addEventHandlersToRowSet(this);
+        table.setModel(myEmployeeTableModel);
     }
     
     /**
@@ -254,14 +254,13 @@ public class EmployeePanel extends JPanel implements RowSetListener{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (empManager.getImpiegatoById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
-                    myImpiegatiTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
+                if (empManager.getEmployeeById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
+                    myEmployeeTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
                             textField_EM_USERNAME.getText(),
                             textField_EM_PASSWORD.getText(),
                             textField_RUOLO.getText(),
                             Boolean.parseBoolean(textField_STATUS.getText().trim()));
                 } else {
-
                     JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
@@ -280,7 +279,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    myImpiegatiTableModel.impiegatiRowSet.acceptChanges(empManager.getConnection());
+                    myEmployeeTableModel.employeeRowSet.acceptChanges(empManager.getConnection());
                     System.out.println("DATABASE AGGIORNATO");
                 } catch (SyncProviderException ex) {
                     ex.toString();

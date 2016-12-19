@@ -18,7 +18,9 @@ import javax.sql.RowSetListener;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.spi.SyncProviderException;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -266,12 +268,16 @@ public class MenuPanel extends JPanel implements RowSetListener {
         
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { 
+            public void actionPerformed(ActionEvent e) {
+                if (menuManager.checkMenuElementById(Integer.parseInt(textField_MENU_ID.getText().trim())) == false) {
                 myMenuTabelModel.insertRow(Integer.parseInt(textField_MENU_ID.getText().trim()),
                                                 textField_MENU_NAME.getText(),
                                                 textFieldMENU_DESCRIPTION.getText(),
                                                 Double.parseDouble(textField_MENU_PRICE.getText().trim()),
-                                                textField_MENU_TYPE.getText().trim());    
+                                                textField_MENU_TYPE.getText().trim());
+                } else {
+                    JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
           

@@ -23,24 +23,22 @@ import javax.swing.table.TableModel;
  */
 public class EmployeeTableModel implements TableModel {
 
-    CachedRowSet impiegatiRowSet; //contiene il contenuto della table impiegati SQL
+    CachedRowSet employeeRowSet; //contiene il contenuto della table impiegati SQL
     private ResultSetMetaData metadata;
     int numcols, numrows;
     JFrame frame = new JFrame();
 
     public EmployeeTableModel(CachedRowSet rowSetArg) throws SQLException {
-        this.impiegatiRowSet = rowSetArg;
-
-        this.metadata = impiegatiRowSet.getMetaData();
+        this.employeeRowSet = rowSetArg;
+        this.metadata = employeeRowSet.getMetaData();
         numcols = metadata.getColumnCount();
-
-        this.impiegatiRowSet.beforeFirst();
+        this.employeeRowSet.beforeFirst();
         this.numrows = 0;
-        while (this.impiegatiRowSet.next()) {
+        
+        while (this.employeeRowSet.next()) {
             this.numrows++;
         }
-        this.impiegatiRowSet.beforeFirst();
-        //showEmployees();
+        this.employeeRowSet.beforeFirst();
     }
 
     @Override
@@ -64,7 +62,6 @@ public class EmployeeTableModel implements TableModel {
 
     /**
      * ritorna il tipo della colonna selezionata
-     *
      * @param columnIndex indice della colonna
      * @return tipo di dato della specifica colonna
      * @author Luca
@@ -97,8 +94,8 @@ public class EmployeeTableModel implements TableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         try {
-            this.impiegatiRowSet.absolute(rowIndex + 1);
-            Object o = this.impiegatiRowSet.getObject(columnIndex + 1);
+            this.employeeRowSet.absolute(rowIndex + 1);
+            Object o = this.employeeRowSet.getObject(columnIndex + 1);
             if (o == null) {
                 return null;
             } else {
@@ -121,21 +118,21 @@ public class EmployeeTableModel implements TableModel {
     public void removeTableModelListener(TableModelListener l) {
     }
 
-public CachedRowSet getImpiegatiRowSet() {
-        return impiegatiRowSet;
+public CachedRowSet getEmployeeRowSet() {
+        return employeeRowSet;
     }
 
-    public void setImpiegatiRowSet(CachedRowSet impiegatiRowSet) {
-        this.impiegatiRowSet = impiegatiRowSet;
+    public void setEmployeeRowSet(CachedRowSet employeeRowSet) {
+        this.employeeRowSet = employeeRowSet;
     }
 
     public void addEventHandlersToRowSet(RowSetListener listener) {
-        this.impiegatiRowSet.addRowSetListener(listener);
+        this.employeeRowSet.addRowSetListener(listener);
     }
 
     public void close() {
         try {
-            impiegatiRowSet.getStatement().close();
+            employeeRowSet.getStatement().close();
         } catch (SQLException ex) {
             ex.toString();
         }
@@ -148,14 +145,14 @@ public CachedRowSet getImpiegatiRowSet() {
     
     public void insertRow(int id, String username, String password, String ruolo, boolean status) {
         try {
-            this.impiegatiRowSet.moveToInsertRow();
-            this.impiegatiRowSet.updateInt("ID", id);
-            this.impiegatiRowSet.updateString("username", username);
-            this.impiegatiRowSet.updateString("password", password);
-            this.impiegatiRowSet.updateString("ruolo", ruolo);
-            this.impiegatiRowSet.updateBoolean("status", status);
-            this.impiegatiRowSet.insertRow();
-            this.impiegatiRowSet.moveToCurrentRow();
+            this.employeeRowSet.moveToInsertRow();
+            this.employeeRowSet.updateInt("ID", id);
+            this.employeeRowSet.updateString("username", username);
+            this.employeeRowSet.updateString("password", password);
+            this.employeeRowSet.updateString("ruolo", ruolo);
+            this.employeeRowSet.updateBoolean("status", status);
+            this.employeeRowSet.insertRow();
+            this.employeeRowSet.moveToCurrentRow();
         } catch (SQLException ex) {
 
             ex.toString();
