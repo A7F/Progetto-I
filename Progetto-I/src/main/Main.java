@@ -2,6 +2,8 @@ package main;
 
 import UIlogin.LoginUI;
 import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import restaurant.Restaurant;
 import utils.AppConfig;
 
@@ -17,6 +19,7 @@ public class Main {
             r = new Restaurant(AppConfig.getInstance().getRestaurantName(),AppConfig.getInstance().getTableNumber(),AppConfig.getInstance().getMenuPath());
             LoginUI login = new LoginUI(r);
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(new JFrame(), "Non è stato trovato un menu. Accedere con le credenziali del capo e specificare il percorso.", "Info", JOptionPane.INFORMATION_MESSAGE);
             LoginUI login = new LoginUI(r);
         }
     }
