@@ -6,6 +6,7 @@ import UIcassa.ProxyDiscount;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import menu.Menu;
 import menu.MenuElement;
@@ -125,6 +126,11 @@ public class Restaurant extends Observable{
      */
     public void remTables() {
         int input = 0;
+        
+        if(room.getTables().size() == 1){
+            JOptionPane.showMessageDialog(new JFrame(), "Non è possibile rimuovere l'unico tavolo presente","info",JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         
         if(room.getTables().get(room.getTables().size()-1).getIsTaken()){
             input = JOptionPane.showOptionDialog(null, "Sei sicuro? L'azione non può essere annullata!", "Conferma", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
