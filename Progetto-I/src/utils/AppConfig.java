@@ -1,11 +1,9 @@
 package utils;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.json.JSONObject;
@@ -19,7 +17,7 @@ public class AppConfig {
 
     private static AppConfig instance;
     JSONObject json;
-    private String configPath = "./data/appConig.json";
+    private String configPath = "./data/appConfig.json";
     
     private String appName;
     private int tableNumber;
@@ -65,10 +63,8 @@ public class AppConfig {
             }
             result = sb.toString();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(new JFrame(), "File di configurazione mancante: ne sarà generato uno nuovo.\nScegli dove salvare il file...", "Info", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "File di configurazione mancante: ne sarà generato uno nuovo.", "Info", JOptionPane.INFORMATION_MESSAGE);
             buildFile();
-            JOptionPane.showMessageDialog(new JFrame(), "Riavvio necessario", "Info", JOptionPane.INFORMATION_MESSAGE);
-            System.exit(0);
         }
         return result;
     }
@@ -79,20 +75,12 @@ public class AppConfig {
      */
     private void writeFile() {
         try {
-            File fin = new File(configPath + "/appConfig.json");
-            if (!fin.exists()) {
-                FileWriter file = new FileWriter(configPath + "/appConfig.json");
-                file.write(json.toString());
-                file.flush();
-                file.close();
-            } else {
                 FileWriter file = new FileWriter(configPath);
                 String jsonString = json.toString();
                 file.write(jsonString);
                 file.flush();
                 System.out.println("Config file updated");
                 file.close();
-            }
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -105,21 +93,6 @@ public class AppConfig {
      * @author Luca
      */
     private void buildFile(){
-        JFileChooser fc = new JFileChooser();
-        
-        fc.setCurrentDirectory(new java.io.File("."));
-        fc.setDialogTitle("Dove salvare?");
-        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        fc.setAcceptAllFileFilterUsed(false);
-        int result = 100;
-        File selectedpath;
-        
-        while(result != JFileChooser.APPROVE_OPTION){
-            result = fc.showOpenDialog(null);
-            selectedpath = fc.getSelectedFile();
-            configPath = selectedpath.getAbsolutePath();
-        }
-        
         json = new JSONObject();
         json.put("app_name", "non ho un nome");
         json.put("table_number", 3);

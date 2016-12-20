@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * questa classe facilita l'accesso alla table Tavoli del database del ristorante.
@@ -28,7 +30,11 @@ public class TavoliManager {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.useDatabase);
             ps.executeQuery();
         } catch (SQLException ex) {
-            Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(new JFrame(), "Nessuna connessione mySQL attiva. Il programma verrà terminato.\nAttivare prima un client SQL su questa macchina.","errore",JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
+        } catch (NullPointerException e){
+            JOptionPane.showMessageDialog(new JFrame(), "Nessuna connessione mySQL attiva. Il programma verrà terminato.\nAttivare prima un client SQL su questa macchina.","errore",JOptionPane.ERROR_MESSAGE);
+            System.exit(0);
         }
     }
     
@@ -110,6 +116,10 @@ public class TavoliManager {
         }
     }
     
+    /**
+     * cancella tutto il contenuto della tabella Tavoli per ricrearne il contenuto
+     * @author Luca
+     */
     public void dropTavoli(){
         try {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.createTavoli);
