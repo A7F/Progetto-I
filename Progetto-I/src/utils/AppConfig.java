@@ -23,13 +23,17 @@ public class AppConfig {
     private int tableNumber;
     private String menuPath;
     private String restaurantName;
+    private int exitState;
+    private int snapshotSeconds;
 
     private AppConfig(){
         json = new JSONObject(readFile());
         configPath = json.getString("this_path");
+        exitState = json.getInt("exit_state");
         appName = json.getString("app_name");
         tableNumber = json.getInt("table_number");
         menuPath = json.getString("menu_path");
+        snapshotSeconds = json.getInt("snapshot_seconds");
         restaurantName = json.getString("restaurant_name");
     }
     
@@ -102,9 +106,28 @@ public class AppConfig {
         json.put("def_dbpw", "");
         json.put("def_dburl", "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true");
         json.put("def_lang", "IT");
+        json.put("exit_state", 0);
+        json.put("snapshot_seconds",5000);
         json.put("restaurant_name", "Diablo");
         
         writeFile();
+    }
+
+    /**
+     * @author Luca
+     * @return delay (in ms) fra uno snapshot e il prossimo
+     */
+    public int getSnapshotSeconds() {
+        return snapshotSeconds;
+    }
+
+    /**
+     * @author Luca
+     * @param snapshotSeconds millisecondi di delay per snapshot
+     */
+    public void setSnapshotSeconds(int snapshotSeconds) {
+        this.snapshotSeconds = snapshotSeconds;
+        json.put("snapshot_seconds",snapshotSeconds);
     }
 
 
@@ -141,6 +164,25 @@ public class AppConfig {
         this.tableNumber = tableNumber;
         json.put("table_number", tableNumber);
     }
+
+    /**
+     * @author Luca
+     * @return stato con cui ha terminato il programma. 0 se è terminato normalmente.
+     */
+    public int getExitState() {
+        return exitState;
+    }
+
+    /**
+     * @author Luca
+     * @param exitState stato in cui termina il programma
+     */
+    public void setExitState(int exitState) {
+        this.exitState = exitState;
+        json.put("exit_state", exitState);
+    }
+    
+    
 
     /**
      * @author Luca
