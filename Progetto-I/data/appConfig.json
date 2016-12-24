@@ -7,5 +7,7 @@
     "def_dbpw": "",
     "def_dburl": "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true",
     "def_lang": "IT",
+    "exit_state": 0,
+    "snapshot_seconds": 5000,
     "restaurant_name": "Diablo"
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="hibernateMappers.Snapshot" table="snapshot">
+        <id name="order_id" type="int" column="order_id">
+            <generator class="native"/>
+        </id>
+        <property name="table_id" column="table_id" type="int"/>
+        <property name="is_taken" column="is_taken" type="boolean"/>
+    </class>
+</hibernate-mapping>
