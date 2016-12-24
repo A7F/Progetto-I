@@ -1,6 +1,7 @@
 package menu;
 
 public class MenuElement {
+    private int id;
     private String name;
     private double price;
     private Boolean available;
@@ -12,6 +13,15 @@ public class MenuElement {
         this.price = price;
         this.typeElement = typeElement;
         this.description = description;
+        available = true;
+    }
+    
+    public MenuElement(int id, String name, double price, String description, String typeElement ){
+        this.name = name;
+        this.price = price;
+        this.typeElement = typeElement;
+        this.description = description;
+        this.id = id;
         available = true;
     }
     
@@ -49,6 +59,22 @@ public class MenuElement {
      */
     public String getDescription(){
         return description;
+    }
+
+    /**
+     * @author Luca
+     * @return id del menuelement
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @author Luca
+     * @param id id del menuelement
+     */
+    public void setId(int id) {
+        this.id = id;
     }
     
     @Override

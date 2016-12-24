@@ -54,7 +54,7 @@ public class MenuManager {
                 double price=rs.getDouble("Price");
                 String typeElement=rs.getString("Tipo");
                 
-                MenuElement me  = new MenuElement(name, price, typeElement, description);
+                MenuElement me  = new MenuElement(id, name, price, typeElement, description);
                 menuElements.add(me);
             }
         } catch (SQLException ex) {
@@ -116,7 +116,7 @@ public class MenuManager {
             PreparedStatement ps = mgr.getConnection().prepareStatement(DatabaseStrings.getAllMenu);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                MenuElement el = new MenuElement(rs.getString("Name"),rs.getDouble("Price"),rs.getString("Tipo"),rs.getString("Description"));
+                MenuElement el = new MenuElement(rs.getInt("id"),rs.getString("Name"),rs.getDouble("Price"),rs.getString("Tipo"),rs.getString("Description"));
                 menuElements.add(el);
             }
         } catch (SQLException ex){
