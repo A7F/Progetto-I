@@ -11,9 +11,7 @@ import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import menu.Menu;
 import menu.MenuElement;
-import restaurant.Employee;
 
 /**
  * questa classe facilita l'accesso (in lettura e scrittura) al database ristorante
