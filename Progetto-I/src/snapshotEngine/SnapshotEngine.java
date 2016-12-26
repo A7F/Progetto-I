@@ -17,7 +17,7 @@ public class SnapshotEngine implements SnapEngine{
     private int milliseconds;
     private Restaurant restaurant;
 
-    private static SnapshotEngine getInstance(){
+    public static SnapshotEngine getInstance(){
         if(snapshotEngine==null){
             snapshotEngine=new SnapshotEngine();
         }
@@ -26,7 +26,9 @@ public class SnapshotEngine implements SnapEngine{
     
     @Override
     public void snap() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Thread thread = new Thread(new SnapshotDaemon(restaurant),"Thread di snapshot");
+        thread.start();
+        System.out.println("Istantanea salvata.");
     }
 
     @Override
