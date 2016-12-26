@@ -6,6 +6,7 @@
             <generator class="native"/>
         </id>
         <property name="table_id" column="table_id" type="int"/>
-        <property name="is_taken" column="is_taken" type="boolean"/>
+        <property name="element_id" column="element_id" type="int"/>
+        <property name="note" column="note" type="string"/>
     </class>
 </hibernate-mapping>

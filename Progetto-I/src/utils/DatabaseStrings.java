@@ -13,8 +13,7 @@ public class DatabaseStrings{
     public static final String createImpiegati = "CREATE TABLE IF NOT EXISTS Impiegati(ID int NOT NULL AUTO_INCREMENT,username VARCHAR(20) UNIQUE,password VARCHAR(20) UNIQUE,ruolo VARCHAR(10),status BIT DEFAULT 0,PRIMARY KEY(ID));";
     public static final String createTavoli = "CREATE TABLE IF NOT EXISTS Tavoli(NUMTAVOLO int NOT NULL PRIMARY KEY, PRENOTATO BOOLEAN DEFAULT 0, PRENOTAZIONE int UNIQUE DEFAULT NULL);";
     public static final String createPrenotazioni = "CREATE TABLE IF NOT EXISTS Prenotazioni(PRENOTAZIONE int DEFAULT NULL,NOME VARCHAR(20) DEFAULT NULL, ORE DATE DEFAULT NULL, PERSONE int DEFAULT 0);";
-    public static final String createSnapshot = "CREATE TABLE IF NOT EXISTS snapshot(order_id int NOT NULL AUTO_INCREMENT, is_taken BOOLEAN DEFAULT FALSE, table_id INTEGER NOT NULL, PRIMARY KEY (order_id));";
-    public static final String createOrders = "CREATE TABLE IF NOT EXISTS orders(order_id int, element_id int, notes varchar(200), PRIMARY KEY(order_id));";
+    public static final String createSnapshot = "CREATE TABLE IF NOT EXISTS snapshot(order_id int NOT NULL AUTO_INCREMENT, table_id INTEGER NOT NULL, element_id INTEGER NOT NULL, note VARCHAR(100) DEFAULT NULL, PRIMARY KEY (order_id));";
     public static final String alterPrenotazioni = "ALTER TABLE Prenotazioni ADD FOREIGN KEY(PRENOTAZIONE) REFERENCES Tavoli(PRENOTAZIONE) ON DELETE CASCADE;";
     public static final String getAllMenu = "SELECT * FROM menu;";
     public static final String getAllTavoli = "SELECT * FROM Tavoli;";

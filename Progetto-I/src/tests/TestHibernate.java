@@ -6,8 +6,6 @@ import java.io.IOException;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import restaurant.Restaurant;
-import utils.AppConfig;
 
 /**
  *
@@ -21,14 +19,17 @@ public class TestHibernate {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         
-        Snapshot snap = new Snapshot(2,true);
-        Snapshot snap2 = new Snapshot(45,false);
+        Snapshot snap = new Snapshot(2,1);
+        Snapshot snap2 = new Snapshot(45,24);
+        Snapshot snap3 = new Snapshot(45,24,"buono");
         
         try{
             tx = session.beginTransaction();
             int id = (Integer)session.save(snap);
             System.out.println("id1= "+id);
             id = (Integer)session.save(snap2);
+            System.out.println("id2= "+id);
+            id = (Integer)session.save(snap3);
             System.out.println("id2= "+id);
             tx.commit();
         }catch(HibernateException e){

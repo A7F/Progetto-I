@@ -49,7 +49,6 @@ public class DatabaseManager {
             statement.executeUpdate(DatabaseStrings.createImpiegati);
             statement.executeUpdate(DatabaseStrings.createTavoli);
             statement.executeUpdate(DatabaseStrings.createPrenotazioni);
-            statement.executeUpdate(DatabaseStrings.createOrders);
             statement.executeUpdate(DatabaseStrings.createSnapshot);
             statement.executeUpdate(DatabaseStrings.alterPrenotazioni);
             System.out.println(">> Database e tabelle generate con successo");

@@ -5,31 +5,23 @@ package hibernateMappers;
  * @author Luca
  */
 public class Snapshot {
-    private int table_id;
-    private boolean is_taken;
     private int order_id;
+    private int table_id;
+    private int element_id;
+    private String note;
     
     public Snapshot(){}
     
-    public Snapshot(int table_id,boolean is_taken){
-        this.is_taken=is_taken;
-        this.table_id=table_id;
+    public Snapshot(int tableId,int elementId){
+        this.table_id=tableId;
+        this.element_id=elementId;
+        this.note="";
     }
-
-    public int getTable_id() {
-        return table_id;
-    }
-
-    public void setTable_id(int table_id) {
-        this.table_id = table_id;
-    }
-
-    public boolean isIs_taken() {
-        return is_taken;
-    }
-
-    public void setIs_taken(boolean is_taken) {
-        this.is_taken = is_taken;
+    
+    public Snapshot(int tableId,int elementId,String note){
+        this.table_id=tableId;
+        this.element_id=elementId;
+        this.note=note;
     }
 
     public int getOrder_id() {
@@ -38,6 +30,30 @@ public class Snapshot {
 
     public void setOrder_id(int order_id) {
         this.order_id = order_id;
+    }
+    
+    public int getTable_id() {
+        return table_id;
+    }
+
+    public void setTable_id(int table_id) {
+        this.table_id = table_id;
+    }
+
+    public int getElement_id() {
+        return element_id;
+    }
+
+    public void setElement_id(int element_id) {
+        this.element_id = element_id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
     
     
