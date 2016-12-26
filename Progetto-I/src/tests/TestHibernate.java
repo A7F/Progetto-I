@@ -55,7 +55,7 @@ public class TestHibernate {
         SnapshotEngine engine = SnapshotEngine.getInstance();
         engine.setMilliseconds(6000);
         engine.setRestaurant(r);
-        engine.snap();
+        engine.startDaemon();
         
     }
     

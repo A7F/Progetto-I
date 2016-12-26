@@ -25,6 +25,8 @@ class SnapshotDaemon implements Runnable{
         
         tx = session.beginTransaction();
         
+        session.createQuery("delete from Snapshot").executeUpdate();
+        
         for(int i=0; i<restaurant.getTables().size(); i++){
             
             if(!restaurant.getTables().get(i).getOrdersArray().isEmpty()){
@@ -38,5 +40,6 @@ class SnapshotDaemon implements Runnable{
         tx.commit();
         tx=null;
         session.close();
+        System.out.println("Snapshot catturato.");
     }
 }
