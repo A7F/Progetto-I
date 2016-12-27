@@ -43,7 +43,7 @@ public class MenuManager {
     
     /**
      * metodo per ottenere il contenuto della table impiegati come resultset
-     * @see UIcapo.ImpiegatiFrame
+     * @see UIcapo.EmployeePanel
      * @author Luca
      * @return resultset table impiegati
      */
