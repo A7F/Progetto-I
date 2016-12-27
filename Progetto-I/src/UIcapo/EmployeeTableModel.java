@@ -73,9 +73,8 @@ public class EmployeeTableModel implements TableModel {
 
     /**
      * la tabella non prevede modifiche dirette
-     *
-     * @param rowIndex
-     * @param columnIndex
+     * @param rowIndex indice di riga
+     * @param columnIndex indice di colonna
      * @return false
      * @author Luca
      */

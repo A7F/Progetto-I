@@ -118,7 +118,7 @@ public class EmployeeManager {
     }
     /**
      * Rimuove un impiegato dalla table impiegato del databse
-     * @param id 
+     * @param id id del' impiegato da rimuovere
      * @author FabioT
      */
     public void removeEmployee(int id){

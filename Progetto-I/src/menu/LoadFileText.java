@@ -21,8 +21,8 @@ public class LoadFileText {
      * 
      * @param pathFile percorso del file contenente il menu
      * @return ArrayList of MenuElements
-     * @throws FileNotFoundException
-     * @throws IOException 
+     * @throws FileNotFoundException file di menu non trovato
+     * @throws IOException file di menu non trovato
      * Questo metodo prende un file di testo che deve essere formattato in questo modo:
      * String(TAB)double(TAB)menuElementType(TAB)String
      */
@@ -43,7 +43,7 @@ public class LoadFileText {
      * questo metodo prende gli elementi dal file e li mette nel database
      * @author Luca
      * @param pathFile percorso del file contenente il menu
-     * @throws java.io.FileNotFoundException
+     * @throws java.io.FileNotFoundException file di menu non trovato
      */
     public static void fillDatabase(String pathFile) throws FileNotFoundException, IOException{
         FileReader fr = new FileReader(pathFile);

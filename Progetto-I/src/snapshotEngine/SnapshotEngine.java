@@ -76,7 +76,6 @@ public class SnapshotEngine implements SnapEngine{
     /**
      * scatta uno snapshot ogni x millisecondi.
      * @author Luca
-     * @see setMilliseconds()
      */
     @Override
     public void startDaemon() {

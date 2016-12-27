@@ -27,9 +27,8 @@ public class Menu {
     }
 
     /**
-     * 
      * @return menu
-     * @autor FabioTagliani
+     * @author FabioTagliani
      */
     public ArrayList<MenuElement> getMenu() {
         return menu;

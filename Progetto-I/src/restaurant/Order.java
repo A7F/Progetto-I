@@ -163,7 +163,7 @@ public class Order {
     
     /**
      * @return nome del menuelement
-     * @autor Luca
+     * @author Luca
      */
     @Override
     public String toString() {

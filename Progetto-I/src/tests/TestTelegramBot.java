@@ -17,7 +17,7 @@ public class TestTelegramBot{
 
     /**
      * @param args the command line arguments
-     * @throws java.io.IOException
+     * @throws java.io.IOException file di menu non trovato
      */
     public static void main(String[] args) throws IOException{
         String LOGTAG = "BOT >> ";

@@ -13,7 +13,7 @@ public interface IDiscountStrategy {
     
     /**
      * Calcola il prezzo totale scontato
-     * @param scontrino
+     * @param scontrino 
      * @see ScontrinoPanel
      * @return prezzo scontato 
      */

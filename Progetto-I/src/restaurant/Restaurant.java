@@ -27,7 +27,7 @@ public class Restaurant extends Observable{
      * @param name il nome del ristorante
      * @param numberOfTables numero dei tavoli che ha il ristorante
      * @param pathFile percorso da cui caricare il file di testo contenente il menu
-     * @throws IOException 
+     * @throws IOException file menu non trovato
      */
     public Restaurant(String name, int numberOfTables, String pathFile) throws IOException{
         this.name = name;
@@ -232,7 +232,7 @@ public class Restaurant extends Observable{
     /**
      * dato il nome di un elemento il metodo restituisce gli elementi nel menu corrispondenti a quel nome
      * @author Federico Vitrò
-     * @param elementName
+     * @param elementName nome del menuelement da cercare
      * @return elementi menu (ovvero pietanze) con lo stesso nome
      */
     public ArrayList<MenuElement> getMenuByName(String elementName){
@@ -242,7 +242,7 @@ public class Restaurant extends Observable{
     /**
      * dato il tipo di un elemento restituisce gli elementi nel menu corrispondenti a quel tipo
      * @author Federico Vitrò
-     * @param type
+     * @param type tipo del menuelement
      * @return elementi menu (ovvero pietanze) con lo stesso tipo
      */
     public ArrayList<MenuElement> getElementByType(String type){
@@ -252,7 +252,7 @@ public class Restaurant extends Observable{
     /**
      * dato il prezzo di un elemento restituisce gli elementi nel menu corrispondenti a quel prezzo
      * @author Federico Vitrò
-     * @param cash
+     * @param cash prezzo del menuelement
      * @return elementi menu (ovvero pietanze) con lo stesso prezzo
      */
     public ArrayList<MenuElement> getElementByPrice(double cash){
