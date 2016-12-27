@@ -73,7 +73,7 @@ public class MenuManager {
     
     /**
      * Rimuove un elementoMenu dalla table menu del databse
-     * @param id 
+     * @param id id dell' elemento menu da cancellare
      * @author FabioT
      */
     public void removeMenuElement(int id){
@@ -196,7 +196,7 @@ public class MenuManager {
 
     /**
      * Verifica se esiste un menuELement con lo stesso id passato come parametro
-     * @param id
+     * @param id id da verificare
      * @return flag di tipo booleano per verificare se presente o meno l'elemento all'interno del database
      * @author Fabio
      */

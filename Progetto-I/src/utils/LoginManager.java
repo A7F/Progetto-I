@@ -50,7 +50,7 @@ public class LoginManager {
      * @param password  la password inserita da utente
      * @param selected  il valore selezionato del radiobutton
      * @return boolean che conferma o meno l'avvenuta autenticazione
-     * @throws SQLException 
+     * @throws SQLException query non eseguita correttamente
      * @author Luca
      */
     public boolean checkCredentials(String username, String password, String selected) throws SQLException{
@@ -130,7 +130,7 @@ public class LoginManager {
      * @param username  username da registrare
      * @param password  password da registrare
      * @param selected  ruolo selezionato nel pannello radiobutton
-     * @throws SQLException 
+     * @throws SQLException update non eseguito correttamente
      */
     public void insertValue(String username, String password, String selected) throws SQLException{
         int val = getSelectedKey(selected);

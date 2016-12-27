@@ -16,7 +16,7 @@ public class TestCompleto{
 
     /**
      * @param args the command line arguments
-     * @throws java.io.IOException
+     * @throws java.io.IOException file menu non trovato
      */
     public static void main(String[] args) throws IOException{
         Restaurant r = new Restaurant(AppConfig.getInstance().getRestaurantName(),AppConfig.getInstance().getTableNumber(),AppConfig.getInstance().getMenuPath());

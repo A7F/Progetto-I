@@ -106,11 +106,11 @@ public class MenuTabelModel implements TableModel{
     }
     /**
      * Aggiorna le righe della tabella menu
-     * @param id
-     * @param name
-     * @param description
-     * @param price
-     * @param Tipo
+     * @param id id
+     * @param name nome menuelement
+     * @param description descrizione menuelement
+     * @param price prezzo dell' elemento
+     * @param Tipo tipo dell' elemento
      * @author FabioT
      */
     public void insertRow(int id, String name, String description, double price, String Tipo ) {
