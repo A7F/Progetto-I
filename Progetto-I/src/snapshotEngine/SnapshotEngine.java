@@ -24,28 +24,50 @@ public class SnapshotEngine implements SnapEngine{
         return snapshotEngine;
     }
     
+    /**
+     * cattura una istantanea del programma.
+     * @author Luca
+     */
     @Override
     public void snap() {
         Thread thread = new Thread(new SnapshotDaemon(restaurant),"Thread di snapshot");
         thread.start();
     }
 
+    /**
+     * ripristina l'ultimo stato del programma
+     * @author Luca
+     */
     @Override
     public void restore() {
         Thread thread = new Thread(new RestoreDaemon(restaurant),"Thread diripristino");
         thread.start();
     }
 
+    /**
+     * imposta il delay fra uno snapshot e l'altro; utile solo se viene usato il daemon.
+     * @param millis delay in millisecondi
+     * @author Luca
+     */
     @Override
     public void setMilliseconds(int millis) {
         this.milliseconds=millis;
     }
 
+    /**
+     * @author Luca
+     * @return delay in millisecondi
+     */
     @Override
     public int getMilliseconds() {
         return this.milliseconds;
     }
     
+    /**
+     * imposta il ristorante su cui eseguire backup
+     * @param res ristorante bersaglio
+     * @author Luca
+     */
     public void setRestaurant(Restaurant res){
         this.restaurant=res;
     }
@@ -53,6 +75,7 @@ public class SnapshotEngine implements SnapEngine{
     /**
      * scatta uno snapshot ogni x millisecondi.
      * @author Luca
+     * @see setMilliseconds()
      */
     @Override
     public void startDaemon() {
