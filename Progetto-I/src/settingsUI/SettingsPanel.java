@@ -24,8 +24,8 @@ import utils.AppConfig;
  */
 public class SettingsPanel extends JPanel{
     
-    JComboBox tableBox;
-    JLabel tableNumber,menuPath,restaurantName,dialog;
+    JComboBox tableBox, delayBox;
+    JLabel tableNumber,menuPath,restaurantName,snapshotDelay,dialog;
     JPanel formatPane = new JPanel();
     JTextField field = new JTextField();
     JTextField file = new JTextField();
@@ -37,13 +37,15 @@ public class SettingsPanel extends JPanel{
         this.config=conf;
         initGraphics();
         attachListeners();
-        this.setLayout(new GridLayout(4,2,5,15));    //righe, colonne,hgap,vgap
+        this.setLayout(new GridLayout(5,2,5,15));    //righe, colonne,hgap,vgap
         this.add(tableNumber);
         this.add(tableBox);
         this.add(restaurantName);
         this.add(field);
         this.add(menuPath);
         this.add(formatPane);
+        this.add(snapshotDelay);
+        this.add(delayBox);
         this.add(apply);
     }
     
@@ -54,14 +56,18 @@ public class SettingsPanel extends JPanel{
         field.setText(config.getRestaurantName());
         
         Integer[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        Integer[] delay = { 3, 5, 7, 10, 13, 15 };
         formatPane.setLayout(new FlowLayout());
         tableBox = new JComboBox(numbers);
+        delayBox = new JComboBox(delay);
+        delayBox.setSelectedIndex(2);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         FileNameExtensionFilter filter = new FileNameExtensionFilter("File di testo", "txt", "text");
         fc.setFileFilter(filter);
         browse = new JButton("Scegli...");
         apply = new JButton("Applica");
         tableNumber = new JLabel("Numero dei tavoli all'avvio: ");
+        snapshotDelay = new JLabel("Delay snapshot (in secondi): ");
         menuPath = new JLabel("Percorso file menu: ");
         restaurantName = new JLabel("Nome del ristorante: ");
         dialog = new JLabel("Le modifiche saranno applicate dal prossimo avvio dell' applicazione!");
@@ -90,12 +96,11 @@ public class SettingsPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 config.setRestaurantName(field.getText());
-                
+                config.setSnapshotSeconds((int) delayBox.getSelectedItem()*1000);
                 if(!file.getText().isEmpty()){
                     config.setMenuPath(file.getText());
                 }
-                
-                config.setTableNumber(tableBox.getSelectedIndex());
+                config.setTableNumber((int) tableBox.getSelectedItem());
                 config.commitChanges();
             }
         });
