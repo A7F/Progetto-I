@@ -14,7 +14,7 @@ public class Table {
     
     /**
      * @author Federico Vitrò
-     * @param tableId 
+     * @param tableId id del tavolo
      */
     
     public Table(int tableId){
@@ -39,7 +39,7 @@ public class Table {
     /**
      * ritorna l'array di ordini
      * @author Federico Vitrò
-     * @return this.orders
+     * @return ordini fatti al tavolo
      */
     
     public ArrayList<Order> getOrdersArray(){
@@ -49,7 +49,7 @@ public class Table {
     /**
      * verifica che un tavolo sia prenotato o meno
      * @author Federico Vitrò
-     * @return isTaken
+     * @return true se il tavolo è stato prenotato
      */
     
     public Boolean getIsTaken(){
@@ -57,7 +57,7 @@ public class Table {
     }
     
     /**
-     * prenota un tavolo
+     * prenota il tavolo
      * @author Federico Vitrò
      */
     
@@ -66,7 +66,7 @@ public class Table {
     }
     
     /**
-     * libera un tavolo
+     * libera il tavolo
      * @author Federico Vitrò
      */
     
@@ -77,7 +77,7 @@ public class Table {
     /**
      * aggiunge un ordine
      * @author Federico Vitrò
-     * @param order 
+     * @param order ordine da aggiungere
      */
     
     public void addOrder(Order order){
@@ -87,7 +87,7 @@ public class Table {
     /**
      * Rimuove il singolo elemento dell'ordine
      * @author FabioTagliani
-     * @param order
+     * @param order ordine da rimuovere
      */
     public void removeOrder(Order order) {
         orders.remove(order);
@@ -96,9 +96,8 @@ public class Table {
     /**
      * restituisce l'id di un tavolo
      * @author Federico Vitrò
-     * @return tableId
+     * @return id del tavolo
      */
-        
     public int getTableId() {
         return tableId;
     }
@@ -107,7 +106,6 @@ public class Table {
      * @author Federico Vitrò
      * @return tavolo, stato ed ordini
      */
-      
     @Override
     public String toString() {
         return "tavolo: "+(tableId+1)+" || prenotato: "+isTaken+ " || ordini: " + orders +"\n";

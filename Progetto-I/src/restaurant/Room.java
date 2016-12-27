@@ -16,7 +16,7 @@ public class Room {
     
     /**
      * @author Federico Vitrò
-     * @param numberOfTables 
+     * @param numberOfTables numero dei tavoli nella sala
      */    
     public Room(int numberOfTables){
         tables = new ArrayList<Table>();
@@ -26,7 +26,7 @@ public class Room {
     /**
      * inizializza i tavoli alla creazione della Room
      * @author Federico Vitrò
-     * @param numberOfTables 
+     * @param numberOfTables numero dei tavoli nella sala
      */
     private void initTables(int numberOfTables){ 
         
@@ -63,8 +63,8 @@ public class Room {
     
     /**
      * Ritorna gli ordini del singolo tavolo
-     * @param tableId
-     * @return Order
+     * @param tableId id del tavolo di cui ottenere gli ordini
+     * @return arraylist di ordini del tavolo
      * @author FabioTagliani
      */
     public ArrayList<Order> getOrdersTable(int tableId){
@@ -82,7 +82,7 @@ public class Room {
     /**
      * questo metodo ritorna tutti gli ordini di sala messi insieme
      * @author Luca
-     * @return roomOrders
+     * @return ordini di tutta la sala
      */
     public ArrayList<Order> getOrdersArray(){
         ArrayList<Order> roomOrders = new ArrayList<Order>();
@@ -113,7 +113,7 @@ public class Room {
     
     /**
      * Metodo per liberare il tavolo dalla prenotazione
-     * @param tableId
+     * @param tableId id del tavolo da liberare
      * @author FabioTagliani
      */    
     public void setFreeTable(int tableId){
@@ -132,7 +132,7 @@ public class Room {
     /**
      * Restituisce i tavoli della sala
      * @author fabiotagliani
-     * @return tables
+     * @return tutti i tavoli della sala
      */
     public ArrayList<Table> getTables() {
         return tables;
@@ -141,7 +141,7 @@ public class Room {
     /**
      * Restituisce i tavoli non prenotati 
      * @author fabiotagliani
-     * @return tableFree
+     * @return tutti i tavoli liberi nella sala
      */
     public ArrayList<Table> getFreeTable(){
         
@@ -157,7 +157,7 @@ public class Room {
     /**
      * Restituisce i tavoli prenotati 
      * @author Luca
-     * @return tableTaken
+     * @return tutti i tavoli prenotati della sala
      */
     public ArrayList<Table> getTakenTable(){
         
@@ -173,8 +173,8 @@ public class Room {
     /**
      * dato l'id di un tavolo e un ordinazione aggiunge quest'ultima al tavolo
      * @author Federico Vitrò
-     * @param tableID
-     * @param order 
+     * @param tableID id del tavolo su cui aggiungere l'ordine
+     * @param order ordine da aggiungere
      */
     public void addOrder(int tableID, Order order) { 
         if(tables.get(tableID-1).getIsTaken() == false){
@@ -185,8 +185,8 @@ public class Room {
     /**
      * Rimuove il singolo ordine di un tavolo
      * @author Luca
-     * @param tableID
-     * @param order 
+     * @param tableID id del tavolo da cui rimuovere l'ordine
+     * @param order ordine da rimuovere
      */
     public void removeSingleOrder(int tableID, Order order) {
         tables.get(tableID-1).removeOrder(order);
@@ -194,7 +194,7 @@ public class Room {
     
     /**
      * Rimuove tutti gli ordini di un tavolo
-     * @param tableId
+     * @param tableId id del tavolo da cui cancellare tutti gli ordini
      * @author Fabio Tagliani
      */
     public void removeAllOrder(int tableId){
@@ -216,7 +216,7 @@ public class Room {
     
     /**
      * @author FabioTagliani
-     * @return ret
+     * @return tutti i tavoli
      */   
     @Override
     public String toString() {

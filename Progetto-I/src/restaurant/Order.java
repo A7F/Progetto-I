@@ -15,9 +15,10 @@ public class Order {
     private boolean is_done = false;
     
     /**
+     * ordine senza annotazioni
      * @author Federico Vitrò
-     * @param quantity
-     * @param menuElement 
+     * @param quantity quantità
+     * @param menuElement MenuElement da aggiungere
      */
     
     public Order(int quantity, MenuElement menuElement){
@@ -26,8 +27,7 @@ public class Order {
     }
     
     /**
-     * Polimorfismo metodi costruttori: posso istanziare un ordine sia con che senza
-     * annotazioni aggiuntive
+     * Ordine con annotazioni
      * @param quantity la quantità da aggiungere di uno stesso ordine
      * @param menuElement l'elemento di menu scelto
      * @param notes eventuali note correlate all' ordine
@@ -41,9 +41,8 @@ public class Order {
     
     /**
      * @author Federico Vitrò
-     * @param menuElement 
+     * @param menuElement menuelement da aggiungere
      */
-    
     public Order(MenuElement menuElement){
         this.quantity = 1;
         this.menuElement = menuElement;
@@ -66,23 +65,38 @@ public class Order {
         this.notes = "";
     }
     
+    /**
+     * @author Luca
+     * @return annotazioni sull' ordine
+     */
     public String getNotes(){
         return notes;
     }
     
+    /**
+     * @author Luca
+     * @return quantità dello stesso menuelement
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * @author Luca
+     * @return MenuElement associato all'ordine
+     */
     public MenuElement getMenuElement() {
         return menuElement;
     }
 
     public void getTicket(){
-    
         System.out.println(quantity + "|| " + menuElement.getNameElement() + "|| " + menuElement.getPrizeElement());
     }
     
+    /**
+     * @author Fabio Tagliani
+     * @return prezzo dell'ordine
+     */
     public double getPrice(){
         return menuElement.getPrizeElement()*quantity;
     }
@@ -148,7 +162,7 @@ public class Order {
     }
     
     /**
-     * sistemato il toString: visualizza solo il nome dell' ordine
+     * @return nome del menuelement
      * @autor Luca
      */
     @Override
