@@ -2,6 +2,9 @@ package snapshotEngine;
 
 import hibernateMappers.HibernateUtil;
 import hibernateMappers.Snapshot;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import restaurant.Restaurant;
@@ -20,6 +23,8 @@ class SnapshotDaemon implements Runnable{
     
     @Override
     public void run() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         
@@ -40,6 +45,6 @@ class SnapshotDaemon implements Runnable{
         tx.commit();
         tx=null;
         session.close();
-        System.out.println("Snapshot catturato.");
+        System.out.println(dateFormat.format(date)+" - "+"Snapshot catturato.");
     }
 }

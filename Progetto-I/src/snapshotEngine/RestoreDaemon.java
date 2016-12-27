@@ -2,7 +2,10 @@ package snapshotEngine;
 
 import hibernateMappers.HibernateUtil;
 import hibernateMappers.Snapshot;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import menu.MenuElement;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,6 +29,8 @@ public class RestoreDaemon implements Runnable{
     
     @Override
     public void run() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
         MenuManager mgr = new MenuManager();
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -47,6 +52,7 @@ public class RestoreDaemon implements Runnable{
         
         AppConfig.getInstance().setExitState(0);
         AppConfig.getInstance().commitChanges();
+        System.out.println(dateFormat.format(date)+" - "+"Ripristinato ultimo stato programma.");
     }
     
 }

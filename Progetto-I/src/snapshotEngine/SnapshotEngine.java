@@ -28,14 +28,12 @@ public class SnapshotEngine implements SnapEngine{
     public void snap() {
         Thread thread = new Thread(new SnapshotDaemon(restaurant),"Thread di snapshot");
         thread.start();
-        System.out.println("Istantanea salvata.");
     }
 
     @Override
     public void restore() {
         Thread thread = new Thread(new RestoreDaemon(restaurant),"Thread diripristino");
         thread.start();
-        System.out.println("Ripristinato ultimo stato del programma.");
     }
 
     @Override
