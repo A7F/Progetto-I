@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.DatabaseManager;
@@ -18,34 +19,17 @@ import utils.DatabaseStrings;
 public class LoadFileText {
     
     /**
-     * 
-     * @param pathFile percorso del file contenente il menu
-     * @return ArrayList of MenuElements
-     * @throws FileNotFoundException file di menu non trovato
-     * @throws IOException file di menu non trovato
-     * Questo metodo prende un file di testo che deve essere formattato in questo modo:
+     * questo metodo prende gli elementi dal file e li mette nel database. Il file di testo deve essere
+     * formattato nel seguente modo:
      * String(TAB)double(TAB)menuElementType(TAB)String
-     */
-    public static ArrayList<MenuElement> loadFile (String pathFile) throws FileNotFoundException, IOException{
-        ArrayList<MenuElement> menuElements = new ArrayList<>(); 
-        FileReader fr = new FileReader(pathFile);
-        BufferedReader br = new BufferedReader(fr);
-        while(br.ready()){
-            String line = br.readLine();
-            String[] splittedLine = line.split("\t");
-            Double price = new Double(splittedLine[1]);
-            menuElements.add(new MenuElement(splittedLine[0], price, splittedLine[2],splittedLine[3]));
-        }
-        return menuElements;
-    }
-    
-    /**
-     * questo metodo prende gli elementi dal file e li mette nel database
      * @author Luca
      * @param pathFile percorso del file contenente il menu
+     * @return arraylist di menuelement
      * @throws java.io.FileNotFoundException file di menu non trovato
+     * @throws IOException file di menu non trovato
      */
-    public static void fillDatabase(String pathFile) throws FileNotFoundException, IOException{
+    public static ArrayList<MenuElement> menuFromDatabase(String pathFile) throws FileNotFoundException, IOException{
+        ArrayList<MenuElement> menuElements = new ArrayList<>(); 
         FileReader fr = new FileReader(pathFile);
         BufferedReader br = new BufferedReader(fr);
         DatabaseManager mgr = new DatabaseManager();
@@ -71,7 +55,18 @@ public class LoadFileText {
                 System.err.println("VendorError: " + e.getErrorCode());
             }
         }
+        
+        try {
+            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM Menu");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                menuElements.add(new MenuElement(rs.getInt("ID"),rs.getString("Name"),rs.getDouble("Price"),rs.getString("Description"),rs.getString("Tipo")));
+            }
+        } catch (SQLException ex) {
+            ex.toString();
+        }
+        
         mgr.closeConnection();
+        return menuElements;
     }
-    
 }

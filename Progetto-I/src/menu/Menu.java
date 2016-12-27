@@ -22,8 +22,7 @@ public class Menu {
      * 
      */    
     private void loadMenu (String pathFile) throws IOException{
-        menu = LoadFileText.loadFile(pathFile);
-        LoadFileText.fillDatabase(pathFile);
+        menu = LoadFileText.menuFromDatabase(pathFile);
     }
 
     /**
