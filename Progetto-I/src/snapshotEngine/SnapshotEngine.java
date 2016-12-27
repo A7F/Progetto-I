@@ -33,7 +33,9 @@ public class SnapshotEngine implements SnapEngine{
 
     @Override
     public void restore() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Thread thread = new Thread(new RestoreDaemon(restaurant),"Thread diripristino");
+        thread.start();
+        System.out.println("Ripristinato ultimo stato del programma.");
     }
 
     @Override

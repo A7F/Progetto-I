@@ -39,28 +39,7 @@ public class MenuManager {
             Logger.getLogger(MenuManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /**
-     * metodo per inizializzare l'arraylist di menu, prendendo i valori dal database table menu
-     * @author FabioT
-     */
-    public void getMenu(){
-        try {
-            PreparedStatement ps = mgr.getConnection().prepareStatement("SELECT * FROM menu;");
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                int id = rs.getInt("ID");
-                String name=rs.getString("Name");
-                String description=rs.getString("Description");
-                double price=rs.getDouble("Price");
-                String typeElement=rs.getString("Tipo");
-                
-                MenuElement me  = new MenuElement(id, name, price, typeElement, description);
-                menuElements.add(me);
-            }
-        } catch (SQLException ex) {
-            System.out.println("errore query su database");
-        }
-    }
+    
     
     /**
      * metodo per ottenere il contenuto della table impiegati come resultset
