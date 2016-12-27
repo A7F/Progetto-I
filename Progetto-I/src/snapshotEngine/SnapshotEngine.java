@@ -4,6 +4,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import restaurant.Restaurant;
+import utils.AppConfig;
 
 /**
  * questa classe singleton si occupa di:
@@ -14,7 +15,7 @@ import restaurant.Restaurant;
 public class SnapshotEngine implements SnapEngine{
     
     private static SnapshotEngine snapshotEngine;
-    private int milliseconds;
+    private int milliseconds = AppConfig.getInstance().getSnapshotSeconds();
     private Restaurant restaurant;
 
     public static SnapshotEngine getInstance(){
