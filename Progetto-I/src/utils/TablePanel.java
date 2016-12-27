@@ -87,7 +87,7 @@ public class TablePanel implements Observer{
      * se la classe avesse esteso JPanel.
      * @return jpanel contenente i pulsanti dei tavoli
      * @author Luca
-     * @see OrdersPanel
+     * @see UICameriere.OrdersPanel
      */
     public JPanel getPanel(){
         return panel;

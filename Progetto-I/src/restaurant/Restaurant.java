@@ -59,7 +59,7 @@ public class Restaurant extends Observable{
      * restituisce l'array di ordini 
      * @author Federico Vitrò
      * @return arraylist degli ordini
-     * @see CookUI
+     * @see UIcook.CookUI
      */
     public ArrayList<Order> getOrdersArray(){
         return room.getOrdersArray();
@@ -80,7 +80,7 @@ public class Restaurant extends Observable{
     /**
      * metodo di sincronizzazione con gli altri observers
      * @author Luca
-     * @see TablePanel
+     * @see utils.TablePanel
      */
     public void notifyAllObservers(){
         setChanged();

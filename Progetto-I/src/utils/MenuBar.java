@@ -109,7 +109,7 @@ public class MenuBar extends JMenuBar{
     /**
      * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
      * menu che permette di gestire le impostazioni del programma.
-     * @see CapoUI
+     * @see UIcapo.CapoUI
      * @author Luca
      */
     public void addSettingsEntry(){
@@ -120,7 +120,7 @@ public class MenuBar extends JMenuBar{
     
     /**
      * Imposta l'eventuale tipo di sconto alla cassa. Questa opzione viene visualizzata nella grafica del capo
-     * @see DiscountMenu
+     * @see UIcassa.DiscountMenu
      * @author Fabio
      */
     public void addDiscountMenu(){

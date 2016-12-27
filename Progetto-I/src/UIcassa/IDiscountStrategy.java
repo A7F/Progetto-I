@@ -13,8 +13,8 @@ public interface IDiscountStrategy {
     
     /**
      * Calcola il prezzo totale scontato
-     * @param scontrino 
-     * @see ScontrinoPanel
+     * @param scontrino scontrino
+     * @see UIcassa.ScontrinoPanel
      * @return prezzo scontato 
      */
     public Double getDiscountedPrice(ScontrinoPanel scontrino);
@@ -22,8 +22,8 @@ public interface IDiscountStrategy {
     /**
      * Imposta i parametri presenti nella grafica degli sconti che ti servono per il calcolo dello sconto.
      * Gli attributi potrebbero essere lo sconto o la soglia che devi raggiungere per avere lo sconto
-     * @param attribute1 
-     * @param attribute2 
+     * @param attribute1 attributo 1
+     * @param attribute2  attributo 2
      */
     public void setAttributes(int attribute1,int attribute2);
     
