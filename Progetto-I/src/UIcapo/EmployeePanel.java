@@ -280,9 +280,9 @@ public class EmployeePanel extends JPanel implements RowSetListener{
             public void actionPerformed(ActionEvent e) {
                 try {
                     myEmployeeTableModel.employeeRowSet.acceptChanges(empManager.getConnection());
-                    System.out.println("DATABASE AGGIORNATO");
+                    JOptionPane.showMessageDialog(new JFrame(),"Database aggiornato!","Informazione",JOptionPane.INFORMATION_MESSAGE);
                 } catch (SyncProviderException ex) {
-                    ex.toString();
+                    JOptionPane.showMessageDialog(new JFrame(),"Database NON aggiornato!","Errore",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -294,7 +294,7 @@ public class EmployeePanel extends JPanel implements RowSetListener{
                 try {
                     createNewTableModel();
                 } catch (SQLException ex) {
-                    ex.toString();
+                    JOptionPane.showMessageDialog(new JFrame(),"Impossibile annullare le ultime modifiche","Warning",JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
