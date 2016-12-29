@@ -65,7 +65,7 @@ public class CassaMainFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 if(ordiniPanel.getSelectedIndex()==-1){
-                    System.err.println("NULLA SELEZIONATO!");
+                    JOptionPane.showMessageDialog(new JFrame(), "Nessun elemento selezionato!", "Warning", JOptionPane.WARNING_MESSAGE);
                 }else{
                     scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(ordiniPanel.getSelectedIndex()));
                     ordiniPanel.removeOrder();
@@ -79,9 +79,9 @@ public class CassaMainFrame{
         remOne.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                if(scontrinoPanel.getSelectedListIndex()==-1){
-                    System.err.println("NULLA SELEZIONATO!");
-                }else{
+                if (scontrinoPanel.getSelectedListIndex() == -1) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Nessun elemento selezionato!", "Warning", JOptionPane.WARNING_MESSAGE);                   
+                } else{
                     ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(scontrinoPanel.getSelectedListIndex()));
                     scontrinoPanel.removeElement();
                     setPreviewTotal(scontrinoPanel, mySouthPanel);
@@ -94,9 +94,9 @@ public class CassaMainFrame{
         addAll.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                if(ordiniPanel.getModel().isEmpty()){
-                    System.err.println("Vuoto!");
-                }else{
+                if(ordiniPanel.getModel().isEmpty()) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Pannello già vuoto!", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else{
                     for(int i=0;i<ordiniPanel.getModel().size();i++){
                         scontrinoPanel.addElement((Order)ordiniPanel.getModel().getElementAt(i));
                     }    
@@ -112,7 +112,7 @@ public class CassaMainFrame{
             @Override
             public void actionPerformed(ActionEvent e){
                 if(scontrinoPanel.getModel().isEmpty()){
-                    System.err.println("Vuoto!");
+                    JOptionPane.showMessageDialog(new JFrame(), "Pannello già vuoto!", "Warning", JOptionPane.WARNING_MESSAGE);
                 }else{
                     for(int i=0;i<scontrinoPanel.getModel().size();i++){
                         ordiniPanel.addOrder((Order)scontrinoPanel.getModel().getElementAt(i));
