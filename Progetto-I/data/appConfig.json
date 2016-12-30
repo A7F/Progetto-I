@@ -1,13 +1,1 @@
-{
-    "app_name": "ancora senza nome :(",
-    "this_path": "./data/appConfig.json",
-    "exit_state": 0,
-    "snapshot_seconds": 7000,
-    "table_number": 4,
-    "menu_path": "./data/menu.txt",
-    "def_dbuser": "root",
-    "def_dbpw": "",
-    "def_dburl": "jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true",
-    "def_lang": "IT",
-    "restaurant_name": "Diablo"
-}
+{"app_name":"ancora senza nome :(","this_path":"./data/appConfig.json","exit_state":0,"snapshot_seconds":7000,"table_number":4,"menu_path":"./data/menu.txt","def_dbuser":"root","def_dbpw":"","def_dburl":"jdbc:mysql://localhost:3306/ristorante?relaxAutoCommit=true","def_lang":"IT","restaurant_name":"Diablo"}

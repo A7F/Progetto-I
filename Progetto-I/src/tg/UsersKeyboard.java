@@ -3,7 +3,6 @@ package tg;
 import java.util.ArrayList;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
-import utils.Emoji;
 
 /**
  * tastiera disponibile a tutti gli utenti che accedono al ristorante

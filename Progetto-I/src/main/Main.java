@@ -1,12 +1,15 @@
 package main;
 
 import UIlogin.LoginUI;
+import java.io.File;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import restaurant.Restaurant;
 import snapshotEngine.SnapshotEngine;
 import utils.AppConfig;
+import utils.MyFileChooser;
 
 /**
  * classe main dell'applicazione
@@ -29,7 +32,16 @@ public class Main {
                 LoginUI login = new LoginUI(r);
             }
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(new JFrame(), "Non è stato trovato un menu. Accedere con le credenziali del capo e specificare il percorso.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "Non è stato trovato un menu. Scegline uno...", "Info", JOptionPane.INFORMATION_MESSAGE);
+            MyFileChooser fc = new MyFileChooser();
+            fc.show();
+            if (fc.getSelected() == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fc.getSelectedFile();
+                AppConfig.getInstance().setMenuPath(selectedFile.getAbsolutePath());
+            }else{
+                JOptionPane.showMessageDialog(new JFrame(), "Nessun menu selezionato. Il programma terminerà.", "Info", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            }
             LoginUI login = new LoginUI(r);
         }
     }

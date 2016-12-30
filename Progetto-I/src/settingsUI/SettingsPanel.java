@@ -11,12 +11,11 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import utils.AppConfig;
+import utils.MyFileChooser;
 
 /**
  * pannello di grafica
@@ -29,7 +28,7 @@ public class SettingsPanel extends JPanel{
     JPanel formatPane = new JPanel();
     JTextField field = new JTextField();
     JTextField file = new JTextField();
-    final JFileChooser fc = new JFileChooser();
+    final MyFileChooser fcs = new MyFileChooser();
     JButton browse,apply;
     AppConfig config;
     
@@ -61,9 +60,6 @@ public class SettingsPanel extends JPanel{
         tableBox = new JComboBox(numbers);
         delayBox = new JComboBox(delay);
         delayBox.setSelectedIndex(2);
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("File di testo", "txt", "text");
-        fc.setFileFilter(filter);
         browse = new JButton("Scegli...");
         apply = new JButton("Applica");
         tableNumber = new JLabel("Numero dei tavoli all'avvio: ");
@@ -82,10 +78,10 @@ public class SettingsPanel extends JPanel{
         browse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = fc.showDialog(new JFrame(), "scegli");
-                
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fc.getSelectedFile();
+                fcs.show();
+                               
+                if (fcs.getSelected() == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fcs.getSelectedFile();
                     file.setText(selectedFile.getAbsolutePath());
                     file.repaint();
                 }
