@@ -7,6 +7,7 @@ package UIcapo;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -117,11 +118,11 @@ public class MenuPanel extends JPanel implements RowSetListener {
         label_MENU_PRICE.setText("Prezzo:");
         label_MENU_TYPE.setText("Tipo:");
 
-        textField_MENU_ID.setText("101");
-        textField_MENU_NAME.setText("Inserisci un nome...");
-        textFieldMENU_DESCRIPTION.setText("Inserisci una descrizione...");
-        textField_MENU_PRICE.setText("Prezzo");
-        textField_MENU_TYPE.setText("Tipo");
+//        textField_MENU_ID.setText("101");
+//        textField_MENU_NAME.setText("Inserisci un nome...");
+//        textFieldMENU_DESCRIPTION.setText("Inserisci una descrizione...");
+//        textField_MENU_PRICE.setText("Prezzo");
+//        textField_MENU_TYPE.setText("Tipo");
 
         button_ADD_ROW.setText("Aggiungi elemento");
         button_REMOVE_ROW.setText("Rimuovi elemento");
@@ -266,17 +267,24 @@ public class MenuPanel extends JPanel implements RowSetListener {
         c.gridwidth = 1;
         this.add(button_UPDATE_DATABASE, c);
         
+        
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (menuManager.checkMenuElementById(Integer.parseInt(textField_MENU_ID.getText().trim())) == false) {
-                myMenuTabelModel.insertRow(Integer.parseInt(textField_MENU_ID.getText().trim()),
-                                                textField_MENU_NAME.getText(),
-                                                textFieldMENU_DESCRIPTION.getText(),
-                                                Double.parseDouble(textField_MENU_PRICE.getText().trim()),
-                                                textField_MENU_TYPE.getText().trim());
-                } else {
-                    JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+                try {
+                    double d = Double.parseDouble(textField_MENU_PRICE.getText());
+
+                    if (textField_MENU_ID.getText().isEmpty() || !textField_MENU_NAME.getText().isEmpty()
+                            || !textFieldMENU_DESCRIPTION.getText().isEmpty() || !textField_MENU_PRICE.getText().isEmpty()
+                            || !textField_MENU_TYPE.getText().isEmpty()) {
+
+                        insertMenuTable();
+                    } else {
+                        JOptionPane.showMessageDialog(new JFrame(), "Compilare tutti i campi", "Warning", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Dati non inseriti correttamente", "Errore", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -313,4 +321,15 @@ public class MenuPanel extends JPanel implements RowSetListener {
             }
         });
     }    
+
+    private void insertMenuTable() {
+        if (menuManager.checkMenuElementById(Integer.parseInt(textField_MENU_ID.getText().trim())) == false) {
+            
+            myMenuTabelModel.insertRow(Integer.parseInt(textField_MENU_ID.getText().trim()),
+                    textField_MENU_NAME.getText(), textFieldMENU_DESCRIPTION.getText(),
+                    Double.parseDouble(textField_MENU_PRICE.getText().trim()),textField_MENU_TYPE.getText().trim());
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }
 }

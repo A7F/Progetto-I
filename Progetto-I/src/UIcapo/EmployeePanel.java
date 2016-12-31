@@ -100,11 +100,11 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         label_STATUS.setText("Stato:");
         label_RUOLO.setText("Ruolo:");
 
-        textField_EM_ID.setText("101");
-        textField_EM_USERNAME.setText("Inserisci uno username...");
-        textField_EM_PASSWORD.setText("Inserisci una password...");
-        textField_STATUS.setText("false");
-        textField_RUOLO.setText("Specifica un ruolo...");
+//        textField_EM_ID.setText("101");
+//        textField_EM_USERNAME.setText("Inserisci uno username...");
+//        textField_EM_PASSWORD.setText("Inserisci una password...");
+//        textField_STATUS.setText("false");
+//        textField_RUOLO.setText("Specifica un ruolo...");
 
         button_ADD_ROW.setText("Aggiungi impiegato");
         button_REMOVE_ROW.setText("Rimuovi impiegato");
@@ -252,21 +252,18 @@ public class EmployeePanel extends JPanel implements RowSetListener{
         
         button_ADD_ROW.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (empManager.getEmployeeById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
-                    myEmployeeTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
-                            textField_EM_USERNAME.getText(),
-                            textField_EM_PASSWORD.getText(),
-                            textField_RUOLO.getText(),
-                            Boolean.parseBoolean(textField_STATUS.getText().trim()));
-                } else {
-                    JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+            public void actionPerformed(ActionEvent e) {            
+                if (textField_EM_ID.getText().isEmpty() || !textField_EM_USERNAME.getText().isEmpty()
+                        || !textField_EM_PASSWORD.getText().isEmpty() || !textField_STATUS.getText().isEmpty()
+                        || !textField_RUOLO.getText().isEmpty()) {
+                    
+                    insertEmployeeTable(); 
+                }else{
+                    JOptionPane.showMessageDialog(new JFrame(), "Compilare tutti i campi ", "Warning", JOptionPane.WARNING_MESSAGE);   
                 }
             }
         });
-        
-        
+
         button_REMOVE_ROW.addActionListener(new ActionListener() {       // funziona va bene ma non aggiorna runtime la tabella
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -298,5 +295,18 @@ public class EmployeePanel extends JPanel implements RowSetListener{
                 }
             }
         });
+    }
+
+    private void insertEmployeeTable() {
+        if (empManager.getEmployeeById(Integer.parseInt(textField_EM_ID.getText().trim())) == null) {
+            
+            myEmployeeTableModel.insertRow(Integer.parseInt(textField_EM_ID.getText().trim()),
+                    textField_EM_USERNAME.getText(),
+                    textField_EM_PASSWORD.getText(),
+                    textField_RUOLO.getText(),
+                    Boolean.parseBoolean(textField_STATUS.getText().trim()));
+        } else {
+            JOptionPane.showMessageDialog(new JFrame(), "Id già esistente", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }
 }
