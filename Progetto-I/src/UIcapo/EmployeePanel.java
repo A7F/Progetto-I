@@ -277,9 +277,12 @@ public class EmployeePanel extends JPanel implements RowSetListener{
             public void actionPerformed(ActionEvent e) {
                 try {
                     myEmployeeTableModel.employeeRowSet.acceptChanges(empManager.getConnection());
-                    JOptionPane.showMessageDialog(new JFrame(),"Database aggiornato!","Informazione",JOptionPane.INFORMATION_MESSAGE);
+                    createNewTableModel();          //Ridisegna la tabella
+                    JOptionPane.showMessageDialog(new JFrame(),"Database aggiornato!","Informazione",JOptionPane.INFORMATION_MESSAGE); 
                 } catch (SyncProviderException ex) {
                     JOptionPane.showMessageDialog(new JFrame(),"Database NON aggiornato!","Errore",JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(new JFrame(),"Impossibile aggiornare la tabella!","Informazione",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });

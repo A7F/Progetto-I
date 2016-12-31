@@ -282,7 +282,6 @@ public class MenuPanel extends JPanel implements RowSetListener {
                     } else {
                         JOptionPane.showMessageDialog(new JFrame(), "Compilare tutti i campi", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
-
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(new JFrame(), "Dati non inseriti correttamente", "Errore", JOptionPane.ERROR_MESSAGE);
                 }
@@ -302,9 +301,12 @@ public class MenuPanel extends JPanel implements RowSetListener {
             public void actionPerformed(ActionEvent e) {
                 try {
                     myMenuTabelModel.menuRowSet.acceptChanges(menuManager.getConnection());
+                    createNewTableModel();          //Ridisegna la tabella
                     JOptionPane.showMessageDialog(new JFrame(),"Database aggiornato!","Informazione",JOptionPane.INFORMATION_MESSAGE);
                 } catch (SyncProviderException ex) {
                     JOptionPane.showMessageDialog(new JFrame(),"Database NON aggiornato!","Errore",JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(new JFrame(),"Impossibile aggiornare la tabella!","Informazione",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
