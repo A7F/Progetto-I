@@ -1,26 +1,30 @@
-package tg;
+package tg.keyboards;
 
 import java.util.ArrayList;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
+import tg.BotCommands;
+import utils.Emoji;
 
 /**
- * tastiera disponibile a tutti gli utenti che accedono al ristorante
+ * tastiera riserva al solo capo del ristorante: permette di registrare o cancellare utenti
+ * per abilitarli o meno all' uso del bot.
  * @author Luca
  */
-public class UsersKeyboard extends ReplyKeyboardMarkup{
+public class PrivateKeyboard extends ReplyKeyboardMarkup{
     
-    public UsersKeyboard(){
+    public PrivateKeyboard(){
         this.setResizeKeyboard(true);
         this.setSelective(Boolean.TRUE);
         this.setOneTimeKeyboad(Boolean.TRUE);
         ArrayList<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow firstRow = new KeyboardRow();
-            firstRow.add(BotCommands.usersAddOrder);
-            firstRow.add(BotCommands.usersRemOrder);
+            firstRow.add(BotCommands.pvtDelete);
+            firstRow.add(BotCommands.pvtRegister);
         KeyboardRow secondRow = new KeyboardRow();
-            secondRow.add(BotCommands.usersGetMenu);
+            secondRow.add(BotCommands.pvtID);
             secondRow.add(BotCommands.aiuto);
+            secondRow.add(BotCommands.pvtBack);
         keyboard.add(firstRow);
         keyboard.add(secondRow);
         this.setKeyboard(keyboard);

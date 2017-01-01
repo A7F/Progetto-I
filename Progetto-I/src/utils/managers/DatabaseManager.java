@@ -1,4 +1,4 @@
-package utils;
+package utils.managers;
 
 import java.sql.Statement;  //attenzione, deve essere java.sql, NON java.beans!!!
 import java.sql.Connection;
@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import utils.DatabaseStrings;
 
 /**
  * questa classe si occupa di aprire la connessione al server remoto SQL e di

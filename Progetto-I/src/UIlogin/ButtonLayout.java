@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.*;
-import utils.LoginManager;
+import utils.managers.LoginManager;
 
 /**
  * Questa classe crea il pulsante Login, con relativo listener

@@ -1,4 +1,4 @@
-package utils;
+package utils.managers;
 
 import com.sun.rowset.CachedRowSetImpl;
 import java.sql.Connection;
@@ -12,6 +12,7 @@ import javax.sql.rowset.CachedRowSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import menu.MenuElement;
+import utils.DatabaseStrings;
 
 /**
  * questa classe facilita l'accesso (in lettura e scrittura) al database ristorante

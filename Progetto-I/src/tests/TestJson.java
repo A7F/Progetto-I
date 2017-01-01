@@ -1,6 +1,6 @@
 package tests;
 
-import settingsUI.SettingsMainFrame;
+import UIsettings.SettingsMainFrame;
 import utils.AppConfig;
     
 /**

@@ -3,7 +3,7 @@ package restaurant;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import utils.TavoliManager;
+import utils.managers.TavoliManager;
 
 /**
  *

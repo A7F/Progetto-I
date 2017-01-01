@@ -1,6 +1,6 @@
 package tests;
 
-import utils.DatabaseManager;
+import utils.managers.DatabaseManager;
 
 /**
  *

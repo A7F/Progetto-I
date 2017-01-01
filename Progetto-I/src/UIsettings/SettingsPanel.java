@@ -1,4 +1,4 @@
-package settingsUI;
+package UIsettings;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import utils.AppConfig;
-import utils.MyFileChooser;
+import utils.commonGraphics.MyFileChooser;
 
 /**
  * pannello di grafica

@@ -1,4 +1,4 @@
-package tg;
+package tg.keyboards;
 
 import java.util.ArrayList;
 import menu.MenuElement;

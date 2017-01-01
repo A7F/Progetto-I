@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import restaurant.Restaurant;
-import utils.MenuBar;
+import utils.commonGraphics.MenuBar;
 
 /**
  * Avvia la grafica del capo e ne imposta le prorpietà

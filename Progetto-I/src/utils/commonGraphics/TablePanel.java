@@ -1,4 +1,4 @@
-package utils;
+package utils.commonGraphics;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

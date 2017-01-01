@@ -1,6 +1,6 @@
 package UICameriere;
 
-import utils.TablePanel;
+import utils.commonGraphics.TablePanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import restaurant.Restaurant;
-import utils.MenuBar;
+import utils.commonGraphics.MenuBar;
 
 /**
  * Frame che contiene l'elenco dei tavoli, le ordinazioni di uno specifico 

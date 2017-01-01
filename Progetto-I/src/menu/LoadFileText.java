@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import utils.DatabaseManager;
+import utils.managers.DatabaseManager;
 import utils.DatabaseStrings;
 
 

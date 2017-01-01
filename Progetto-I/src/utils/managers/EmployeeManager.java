@@ -1,4 +1,4 @@
-package utils;
+package utils.managers;
 
 
 import com.sun.rowset.CachedRowSetImpl;
@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.CachedRowSet;
 import restaurant.Employee;
+import utils.DatabaseStrings;
 
 /**
  * questa classe fa da utility per ottenere i dati degli impiegati ed operare sulla relativa table

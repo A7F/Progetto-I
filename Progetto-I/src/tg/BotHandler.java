@@ -1,5 +1,8 @@
 package tg;
 
+import tg.keyboards.PrivateKeyboard;
+import tg.keyboards.UsersKeyboard;
+import tg.keyboards.OrdersKeyboard;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.telegram.telegrambots.TelegramApiException;

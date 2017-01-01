@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import restaurant.Order;
 import restaurant.Restaurant;
 import utils.AppConfig;
-import utils.MenuManager;
+import utils.managers.MenuManager;
 
 /**
  * questa classe ripristina l'ultimo salvataggio reimpostando il programma

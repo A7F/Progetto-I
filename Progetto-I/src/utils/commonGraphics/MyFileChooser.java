@@ -1,4 +1,4 @@
-package utils;
+package utils.commonGraphics;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;

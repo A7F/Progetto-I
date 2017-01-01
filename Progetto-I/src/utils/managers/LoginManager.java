@@ -1,4 +1,4 @@
-package utils;
+package utils.managers;
 
 import UICameriere.CameriereMainFrame;
 import restaurant.Restaurant;
@@ -39,7 +39,7 @@ public class LoginManager {
      * @param userId l'id utente che effettua login
      * @author Luca
      */
-    LoginManager(int userId) {
+    public LoginManager(int userId) {
         this.frame = new JFrame();
     this.userId=userId;
     }

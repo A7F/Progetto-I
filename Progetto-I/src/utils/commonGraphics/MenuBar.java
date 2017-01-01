@@ -1,5 +1,6 @@
-package utils;
+package utils.commonGraphics;
 
+import utils.managers.LoginManager;
 import UIcassa.CassaMainFrame;
 import UIcassa.DiscountMenu;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import restaurant.Restaurant;
-import settingsUI.SettingsMainFrame;
+import UIsettings.SettingsMainFrame;
+import utils.AppConfig;
 
 /**
  * questa è la menubar in cui si può fare logout. Disponibile in tutte le finestre.

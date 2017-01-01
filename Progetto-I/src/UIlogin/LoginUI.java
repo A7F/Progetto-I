@@ -3,7 +3,7 @@ package UIlogin;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import utils.LoginManager;
+import utils.managers.LoginManager;
 import restaurant.Restaurant;
 
 /**

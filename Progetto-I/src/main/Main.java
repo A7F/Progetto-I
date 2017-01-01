@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import restaurant.Restaurant;
 import snapshotEngine.SnapshotEngine;
 import utils.AppConfig;
-import utils.MyFileChooser;
+import utils.commonGraphics.MyFileChooser;
 
 /**
  * classe main dell'applicazione

@@ -1,6 +1,6 @@
 package UIcassa;
 
-import utils.TablePanel;
+import utils.commonGraphics.TablePanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -11,7 +11,7 @@ import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import restaurant.Order;
 import restaurant.Restaurant;
-import utils.MenuBar;
+import utils.commonGraphics.MenuBar;
 
 /**
  * grafica della cassa

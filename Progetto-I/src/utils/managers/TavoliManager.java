@@ -1,4 +1,4 @@
-package utils;
+package utils.managers;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import utils.DatabaseStrings;
 
 /**
  * questa classe facilita l'accesso alla table Tavoli del database del ristorante.

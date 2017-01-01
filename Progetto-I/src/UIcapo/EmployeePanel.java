@@ -12,7 +12,7 @@ import javax.sql.RowSetListener;
 import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.spi.SyncProviderException;
 import javax.swing.*;
-import utils.EmployeeManager;
+import utils.managers.EmployeeManager;
 
 /**
  *

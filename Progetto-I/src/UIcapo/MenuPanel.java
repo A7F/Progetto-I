@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import utils.MenuManager;
+import utils.managers.MenuManager;
 
 /**
  * Pannello contenente il tabella del menu, i pulsanti di aggiunta rimozione e aggiornento database
