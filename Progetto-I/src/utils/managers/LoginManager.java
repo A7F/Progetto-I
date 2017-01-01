@@ -1,16 +1,15 @@
 package utils.managers;
 
-import UICameriere.CameriereMainFrame;
+import graphics.cameriere.CameriereMainFrame;
 import restaurant.Restaurant;
-import UIcook.CookUI;
-import UIcassa.CassaMainFrame;
+import graphics.cook.CookUI;
+import graphics.cassa.CassaMainFrame;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import UIcapo.CapoUI;
 
 /**
  * questa classe si occupa di fornire i metodi per la gestione del login, inoltre
@@ -175,7 +174,7 @@ public class LoginManager {
                 CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);
                 break;
             case 4:
-                CapoUI win = new CapoUI(restaurant, userId);
+                CameriereMainFrame win = new CameriereMainFrame(restaurant, userId);
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");

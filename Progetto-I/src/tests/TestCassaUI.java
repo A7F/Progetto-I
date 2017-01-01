@@ -1,6 +1,6 @@
 package tests;
 
-import UIcassa.CassaMainFrame;
+import graphics.cassa.CassaMainFrame;
 import java.io.IOException;
 import menu.MenuElement;
 import restaurant.Order;

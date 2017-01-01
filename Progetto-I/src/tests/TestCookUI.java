@@ -1,6 +1,6 @@
 package tests;
 
-import UIcook.CookUI;
+import graphics.cook.CookUI;
 import java.io.IOException;
 import menu.MenuElement;
 import restaurant.Order;

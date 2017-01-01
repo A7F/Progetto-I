@@ -1,6 +1,6 @@
 package main;
 
-import UIlogin.LoginUI;
+import graphics.login.LoginUI;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import restaurant.Restaurant;
 import snapshotEngine.SnapshotEngine;
 import utils.AppConfig;
-import utils.commonGraphics.MyFileChooser;
+import graphics.commons.MyFileChooser;
 
 /**
  * classe main dell'applicazione

@@ -2,7 +2,7 @@ package tests;
 
 import java.io.IOException;
 import menu.MenuElement;
-import UIcapo.CapoUI;
+import graphics.capo.CapoMainFrame;
 import restaurant.Order;
 import restaurant.Restaurant;
 
@@ -29,7 +29,7 @@ public class TestCapoUI {
        
         System.out.println(diablo.getTables());
         
-        CapoUI capoUI = new CapoUI(diablo,0);
+        CapoMainFrame capoUI = new CapoMainFrame(diablo,0);
     
     }
     

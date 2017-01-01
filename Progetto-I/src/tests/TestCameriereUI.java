@@ -1,6 +1,6 @@
 package tests;
 
-import UICameriere.CameriereMainFrame;
+import graphics.cameriere.CameriereMainFrame;
 import java.io.IOException;
 import menu.MenuElement;
 import restaurant.Order;

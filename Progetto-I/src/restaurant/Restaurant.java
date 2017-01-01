@@ -1,8 +1,8 @@
 package restaurant;
 
 
-import UIcassa.PercentDiscount;
-import UIcassa.ProxyDiscount;
+import graphics.cassa.PercentDiscount;
+import graphics.cassa.ProxyDiscount;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;

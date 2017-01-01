@@ -1,6 +1,6 @@
 package tests;
 
-import UIlogin.*;
+import graphics.login.LoginUI;
 import java.io.IOException;
 import menu.MenuElement;
 import restaurant.Order;
