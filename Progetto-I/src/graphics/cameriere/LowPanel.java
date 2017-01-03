@@ -70,13 +70,14 @@ public class LowPanel extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e){
                 if(ordersPanel.getSelectedIndex()==-1){
-                    JFrame frame = new JFrame();
-                    JOptionPane.showMessageDialog(frame,"Nessun elemento ordine selezionato!","Errore",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(),"Nessun elemento ordine selezionato!","Errore",JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 if(!(restaurant.getOrdersArray().get(ordersPanel.getSelectedIndex()).getDone())){
                     ordersPanel.getTablePanel().repaint();
                     ordersPanel.removeOrder();
+                }else{
+                    JOptionPane.showMessageDialog(new JFrame(),"Non è possibile rimuovere un ordine già evaso","Errore",JOptionPane.ERROR_MESSAGE);
                 }
                 
                 restaurant.notifyCook();
