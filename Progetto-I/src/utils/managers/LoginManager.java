@@ -1,6 +1,7 @@
 package utils.managers;
 
 import graphics.cameriere.CameriereMainFrame;
+import graphics.capo.CapoMainFrame;
 import restaurant.Restaurant;
 import graphics.cook.CookUI;
 import graphics.cassa.CassaMainFrame;
@@ -174,7 +175,7 @@ public class LoginManager {
                 CameriereMainFrame cmf = new CameriereMainFrame(restaurant,userId);
                 break;
             case 4:
-                CameriereMainFrame win = new CameriereMainFrame(restaurant, userId);
+                CapoMainFrame win = new CapoMainFrame(restaurant, userId);
                 break;
             default:
                 System.out.println("Eh, qui niente :( ");
