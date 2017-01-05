@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import restaurant.Order;
 
@@ -32,7 +34,7 @@ class ButtonPanel extends JPanel{
                     Order order = (Order)list.getModel().getElementAt(i);
                     order.changeDone();
                 }catch(IndexOutOfBoundsException ex){
-                    ex.toString();
+                    JOptionPane.showMessageDialog(new JFrame(), "Nessun elemento selezionato", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
                 list.repaint();
             }
@@ -43,11 +45,16 @@ class ButtonPanel extends JPanel{
         b2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 int i=list.getSelectedIndex();
-                ord.get(i).changeRead();
+                try{
+                    Order order = (Order)list.getModel().getElementAt(i);
+                    order.changeRead();
+                }catch(IndexOutOfBoundsException ex){
+                    JOptionPane.showMessageDialog(new JFrame(), "Nessun elemento selezionato", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
                 list.repaint();
             }
         });
-        
+               
         this.add(b1);
         this.add(b2);
     }
