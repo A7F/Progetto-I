@@ -15,10 +15,11 @@ import utils.DatabaseStrings;
  * @author Luca
  */
 public class TavoliManager {
-    DatabaseManager mgr = new DatabaseManager();
+    DatabaseManager mgr;
     ArrayList<Integer> tavoliPrenotati = new ArrayList<>();
     
     public TavoliManager(){
+        this.mgr = DatabaseManager.getInstance();
         init();
     }
 

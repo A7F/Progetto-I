@@ -32,8 +32,7 @@ public class LoadFileText {
         ArrayList<MenuElement> menuElements = new ArrayList<>(); 
         FileReader fr = new FileReader(pathFile);
         BufferedReader br = new BufferedReader(fr);
-        DatabaseManager mgr = new DatabaseManager();
-        mgr.initServer();
+        DatabaseManager mgr = DatabaseManager.getInstance();
         mgr.runUpdate(DatabaseStrings.dropMenu);
         mgr.runUpdate(DatabaseStrings.createMenu);
         
@@ -66,7 +65,6 @@ public class LoadFileText {
             ex.toString();
         }
         
-        mgr.closeConnection();
         return menuElements;
     }
 }

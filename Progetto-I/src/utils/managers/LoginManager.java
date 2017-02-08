@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class LoginManager {
     
     private Map<Integer,String> rel = new HashMap<>();
-    private DatabaseManager dbm = new DatabaseManager();
+    private DatabaseManager dbm = DatabaseManager.getInstance();
     private Restaurant restaurant;
     private int userId = 0;
     private JFrame frame;

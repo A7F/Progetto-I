@@ -18,7 +18,7 @@ import utils.DatabaseStrings;
  * @author Luca
  */
 public class EmployeeManager {
-    DatabaseManager manager = new DatabaseManager();
+    DatabaseManager manager = DatabaseManager.getInstance();
     ArrayList<Employee> impiegati = new ArrayList<>();
     Connection connection = manager.getConnection();
     

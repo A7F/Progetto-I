@@ -20,7 +20,7 @@ import utils.DatabaseStrings;
  * @author Luca
  */
 public class MenuManager {
-    DatabaseManager mgr = new DatabaseManager();
+    DatabaseManager mgr = DatabaseManager.getInstance();
     ArrayList<MenuElement> menuElements = new ArrayList<>();
     Connection connection = mgr.getConnection();
     
