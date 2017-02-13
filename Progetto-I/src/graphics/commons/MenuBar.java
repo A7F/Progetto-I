@@ -111,7 +111,7 @@ public class MenuBar extends JMenuBar{
     /**
      * questo metodo serve per aggiungere all' occorrenza l'opzione aggiuntiva della barra
      * menu che permette di gestire le impostazioni del programma.
-     * @see UIcapo.CapoUI
+     * @see graphics.capo.CapoMainFrame
      * @author Luca
      */
     public void addSettingsEntry(){
