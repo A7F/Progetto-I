@@ -55,9 +55,7 @@ public class TablePanel implements Observer{
             tableButtons.add(button);
             buttons.addElement(button);
             panel.add(button);
-            //in panel aggiungo i jbutton, non viene costruito con l'arraylist, quindi l'update del tavolo lo faccio correttamente nell' arraylist
-            //ed è giusto che ci sia (per colorare a dovere i pulsanti ecc però devo aggiungere e rimuovere l'ultimo tavolo sempre facendo
-            //panel.add(button). Ovviamente Button dovrà avere l' ID corretto che è quello proveniente dal database.
+            
         }
     }
 
@@ -87,7 +85,7 @@ public class TablePanel implements Observer{
      * se la classe avesse esteso JPanel.
      * @return jpanel contenente i pulsanti dei tavoli
      * @author Luca
-     * @see UICameriere.OrdersPanel
+     * @see graphics.cameriere.OrdersPanel
      */
     public JPanel getPanel(){
         return panel;
