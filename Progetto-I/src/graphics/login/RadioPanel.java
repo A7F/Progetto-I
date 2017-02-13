@@ -9,7 +9,7 @@ import java.util.Enumeration;
  * l'utente corretto: i radiobuttons, oltre a controllare che un utente non stia tentando di
  * accedere con le credenziali (username, password) corrette alla interfaccia sbagliata, istanziano
  * la grafica corretta passando il valore selezionato al LoginManager.
- * @see utils.LoginManager
+ * @see utils.managers.LoginManager
  * @author Luca
  */
 class RadioPanel extends JPanel{
