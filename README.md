@@ -5,7 +5,7 @@
 # Progetto-I
 Ordinazioni al ristorante
 
-I casi d'uso si trovano nella sezione wiki.
+Per favore fate riferimento alla sezione wiki per qualsiasi cosa. Non prevedo di proseguire lo sviluppo di questa applicazione ma chissà che un giorno possa decidermi di farne qualcosa di ben più serio... ad ogni modo sono disposto a corregger eventuali problemi e rispondere a domande eventuali.
 
 ##Cosa contiene l'ultimo commit?
 
