@@ -7,22 +7,12 @@ Ordinazioni al ristorante
 
 I casi d'uso si trovano nella sezione wiki.
 
-##Cosa fare ancora?
-- [x] creare UI cuoco
-- [x] sistemare UI cuoco con ListCellRender "custom"
-- [x] implementare database
-- [x] UI della cassa
-- [x] UI di login
-- [x] UI del cameriere
-- [x] gestire eccezioni
-- [ ] refactoring finale
-
 ##Cosa contiene l'ultimo commit?
 
 1. impostazioni del programma
  - create le impostazioni del programma impostabili dal capo del ristorante
 2. terminata stesura javadoc
- - javadoc finita ma da revisionare
+ - javadoc finita e revisionata
 3. migliorata la grafica del gestore ristorante
  - ora può aggiornare e rimuovere entrate nelle tabelle del database
  - può applicare sconti
@@ -33,9 +23,7 @@ I casi d'uso si trovano nella sezione wiki.
  - il programma riconosce quando è avvenuto un errore fatale e si ripristina automaticamente
   
 ###Problemi ultimo commit
-* Rivedere bene i try-catch (soprattutto sulle classi di gestione database)
-* Javadoc da revisionare
-* Terminare l'implementazione di hibernate: aggiungere le impostazioni di regolazione nella grafica del capo
+* resta un problema di renderizzazione grafica non uniforme su tutte le piattaforme
 
 ##Usare il database (Win+Mac)
 per utilizzare il database su windows ho dovuto installare XAMPP in modo da avviare Apache sul pc stesso altrimenti netbeans continua a dare un errore di connessione (0 packet sent). Ho lasciato volontariamente bianca la password per il root user.
@@ -46,7 +34,7 @@ Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug d
 * selezionare *MySQL JDBC Driver*
 
 La procedura è la stessa su Mac, siccome XAMPP è ugualmente disponibile.
-Ovviamente, essendo il database locale, le modifiche non sono sincronizzate con la repository github quindi "ognuno ha il suo".
+Ovviamente, essendo il database locale, le modifiche non sono sincronizzate con la repository github quindi "ognuno ha il suo". Ciò non toglie che si potrebbe cambiare l'indirizzo del database in modo da renderlo remoto ma non è una necessità di questa applicazione.
 
 ##Struttura database
 Rimando alla relativa [pagina wiki](https://github.com/claudio-unipv/Progetto-I/wiki/Database-SQL) per la descrizione della struttura del database
