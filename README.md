@@ -7,7 +7,7 @@ Ordinazioni al ristorante
 
 Per favore fate riferimento alla sezione wiki per qualsiasi cosa. Non prevedo di proseguire lo sviluppo di questa applicazione ma chissà che un giorno possa decidermi di farne qualcosa di ben più serio... ad ogni modo sono disposto a corregger eventuali problemi e rispondere a domande eventuali.
 
-##Cosa contiene l'ultimo commit?
+## Cosa contiene l'ultimo commit?
 
 1. impostazioni del programma
  - create le impostazioni del programma impostabili dal capo del ristorante
@@ -22,10 +22,10 @@ Per favore fate riferimento alla sezione wiki per qualsiasi cosa. Non prevedo di
  - il programma adesso può salvare il suo stato (scattando snapshot) in modo da ripristinarsi in caso di errori fatali
  - il programma riconosce quando è avvenuto un errore fatale e si ripristina automaticamente
   
-###Problemi ultimo commit
+### Problemi ultimo commit
 * resta un problema di renderizzazione grafica non uniforme su tutte le piattaforme
 
-##Usare il database (Win+Mac)
+## Usare il database (Win+Mac)
 per utilizzare il database su windows ho dovuto installare XAMPP in modo da avviare Apache sul pc stesso altrimenti netbeans continua a dare un errore di connessione (0 packet sent). Ho lasciato volontariamente bianca la password per il root user.
 
 Ho aggiunto la libreria SQLDriver che Netbeans non aggiunge (sembra sia un bug della IDE) pur importando nel progetto. Per risolvere:
@@ -39,7 +39,7 @@ Ovviamente, essendo il database locale, le modifiche non sono sincronizzate con 
 ##Struttura database
 Rimando alla relativa [pagina wiki](https://github.com/claudio-unipv/Progetto-I/wiki/Database-SQL) per la descrizione della struttura del database
 
-##Dipendenze
+## Dipendenze
 Questo progetto ha le seguenti dipendenze da includere in modo da eliminare ogni genere di errore:
 - Hibernate 4.3.x (la libreria è inclusa nell' IDE)
 - JDBC Drivers, usata per il database MySQL (la libreria è inclusa nell' IDE)
